@@ -1,0 +1,25 @@
+// ------------- RESET ----------------
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a,
+a:visited,
+a:link {
+  text-decoration: none;
+}
+
+// ------------- VARIABLES ----------------
+
+$bg-color: #222222;
+$bg-color-light: #393938;
+$green: #056952;
+$white: #dad7cd;
