@@ -1,0 +1,23 @@
+.header {
+  height: 10rem;
+  background-color: $bg-color-light;
+  margin: 2rem;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  &__left {
+    .logoContainer {
+      height: 10rem;
+      width: 10rem;
+      img {
+        width: 8rem;
+        height: 8rem;
+      }
+    }
+  }
+  &__right {
+  }
+}

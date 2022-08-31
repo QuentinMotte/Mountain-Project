@@ -1,0 +1,46 @@
+footer {
+  background-color: $bg-color-light;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-top: 1px solid $green;
+
+  @media screen and (max-width: 700px) {
+    display: block;
+    text-align: center;
+  }
+
+  ul {
+    display: flex;
+    gap: 3rem;
+
+    @media screen and (max-width: 700px) {
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+  }
+
+  i {
+    color: $green;
+    padding-right: 1.5rem;
+    font-size: x-large;
+
+    &:hover {
+      color: $greenHover;
+      transition: 0.2s;
+    }
+
+    @media screen and (max-width: 700px) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  img {
+    width: 70px;
+  }
+}
