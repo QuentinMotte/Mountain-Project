@@ -4,7 +4,15 @@ const bcrypt = require("bcrypt");
 
 const userSchema = new mongoose.Schema(
   {
-    pseudo: {
+    firstname: {
+      type: String,
+      required: true,
+      minLength: 3,
+      maxLength: 35,
+      unique: true,
+      trimp: true,
+    },
+    lastname: {
       type: String,
       required: true,
       minLength: 3,
@@ -26,28 +34,17 @@ const userSchema = new mongoose.Schema(
       max: 1024,
       minlength: 6,
     },
-    avatar: {
-      type: String,
-      default: "./uploads/profil/random-user.png",
+    birthday: {
+      type: Number,
+      minimum: 18,
+      maximum: 120,
     },
-    quote: {
-      type: String,
-      default: "Hakuna Matata",
+    id_profiles: {
+      type: [String],
     },
-    profiles: {
-      type: [
-        {
-          name: String,
-          quote: {
-            type: String,
-            default: "Hakuna Matata",
-          },
-          avatar: {
-            type: String,
-            default: "./uploads/profil/random-user.png",
-          },
-        },
-      ],
+    is_admin: {
+      type: Boolean,
+      default: false,
     },
   },
   {

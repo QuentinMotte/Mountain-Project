@@ -32,10 +32,11 @@ module.exports.updateUser = async (req, res) => {
       {
         // ce que l'on souhaite mettre à jour $set
         $set: {
-          pseudo: req.body.pseudo,
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
           email: req.body.email,
           password: req.body.password,
-          quote: req.body.quote,
+          birthday: req.body.birtdhay,
         },
       },
       //paramètre à mettre obligatoirement lorsque l'on fait un PUT

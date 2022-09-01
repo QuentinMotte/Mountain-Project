@@ -14,15 +14,21 @@ const createToken = (id) => {
 // inscription d'un utilisateur -6-
 module.exports.signUp = async (req, res) => {
   console.log(req.body);
-  const { pseudo, email, password } = req.body;
+  const { firstname, lastname, email, password, birthday } = req.body;
 
   try {
-    const user = await UserModel.create({ pseudo, email, password });
+    const user = await UserModel.create({
+      firstname,
+      lastname,
+      email,
+      password,
+      birthday,
+    });
     res.status(201).send({ user: user._id });
   } catch (err) {
     const errors = signUpErrors(err);
-    res.status(200).send({ errors });
-    // console.log(err);
+    res.status(500).send({ errors });
+    console.log(err);
   }
 };
 
