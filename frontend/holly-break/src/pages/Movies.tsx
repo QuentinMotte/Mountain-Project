@@ -7,11 +7,13 @@ function Movies() {
   return (
     <>
       <Header></Header>
-      <div>
-        <h1>Movies</h1>
-        <p>This is the movies page</p>
-        <NavLink to="/">Landing</NavLink>
-      </div>
+      <main className="content-container">
+        <div>
+          <h1>Movies</h1>
+          <p>This is the movies page</p>
+          <NavLink to="/">Landing</NavLink>
+        </div>
+      </main>
       <Footer></Footer>
     </>
   );

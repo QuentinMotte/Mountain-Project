@@ -7,11 +7,13 @@ function FaqPage() {
   return (
     <>
       <Header></Header>
-      <div>
-        <h1>FAQ</h1>
-        <p>This is the FAQ page</p>
-        <NavLink to="/">Landing</NavLink>
-      </div>
+      <main className="content-container">
+        <div>
+          <h1>FAQ</h1>
+          <p>This is the FAQ page</p>
+          <NavLink to="/">Landing</NavLink>
+        </div>
+      </main>
       <Footer></Footer>
     </>
   );

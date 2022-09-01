@@ -7,11 +7,13 @@ function Series() {
   return (
     <>
       <Header></Header>
-      <div>
-        <h1>Series</h1>
-        <p>This is the series page</p>
-        <NavLink to="/">Landing</NavLink>
-      </div>
+      <main className="content-container">
+        <div>
+          <h1>Series</h1>
+          <p>This is the series page</p>
+          <NavLink to="/">Landing</NavLink>
+        </div>
+      </main>
       <Footer></Footer>
     </>
   );

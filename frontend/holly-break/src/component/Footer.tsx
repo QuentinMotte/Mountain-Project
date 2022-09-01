@@ -4,30 +4,36 @@ import MyLogo from "../img/logo_holly_nobg.png";
 
 function Footer() {
   return (
-    <footer>
+    <footer id="footer">
       <div>
-        <a href="">
+        <a href="exemple.com">
           <i className="fa-brands fa-facebook"></i>
         </a>
-        <a href="">
+        <a href="exemple.com">
           <i className="fa-brands fa-twitter"></i>
         </a>
-        <a href="">
+        <a href="exemple.com">
           <i className="fa-brands fa-instagram"></i>
         </a>
-        <a href="">
+        <a href="exemple.com">
           <i className="fa-brands fa-github"></i>
         </a>
       </div>
       <ul>
         <li>
-          <NavLink to={"/About"}>About</NavLink>
+          <NavLink className="link" to={"/About"}>
+            About
+          </NavLink>
         </li>
         <li>
-          <NavLink to={"/Conditions"}>Conditions</NavLink>
+          <NavLink className="link" to={"/Conditions"}>
+            Conditions
+          </NavLink>
         </li>
         <li>
-          <NavLink to={"/FAQ"}>FAQ</NavLink>
+          <NavLink className="link" to={"/FAQ"}>
+            FAQ
+          </NavLink>
         </li>
       </ul>
       <img className="hollyLogo" src={MyLogo} alt="logo" />

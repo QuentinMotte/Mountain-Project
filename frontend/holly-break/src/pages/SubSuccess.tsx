@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Connection from "../component/Connection";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 
@@ -7,11 +8,11 @@ function SubSuccess() {
   return (
     <>
       <Header></Header>
-      <div>
-        <h1>Subscribtion Success !</h1>
-        <p>This is the success page</p>
-        <NavLink to="/">Landing</NavLink>
-      </div>
+      <main className="content-container">
+        <div>
+          <NavLink to="/">Landing</NavLink>
+        </div>
+      </main>
       <Footer></Footer>
     </>
   );

@@ -7,11 +7,13 @@ function HistoryPage() {
   return (
     <>
       <Header></Header>
-      <div>
-        <h1>History</h1>
-        <p>This is the history page</p>
-        <NavLink to="/">Landing</NavLink>
-      </div>
+      <main className="content-container">
+        <div>
+          <h1>History</h1>
+          <p>This is the history page</p>
+          <NavLink to="/">Landing</NavLink>
+        </div>
+      </main>
       <Footer></Footer>
     </>
   );

@@ -7,12 +7,14 @@ function ConditionPage() {
   return (
     <>
       <Header></Header>
-      <div>
-        <h1>Condition</h1>
-        <p>This is the condition page</p>
-        <NavLink to="/">Landing</NavLink>
-      </div>
-      <Footer></Footer>
+      <main className="content-container">
+        <div>
+          <h1>Condition</h1>
+          <p>This is the condition page</p>
+          <NavLink to="/">Landing</NavLink>
+        </div>
+        <Footer></Footer>
+      </main>
     </>
   );
 }

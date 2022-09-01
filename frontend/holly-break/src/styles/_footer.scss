@@ -1,7 +1,5 @@
 footer {
   background-color: $bg-color-light;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   display: flex;
   align-items: center;
@@ -9,15 +7,28 @@ footer {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   border-top: 1px solid $green;
+  position: relative;
+  left: 0;
+  bottom: 0;
 
   @media screen and (max-width: 700px) {
     display: block;
     text-align: center;
   }
 
+  .link {
+    color: $white;
+
+    &:hover {
+      color: $greenHover;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
   ul {
     display: flex;
     gap: 3rem;
+    font-size: 2rem;
 
     @media screen and (max-width: 700px) {
       justify-content: center;
@@ -26,13 +37,13 @@ footer {
   }
 
   i {
-    color: $green;
+    color: $white;
     padding-right: 1.5rem;
     font-size: x-large;
 
     &:hover {
       color: $greenHover;
-      transition: 0.2s;
+      transition: all 0.2s ease-in-out;
     }
 
     @media screen and (max-width: 700px) {

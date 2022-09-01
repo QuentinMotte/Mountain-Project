@@ -7,11 +7,13 @@ function SearchPage() {
   return (
     <>
       <Header></Header>
-      <div>
-        <h1>Search</h1>
-        <p>This is the search page</p>
-        <NavLink to="/">Landing</NavLink>
-      </div>
+      <main className="content-container">
+        <div>
+          <h1>Search</h1>
+          <p>This is the search page</p>
+          <NavLink to="/">Landing</NavLink>
+        </div>
+      </main>
       <Footer></Footer>
     </>
   );
