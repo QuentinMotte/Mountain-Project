@@ -1,0 +1,19 @@
+.content-container {
+  min-height: calc(100vh - 34px);
+}
+
+@import "./styles/settings";
+@import "./styles/_header";
+@import "./styles/_footer";
+@import "./styles/_subPage";
+@import "./styles/_connection";
+
+body {
+  background-color: $bg-color;
+}
+
+a,
+a:visited,
+a:link {
+  color: $white;
+}
