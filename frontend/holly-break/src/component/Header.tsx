@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import MyLogo from "../img/logo_holly_nobg.png";
 import Connection from "./Connection";
+import MyLogo from "../img/logo_holly_nobg.png";
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
