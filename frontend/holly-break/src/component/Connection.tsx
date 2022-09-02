@@ -18,11 +18,21 @@ function Connection({ isOpen, setIsOpen }: connect) {
             <h1>Login In</h1>
             <div className="form_subContainer">
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" id="" />
+              <input
+                type="email"
+                name="email"
+                autoComplete="on"
+                id="loginEmail"
+              />
             </div>
             <div className="form_subContainer">
               <label htmlFor="password">Password</label>
-              <input type="password" name="password" id="" />
+              <input
+                type="password"
+                name="password"
+                autoComplete="on"
+                id="loginPass"
+              />
             </div>
             <input type="submit" value="submit" />
           </form>
