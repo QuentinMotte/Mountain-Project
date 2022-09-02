@@ -14,5 +14,17 @@ router.get("/:id", profileController.profileInfo);
 router.put("/:id", profileController.updateProfile);
 // //delete
 router.delete("/:id", profileController.deleteProfile);
+// Update (patch) WatchList
+router.patch("/watchlist/:id", profileController.updateWatchList);
+// Update (patch) Favoris
+router.patch("/favorites/:id", profileController.updateFavorites);
+// Update (patch) Historique
+router.patch("/historic/:id", profileController.updateHistoric);
+// Update (patch) WatchList
+router.patch("/r_watchlist/:id", profileController.removeOneFromWatchlist);
+// Update (patch) Favoris
+router.patch("/r_favorites/:id", profileController.removeOneFromFavorites);
+// Update (patch) Historique
+router.patch("/r_historic/:id", profileController.removeOneFromHistoric);
 
 module.exports = router;

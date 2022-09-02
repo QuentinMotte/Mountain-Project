@@ -30,7 +30,6 @@ module.exports.userProfilesInfo = async (req, res) => {
 
 //Obtenir les infos d'un seul profil
 module.exports.profileInfo = (req, res) => {
-  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -42,23 +41,19 @@ module.exports.profileInfo = (req, res) => {
 
 //Mettre à jour un profil
 module.exports.updateProfile = async (req, res) => {
-  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
     await ProfileModel.findOneAndUpdate(
-      //paramètre dans l'url qui nous permettra de trouver le bon profil à mettre à jour
       { _id: req.params.id },
       {
-        // ce que l'on souhaite mettre à jour $set
         $set: {
           pseudo: req.body.pseudo,
           quote: req.body.quote,
           avatar: req.body.avatar,
         },
       },
-      //paramètre à mettre obligatoirement lorsque l'on fait un PUT
       { new: true, upsert: true, setDefaultOnInsert: true }
     )
       .then((docs) => res.send(docs))
@@ -68,9 +63,134 @@ module.exports.updateProfile = async (req, res) => {
   }
 };
 
+//update WatchList
+
+module.exports.updateWatchList = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+  try {
+    await ProfileModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $addToSet: {
+          watchlist: req.body.watchlist,
+        },
+      },
+      { new: true, upsert: true }
+    )
+      .then((docs) => res.send(docs))
+      .catch((err) => res.status(500).send({ message: err }));
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+//update Favorites
+
+module.exports.updateFavorites = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+  try {
+    await ProfileModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $addToSet: {
+          favorites: req.body.favorites,
+        },
+      },
+      { new: true, upsert: true }
+    )
+      .then((docs) => res.send(docs))
+      .catch((err) => res.status(500).send({ message: err }));
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+//update Historic
+
+module.exports.updateHistoric = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+  try {
+    await ProfileModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $addToSet: {
+          historic: req.body.historic,
+        },
+      },
+      { new: true, upsert: true }
+    )
+      .then((docs) => res.send(docs))
+      .catch((err) => res.status(500).send({ message: err }));
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+//remove from Watchlist
+module.exports.removeOneFromWatchlist = async (req, res) => {
+  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await ProfileModel.findByIdAndUpdate(
+      req.params.id,
+
+      { $pull: { watchlist: req.body.watchlist } },
+      { new: true, upsert: true }
+    )
+      .then((docs) => res.status(201).json(docs))
+      .catch((err) => res.status(400).json({ message: err }));
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+//remove from Favorites
+module.exports.removeOneFromFavorites = async (req, res) => {
+  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await ProfileModel.findByIdAndUpdate(
+      req.params.id,
+
+      { $pull: { favorites: req.body.favorites } },
+      { new: true, upsert: true }
+    )
+      .then((docs) => res.status(201).json(docs))
+      .catch((err) => res.status(400).json({ message: err }));
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+//remove from Historic
+module.exports.removeOneFromHistoric = async (req, res) => {
+  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await ProfileModel.findByIdAndUpdate(
+      req.params.id,
+
+      { $pull: { historic: req.body.historic } },
+      { new: true, upsert: true }
+    )
+      .then((docs) => res.status(201).json(docs))
+      .catch((err) => res.status(400).json({ message: err }));
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
 //supprimer un profil
 module.exports.deleteProfile = async (req, res) => {
-  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
