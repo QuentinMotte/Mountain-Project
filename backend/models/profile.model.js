@@ -25,7 +25,7 @@ const profileSchema = new mongoose.Schema(
       maxlength: 4,
     },
 
-    watchlist: {
+    watchList: {
       type: [String],
     },
     favorites: {

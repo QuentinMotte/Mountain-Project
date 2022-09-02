@@ -73,7 +73,7 @@ module.exports.updateWatchList = async (req, res) => {
       { _id: req.params.id },
       {
         $addToSet: {
-          watchlist: req.body.watchlist,
+          watchList: req.body.watchList,
         },
       },
       { new: true, upsert: true }
@@ -139,7 +139,7 @@ module.exports.removeOneFromWatchlist = async (req, res) => {
     await ProfileModel.findByIdAndUpdate(
       req.params.id,
 
-      { $pull: { watchlist: req.body.watchlist } },
+      { $pull: { watchList: req.body.watchList } },
       { new: true, upsert: true }
     )
       .then((docs) => res.status(201).json(docs))

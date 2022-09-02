@@ -23,7 +23,7 @@ interface UserFormState {
   lastName: string;
   email: string;
   password: string;
-  age: number;
+  birthday: number;
 }
 
 function SubPage() {
@@ -62,7 +62,7 @@ function SubPage() {
     lastName: userForm.lastName,
     email: userForm.email,
     password: userForm.password,
-    age: dateIntoAge(birthday.birthday),
+    birthday: dateIntoAge(birthday.birthday),
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -107,20 +107,22 @@ function SubPage() {
     }
   };
 
-  const handleSubmit = (e: any) => {
+  async function handleSubmit(e: any) {
     e.preventDefault();
     if (confirmEmail() && confirmPassword() && confirmAge()) {
-      axios
-        .post("http://localhost:5000/api/user/register", userFormState)
-        .then((res) => {
-          console.log(res.data);
-        });
-    } else {
-      alert("Email or Password is not correct");
+      const response = await axios.post(
+        "http://localhost:5000/api/user/register",
+        {
+          firstName: userFormState.firstName,
+          lastName: userFormState.lastName,
+          email: userFormState.email,
+          password: userFormState.password,
+          birthday: userFormState.birthday,
+        }
+      );
+      console.log(response);
     }
-  };
-
-  console.log(userAge);
+  }
 
   return (
     <>
