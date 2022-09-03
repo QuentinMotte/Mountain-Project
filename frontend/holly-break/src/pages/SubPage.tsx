@@ -129,7 +129,7 @@ function SubPage() {
       <Header></Header>
       <main className="content-container content-container--SubPage">
         <form action="">
-          <div className="form-group">
+          <div className="form-group form-group-firstname">
             <label htmlFor="firstName">First Name</label>
             <input
               type="text"
@@ -140,7 +140,7 @@ function SubPage() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group form-group-lastname">
             <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
@@ -151,7 +151,7 @@ function SubPage() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group form-group-email">
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -162,7 +162,7 @@ function SubPage() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group form-group-email-confirm">
             <label htmlFor="confirmEmail">Confirm Email</label>
             <input
               type="email"
@@ -175,7 +175,7 @@ function SubPage() {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group form-group-birthdate">
             <label htmlFor="birthDate">Birth Date</label>
             <input
               type="date"
@@ -187,7 +187,7 @@ function SubPage() {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group form-group-password">
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -199,7 +199,7 @@ function SubPage() {
               autoComplete="off"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group form-group-password-confirm">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               type="password"
@@ -211,7 +211,11 @@ function SubPage() {
               autoComplete="off"
             />
           </div>
-          <button type="submit" onClick={handleSubmit}>
+          <button
+            className="form-group form-group-submit"
+            type="submit"
+            onClick={handleSubmit}
+          >
             Submit
           </button>
         </form>

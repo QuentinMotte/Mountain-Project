@@ -1,22 +1,26 @@
 .content-container--SubPage {
   color: $white;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 200px);
   form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    border-radius: 5px;
-    gap: 2rem;
-    .avatar {
-      img {
-        width: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    .form-group {
+      width: calc(100vw / 2 - 100px);
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      input {
+        font-size: 3rem;
+        border: 2px solid $green;
+        border-radius: 5px;
       }
     }
   }
