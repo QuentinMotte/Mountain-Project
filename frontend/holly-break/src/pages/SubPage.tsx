@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface UserFormProps {
   firstName: string;
@@ -121,14 +122,21 @@ function SubPage() {
         }
       );
       console.log(response);
+      console.log(response.status);
     }
   }
+
+  const navigate = useNavigate();
+
+  const redirectToSuccessPage = () => {
+    navigate("/Subscription/success");
+  };
 
   return (
     <>
       <Header></Header>
       <main className="content-container content-container--SubPage">
-        <form action="">
+        <form onSubmit={redirectToSuccessPage}>
           <div className="form-group form-group-firstname">
             <label htmlFor="firstName">First Name</label>
             <input
@@ -138,8 +146,10 @@ function SubPage() {
               value={userForm.firstName}
               onChange={handleChange}
               required
+              autoComplete="off"
             />
           </div>
+
           <div className="form-group form-group-lastname">
             <label htmlFor="lastName">Last Name</label>
             <input
@@ -149,8 +159,10 @@ function SubPage() {
               value={userForm.lastName}
               onChange={handleChange}
               required
+              autoComplete="off"
             />
           </div>
+
           <div className="form-group form-group-email">
             <label htmlFor="email">Email</label>
             <input
@@ -160,8 +172,10 @@ function SubPage() {
               value={userForm.email}
               onChange={handleChange}
               required
+              autoComplete="off"
             />
           </div>
+
           <div className="form-group form-group-email-confirm">
             <label htmlFor="confirmEmail">Confirm Email</label>
             <input
@@ -171,18 +185,6 @@ function SubPage() {
               value={confirmMailPassword.confirmEmail}
               onChange={handleConfirmMailPassword}
               autoComplete="off"
-              required
-            />
-          </div>
-
-          <div className="form-group form-group-birthdate">
-            <label htmlFor="birthDate">Birth Date</label>
-            <input
-              type="date"
-              name="birthDate"
-              id="birthDate"
-              value={birthday.birthday}
-              onChange={handleBirthday}
               required
             />
           </div>
@@ -199,6 +201,7 @@ function SubPage() {
               autoComplete="off"
             />
           </div>
+
           <div className="form-group form-group-password-confirm">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
@@ -211,13 +214,26 @@ function SubPage() {
               autoComplete="off"
             />
           </div>
-          <button
-            className="form-group form-group-submit"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            Submit
-          </button>
+
+          <div className="form-group form-group-birthdate">
+            <label htmlFor="birthDate">Birth Date</label>
+            <input
+              type="date"
+              name="birthDate"
+              id="birthDate"
+              value={birthday.birthday}
+              onChange={handleBirthday}
+              required
+              autoComplete="off"
+            />
+          </div>
+
+          <div className="form-group form-group-submit">
+            <label htmlFor="submit">Submit</label>
+            <button type="submit" name="submit" onClick={handleSubmit}>
+              Submit
+            </button>
+          </div>
         </form>
       </main>
       <Footer></Footer>

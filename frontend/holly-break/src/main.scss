@@ -9,7 +9,13 @@
 @import "./styles/_connection";
 
 body {
-  background-color: $bg-color;
+  min-height: 100vh;
+  // background-color: $bg-color;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 34, 34, 1) 0%,
+    rgba(57, 57, 56, 1) 99.5%
+  );
 }
 
 a,

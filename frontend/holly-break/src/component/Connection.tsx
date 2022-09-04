@@ -14,8 +14,10 @@ function Connection({ isOpen, setIsOpen }: connect) {
             className="fa-solid fa-square-xmark"
             onClick={() => setIsOpen(false)}
           ></i>
-          <form action="" method="get" className="form_Container">
+
+          <form className="form_Container">
             <h1>Login In</h1>
+
             <div className="form_subContainer">
               <label htmlFor="email">Email</label>
               <input
@@ -25,6 +27,7 @@ function Connection({ isOpen, setIsOpen }: connect) {
                 id="loginEmail"
               />
             </div>
+
             <div className="form_subContainer">
               <label htmlFor="password">Password</label>
               <input
@@ -34,7 +37,12 @@ function Connection({ isOpen, setIsOpen }: connect) {
                 id="loginPass"
               />
             </div>
-            <input type="submit" value="submit" />
+
+            <div className="form_subContainer">
+              <button type="submit" name="submit">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
