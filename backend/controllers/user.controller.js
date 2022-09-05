@@ -25,6 +25,7 @@ module.exports.updateUser = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
+  const { firstName, lastName, email, password, birthday } = req.body;
   try {
     await UserModel.findOneAndUpdate(
       //paramètre dans l'url qui nous permettra de trouver le bon utilisateur à mettre à jour
@@ -32,21 +33,36 @@ module.exports.updateUser = async (req, res) => {
       {
         // ce que l'on souhaite mettre à jour $set
         $set: {
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          email: req.body.email,
-          password: req.body.password,
-          birthday: req.body.birtdhay,
+          firstName,
+          lastName,
+          email,
+          password,
+          birthday,
         },
       },
       //paramètre à mettre obligatoirement lorsque l'on fait un PUT
-      { new: true, upsert: true, setDefaultOnInsert: true }
+      { new: true, setDefaultOnInsert: true, runValidators: true }
     )
+      // res.status(201).send({ user: user._id });
+      // .then(user.save())
       .then((docs) => res.send(docs))
       .catch((err) => res.status(500).send({ message: err }));
   } catch (err) {
     res.status(500).json({ message: err });
+    console.log(err);
   }
+  // let productToUpdate = await UserModel.findById(req.params.id);
+  // if (!productToUpdate) {
+  //   throw new NotFoundError();
+  // }
+  // productToUpdate.set({
+  //   firstName: req.body.firstName,
+  //   lastName: req.body.lastName,
+  //   email: req.body.email,
+  //   password: req.body.password,
+  //   birthday: req.body.birthday,
+  // });
+  // await productToUpdate.save();
 };
 
 //supprimer un utilisateur

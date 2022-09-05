@@ -7,17 +7,15 @@ const userSchema = new mongoose.Schema(
     firstName: {
       type: String,
       required: true,
-      minLength: 3,
-      maxLength: 35,
-      unique: true,
+      minlength: 3,
+      maxlength: 35,
       trimp: true,
     },
     lastName: {
       type: String,
       required: true,
-      minLength: 3,
-      maxLength: 35,
-      unique: true,
+      minlength: 3,
+      maxlength: 35,
       trimp: true,
     },
     email: {
@@ -31,7 +29,7 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      max: 1024,
+      maxlength: 1024,
       minlength: 6,
     },
     birthday: {
@@ -49,6 +47,7 @@ const userSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    strict: true,
   }
 );
 
