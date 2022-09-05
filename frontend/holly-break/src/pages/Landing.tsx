@@ -40,6 +40,7 @@ function Landing() {
         <br />
         <NavLink to={"/Player"}>Player</NavLink>
         <br />
+        <NavLink to={"/Create-Profile"}>Create Profile</NavLink>
       </main>
       <Footer></Footer>
     </>

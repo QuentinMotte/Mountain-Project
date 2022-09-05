@@ -1,0 +1,13 @@
+.profile-form {
+  display: flex;
+  flex-direction: column;
+
+  .profileForm-group {
+    height: 10rem;
+    img {
+      width: 9rem;
+      height: 9rem;
+      object-fit: cover;
+    }
+  }
+}

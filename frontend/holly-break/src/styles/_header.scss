@@ -3,7 +3,8 @@
   background-color: $bg-color-light;
   background-color: transparent;
   margin: 2rem;
-  border-radius: 2px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding-left: 1.5rem;
