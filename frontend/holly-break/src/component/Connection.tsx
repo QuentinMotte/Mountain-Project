@@ -1,11 +1,36 @@
 import React from "react";
+import axios from "axios";
 
 type connect = {
   isOpen: boolean;
   setIsOpen: any;
 };
 
+interface UserConnection {
+  email: string;
+  password: string;
+}
+
 function Connection({ isOpen, setIsOpen }: connect) {
+  const [user, setUser] = React.useState<UserConnection>({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
+  async function handleSubmit(e: any) {
+    e.preventDefault();
+    const response = await axios.post("http://localhost:5000/api/user/login", {
+      mail: user.email,
+      password: user.password,
+    });
+    console.log(response);
+  }
+
   return (
     <>
       <div className="connection_form_container">
@@ -25,6 +50,9 @@ function Connection({ isOpen, setIsOpen }: connect) {
                 name="email"
                 autoComplete="on"
                 id="loginEmail"
+                value={user.email}
+                onChange={handleChange}
+                required
               />
             </div>
 
@@ -35,11 +63,14 @@ function Connection({ isOpen, setIsOpen }: connect) {
                 name="password"
                 autoComplete="on"
                 id="loginPass"
+                value={user.password}
+                onChange={handleChange}
+                required
               />
             </div>
 
             <div className="form_subContainer">
-              <button type="submit" name="submit">
+              <button type="submit" name="submit" onClick={handleSubmit}>
                 Submit
               </button>
             </div>
