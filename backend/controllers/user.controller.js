@@ -1,4 +1,5 @@
 const UserModel = require("../models/user.model");
+const { updateErrors } = require("../utils/errors_update.utils");
 const ObjectID = require("mongoose").Types.ObjectId;
 
 //Obtenir tout les users
