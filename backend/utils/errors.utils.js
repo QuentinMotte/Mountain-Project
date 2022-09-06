@@ -1,6 +1,11 @@
 module.exports.signUpErrors = (err) => {
   let errors = { email: "", password: "" };
 
+  if (err.message.includes("email") && err.message.includes("password"))
+    errors.email +
+      (errors.password =
+        "Invalid email and Password must be at least 6 characters.");
+
   if (err.message.includes("email")) errors.email = "Invalid email";
 
   if (err.message.includes("password"))
@@ -14,6 +19,8 @@ module.exports.signUpErrors = (err) => {
 
 module.exports.signInErrors = (err) => {
   let errors = { email: "", password: "" };
+
+  if (err.message.includes("email") && err.message.includes("password"));
 
   if (err.message.includes("email")) errors.email = "Email unknown.";
 

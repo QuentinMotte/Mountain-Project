@@ -21,7 +21,6 @@ module.exports.userInfo = (req, res) => {
 
 //Mettre à jour un utilisateur
 module.exports.updateUser = async (req, res) => {
-  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -51,18 +50,6 @@ module.exports.updateUser = async (req, res) => {
     res.status(500).json({ message: err });
     console.log(err);
   }
-  // let productToUpdate = await UserModel.findById(req.params.id);
-  // if (!productToUpdate) {
-  //   throw new NotFoundError();
-  // }
-  // productToUpdate.set({
-  //   firstName: req.body.firstName,
-  //   lastName: req.body.lastName,
-  //   email: req.body.email,
-  //   password: req.body.password,
-  //   birthday: req.body.birthday,
-  // });
-  // await productToUpdate.save();
 };
 
 //supprimer un utilisateur

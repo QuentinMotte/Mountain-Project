@@ -56,6 +56,19 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
+
+userSchema.pre("findOneAndUpdate", async function (next) {
+  const user = this;
+  if (user._update.$set.password) {
+    const salt = await bcrypt.genSalt();
+    user._update.$set.password = await bcrypt.hash(
+      user._update.$set.password,
+      salt
+    );
+  }
+  next();
+});
+
 userSchema.statics.login = async function (email, password) {
   const user = await this.findOne({ email });
   if (user) {
