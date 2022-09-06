@@ -8,7 +8,7 @@ As we use the Agile method, we separate our work into "sprints". Sprints represe
 
 ## Team members :
 
-- Anaïs Koussa  | [Github](https://github.com/AnaisnKoussa)    
+- Anaïs Koussa  | [Github](https://github.com/AnaisnKoussa)     
 - Lydia Haway   | [Github](https://github.com/LydiaHaway)
 - Quentin Motte | [Github](https://github.com/QuentinMotte)
 - Kevin Richard | [Github](https://github.com/Kiks4000)
