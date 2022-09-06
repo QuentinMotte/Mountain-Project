@@ -127,7 +127,7 @@ function CreateProfile() {
 
   // Collect the data
 
-  const ProfilState = {
+  const ProfilState: ProfileState = {
     pseudo: profile.pseudo,
     quote: profileQuote.quote,
     avatar: profileAvatar.avatar,
@@ -152,10 +152,10 @@ function CreateProfile() {
   return (
     <>
       <Header></Header>
-      <main className="content-container">
-        <h1>create you first profile !</h1>
+      <main className="content-container--CreateProfilePage">
+        <h1>create your first profile !</h1>
         <form className="profile-form">
-          <div className="profileForm-group">
+          <div className="profileForm-group profileForm-group-pseudo">
             <label htmlFor="pseudo">Profile Name</label>
             <input
               type="text"
@@ -167,7 +167,7 @@ function CreateProfile() {
             />
           </div>
 
-          <div className="profileForm-group">
+          <div className="profileForm-group profileForm-group-quote">
             <label htmlFor="quote">Quote</label>
             <select
               name="quote"
@@ -186,8 +186,8 @@ function CreateProfile() {
             </select>
           </div>
 
-          <div className="profileForm-group">
-            <label htmlFor="profileAvatar">Choose Your Avatar</label>
+          <div className="profileForm-group profileForm-group-avatar">
+            <h2>Choose Your Avatar</h2>
 
             <label>
               <input
@@ -300,11 +300,11 @@ function CreateProfile() {
             </label>
           </div>
 
-          <div className="profileForm-group">
-            <label htmlFor="profilePIN">Choose Your PIN Code</label>
+          <div className="profileForm-group profileForm-group-pin">
+            <label htmlFor="pin_code">Choose Your PIN Code</label>
             <input
               type="password"
-              name="profilePIN"
+              name="pin_code"
               id="profilePIN"
               maxLength={4}
               minLength={4}
@@ -315,7 +315,7 @@ function CreateProfile() {
             />
           </div>
 
-          <div className="profileForm-group">
+          <div className="profileForm-group profileForm-group-pinconfirm">
             <label htmlFor="profilePINConfirm">Confirm Your PIN Code</label>
             <input
               type="password"
@@ -330,7 +330,7 @@ function CreateProfile() {
             />
           </div>
 
-          <div className="profileForm-group">
+          <div className="profileForm-group profileForm-group-young">
             <label htmlFor="is_young">Child Account ? </label>
             <input
               type="checkbox"
@@ -340,7 +340,7 @@ function CreateProfile() {
             />
           </div>
 
-          <div className="profileForm-group">
+          <div className="profileForm-group profileForm-group-submit">
             <button type="submit" onClick={handleSubmit}>
               Create
             </button>

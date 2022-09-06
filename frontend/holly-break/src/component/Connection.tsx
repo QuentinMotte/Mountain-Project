@@ -25,7 +25,7 @@ function Connection({ isOpen, setIsOpen }: connect) {
   async function handleSubmit(e: any) {
     e.preventDefault();
     const response = await axios.post("http://localhost:5000/api/user/login", {
-      mail: user.email,
+      email: user.email,
       password: user.password,
     });
     console.log(response);
@@ -49,7 +49,7 @@ function Connection({ isOpen, setIsOpen }: connect) {
                 type="email"
                 name="email"
                 autoComplete="on"
-                id="loginEmail"
+                id="emailLogin"
                 value={user.email}
                 onChange={handleChange}
                 required
