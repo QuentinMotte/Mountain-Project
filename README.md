@@ -63,6 +63,6 @@ This is the full stack JavaScript.
 ### Sprint 2 | 05/09 -> 09/09
 
 - Fix user update function (Bcrypt and Validator)
-- Create sign up errors
+- Create signUp errors, signIn errors, updateUser errors, createProfile errors, updateProfile errors
 - Creation of the profile subscription form
 - Fetch API TMDB with axios
