@@ -1,13 +1,26 @@
 module.exports.updateErrors = (err) => {
-  let errors = { email: "", password: "" };
+  let errors = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    birthday: "",
+  };
 
-  if (err.message.includes("email")) errors.email = "Invalid email";
+  if (err.message.includes("firstName"))
+    errors.firstName = "Incorrect firstname (min 3 characters)";
+
+  if (err.message.includes("lastName"))
+    errors.lastName = "Incorrect lastname (min 3 characters)";
+
+  if (err.message.includes("email"))
+    errors.email = "Invalid email or already used";
 
   if (err.message.includes("password"))
-    errors.password = "Password must be at least 6 characters.";
+    errors.password = "Incorrect password (min 6 characters)";
 
-  if (err.code === 11000 && Object.keys(err.keyValue)[0].includes("email"))
-    errors.email = "This email is already in use.";
+  if (err.message.includes("birthday"))
+    errors.birthday = "Restriction under 18 years old";
 
   return errors;
 };

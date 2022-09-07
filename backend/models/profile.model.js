@@ -5,12 +5,14 @@ const profileSchema = new mongoose.Schema(
     id_user: {
       type: String,
       required: true,
+      default: "6311fe4b15dcb7859d35d98e",
     },
 
     pseudo: {
       type: String,
-      unique: true,
       required: true,
+      minlength: 3,
+      maxlength: 15,
     },
     quote: {
       type: String,
@@ -22,8 +24,7 @@ const profileSchema = new mongoose.Schema(
     },
     pin_code: {
       type: Number,
-      minlength: 4,
-      maxlength: 4,
+      validate: /^[0-9]{4}$/,
     },
 
     watchList: {
@@ -38,6 +39,7 @@ const profileSchema = new mongoose.Schema(
 
     is_young: {
       type: Boolean,
+      required: true,
     },
   },
   {

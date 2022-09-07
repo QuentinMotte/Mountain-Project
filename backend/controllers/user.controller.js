@@ -45,10 +45,11 @@ module.exports.updateUser = async (req, res) => {
     )
       // res.status(201).send({ user: user._id });
       // .then(user.save())
-      .then((docs) => res.send(docs))
-      .catch((err) => res.status(500).send({ message: err }));
+      .then((docs) => res.send(docs));
+    // .catch((err) => res.status(500).send({ message: err }));
   } catch (err) {
-    res.status(500).json({ message: err });
+    const errors = updateErrors(err);
+    res.status(500).send({ errors });
     console.log(err);
   }
 };

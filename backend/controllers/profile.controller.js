@@ -1,16 +1,25 @@
 const ProfileModel = require("../models/profile.model.js");
+const { createProfileErrors } = require("../utils/errors_createProfile.utils");
+const { updateProfileErrors } = require("../utils/errors_updateProfile.utils");
 const ObjectID = require("mongoose").Types.ObjectId;
 
 //Create profil
 module.exports.createProfile = async (req, res) => {
   console.log(req.body);
-  const { id_user, pseudo } = req.body;
+  const { id_user, pseudo, quote, avatar, pin_code, is_young } = req.body;
 
   try {
-    const profile = await ProfileModel.create({ id_user, pseudo });
+    const profile = await ProfileModel.create({
+      id_user,
+      pseudo,
+      quote,
+      avatar,
+      pin_code,
+      is_young,
+    });
     res.status(201).send({ profile: profile._id });
   } catch (err) {
-    const errors = signUpErrors(err);
+    const errors = createProfileErrors(err);
     res.status(500).send({ errors });
     console.log(err);
   }

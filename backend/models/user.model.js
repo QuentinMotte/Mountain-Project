@@ -8,14 +8,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: 3,
-      maxlength: 35,
+      maxlength: 20,
       trimp: true,
     },
     lastName: {
       type: String,
       required: true,
       minlength: 3,
-      maxlength: 35,
+      maxlength: 20,
       trimp: true,
     },
     email: {
@@ -34,8 +34,8 @@ const userSchema = new mongoose.Schema(
     },
     birthday: {
       type: Number,
-      minimum: 18,
-      maximum: 120,
+      min: 18,
+      max: 120,
     },
     id_profiles: {
       type: [String],
@@ -60,11 +60,13 @@ userSchema.pre("save", async function (next) {
 userSchema.pre("findOneAndUpdate", async function (next) {
   const user = this;
   if (user._update.$set.password) {
-    const salt = await bcrypt.genSalt();
-    user._update.$set.password = await bcrypt.hash(
-      user._update.$set.password,
-      salt
-    );
+    if (user._update.$set.password.length >= 6) {
+      const salt = await bcrypt.genSalt();
+      user._update.$set.password = await bcrypt.hash(
+        user._update.$set.password,
+        salt
+      );
+    }
   }
   next();
 });

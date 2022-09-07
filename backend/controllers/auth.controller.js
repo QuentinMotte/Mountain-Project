@@ -44,11 +44,12 @@ module.exports.signIn = async (req, res) => {
     //fonction qui permettra de creer le jeton pour l'utilsateur
     const token = createToken(user._id);
     //le cookie-> 3paramètres (le nom, la valeur, la durée)
+
     res.cookie("jwt", token, { httpOnly: true, maxAge });
-    res.status(200).json({ user: user._id });
+    res.status(200).send({ user: user._id, token, admin: user.is_admin });
   } catch (err) {
     const errors = signInErrors(err);
-    res.status(200).json({ errors });
+    res.status(401).send({ errors });
     console.log(err);
   }
 };
