@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+import axios, { Axios } from "axios";
 
 type connect = {
   isOpen: boolean;
@@ -22,14 +22,18 @@ function Connection({ isOpen, setIsOpen }: connect) {
     setUser({ ...user, [name]: value });
   };
 
-  async function handleSubmit(e: any) {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    const response = await axios.post("http://localhost:5000/api/user/login", {
-      email: user.email,
-      password: user.password,
-    });
-    console.log(response);
-  }
+    axios
+      .post("http://localhost:5000/api/user/login", user)
+      .then((res) => {
+        console.log(res);
+        res.data.token && localStorage.setItem("token", res.data.token);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <>

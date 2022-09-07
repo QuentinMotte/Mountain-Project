@@ -1,0 +1,124 @@
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+h1 {
+  color: $white;
+  font-weight: bold;
+  font-size: 5rem;
+  margin-left: 2rem;
+}
+
+.content-container {
+  .container_herobanner {
+    margin-left: 25rem;
+    margin-right: 25rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    color: $white;
+    .herobanner {
+      display: flex;
+      overflow-x: scroll;
+      width: 100%;
+      overflow-y: hidden;
+
+      .movies_popular {
+        flex-shrink: 0;
+        border-radius: 5rem;
+        margin-left: 5rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        position: relative;
+        height: 30rem;
+
+        img {
+          width: 50rem;
+          height: 30rem;
+          position: relative;
+          border-radius: 5px;
+        }
+
+        .title {
+          text-align: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.6);
+          border-radius: 5px;
+          opacity: 0;
+          transition: 0.2s ease-in-out;
+
+          .title_opacity {
+            color: $white;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+            padding-top: 20rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+          }
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  i {
+    font-size: large;
+  }
+
+  .container_loop_movies {
+    margin-top: 5rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
+
+    .genre {
+      display: flex;
+      text-align: center;
+      gap: 2rem;
+      color: $white;
+
+      h3 {
+        font-weight: bold;
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .poster_movies {
+      display: flex;
+      overflow-x: scroll;
+      width: 100%;
+      overflow-y: hidden;
+
+      .movies_container_poster {
+        flex-shrink: 0;
+        border-radius: 5rem;
+        margin-left: 5rem;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        img {
+          border-radius: 5px;
+          height: 30rem;
+          cursor: pointer;
+          transition: 0.2s ease-in-out;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+}
