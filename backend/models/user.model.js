@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 20,
       trimp: true,
+      validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },
     lastName: {
       type: String,
@@ -17,6 +18,7 @@ const userSchema = new mongoose.Schema(
       minlength: 3,
       maxlength: 20,
       trimp: true,
+      validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },
     email: {
       type: String,
@@ -31,11 +33,13 @@ const userSchema = new mongoose.Schema(
       required: true,
       maxlength: 1024,
       minlength: 6,
+      validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },
     birthday: {
       type: Number,
       min: 18,
       max: 120,
+      validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },
     id_profiles: {
       type: [String],
@@ -43,6 +47,7 @@ const userSchema = new mongoose.Schema(
     is_admin: {
       type: Boolean,
       default: false,
+      validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },
   },
   {

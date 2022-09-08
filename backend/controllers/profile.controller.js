@@ -61,14 +61,15 @@ module.exports.updateProfile = async (req, res) => {
           pseudo: req.body.pseudo,
           quote: req.body.quote,
           avatar: req.body.avatar,
+          pin_code: req.body.pin_code,
         },
       },
-      { new: true, upsert: true, setDefaultOnInsert: true }
-    )
-      .then((docs) => res.send(docs))
-      .catch((err) => res.status(500).send({ message: err }));
+      { new: true, upsert: true, setDefaultOnInsert: true, runValidators: true }
+    ).then((docs) => res.status(200).send(docs));
   } catch (err) {
-    res.status(500).json({ message: err });
+    const errors = updateProfileErrors(err);
+    res.status(500).send({ errors });
+    console.log(err);
   }
 };
 
@@ -86,9 +87,7 @@ module.exports.updateWatchList = async (req, res) => {
         },
       },
       { new: true, upsert: true }
-    )
-      .then((docs) => res.send(docs))
-      .catch((err) => res.status(500).send({ message: err }));
+    ).then((docs) => res.status(200).send(docs));
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -108,9 +107,7 @@ module.exports.updateFavorites = async (req, res) => {
         },
       },
       { new: true, upsert: true }
-    )
-      .then((docs) => res.send(docs))
-      .catch((err) => res.status(500).send({ message: err }));
+    ).then((docs) => res.status(200).send(docs));
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -130,9 +127,7 @@ module.exports.updateHistoric = async (req, res) => {
         },
       },
       { new: true, upsert: true }
-    )
-      .then((docs) => res.send(docs))
-      .catch((err) => res.status(500).send({ message: err }));
+    ).then((docs) => res.status(200).send(docs));
   } catch (err) {
     res.status(500).json({ message: err });
   }
@@ -150,9 +145,7 @@ module.exports.removeOneFromWatchlist = async (req, res) => {
 
       { $pull: { watchList: req.body.watchList } },
       { new: true, upsert: true }
-    )
-      .then((docs) => res.status(201).json(docs))
-      .catch((err) => res.status(400).json({ message: err }));
+    ).then((docs) => res.status(200).json(docs));
   } catch (err) {
     return res.status(500).json({ message: err });
   }
@@ -160,7 +153,6 @@ module.exports.removeOneFromWatchlist = async (req, res) => {
 
 //remove from Favorites
 module.exports.removeOneFromFavorites = async (req, res) => {
-  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -170,9 +162,7 @@ module.exports.removeOneFromFavorites = async (req, res) => {
 
       { $pull: { favorites: req.body.favorites } },
       { new: true, upsert: true }
-    )
-      .then((docs) => res.status(201).json(docs))
-      .catch((err) => res.status(400).json({ message: err }));
+    ).then((docs) => res.status(200).json(docs));
   } catch (err) {
     return res.status(500).json({ message: err });
   }
@@ -180,7 +170,6 @@ module.exports.removeOneFromFavorites = async (req, res) => {
 
 //remove from Historic
 module.exports.removeOneFromHistoric = async (req, res) => {
-  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -190,9 +179,7 @@ module.exports.removeOneFromHistoric = async (req, res) => {
 
       { $pull: { historic: req.body.historic } },
       { new: true, upsert: true }
-    )
-      .then((docs) => res.status(201).json(docs))
-      .catch((err) => res.status(400).json({ message: err }));
+    ).then((docs) => res.status(200).json(docs));
   } catch (err) {
     return res.status(500).json({ message: err });
   }

@@ -15,8 +15,9 @@ module.exports.userInfo = (req, res) => {
     return res.status(400).send("ID unknown : " + req.params.id);
 
   UserModel.findById(req.params.id, (err, docs) => {
-    if (!err) res.send(docs);
-    else console.log("ID unknown : " + err);
+    if (!err) res.status(200).send(docs);
+
+    console.log("ID unknown : " + err);
   }).select("-password");
 };
 
@@ -42,11 +43,7 @@ module.exports.updateUser = async (req, res) => {
       },
       //paramètre à mettre obligatoirement lorsque l'on fait un PUT
       { new: true, setDefaultOnInsert: true, runValidators: true }
-    )
-      // res.status(201).send({ user: user._id });
-      // .then(user.save())
-      .then((docs) => res.send(docs));
-    // .catch((err) => res.status(500).send({ message: err }));
+    ).then((docs) => res.status(200).send(docs));
   } catch (err) {
     const errors = updateErrors(err);
     res.status(500).send({ errors });
