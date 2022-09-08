@@ -19,6 +19,7 @@ import ConditionPage from "./pages/ConditionPage";
 import CreateProfile from "./pages/CreateProfile";
 import AdminPage from "./pages/AdminPage";
 import "./main.scss";
+import SeriePage from "./pages/SeriePage";
 
 function App() {
   // APPEL API HERE
@@ -40,7 +41,8 @@ function App() {
       <Route path="/Watchlist" element={<FavPage />} />
       <Route path="/History" element={<HistoryPage />} />
       <Route path="/Settings" element={<SettingsPage />} />
-      <Route path="/Movie/id" element={<MoviePage />} />
+      <Route path="/Movie/:id" element={<MoviePage />} />
+      <Route path="/Serie/:id" element={<SeriePage />} />
       <Route path="/Player" element={<PlayerPage />} />
       <Route path="/Admin" element={<AdminPage />} />
     </Routes>
