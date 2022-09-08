@@ -8,10 +8,10 @@ As we use the Agile method, we separate our work into "sprints". Sprints represe
 
 ## Team members :
 
-- Anaïs Koussa | [Github](https://github.com/AnaisnKoussa)
-- Lydia Haway | [Github](https://github.com/LydiaHaway)
-- Quentin Motte | [Github](https://github.com/QuentinMotte)
-- Kevin Richard | [Github](https://github.com/Kiks4000)
+-   Anaïs Koussa | [Github](https://github.com/AnaisnKoussa)
+-   Lydia Haway | [Github](https://github.com/LydiaHaway)
+-   Quentin Motte | [Github](https://github.com/QuentinMotte)
+-   Kevin Richard | [Github](https://github.com/Kiks4000)
 
 ## And now let's talk about the project :
 
@@ -19,11 +19,11 @@ We have the ambition to make a "Netflix"-like website without the movies of cour
 
 ### Features :
 
-- Subscribe (with confirmation e-mail)
-- Multiple profile creation by account
-- Watchlist / Fav
-- Watchin' History
-- Search by Title, Actors, Genre
+-   Subscribe (with confirmation e-mail)
+-   Multiple profile creation by account
+-   Watchlist / Fav
+-   Watchin' History
+-   Search by Title, Actors, Genre
 
 ### Figma / Wireframe
 
@@ -35,10 +35,10 @@ We created a Figma to direct the visual aspect of the site and the functionaliti
 
 We decide to use the MERN Stack :
 
-- MongoDB
-- Express
-- React (with TypeScript)
-- Node
+-   MongoDB
+-   Express
+-   React (with TypeScript)
+-   Node
 
 This is the full stack JavaScript.
 
@@ -46,23 +46,23 @@ This is the full stack JavaScript.
 
 ### Sprint 1 | 22/08 -> 02/09
 
-- Create the Figma
-- Create the logo
-- Create the repo on GitHub
-- Create this awesome readme
-- Split the team between FrontEnd and BackEnd
-- Creation of the structure of the front and and back folders
-- Create DB (MongoDB)
-- Connection to server and DB
-- Creation of the MVC structure
-- Create the routes of our User and Profile collections
-- CORS policy
-- Creation of header and footer
-- Creation of the user subscription form
+-   Create the Figma
+-   Create the logo
+-   Create the repo on GitHub
+-   Create this awesome readme
+-   Split the team between FrontEnd and BackEnd
+-   Creation of the structure of the front and and back folders
+-   Create DB (MongoDB)
+-   Connection to server and DB
+-   Creation of the MVC structure
+-   Create the routes of our User and Profile collections
+-   CORS policy
+-   Creation of header and footer
+-   Creation of the user subscription form
 
 ### Sprint 2 | 05/09 -> 09/09
 
-- Fix user update function (Bcrypt and Validator)
-- Create signUp errors, signIn errors, updateUser errors, createProfile errors, updateProfile serrors
-- Creation of the profile subscription form
-- Fetch API TMDB with axios
+-   Fix user update function (Bcrypt and Validator)
+-   Create signUp errors, signIn errors, updateUser errors, createProfile errors, updateProfile serrors
+-   Creation of the profile subscription form
+-   Fetch API TMDB with axios
