@@ -16,6 +16,7 @@ import SettingsPage from "./pages/SettingsPage";
 import MoviePage from "./pages/MoviePage";
 import PlayerPage from "./pages/PlayerPage";
 import ConditionPage from "./pages/ConditionPage";
+import CreateProfile from "./pages/CreateProfile";
 import "./main.scss";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Route path="/Conditions" element={<ConditionPage />} />
       <Route path="/Subscription" element={<SubPage />} />
       <Route path="/Subscription/success" element={<SubSuccess />} />
+      <Route path="/Create-Profile" element={<CreateProfile />} />
       <Route path="/Select-Profile" element={<SelectProfile />} />
       <Route path="/Home" element={<Homepage />} />
       <Route path="/Home/Movies" element={<Movies />} />

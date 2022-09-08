@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 interface UserFormProps {
   firstName: string;
@@ -126,17 +125,11 @@ function SubPage() {
     }
   }
 
-  const navigate = useNavigate();
-
-  const redirectToSuccessPage = () => {
-    navigate("/Subscription/success");
-  };
-
   return (
     <>
       <Header></Header>
       <main className="content-container content-container--SubPage">
-        <form onSubmit={redirectToSuccessPage}>
+        <form>
           <div className="form-group form-group-firstname">
             <label htmlFor="firstName">First Name</label>
             <input
@@ -199,6 +192,7 @@ function SubPage() {
               onChange={handleChange}
               required
               autoComplete="off"
+              minLength={6}
             />
           </div>
 
@@ -212,6 +206,7 @@ function SubPage() {
               onChange={handleConfirmMailPassword}
               required
               autoComplete="off"
+              minLength={6}
             />
           </div>
 

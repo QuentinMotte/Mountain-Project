@@ -1,5 +1,5 @@
 .content-container {
-  min-height: calc(100vh - 34px);
+  min-height: 100vh;
 }
 
 @import "./styles/settings";
@@ -7,6 +7,8 @@
 @import "./styles/_footer";
 @import "./styles/_subPage";
 @import "./styles/_connection";
+@import "./styles/_createProfile";
+@import "./styles/_movies";
 
 body {
   min-height: 100vh;
