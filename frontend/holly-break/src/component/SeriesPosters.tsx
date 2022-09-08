@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const img = `https://image.tmdb.org/t/p/w300`;
+const API_KEY = "a378b12e0a9383634a503a8f29d43915";
 
 interface moviesProps {
   map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
@@ -14,23 +15,37 @@ interface moviesProps {
 }
 
 export function SeriesPosters() {
-  const URLHB =
-    "https://api.themoviedb.org/3/discover/tv?api_key=a378b12e0a9383634a503a8f29d43915&language=en-US&sort_by=popularity.desc";
+  const URLHB = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
 
-  const URLDRAMA =
-    "https://api.themoviedb.org/3/discover/tv?api_key=a378b12e0a9383634a503a8f29d43915&language=en-US&sort_by=popularity.desc&with_genres=18";
+  const URLDRAMA = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=18`;
 
-  const URLCrime =
-    "https://api.themoviedb.org/3/discover/tv?api_key=a378b12e0a9383634a503a8f29d43915&language=en-US&sort_by=popularity.desc&with_genres=80";
+  const URLCrime = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=80`;
 
-  const URLMystery =
-    "https://api.themoviedb.org/3/discover/tv?api_key=a378b12e0a9383634a503a8f29d43915&language=en-US&sort_by=popularity.desc&with_genres=9648";
+  const URLMystery = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=9648`;
 
-  const URLComedy =
-    "https://api.themoviedb.org/3/discover/tv?api_key=a378b12e0a9383634a503a8f29d43915&language=en-US&sort_by=popularity.desc&with_genres=35";
+  const URLComedy = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=35`;
 
-  const URLFantansy =
-    "https://api.themoviedb.org/3/discover/tv?api_key=a378b12e0a9383634a503a8f29d43915&language=en-US&sort_by=popularity.desc&with_genres=10765";
+  const URLFantansy = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10765`;
+
+  const URLWar = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10768`;
+
+  const URLAction = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10759`;
+
+  const URLWestern = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=37`;
+
+  const URLSoap = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10766`;
+
+  const URLFam = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10751`;
+
+  const URLKids = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10762`;
+
+  const URLDoc = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=99`;
+
+  const URLTalk = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10767`;
+
+  const URLNews = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10763`;
+
+  const URLReality = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10764`;
 
   let [TVTrend, setTVTrend] = useState<moviesProps | undefined>();
 
@@ -44,6 +59,26 @@ export function SeriesPosters() {
 
   let [TVFantasy, setTVFantasy] = useState<moviesProps | undefined>();
 
+  let [TVWar, setTVWar] = useState<moviesProps | undefined>();
+
+  let [TVAction, setTVAction] = useState<moviesProps | undefined>();
+
+  let [TVWestern, setTVWestern] = useState<moviesProps | undefined>();
+
+  let [TVSoap, setTVSoap] = useState<moviesProps | undefined>();
+
+  let [TVFam, setTVFam] = useState<moviesProps | undefined>();
+
+  let [TVKid, setTVKid] = useState<moviesProps | undefined>();
+
+  let [TVDoc, setTVDoc] = useState<moviesProps | undefined>();
+
+  let [TVTalk, setTVTalk] = useState<moviesProps | undefined>();
+
+  let [TVNews, setTVNews] = useState<moviesProps | undefined>();
+
+  let [TVReality, setTVReality] = useState<moviesProps | undefined>();
+
   useEffect(() => {
     getTVShow();
     getTVDrama();
@@ -51,6 +86,16 @@ export function SeriesPosters() {
     getTVMystery();
     getTVComedy();
     getTVFantasy();
+    getTVWar();
+    getTVAction();
+    getTVWestern();
+    getTVSoap();
+    getTVFam();
+    getTVKid();
+    getTVDoc();
+    getTVTalk();
+    getTVNews();
+    getTVReality();
   }, []);
 
   const getTVShow = async () => {
@@ -81,6 +126,56 @@ export function SeriesPosters() {
   const getTVFantasy = async () => {
     const { data } = await axios.get(URLFantansy);
     setTVFantasy(data.results);
+  };
+
+  const getTVWar = async () => {
+    const { data } = await axios.get(URLWar);
+    setTVWar(data.results);
+  };
+
+  const getTVAction = async () => {
+    const { data } = await axios.get(URLAction);
+    setTVAction(data.results);
+  };
+
+  const getTVWestern = async () => {
+    const { data } = await axios.get(URLWestern);
+    setTVWestern(data.results);
+  };
+
+  const getTVSoap = async () => {
+    const { data } = await axios.get(URLSoap);
+    setTVSoap(data.results);
+  };
+
+  const getTVFam = async () => {
+    const { data } = await axios.get(URLFam);
+    setTVFam(data.results);
+  };
+
+  const getTVKid = async () => {
+    const { data } = await axios.get(URLKids);
+    setTVKid(data.results);
+  };
+
+  const getTVDoc = async () => {
+    const { data } = await axios.get(URLDoc);
+    setTVDoc(data.results);
+  };
+
+  const getTVTalk = async () => {
+    const { data } = await axios.get(URLTalk);
+    setTVTalk(data.results);
+  };
+
+  const getTVNews = async () => {
+    const { data } = await axios.get(URLNews);
+    setTVNews(data.results);
+  };
+
+  const getTVReality = async () => {
+    const { data } = await axios.get(URLReality);
+    setTVReality(data.results);
   };
   return (
     <>
@@ -181,6 +276,176 @@ export function SeriesPosters() {
             <div id={TVFantasy.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w300` + TVFantasy.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>War & Politics</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVWar?.map((TVWar) => (
+            <div id={TVWar.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVWar.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>Action & Adventure</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVAction?.map((TVAction) => (
+            <div id={TVAction.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVAction.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>Western</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVWestern?.map((TVWestern) => (
+            <div id={TVWestern.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVWestern.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>Soap</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVSoap?.map((TVSoap) => (
+            <div id={TVSoap.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVSoap.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>Family</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVFam?.map((TVFam) => (
+            <div id={TVFam.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVFam.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>Kids</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVKid?.map((TVKid) => (
+            <div id={TVKid.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVKid.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>Documentary</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVDoc?.map((TVDoc) => (
+            <div id={TVDoc.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVDoc.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>Talk</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVTalk?.map((TVTalk) => (
+            <div id={TVTalk.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVTalk.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>News</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVNews?.map((TVNews) => (
+            <div id={TVNews.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVNews.poster_path}
+                alt="poster"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <div className="genre">
+          <h3>Reality</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+        <div className="poster_movies">
+          {TVReality?.map((TVReality) => (
+            <div id={TVReality.id} className="movies_container_poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w300` + TVReality.poster_path}
                 alt="poster"
               />
             </div>
