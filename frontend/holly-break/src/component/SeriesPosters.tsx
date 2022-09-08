@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -190,7 +191,9 @@ export function SeriesPosters() {
                 alt="poster"
               />
               <div className="title">
-                <p className="title_opacity">{tvshow.name}</p>
+                <NavLink className="poster" to={`/Serie/${tvshow.id}`}>
+                  <p className="title_opacity">{tvshow.name}</p>
+                </NavLink>
               </div>
             </div>
           ))}
@@ -205,12 +208,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVDrama?.map((TVDrama) => (
-            <div id={TVDrama.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVDrama.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVDrama.id}`}>
+              <div id={TVDrama.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVDrama.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -222,12 +227,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVCrime?.map((TVCrime) => (
-            <div id={TVCrime.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVCrime.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVCrime.id}`}>
+              <div id={TVCrime.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVCrime.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -239,12 +246,16 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVMystery?.map((TVMystery) => (
-            <div id={TVMystery.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVMystery.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVMystery.id}`}>
+              <div id={TVMystery.id} className="movies_container_poster">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w300` + TVMystery.poster_path
+                  }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -256,12 +267,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVComedy?.map((TVComedy) => (
-            <div id={TVComedy.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVComedy.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVComedy.id}`}>
+              <div id={TVComedy.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVComedy.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -273,12 +286,16 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVFantasy?.map((TVFantasy) => (
-            <div id={TVFantasy.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVFantasy.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVFantasy.id}`}>
+              <div id={TVFantasy.id} className="movies_container_poster">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w300` + TVFantasy.poster_path
+                  }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -290,12 +307,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVWar?.map((TVWar) => (
-            <div id={TVWar.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVWar.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVWar.id}`}>
+              <div id={TVWar.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVWar.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -307,12 +326,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVAction?.map((TVAction) => (
-            <div id={TVAction.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVAction.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVAction.id}`}>
+              <div id={TVAction.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVAction.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -324,12 +345,16 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVWestern?.map((TVWestern) => (
-            <div id={TVWestern.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVWestern.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVWestern.id}`}>
+              <div id={TVWestern.id} className="movies_container_poster">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w300` + TVWestern.poster_path
+                  }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -341,12 +366,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVSoap?.map((TVSoap) => (
-            <div id={TVSoap.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVSoap.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVSoap.id}`}>
+              <div id={TVSoap.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVSoap.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -358,12 +385,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVFam?.map((TVFam) => (
-            <div id={TVFam.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVFam.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVFam.id}`}>
+              <div id={TVFam.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVFam.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -375,12 +404,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVKid?.map((TVKid) => (
-            <div id={TVKid.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVKid.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVKid.id}`}>
+              <div id={TVKid.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVKid.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -392,12 +423,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVDoc?.map((TVDoc) => (
-            <div id={TVDoc.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVDoc.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVDoc.id}`}>
+              <div id={TVDoc.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVDoc.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -409,12 +442,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVTalk?.map((TVTalk) => (
-            <div id={TVTalk.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVTalk.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVTalk.id}`}>
+              <div id={TVTalk.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVTalk.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -426,12 +461,14 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVNews?.map((TVNews) => (
-            <div id={TVNews.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVNews.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVNews.id}`}>
+              <div id={TVNews.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300` + TVNews.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
@@ -443,12 +480,16 @@ export function SeriesPosters() {
         </div>
         <div className="poster_movies">
           {TVReality?.map((TVReality) => (
-            <div id={TVReality.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w300` + TVReality.poster_path}
-                alt="poster"
-              />
-            </div>
+            <NavLink className="poster" to={`/Serie/${TVReality.id}`}>
+              <div id={TVReality.id} className="movies_container_poster">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w300` + TVReality.poster_path
+                  }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
           ))}
         </div>
       </div>
