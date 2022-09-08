@@ -17,6 +17,7 @@ import MoviePage from "./pages/MoviePage";
 import PlayerPage from "./pages/PlayerPage";
 import ConditionPage from "./pages/ConditionPage";
 import CreateProfile from "./pages/CreateProfile";
+import AdminPage from "./pages/AdminPage";
 import "./main.scss";
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
       <Route path="/Settings" element={<SettingsPage />} />
       <Route path="/Movie/id" element={<MoviePage />} />
       <Route path="/Player" element={<PlayerPage />} />
+      <Route path="/Admin" element={<AdminPage />} />
     </Routes>
   );
 }

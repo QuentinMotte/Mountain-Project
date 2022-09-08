@@ -110,21 +110,20 @@ function SubPage() {
   async function handleSubmit(e: any) {
     e.preventDefault();
     if (confirmEmail() && confirmPassword() && confirmAge()) {
-      const response = await axios.post(
-        "http://localhost:5000/api/user/register",
-        {
-          firstName: userFormState.firstName,
-          lastName: userFormState.lastName,
-          email: userFormState.email,
-          password: userFormState.password,
-          birthday: userFormState.birthday,
-        }
-      );
-      console.log(response);
-      console.log(response.status);
+      const response = await axios
+        .post("http://localhost:5000/api/user/register", userFormState)
+        .then((response) => {
+          console.log(response);
+          console.log(response.status);
+          window.location.href = "/Subscription/success";
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      alert("Veuillez remplir correctement les champs");
     }
   }
-
   return (
     <>
       <Header></Header>

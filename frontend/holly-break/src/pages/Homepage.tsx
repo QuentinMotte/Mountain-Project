@@ -40,8 +40,6 @@ function Homepage() {
     getMovies(28);
   }, []);
 
-  console.log(movies);
-
   return (
     <>
       <Header></Header>
