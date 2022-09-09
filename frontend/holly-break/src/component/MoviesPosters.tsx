@@ -228,10 +228,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/18`}>
           <h3>Drama</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesDrama?.map((movieDrama) => (
             <NavLink className="poster" to={`/Movie/${movieDrama.id}`}>
@@ -249,10 +249,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/14`}>
           <h3>Fantasy</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesFantasy?.map((movieFantasy) => (
             <NavLink className="poster" to={`/Movie/${movieFantasy.id}`}>
@@ -270,10 +270,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/36`}>
           <h3>History</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesHistory?.map((movieHistory) => (
             <NavLink className="poster" to={`/Movie/${movieHistory.id}`}>
@@ -291,10 +291,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/35`}>
           <h3>Comedy</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesComedy?.map((movieComedy) => (
             <NavLink className="poster" to={`/Movie/${movieComedy.id}`}>
@@ -312,10 +312,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/53`}>
           <h3>Thriller</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesThriller?.map((movieThriller) => (
             <NavLink className="poster" to={`/Movie/${movieThriller.id}`}>
@@ -334,10 +334,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/27`}>
           <h3>Horror</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesHorror?.map((movieHorror) => (
             <NavLink className="poster" to={`/Movie/${movieHorror.id}`}>
@@ -355,10 +355,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/28`}>
           <h3>Action</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesAction?.map((movieAction) => (
             <NavLink className="poster" to={`/Movie/${movieAction.id}`}>
@@ -376,10 +376,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/12`}>
           <h3>Adventure</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesAdventure?.map((movieAdventure) => (
             <NavLink className="poster" to={`/Movie/${movieAdventure.id}`}>
@@ -398,10 +398,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/80`}>
           <h3>Crime</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesCrime?.map((movieCrime) => (
             <NavLink className="poster" to={`/Movie/${movieCrime.id}`}>
@@ -419,10 +419,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/10752`}>
           <h3>War</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesWar?.map((movieWar) => (
             <NavLink className="poster" to={`/Movie/${movieWar.id}`}>
@@ -438,10 +438,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/37`}>
           <h3>Western</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesWestern?.map((movieWestern) => (
             <NavLink className="poster" to={`/Movie/${movieWestern.id}`}>
@@ -459,10 +459,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/878`}>
           <h3>Sciences-Fiction</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesSyfy?.map((movieSyfy) => (
             <NavLink className="poster" to={`/Movie/${movieSyfy.id}`}>
@@ -480,10 +480,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/10749`}>
           <h3>Romance</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesRom?.map((movieRom) => (
             <NavLink className="poster" to={`/Movie/${movieRom.id}`}>
@@ -499,10 +499,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/9648`}>
           <h3>Mystery</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesMyst?.map((movieMyst) => (
             <NavLink className="poster" to={`/Movie/${movieMyst.id}`}>
@@ -520,10 +520,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/10770`}>
           <h3>TV Movies</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesTVMovie?.map((movieTV) => (
             <NavLink className="poster" to={`/Movie/${movieTV.id}`}>
@@ -539,10 +539,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/16`}>
           <h3>Animation</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesAnimation?.map((movieAnimation) => (
             <NavLink className="poster" to={`/Movie/${movieAnimation.id}`}>
@@ -561,10 +561,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/10751`}>
           <h3>Family</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesFam?.map((movieFam) => (
             <NavLink className="poster" to={`/Movie/${movieFam.id}`}>
@@ -580,10 +580,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/10402`}>
           <h3>Music</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesMusic?.map((movieMusic) => (
             <NavLink className="poster" to={`/Movie/${movieMusic.id}`}>
@@ -601,10 +601,10 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <div className="genre">
+        <NavLink className="genre" to={`/Movie/Genre/99`}>
           <h3>Documentary</h3>
           <i className="fa-solid fa-arrow-right"></i>
-        </div>
+        </NavLink>
         <div className="poster_movies">
           {moviesDoc?.map((movieDoc) => (
             <NavLink className="poster" to={`/Movie/${movieDoc.id}`}>

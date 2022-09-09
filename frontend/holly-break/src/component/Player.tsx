@@ -27,6 +27,8 @@ function Player() {
     setMovies(data.results[0]);
   };
 
+  console.log(movies?.key);
+
   return (
     <>
       <div className="trailer">

@@ -11,8 +11,8 @@ h1 {
 
 .content-container {
   .container_herobanner {
-    margin-left: 25rem;
-    margin-right: 25rem;
+    margin-left: 10rem;
+    margin-right: 10rem;
     display: flex;
     align-items: center;
     gap: 3rem;
@@ -31,10 +31,10 @@ h1 {
         background-repeat: no-repeat;
         background-position: center center;
         position: relative;
-        height: 50rem;
+        height: 40rem;
 
         img {
-          width: 100rem;
+          width: 75rem;
           position: relative;
           border-radius: 5px;
         }
@@ -56,7 +56,7 @@ h1 {
             height: 100%;
             width: 100%;
             text-align: center;
-            padding-top: 40rem;
+            padding-top: 30rem;
             font-size: 2.5rem;
             font-weight: bold;
             cursor: pointer;

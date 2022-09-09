@@ -2,8 +2,135 @@
   .banner {
     text-align: center;
     margin: auto;
+    margin-bottom: 3rem;
+    background-color: $bg-color-light;
+    width: 150rem;
     img {
       width: 150rem;
+    }
+    .options {
+      text-align: center;
+      margin: auto;
+
+      width: 150rem;
+      height: 3rem;
+      display: flex;
+      justify-content: space-evenly;
+
+      button {
+        height: 3rem;
+        width: 12rem;
+        cursor: pointer;
+        border-radius: 0;
+        border: 0;
+        background-color: $bg-color;
+        color: $green;
+        text-transform: uppercase;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+          background-color: $green;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .info {
+    width: 150rem;
+    margin: auto;
+    background-color: $bg-color-light;
+
+    .button_info {
+      display: flex;
+      gap: 3rem;
+      border-bottom: 1px solid $bg-color;
+      button {
+        height: 3rem;
+        width: 12rem;
+        cursor: pointer;
+        border-radius: 0;
+        border: 0;
+        background-color: $bg-color;
+        color: $green;
+        text-transform: uppercase;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+          background-color: $green;
+          color: $white;
+        }
+      }
+    }
+    .details {
+      display: flex;
+      background-color: $bg-color;
+      text-align: center;
+      color: $white;
+      .info_series_movies {
+        width: 50%;
+        .genre_container {
+          display: flex;
+          justify-content: center;
+          gap: 3rem;
+          .genres {
+            button {
+              height: 3rem;
+              width: 12rem;
+              cursor: pointer;
+              border-radius: 0;
+              border: 0;
+              background-color: $bg-color-light;
+              color: $green;
+              text-transform: uppercase;
+              transition: 0.2s ease-in-out;
+
+              &:hover {
+                background-color: $green;
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+
+      .info_cast {
+        width: 50%;
+        display: flex;
+        flex-flow: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 5rem;
+        img {
+          width: 20rem;
+        }
+      }
+    }
+
+    .suggestions {
+      width: 150rem;
+      margin: auto;
+      color: $white;
+      font-weight: bold;
+      font-size: 3rem;
+      .poster_movies {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        gap: 5rem;
+        margin-top: 5rem;
+
+        img {
+          width: 20rem;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: 0.2s ease-in-out;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
     }
   }
 }
