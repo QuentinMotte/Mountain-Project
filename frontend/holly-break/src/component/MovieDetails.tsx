@@ -108,7 +108,7 @@ function MovieDetails() {
           alt="poster"
         />
         <div className="options">
-          <NavLink className="poster" to={`/Player/Serie/${movies?.id}`}>
+          <NavLink className="poster" to={`/Player/Movie/${movies?.id}`}>
             <button>Play</button>
           </NavLink>
           <button>Watchlist</button>
