@@ -18,33 +18,58 @@ import PlayerPage from "./pages/PlayerPage";
 import ConditionPage from "./pages/ConditionPage";
 import CreateProfile from "./pages/CreateProfile";
 import AdminPage from "./pages/AdminPage";
-import "./main.scss";
 import SeriePage from "./pages/SeriePage";
+import UserPageAdmin from "./pages/UserPageAdmin";
+import "./main.scss";
 
 function App() {
   // APPEL API HERE
 
+  const token = localStorage.getItem("token");
+  const admin = localStorage.getItem("admin") === "true";
+
   return (
     <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/FAQ" element={<FaqPage />} />
-      <Route path="/About" element={<AboutPage />} />
-      <Route path="/Conditions" element={<ConditionPage />} />
-      <Route path="/Subscription" element={<SubPage />} />
-      <Route path="/Subscription/success" element={<SubSuccess />} />
-      <Route path="/Create-Profile" element={<CreateProfile />} />
-      <Route path="/Select-Profile" element={<SelectProfile />} />
-      <Route path="/Home" element={<Homepage />} />
-      <Route path="/Home/Movies" element={<Movies />} />
-      <Route path="/Home/Series" element={<Series />} />
-      <Route path="/Search" element={<SearchPage />} />
-      <Route path="/Watchlist" element={<FavPage />} />
-      <Route path="/History" element={<HistoryPage />} />
-      <Route path="/Settings" element={<SettingsPage />} />
-      <Route path="/Movie/:id" element={<MoviePage />} />
-      <Route path="/Serie/:id" element={<SeriePage />} />
-      <Route path="/Player" element={<PlayerPage />} />
-      <Route path="/Admin" element={<AdminPage />} />
+      {token ? (
+        <>
+          <Route path="/" element={<Landing />} />
+          <Route path="/FAQ" element={<FaqPage />} />
+          <Route path="/About" element={<AboutPage />} />
+          <Route path="/Conditions" element={<ConditionPage />} />
+          <Route path="/Subscription" element={<SubPage />} />
+          <Route path="/Subscription/success" element={<SubSuccess />} />
+          <Route path="/Create-Profile" element={<CreateProfile />} />
+          <Route path="/Select-Profile" element={<SelectProfile />} />
+          <Route path="/Home" element={<Homepage />} />
+          <Route path="/Home/Movies" element={<Movies />} />
+          <Route path="/Home/Series" element={<Series />} />
+          <Route path="/Search" element={<SearchPage />} />
+          <Route path="/Watchlist" element={<FavPage />} />
+          <Route path="/History" element={<HistoryPage />} />
+          <Route path="/Settings" element={<SettingsPage />} />
+          <Route path="/Movie/:id" element={<MoviePage />} />
+          <Route path="/Serie/:id" element={<SeriePage />} />
+          <Route path="/Player/Movie/:id" element={<PlayerPage />} />
+          <Route path="/Player/Serie/:id" element={<Landing />} />
+        </>
+      ) : (
+        <>
+          <Route path="/" element={<Landing />} />
+          <Route path="/FAQ" element={<FaqPage />} />
+          <Route path="/About" element={<AboutPage />} />
+          <Route path="/Conditions" element={<ConditionPage />} />
+          <Route path="/Subscription" element={<SubPage />} />
+        </>
+      )}
+      {<Route path="*" element={<Landing />} />}
+      {admin ? (
+        <>
+          <Route path="/Admin" element={<AdminPage />} />
+          <Route path="/User/:id" element={<UserPageAdmin />} />
+        </>
+      ) : (
+        <></>
+      )}
     </Routes>
   );
 }
