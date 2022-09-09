@@ -62,6 +62,7 @@ module.exports.updateProfile = async (req, res) => {
           quote: req.body.quote,
           avatar: req.body.avatar,
           pin_code: req.body.pin_code,
+          is_young: req.body.is_young,
         },
       },
       { new: true, upsert: true, setDefaultOnInsert: true, runValidators: true }

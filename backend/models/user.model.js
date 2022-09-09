@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       maxlength: 1024,
       minlength: 6,
-      validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
+      // validate: /^[<>]+/,
     },
     birthday: {
       type: Number,

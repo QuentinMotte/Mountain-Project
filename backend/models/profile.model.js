@@ -23,12 +23,11 @@ const profileSchema = new mongoose.Schema(
     avatar: {
       type: String,
       default: "./img/avatar_profil",
-      validate: /^[<>]+$/,
     },
     pin_code: {
       type: Number,
       validate: /^[0-9]{4}$/,
-      validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
+      // validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },
 
     watchList: {
@@ -44,7 +43,6 @@ const profileSchema = new mongoose.Schema(
     is_young: {
       type: Boolean,
       required: true,
-      validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },
   },
   {
