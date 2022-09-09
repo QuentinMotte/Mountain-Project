@@ -16,6 +16,7 @@ function Player() {
   const ID = id.id;
 
   const URL = `https://api.themoviedb.org/3/movie/${ID}/videos?api_key=${API_KEY}&language=en-US`;
+
   let [movies, setMovies] = useState<trailerProps | undefined>();
 
   useEffect(() => {
