@@ -86,7 +86,7 @@ function MovieDetails() {
 
   const getMovieDir = async () => {
     const { data } = await axios.get(URLCAST);
-    setMoviesDir(data.crew[0]);
+    setMoviesDir(data.crew.slice(0, 3));
   };
 
   const getMovieSim = async () => {
@@ -125,9 +125,13 @@ function MovieDetails() {
           <div className="info_series_movies">
             <h2 className="Title">{movies?.title}</h2>
             <p className="TagLine">{movies?.tagline}</p>
-            <p className="dir">
-              {moviesDir?.job} / {moviesDir?.name}
-            </p>
+            <div className="crew">
+              {moviesDir?.map((crew) => (
+                <p>
+                  {crew.job} / {crew.name}
+                </p>
+              ))}
+            </div>
             <p className="airDate">Release date: {movies?.release_date}</p>
             <p className="RunTime">Run time: {movies?.runtime} min</p>
             <div className="genre_container">

@@ -56,6 +56,7 @@ function SeriesDetails() {
   let [moviesRunTime, setMoviesRunTime] = useState<moviesProps | undefined>();
   let [moviesGenres, setMoviesGenres] = useState<GenresProps | undefined>();
   let [moviesCast, setMoviesCast] = useState<CastProps | undefined>();
+  let [moviesDir, setMoviesDir] = useState<CastProps | undefined>();
   let [moviesSim, setMoviesSim] = useState<moviesProps | undefined>();
 
   useEffect(() => {
@@ -64,6 +65,7 @@ function SeriesDetails() {
     getMovieRunTime();
     getMovieGenres();
     getMovieCast();
+    getMovieDir();
     getMovieSim();
   }, []);
 
@@ -90,6 +92,11 @@ function SeriesDetails() {
   const getMovieCast = async () => {
     const { data } = await axios.get(URLCAST);
     setMoviesCast(data.cast.slice(0, 9));
+  };
+
+  const getMovieDir = async () => {
+    const { data } = await axios.get(URLCAST);
+    setMoviesDir(data.crew.slice(0, 3));
   };
 
   const getMovieSim = async () => {
@@ -129,6 +136,13 @@ function SeriesDetails() {
           <div className="info_series_movies">
             <h2 className="Title">{movies?.name}</h2>
             <p className="TagLine">{movies?.tagline}</p>
+            <div className="crew">
+              {moviesDir?.map((crew) => (
+                <p>
+                  {crew.job} / {crew.name}
+                </p>
+              ))}
+            </div>
             <p className="airDate">First air date: {movies?.first_air_date}</p>
             <p className="airDate">Last air date: {movies?.last_air_date}</p>
             <p className="RunTime">Run time: {moviesRunTime?.[0]} min</p>
@@ -172,7 +186,7 @@ function SeriesDetails() {
               <NavLink
                 className="poster"
                 onClick={refreshPage}
-                to={`/Serie/${movieSim.id}`}
+                to={`/tv/${movieSim.id}`}
               >
                 <div id={movieSim.id} className="movies_container_poster">
                   <img

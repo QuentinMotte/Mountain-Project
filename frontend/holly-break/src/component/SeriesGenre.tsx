@@ -66,7 +66,7 @@ function SeriesGenre() {
     <>
       <div className="container_genre">
         {movies1?.map((movie1) => (
-          <NavLink className="poster" to={`/Serie/${movie1.id}`}>
+          <NavLink className="poster" to={`/tv/${movie1.id}`}>
             <div id={movie1.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie1.poster_path}
@@ -77,7 +77,7 @@ function SeriesGenre() {
         ))}
 
         {movies2?.map((movie2) => (
-          <NavLink className="poster" to={`/Serie/${movie2.id}`}>
+          <NavLink className="poster" to={`/tv/${movie2.id}`}>
             <div id={movie2.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie2.poster_path}
@@ -88,7 +88,7 @@ function SeriesGenre() {
         ))}
 
         {movies3?.map((movie3) => (
-          <NavLink className="poster" to={`/Serie/${movie3.id}`}>
+          <NavLink className="poster" to={`/tv/${movie3.id}`}>
             <div id={movie3.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie3.poster_path}
@@ -99,7 +99,7 @@ function SeriesGenre() {
         ))}
 
         {movies4?.map((movie4) => (
-          <NavLink className="poster" to={`/Serie/${movie4.id}`}>
+          <NavLink className="poster" to={`/tv/${movie4.id}`}>
             <div id={movie4.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie4.poster_path}
@@ -110,7 +110,7 @@ function SeriesGenre() {
         ))}
 
         {movies5?.map((movie5) => (
-          <NavLink className="poster" to={`/Serie/${movie5.id}`}>
+          <NavLink className="poster" to={`/tv/${movie5.id}`}>
             <div id={movie5.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie5.poster_path}
