@@ -44,13 +44,13 @@ function App() {
           <Route path="/Home" element={<Homepage />} />
           <Route path="/Home/Movies" element={<Movies />} />
           <Route path="/Home/Series" element={<Series />} />
-          <Route path="/Search" element={<SearchPage />} />
+          <Route path="/Search/:id" element={<SearchPage />} />
           <Route path="/Watchlist" element={<FavPage />} />
           <Route path="/History" element={<HistoryPage />} />
           <Route path="/Settings" element={<SettingsPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
           <Route path="/Movie/Genre/:id" element={<MoviesGenrePage />} />
-          <Route path="/Serie/:id" element={<SeriePage />} />
+          <Route path="/tv/:id" element={<SeriePage />} />
           <Route path="/Serie/Genre/:id" element={<SeriesGenrePage />} />
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
           <Route path="/Player/Serie/:id" element={<PlayerPageSeries />} />

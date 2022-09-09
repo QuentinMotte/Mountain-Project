@@ -205,6 +205,7 @@ export function MoviesPosters() {
   return (
     <>
       <h1>Movies</h1>
+
       <div className="container_herobanner">
         <i className="fa-solid fa-arrow-left"></i>
         <div className="herobanner">

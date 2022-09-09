@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Connection from "./Connection";
 import MyLogo from "../img/logo_holly_nobg.png";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -14,6 +16,16 @@ function Header() {
       window.location.href = "/";
     }
   }
+
+  let [Search, setSearch] = useState("");
+
+  const handleChange = (e: any) => {
+    setSearch(e.target.value);
+  };
+
+  const navigate = useNavigate();
+
+  const onClickHandlerMovie = () => navigate(`/Search/${Search}`);
   return (
     <>
       <header className="header">
@@ -41,6 +53,17 @@ function Header() {
               <NavLink className="header_navLink" to={"/"}>
                 Forum
               </NavLink>
+
+              <div>
+                <form onSubmit={onClickHandlerMovie}>
+                  <input
+                    type="text"
+                    className="Search"
+                    placeholder="type to search"
+                    onChange={handleChange}
+                  />
+                </form>
+              </div>
             </div>
           ) : null}
         </div>
