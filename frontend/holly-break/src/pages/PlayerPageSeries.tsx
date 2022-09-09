@@ -2,18 +2,18 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
-import Player from "../component/Player";
+import PlayerSerie from "../component/PlayerSerie";
 
-function PlayerPage() {
+function PlayerPageSeries() {
   return (
     <>
       <Header></Header>
       <main className="content-container">
-        <Player />
+        <PlayerSerie />
       </main>
       <Footer></Footer>
     </>
   );
 }
 
-export default PlayerPage;
+export default PlayerPageSeries;

@@ -20,6 +20,7 @@ import CreateProfile from "./pages/CreateProfile";
 import AdminPage from "./pages/AdminPage";
 import "./main.scss";
 import SeriePage from "./pages/SeriePage";
+import PlayerPageSeries from "./pages/PlayerPageSeries";
 
 function App() {
   // APPEL API HERE
@@ -43,7 +44,8 @@ function App() {
       <Route path="/Settings" element={<SettingsPage />} />
       <Route path="/Movie/:id" element={<MoviePage />} />
       <Route path="/Serie/:id" element={<SeriePage />} />
-      <Route path="/Player" element={<PlayerPage />} />
+      <Route path="/Player/Movie/:id" element={<PlayerPage />} />
+      <Route path="/Player/Serie/:id" element={<PlayerPageSeries />} />
       <Route path="/Admin" element={<AdminPage />} />
     </Routes>
   );
