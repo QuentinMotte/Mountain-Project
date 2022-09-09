@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const img = `https://image.tmdb.org/t/p/w300`;
 const API_KEY = "a378b12e0a9383634a503a8f29d43915";
 
 interface moviesProps {
@@ -187,7 +186,9 @@ export function SeriesPosters() {
           {TVTrend?.map((tvshow) => (
             <div id={tvshow.id} className="movies_popular">
               <img
-                src={`https://image.tmdb.org/t/p/w300` + tvshow.backdrop_path}
+                src={
+                  `https://image.tmdb.org/t/p/original` + tvshow.backdrop_path
+                }
                 alt="poster"
               />
               <div className="title">
@@ -211,7 +212,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVDrama.id}`}>
               <div id={TVDrama.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVDrama.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVDrama.poster_path}
                   alt="poster"
                 />
               </div>
@@ -230,7 +231,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVCrime.id}`}>
               <div id={TVCrime.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVCrime.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVCrime.poster_path}
                   alt="poster"
                 />
               </div>
@@ -250,7 +251,7 @@ export function SeriesPosters() {
               <div id={TVMystery.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + TVMystery.poster_path
+                    `https://image.tmdb.org/t/p/w500` + TVMystery.poster_path
                   }
                   alt="poster"
                 />
@@ -270,7 +271,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVComedy.id}`}>
               <div id={TVComedy.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVComedy.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVComedy.poster_path}
                   alt="poster"
                 />
               </div>
@@ -290,7 +291,7 @@ export function SeriesPosters() {
               <div id={TVFantasy.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + TVFantasy.poster_path
+                    `https://image.tmdb.org/t/p/w500` + TVFantasy.poster_path
                   }
                   alt="poster"
                 />
@@ -310,7 +311,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVWar.id}`}>
               <div id={TVWar.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVWar.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVWar.poster_path}
                   alt="poster"
                 />
               </div>
@@ -329,7 +330,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVAction.id}`}>
               <div id={TVAction.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVAction.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVAction.poster_path}
                   alt="poster"
                 />
               </div>
@@ -349,7 +350,7 @@ export function SeriesPosters() {
               <div id={TVWestern.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + TVWestern.poster_path
+                    `https://image.tmdb.org/t/p/w500` + TVWestern.poster_path
                   }
                   alt="poster"
                 />
@@ -369,7 +370,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVSoap.id}`}>
               <div id={TVSoap.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVSoap.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVSoap.poster_path}
                   alt="poster"
                 />
               </div>
@@ -388,7 +389,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVFam.id}`}>
               <div id={TVFam.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVFam.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVFam.poster_path}
                   alt="poster"
                 />
               </div>
@@ -407,7 +408,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVKid.id}`}>
               <div id={TVKid.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVKid.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVKid.poster_path}
                   alt="poster"
                 />
               </div>
@@ -426,7 +427,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVDoc.id}`}>
               <div id={TVDoc.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVDoc.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVDoc.poster_path}
                   alt="poster"
                 />
               </div>
@@ -445,7 +446,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVTalk.id}`}>
               <div id={TVTalk.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVTalk.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVTalk.poster_path}
                   alt="poster"
                 />
               </div>
@@ -464,7 +465,7 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/Serie/${TVNews.id}`}>
               <div id={TVNews.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + TVNews.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + TVNews.poster_path}
                   alt="poster"
                 />
               </div>
@@ -484,7 +485,7 @@ export function SeriesPosters() {
               <div id={TVReality.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + TVReality.poster_path
+                    `https://image.tmdb.org/t/p/w500` + TVReality.poster_path
                   }
                   alt="poster"
                 />

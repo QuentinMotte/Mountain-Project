@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 
-const img = `https://image.tmdb.org/t/p/w300`;
 const API_KEY = "a378b12e0a9383634a503a8f29d43915";
 
 interface moviesProps {
@@ -212,7 +211,9 @@ export function MoviesPosters() {
           {moviesTrend?.map((movie) => (
             <div id={movie.id} className="movies_popular">
               <img
-                src={`https://image.tmdb.org/t/p/w300` + movie.backdrop_path}
+                src={
+                  `https://image.tmdb.org/t/p/original` + movie.backdrop_path
+                }
                 alt="poster"
               />
               <div className="title">
@@ -237,7 +238,7 @@ export function MoviesPosters() {
               <div id={movieDrama.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieDrama.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieDrama.poster_path
                   }
                   alt="poster"
                 />
@@ -258,7 +259,7 @@ export function MoviesPosters() {
               <div id={movieFantasy.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieFantasy.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieFantasy.poster_path
                   }
                   alt="poster"
                 />
@@ -279,7 +280,7 @@ export function MoviesPosters() {
               <div id={movieHistory.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieHistory.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieHistory.poster_path
                   }
                   alt="poster"
                 />
@@ -300,7 +301,7 @@ export function MoviesPosters() {
               <div id={movieComedy.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieComedy.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieComedy.poster_path
                   }
                   alt="poster"
                 />
@@ -321,7 +322,7 @@ export function MoviesPosters() {
               <div id={movieThriller.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` +
+                    `https://image.tmdb.org/t/p/w500` +
                     movieThriller.poster_path
                   }
                   alt="poster"
@@ -343,7 +344,7 @@ export function MoviesPosters() {
               <div id={movieHorror.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieHorror.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieHorror.poster_path
                   }
                   alt="poster"
                 />
@@ -364,7 +365,7 @@ export function MoviesPosters() {
               <div id={movieAction.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieAction.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieAction.poster_path
                   }
                   alt="poster"
                 />
@@ -385,7 +386,7 @@ export function MoviesPosters() {
               <div id={movieAdventure.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` +
+                    `https://image.tmdb.org/t/p/w500` +
                     movieAdventure.poster_path
                   }
                   alt="poster"
@@ -407,7 +408,7 @@ export function MoviesPosters() {
               <div id={movieCrime.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieCrime.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieCrime.poster_path
                   }
                   alt="poster"
                 />
@@ -427,7 +428,7 @@ export function MoviesPosters() {
             <NavLink className="poster" to={`/Movie/${movieWar.id}`}>
               <div id={movieWar.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + movieWar.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + movieWar.poster_path}
                   alt="poster"
                 />
               </div>
@@ -447,7 +448,7 @@ export function MoviesPosters() {
               <div id={movieWestern.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieWestern.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieWestern.poster_path
                   }
                   alt="poster"
                 />
@@ -468,7 +469,7 @@ export function MoviesPosters() {
               <div id={movieSyfy.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieSyfy.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieSyfy.poster_path
                   }
                   alt="poster"
                 />
@@ -488,7 +489,7 @@ export function MoviesPosters() {
             <NavLink className="poster" to={`/Movie/${movieRom.id}`}>
               <div id={movieRom.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + movieRom.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + movieRom.poster_path}
                   alt="poster"
                 />
               </div>
@@ -508,7 +509,7 @@ export function MoviesPosters() {
               <div id={movieMyst.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieMyst.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieMyst.poster_path
                   }
                   alt="poster"
                 />
@@ -528,7 +529,7 @@ export function MoviesPosters() {
             <NavLink className="poster" to={`/Movie/${movieTV.id}`}>
               <div id={movieTV.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + movieTV.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + movieTV.poster_path}
                   alt="poster"
                 />
               </div>
@@ -548,7 +549,7 @@ export function MoviesPosters() {
               <div id={movieAnimation.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` +
+                    `https://image.tmdb.org/t/p/w500` +
                     movieAnimation.poster_path
                   }
                   alt="poster"
@@ -569,7 +570,7 @@ export function MoviesPosters() {
             <NavLink className="poster" to={`/Movie/${movieFam.id}`}>
               <div id={movieFam.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + movieFam.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + movieFam.poster_path}
                   alt="poster"
                 />
               </div>
@@ -589,7 +590,7 @@ export function MoviesPosters() {
               <div id={movieMusic.id} className="movies_container_poster">
                 <img
                   src={
-                    `https://image.tmdb.org/t/p/w300` + movieMusic.poster_path
+                    `https://image.tmdb.org/t/p/w500` + movieMusic.poster_path
                   }
                   alt="poster"
                 />
@@ -609,7 +610,7 @@ export function MoviesPosters() {
             <NavLink className="poster" to={`/Movie/${movieDoc.id}`}>
               <div id={movieDoc.id} className="movies_container_poster">
                 <img
-                  src={`https://image.tmdb.org/t/p/w300` + movieDoc.poster_path}
+                  src={`https://image.tmdb.org/t/p/w500` + movieDoc.poster_path}
                   alt="poster"
                 />
               </div>
