@@ -66,3 +66,9 @@ This is the full stack JavaScript.
 - Create signUp errors, signIn errors, updateUser errors, createProfile errors, updateProfile errors
 - Creation of the profile subscription form
 - Fetch API TMDB with axios
+- Creation of the Admin Panel
+- Final tests for the User DB
+- Secure Routes
+- Connexion User
+
+### Sprint 3 | 12/09 -> 16/09
