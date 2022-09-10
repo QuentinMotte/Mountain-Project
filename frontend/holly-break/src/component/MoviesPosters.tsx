@@ -271,27 +271,6 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <NavLink className="genre" to={`/Movie/Genre/36`}>
-          <h3>History</h3>
-          <i className="fa-solid fa-arrow-right"></i>
-        </NavLink>
-        <div className="poster_movies">
-          {moviesHistory?.map((movieHistory) => (
-            <NavLink className="poster" to={`/Movie/${movieHistory.id}`}>
-              <div id={movieHistory.id} className="movies_container_poster">
-                <img
-                  src={
-                    `https://image.tmdb.org/t/p/w500` + movieHistory.poster_path
-                  }
-                  alt="poster"
-                />
-              </div>
-            </NavLink>
-          ))}
-        </div>
-      </div>
-
-      <div className="container_loop_movies">
         <NavLink className="genre" to={`/Movie/Genre/35`}>
           <h3>Comedy</h3>
           <i className="fa-solid fa-arrow-right"></i>
@@ -439,107 +418,6 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
-        <NavLink className="genre" to={`/Movie/Genre/37`}>
-          <h3>Western</h3>
-          <i className="fa-solid fa-arrow-right"></i>
-        </NavLink>
-        <div className="poster_movies">
-          {moviesWestern?.map((movieWestern) => (
-            <NavLink className="poster" to={`/Movie/${movieWestern.id}`}>
-              <div id={movieWestern.id} className="movies_container_poster">
-                <img
-                  src={
-                    `https://image.tmdb.org/t/p/w500` + movieWestern.poster_path
-                  }
-                  alt="poster"
-                />
-              </div>
-            </NavLink>
-          ))}
-        </div>
-      </div>
-
-      <div className="container_loop_movies">
-        <NavLink className="genre" to={`/Movie/Genre/878`}>
-          <h3>Sciences-Fiction</h3>
-          <i className="fa-solid fa-arrow-right"></i>
-        </NavLink>
-        <div className="poster_movies">
-          {moviesSyfy?.map((movieSyfy) => (
-            <NavLink className="poster" to={`/Movie/${movieSyfy.id}`}>
-              <div id={movieSyfy.id} className="movies_container_poster">
-                <img
-                  src={
-                    `https://image.tmdb.org/t/p/w500` + movieSyfy.poster_path
-                  }
-                  alt="poster"
-                />
-              </div>
-            </NavLink>
-          ))}
-        </div>
-      </div>
-
-      <div className="container_loop_movies">
-        <NavLink className="genre" to={`/Movie/Genre/10749`}>
-          <h3>Romance</h3>
-          <i className="fa-solid fa-arrow-right"></i>
-        </NavLink>
-        <div className="poster_movies">
-          {moviesRom?.map((movieRom) => (
-            <NavLink className="poster" to={`/Movie/${movieRom.id}`}>
-              <div id={movieRom.id} className="movies_container_poster">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500` + movieRom.poster_path}
-                  alt="poster"
-                />
-              </div>
-            </NavLink>
-          ))}
-        </div>
-      </div>
-
-      <div className="container_loop_movies">
-        <NavLink className="genre" to={`/Movie/Genre/9648`}>
-          <h3>Mystery</h3>
-          <i className="fa-solid fa-arrow-right"></i>
-        </NavLink>
-        <div className="poster_movies">
-          {moviesMyst?.map((movieMyst) => (
-            <NavLink className="poster" to={`/Movie/${movieMyst.id}`}>
-              <div id={movieMyst.id} className="movies_container_poster">
-                <img
-                  src={
-                    `https://image.tmdb.org/t/p/w500` + movieMyst.poster_path
-                  }
-                  alt="poster"
-                />
-              </div>
-            </NavLink>
-          ))}
-        </div>
-      </div>
-
-      <div className="container_loop_movies">
-        <NavLink className="genre" to={`/Movie/Genre/10770`}>
-          <h3>TV Movies</h3>
-          <i className="fa-solid fa-arrow-right"></i>
-        </NavLink>
-        <div className="poster_movies">
-          {moviesTVMovie?.map((movieTV) => (
-            <NavLink className="poster" to={`/Movie/${movieTV.id}`}>
-              <div id={movieTV.id} className="movies_container_poster">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500` + movieTV.poster_path}
-                  alt="poster"
-                />
-              </div>
-            </NavLink>
-          ))}
-        </div>
-      </div>
-
-      <div className="container_loop_movies">
         <NavLink className="genre" to={`/Movie/Genre/16`}>
           <h3>Animation</h3>
           <i className="fa-solid fa-arrow-right"></i>
@@ -581,6 +459,27 @@ export function MoviesPosters() {
       </div>
 
       <div className="container_loop_movies">
+        <NavLink className="genre" to={`/Movie/Genre/37`}>
+          <h3>Western</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </NavLink>
+        <div className="poster_movies">
+          {moviesWestern?.map((movieWestern) => (
+            <NavLink className="poster" to={`/Movie/${movieWestern.id}`}>
+              <div id={movieWestern.id} className="movies_container_poster">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w500` + movieWestern.poster_path
+                  }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
         <NavLink className="genre" to={`/Movie/Genre/10402`}>
           <h3>Music</h3>
           <i className="fa-solid fa-arrow-right"></i>
@@ -593,6 +492,107 @@ export function MoviesPosters() {
                   src={
                     `https://image.tmdb.org/t/p/w500` + movieMusic.poster_path
                   }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <NavLink className="genre" to={`/Movie/Genre/878`}>
+          <h3>Sciences-Fiction</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </NavLink>
+        <div className="poster_movies">
+          {moviesSyfy?.map((movieSyfy) => (
+            <NavLink className="poster" to={`/Movie/${movieSyfy.id}`}>
+              <div id={movieSyfy.id} className="movies_container_poster">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w500` + movieSyfy.poster_path
+                  }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <NavLink className="genre" to={`/Movie/Genre/9648`}>
+          <h3>Mystery</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </NavLink>
+        <div className="poster_movies">
+          {moviesMyst?.map((movieMyst) => (
+            <NavLink className="poster" to={`/Movie/${movieMyst.id}`}>
+              <div id={movieMyst.id} className="movies_container_poster">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w500` + movieMyst.poster_path
+                  }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <NavLink className="genre" to={`/Movie/Genre/36`}>
+          <h3>History</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </NavLink>
+        <div className="poster_movies">
+          {moviesHistory?.map((movieHistory) => (
+            <NavLink className="poster" to={`/Movie/${movieHistory.id}`}>
+              <div id={movieHistory.id} className="movies_container_poster">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w500` + movieHistory.poster_path
+                  }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <NavLink className="genre" to={`/Movie/Genre/10770`}>
+          <h3>TV Movies</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </NavLink>
+        <div className="poster_movies">
+          {moviesTVMovie?.map((movieTV) => (
+            <NavLink className="poster" to={`/Movie/${movieTV.id}`}>
+              <div id={movieTV.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500` + movieTV.poster_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </div>
+      </div>
+
+      <div className="container_loop_movies">
+        <NavLink className="genre" to={`/Movie/Genre/10749`}>
+          <h3>Romance</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </NavLink>
+        <div className="poster_movies">
+          {moviesRom?.map((movieRom) => (
+            <NavLink className="poster" to={`/Movie/${movieRom.id}`}>
+              <div id={movieRom.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500` + movieRom.poster_path}
                   alt="poster"
                 />
               </div>
