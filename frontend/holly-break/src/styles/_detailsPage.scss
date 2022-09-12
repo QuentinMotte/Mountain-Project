@@ -99,6 +99,7 @@
         }
         .genre_container {
           display: flex;
+          flex-flow: wrap;
           justify-content: center;
           gap: 3rem;
           .genres {
@@ -129,6 +130,10 @@
         align-items: center;
         justify-content: center;
         gap: 5rem;
+
+        p {
+          width: 20rem;
+        }
         img {
           width: 20rem;
           transition: 0.2s ease-in-out;
@@ -139,29 +144,28 @@
         }
       }
     }
+  }
+  .suggestions {
+    width: 150rem;
+    margin: auto;
+    color: $white;
+    font-weight: bold;
+    font-size: 3rem;
+    .poster_movies {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: center;
+      gap: 5rem;
+      margin-top: 5rem;
 
-    .suggestions {
-      width: 150rem;
-      margin: auto;
-      color: $white;
-      font-weight: bold;
-      font-size: 3rem;
-      .poster_movies {
-        display: flex;
-        flex-flow: wrap;
-        justify-content: center;
-        gap: 5rem;
-        margin-top: 5rem;
+      img {
+        width: 20rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
 
-        img {
-          width: 20rem;
-          border-radius: 5px;
-          cursor: pointer;
-          transition: 0.2s ease-in-out;
-
-          &:hover {
-            transform: scale(1.05);
-          }
+        &:hover {
+          transform: scale(1.05);
         }
       }
     }

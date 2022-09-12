@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
+import SeriesInfo from "./SeriesInfo";
+import SeriesSuggestion from "./SeriesSuggestion";
 
 const API_KEY = "a378b12e0a9383634a503a8f29d43915";
 
@@ -124,94 +126,8 @@ function SeriesDetails() {
         </div>
       </div>
 
-      <div className="info">
-        <div className="button_info">
-          <button className="tabs active-tabs">Details</button>
-          <button className="tabs">Suggestions</button>
-        </div>
-
-        <div className="details">
-          <div className="info_series_movies">
-            <div className="title_container">
-              <h1 className="Title">{movies?.name}</h1>
-              <p className="TagLine">{movies?.tagline}</p>
-            </div>
-
-            <div className="genre_container">
-              {moviesGenres?.map((genres) => (
-                <div className="genres">
-                  <NavLink className="genre" to={`/Serie/Genre/${genres.id}`}>
-                    <button className="genre_button">{genres.name}</button>
-                  </NavLink>
-                </div>
-              ))}
-            </div>
-
-            <div className="date">
-              <p className="airDate">
-                First air date: {movies?.first_air_date}
-              </p>
-              <p className="airDate">Last air date: {movies?.last_air_date}</p>
-              <p className="RunTime">Run time: {moviesRunTime?.[0]} min</p>
-              <p className="note">Note: {movies?.vote_average}</p>
-            </div>
-
-            <div className="date">
-              {moviesDir?.map((crew) => (
-                <p>
-                  {crew.job} / {crew.name}
-                </p>
-              ))}
-            </div>
-            <div className="date">
-              <p className="seasons">
-                Number of seasons: {movies?.number_of_seasons}
-              </p>
-              <p className="episodes">
-                Number of episodes: {movies?.number_of_episodes}
-              </p>
-            </div>
-
-            <p className="resume">{movies?.overview}</p>
-          </div>
-          <div className="info_cast">
-            {moviesCast?.map((cast) => (
-              <div>
-                <NavLink className="genre" to={`/Actor/${cast.id}`}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500` + cast.profile_path}
-                    alt="cast"
-                  />
-                </NavLink>
-                <p className="cast">{cast.name}</p>
-                <p className="character">{cast.character}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="suggestions">
-          <h3>Suggestions</h3>
-          <div className="poster_movies">
-            {moviesSim?.map((movieSim) => (
-              <NavLink
-                className="poster"
-                onClick={refreshPage}
-                to={`/tv/${movieSim.id}`}
-              >
-                <div id={movieSim.id} className="movies_container_poster">
-                  <img
-                    src={
-                      `https://image.tmdb.org/t/p/w500` + movieSim.poster_path
-                    }
-                    alt="poster"
-                  />
-                </div>
-              </NavLink>
-            ))}
-          </div>
-        </div>
-      </div>
+      <SeriesInfo />
+      <SeriesSuggestion />
     </>
   );
 }
