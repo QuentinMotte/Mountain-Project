@@ -1,6 +1,5 @@
 import React from "react";
-import axios, { Axios } from "axios";
-import { Navigate } from "react-router-dom";
+import axios from "axios";
 
 type connect = {
   isOpen: boolean;
@@ -34,7 +33,7 @@ function Connection({ isOpen, setIsOpen }: connect) {
         res.data.admin &&
           localStorage.setItem("admin", JSON.stringify(res.data.admin));
         setIsOpen(false);
-        window.location.href = "/Home";
+        window.location.href = "/Select-Profile";
       })
       .catch((err) => {
         console.log(err);

@@ -42,6 +42,7 @@ interface ProfileState {
   avatar: string;
   pin_code: number;
   is_young: boolean;
+  id_user: string;
 }
 
 function CreateProfile() {
@@ -125,6 +126,12 @@ function CreateProfile() {
     setProfileYoung({ ...profileYoung, [name]: value });
   };
 
+  // import the user id from local storage and remove the quotes
+
+  const id = localStorage.getItem("user");
+
+  const id_user: any = id?.replace(/['"]+/g, "");
+
   // Collect the data
 
   const ProfilState: ProfileState = {
@@ -133,6 +140,7 @@ function CreateProfile() {
     avatar: profileAvatar.avatar,
     pin_code: pin_code,
     is_young: profileYoung.is_young,
+    id_user: id_user,
   };
 
   // handle submit and send data
@@ -144,6 +152,7 @@ function CreateProfile() {
         "http://localhost:5000/api/profile/register",
         ProfilState
       );
+      window.location.href = "/SuccessProfile";
     } else {
       alert("Les codes pin ne correspondent pas");
     }
@@ -193,7 +202,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_asuka.jpg"
+                value="AvatarAsuka"
                 id="avatar1"
                 onChange={handleChangeAvatar}
               />
@@ -204,7 +213,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_asuma.jpeg"
+                value="AvatarAsuma"
                 id="avatar2"
                 onChange={handleChangeAvatar}
               />
@@ -215,7 +224,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_gon.jpg"
+                value="AvatarGon"
                 id="avatar3"
                 onChange={handleChangeAvatar}
               />
@@ -226,7 +235,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_kirua.jpg"
+                value="AvatarKirua"
                 id="avatar4"
                 onChange={handleChangeAvatar}
               />
@@ -237,7 +246,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_luffysrx.jpg"
+                value="AvatarLuffy"
                 id="avatar5"
                 onChange={handleChangeAvatar}
               />
@@ -248,7 +257,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_meliodas.jpg"
+                value="AvatarMeliodas"
                 id="avatar6"
                 onChange={handleChangeAvatar}
               />
@@ -259,7 +268,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_nami.png"
+                value="AvatarNami"
                 id="avatar7"
                 onChange={handleChangeAvatar}
               />
@@ -270,7 +279,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_robin.png"
+                value="AvatarRobin"
                 id="avatar8"
                 onChange={handleChangeAvatar}
               />
@@ -281,7 +290,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_sakura.jpg"
+                value="AvatarSakura"
                 id="avatar9"
                 onChange={handleChangeAvatar}
               />
@@ -292,7 +301,7 @@ function CreateProfile() {
               <input
                 type="radio"
                 name="avatar"
-                value="img/avatar_profil/avatar_shinra.webp"
+                value="AvatarShinra"
                 id="avatar10"
                 onChange={handleChangeAvatar}
               />

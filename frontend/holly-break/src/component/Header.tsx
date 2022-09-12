@@ -13,6 +13,7 @@ function Header() {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       localStorage.removeItem("admin");
+      localStorage.removeItem("profile");
       window.location.href = "/";
     }
   }
