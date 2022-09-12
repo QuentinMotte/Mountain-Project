@@ -7,11 +7,21 @@
     margin: auto;
     padding-bottom: 5rem;
     padding-top: 5rem;
+
+    @media screen and (max-width: 700px) {
+      width: 100%;
+    }
+
     .container_info_actors {
       display: flex;
       flex-flow: wrap;
       justify-content: space-around;
       align-items: center;
+
+      @media screen and (max-width: 700px) {
+        display: block;
+        text-align: center;
+      }
       .image_actor {
         width: 40%;
         img {
@@ -28,9 +38,17 @@
         justify-content: center;
         gap: 6rem;
 
+        @media screen and (max-width: 700px) {
+          width: 100%;
+        }
+
         h1 {
           font-weight: bold;
           text-align: center;
+
+          @media screen and (max-width: 700px) {
+            padding-right: 1rem;
+          }
         }
 
         p {

@@ -4,22 +4,35 @@
     margin: auto;
     margin-bottom: 3rem;
     background-color: $bg-color-light;
-    width: 150rem;
+    width: 85%;
+
+    @media screen and (max-width: 700px) {
+      width: 100%;
+    }
+
     img {
-      width: 150rem;
+      width: 100%;
     }
     .options {
       text-align: center;
       margin: auto;
 
-      width: 150rem;
+      width: 85%;
       height: 3rem;
       display: flex;
+      flex-flow: wrap;
       justify-content: space-evenly;
 
       button {
         height: 3rem;
         width: 12rem;
+
+        @media screen and (max-width: 700px) {
+          width: fit-content;
+          height: fit-content;
+          padding: 10px;
+        }
+
         cursor: pointer;
         border-radius: 0;
         border: 0;
@@ -38,13 +51,15 @@
 
   .button_info {
     display: flex;
+    flex-flow: wrap;
     gap: 3rem;
-    width: 150rem;
+    width: 85%;
     margin: auto;
 
     .tabs {
       height: 2rem;
       width: 12rem;
+
       cursor: pointer;
       border-radius: 0;
       border: 0;
@@ -81,16 +96,26 @@
   }
 
   .info {
-    width: 150rem;
+    width: 85%;
     margin: auto;
     background-color: $bg-color-light;
 
+    @media screen and (max-width: 700px) {
+      width: 100%;
+    }
+
     .details {
       display: flex;
+      flex-flow: wrap;
       background-color: $bg-color;
       text-align: center;
       color: $white;
       padding: 3rem;
+
+      @media screen and (max-width: 700px) {
+        display: block;
+        text-align: center;
+      }
 
       .info_series_movies {
         width: 50%;
@@ -101,10 +126,18 @@
         text-align: center;
         gap: 5rem;
 
+        @media screen and (max-width: 700px) {
+          width: 100%;
+        }
+
         .title_container {
           h1 {
             font-size: 7rem;
             margin-bottom: 2rem;
+
+            @media screen and (max-width: 700px) {
+              font-size: xx-large;
+            }
           }
         }
 
@@ -153,11 +186,16 @@
         justify-content: center;
         gap: 5rem;
 
+        @media screen and (max-width: 700px) {
+          width: 100%;
+          margin-top: 5rem;
+        }
+
         p {
           width: 20rem;
         }
         img {
-          width: 20rem;
+          width: 15rem;
           transition: 0.2s ease-in-out;
 
           &:hover {
@@ -168,23 +206,31 @@
     }
   }
   .suggestions {
-    width: 150rem;
+    width: 85%;
     background-color: $bg-color;
     margin: auto;
     color: $white;
     font-weight: bold;
     font-size: 3rem;
 
+    @media screen and (max-width: 700px) {
+      width: 100%;
+    }
+
     h2 {
       margin-left: 2rem;
       padding-top: 2rem;
+
+      @media screen and (max-width: 700px) {
+        font-size: xx-large;
+      }
     }
     .poster_movies {
       display: flex;
       flex-flow: wrap;
       justify-content: center;
       gap: 5rem;
-      margin-top: 5rem;
+      margin: 5rem;
 
       img {
         width: 20rem;

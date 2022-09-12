@@ -3,5 +3,10 @@
   iframe {
     width: 135rem;
     height: 80rem;
+
+    @media screen and (max-width: 1300px) {
+      width: 90%;
+      height: 500px;
+    }
   }
 }
