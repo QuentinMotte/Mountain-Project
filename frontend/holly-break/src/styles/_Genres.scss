@@ -1,0 +1,18 @@
+.container_genre {
+  display: flex;
+  flex-flow: wrap;
+  gap: 5rem;
+  width: 90%;
+  margin: auto;
+
+  img {
+    width: 20rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
