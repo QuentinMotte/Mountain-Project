@@ -18,16 +18,18 @@ import PlayerPage from "./pages/PlayerPage";
 import ConditionPage from "./pages/ConditionPage";
 import CreateProfile from "./pages/CreateProfile";
 import AdminPage from "./pages/AdminPage";
-import "./main.scss";
 import SeriePage from "./pages/SeriePage";
 import PlayerPageSeries from "./pages/PlayerPageSeries";
 import MoviesGenrePage from "./pages/MoviesGenrePage";
 import SeriesGenrePage from "./pages/SeriesGenrePage";
+import UserPageAdmin from "./pages/UserPageAdmin";
+import "./main.scss";
 
 function App() {
   // APPEL API HERE
 
   const token = localStorage.getItem("token");
+  const admin = localStorage.getItem("admin") === "true";
 
   return (
     <Routes>
@@ -45,6 +47,7 @@ function App() {
           <Route path="/Home/Movies" element={<Movies />} />
           <Route path="/Home/Series" element={<Series />} />
           <Route path="/Search/:id" element={<SearchPage />} />
+          <Route path="/Search" element={<SearchPage />} />
           <Route path="/Watchlist" element={<FavPage />} />
           <Route path="/History" element={<HistoryPage />} />
           <Route path="/Settings" element={<SettingsPage />} />
@@ -55,6 +58,9 @@ function App() {
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
           <Route path="/Player/Serie/:id" element={<PlayerPageSeries />} />
           <Route path="/Admin" element={<AdminPage />} />
+          <Route path="/Serie/:id" element={<SeriePage />} />
+          <Route path="/Player/Movie/:id" element={<PlayerPage />} />
+          <Route path="/Player/Serie/:id" element={<Landing />} />
         </>
       ) : (
         <>
@@ -66,6 +72,14 @@ function App() {
         </>
       )}
       {<Route path="*" element={<Landing />} />}
+      {admin ? (
+        <>
+          <Route path="/Admin" element={<AdminPage />} />
+          <Route path="/User/:id" element={<UserPageAdmin />} />
+        </>
+      ) : (
+        <></>
+      )}
     </Routes>
   );
 }
