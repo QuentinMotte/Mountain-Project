@@ -86,7 +86,7 @@ function MovieDetails() {
 
   const getMovieDir = async () => {
     const { data } = await axios.get(URLCAST);
-    setMoviesDir(data.crew.slice(0, 3));
+    setMoviesDir(data.crew.slice(0, 4));
   };
 
   const getMovieSim = async () => {
