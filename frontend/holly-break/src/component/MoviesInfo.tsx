@@ -76,11 +76,6 @@ function MoviesInfo() {
   return (
     <>
       <div className="info">
-        <div className="button_info">
-          <button className="tabs active-tabs">Details</button>
-          <button className="tabs">Suggestions</button>
-        </div>
-
         <div className="details">
           <div className="info_series_movies">
             <div className="title_container">

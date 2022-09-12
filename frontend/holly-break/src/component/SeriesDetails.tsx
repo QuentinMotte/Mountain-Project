@@ -24,23 +24,9 @@ interface moviesProps {
   vote_average: string;
 }
 
-interface GenresProps {
-  map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
-  id: number;
-  name: string;
-}
-
 interface picturesProps {
   map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
   file_path: string;
-}
-
-interface CastProps {
-  map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
-  id: number;
-  name: string;
-  character: string;
-  profile_path: string;
 }
 
 function SeriesDetails() {
@@ -48,25 +34,13 @@ function SeriesDetails() {
   const ID = id.id;
   const URL = `https://api.themoviedb.org/3/tv/${ID}?api_key=${API_KEY}&language=en-US`;
   const URLIMG = `https://api.themoviedb.org/3/tv/${ID}/images?api_key=${API_KEY}`;
-  const URLCAST = `https://api.themoviedb.org/3/tv/${ID}/credits?api_key=${API_KEY}&language=en-US`;
-  const URLSIMMOVIES = `https://api.themoviedb.org/3/tv/${ID}/similar?api_key=${API_KEY}&language=en-US`;
 
   let [movies, setMovies] = useState<moviesProps | undefined>();
   let [pictures, setPictures] = useState<picturesProps | undefined>();
-  let [moviesRunTime, setMoviesRunTime] = useState<moviesProps | undefined>();
-  let [moviesGenres, setMoviesGenres] = useState<GenresProps | undefined>();
-  let [moviesCast, setMoviesCast] = useState<CastProps | undefined>();
-  let [moviesDir, setMoviesDir] = useState<CastProps | undefined>();
-  let [moviesSim, setMoviesSim] = useState<moviesProps | undefined>();
 
   useEffect(() => {
     getMovie();
     getPicture();
-    getMovieRunTime();
-    getMovieGenres();
-    getMovieCast();
-    getMovieDir();
-    getMovieSim();
   }, []);
 
   const getMovie = async () => {
@@ -79,36 +53,19 @@ function SeriesDetails() {
     setPictures(data.backdrops[0]);
   };
 
-  const getMovieRunTime = async () => {
-    const { data } = await axios.get(URL);
-    setMoviesRunTime(data.episode_run_time);
+  //--------------------
+
+  //___________________________
+
+  const [toggleState, setToggleState] = useState(1);
+
+  const toggleTab = (index: any) => {
+    setToggleState(index);
   };
 
-  const getMovieGenres = async () => {
-    const { data } = await axios.get(URL);
-    setMoviesGenres(data.genres);
-  };
+  //___________________________
 
-  const getMovieCast = async () => {
-    const { data } = await axios.get(URLCAST);
-    setMoviesCast(data.cast.slice(0, 9));
-  };
-
-  const getMovieDir = async () => {
-    const { data } = await axios.get(URLCAST);
-    setMoviesDir(data.crew.slice(0, 4));
-  };
-
-  const getMovieSim = async () => {
-    const { data } = await axios.get(URLSIMMOVIES);
-    setMoviesSim(data.results);
-  };
-
-  function refreshPage() {
-    setTimeout(() => {
-      window.location.reload();
-    }, 1);
-  }
+  //-------------------
 
   return (
     <>
@@ -126,8 +83,35 @@ function SeriesDetails() {
         </div>
       </div>
 
-      <SeriesInfo />
-      <SeriesSuggestion />
+      <div className="button_info">
+        <button
+          className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(1)}
+        >
+          Details
+        </button>
+
+        <button
+          className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(2)}
+        >
+          Suggestions
+        </button>
+      </div>
+
+      <div className="content-tabs">
+        <div
+          className={toggleState === 1 ? "content  active-content" : "content"}
+        >
+          <SeriesInfo />;
+        </div>
+
+        <div
+          className={toggleState === 2 ? "content  active-content" : "content"}
+        >
+          <SeriesSuggestion />
+        </div>
+      </div>
     </>
   );
 }

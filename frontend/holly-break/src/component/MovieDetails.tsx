@@ -51,6 +51,16 @@ function MovieDetails() {
     setPictures(data.backdrops[0]);
   };
 
+  //___________________________
+
+  const [toggleState, setToggleState] = useState(1);
+
+  const toggleTab = (index: any) => {
+    setToggleState(index);
+  };
+
+  //___________________________
+
   return (
     <>
       <div className="banner">
@@ -67,8 +77,35 @@ function MovieDetails() {
         </div>
       </div>
 
-      <MoviesInfo />
-      <MoviesSuggestion />
+      <div className="button_info">
+        <button
+          className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(1)}
+        >
+          Details
+        </button>
+
+        <button
+          className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(2)}
+        >
+          Suggestions
+        </button>
+      </div>
+
+      <div className="content-tabs">
+        <div
+          className={toggleState === 1 ? "content  active-content" : "content"}
+        >
+          <MoviesInfo />
+        </div>
+
+        <div
+          className={toggleState === 2 ? "content  active-content" : "content"}
+        >
+          <MoviesSuggestion />
+        </div>
+      </div>
     </>
   );
 }
