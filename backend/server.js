@@ -2,6 +2,8 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const userRoutes = require("./routes/user.routes.js");
 const profileRoutes = require("./routes/profile.routes.js");
+const topicRoutes = require("./routes/topic.routes.js");
+const answerRoutes = require("./routes/answer.routes.js");
 require("dotenv").config({ path: "./config/.env" });
 require("./config/db");
 
@@ -35,6 +37,12 @@ app.use("/api/user", userRoutes);
 
 //profil
 app.use("/api/profile", profileRoutes);
+
+//Topic
+app.use("/api/topic", topicRoutes);
+
+//answer
+app.use("/api/answer", answerRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}`);
