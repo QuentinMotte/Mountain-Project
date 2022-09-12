@@ -49,8 +49,6 @@ function SeriesDetails() {
   const URLCAST = `https://api.themoviedb.org/3/tv/${ID}/credits?api_key=${API_KEY}&language=en-US`;
   const URLSIMMOVIES = `https://api.themoviedb.org/3/tv/${ID}/similar?api_key=${API_KEY}&language=en-US`;
 
-  console.log(URL);
-
   let [movies, setMovies] = useState<moviesProps | undefined>();
   let [pictures, setPictures] = useState<picturesProps | undefined>();
   let [moviesRunTime, setMoviesRunTime] = useState<moviesProps | undefined>();
@@ -134,18 +132,11 @@ function SeriesDetails() {
 
         <div className="details">
           <div className="info_series_movies">
-            <h2 className="Title">{movies?.name}</h2>
-            <p className="TagLine">{movies?.tagline}</p>
-            <div className="crew">
-              {moviesDir?.map((crew) => (
-                <p>
-                  {crew.job} / {crew.name}
-                </p>
-              ))}
+            <div className="title_container">
+              <h1 className="Title">{movies?.name}</h1>
+              <p className="TagLine">{movies?.tagline}</p>
             </div>
-            <p className="airDate">First air date: {movies?.first_air_date}</p>
-            <p className="airDate">Last air date: {movies?.last_air_date}</p>
-            <p className="RunTime">Run time: {moviesRunTime?.[0]} min</p>
+
             <div className="genre_container">
               {moviesGenres?.map((genres) => (
                 <div className="genres">
@@ -156,22 +147,42 @@ function SeriesDetails() {
               ))}
             </div>
 
+            <div className="date">
+              <p className="airDate">
+                First air date: {movies?.first_air_date}
+              </p>
+              <p className="airDate">Last air date: {movies?.last_air_date}</p>
+              <p className="RunTime">Run time: {moviesRunTime?.[0]} min</p>
+              <p className="note">Note: {movies?.vote_average}</p>
+            </div>
+
+            <div className="date">
+              {moviesDir?.map((crew) => (
+                <p>
+                  {crew.job} / {crew.name}
+                </p>
+              ))}
+            </div>
+            <div className="date">
+              <p className="seasons">
+                Number of seasons: {movies?.number_of_seasons}
+              </p>
+              <p className="episodes">
+                Number of episodes: {movies?.number_of_episodes}
+              </p>
+            </div>
+
             <p className="resume">{movies?.overview}</p>
-            <p className="seasons">
-              Number of seasons: {movies?.number_of_seasons}
-            </p>
-            <p className="episodes">
-              Number of episodes: {movies?.number_of_episodes}
-            </p>
-            <p className="note">Note: {movies?.vote_average}</p>
           </div>
           <div className="info_cast">
             {moviesCast?.map((cast) => (
               <div>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500` + cast.profile_path}
-                  alt="cast"
-                />
+                <NavLink className="genre" to={`/Actor/${cast.id}`}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500` + cast.profile_path}
+                    alt="cast"
+                  />
+                </NavLink>
                 <p className="cast">{cast.name}</p>
                 <p className="character">{cast.character}</p>
               </div>

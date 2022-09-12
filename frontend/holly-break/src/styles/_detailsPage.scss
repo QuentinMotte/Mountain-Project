@@ -67,8 +67,36 @@
       background-color: $bg-color;
       text-align: center;
       color: $white;
+      padding: 3rem;
+
       .info_series_movies {
         width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        gap: 5rem;
+
+        .title_container {
+          h1 {
+            font-size: 7rem;
+            margin-bottom: 2rem;
+          }
+        }
+
+        .date {
+          display: flex;
+          flex-flow: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .resume {
+          text-align: justify;
+          width: 80%;
+        }
         .genre_container {
           display: flex;
           justify-content: center;
@@ -103,6 +131,11 @@
         gap: 5rem;
         img {
           width: 20rem;
+          transition: 0.2s ease-in-out;
+
+          &:hover {
+            transform: scale(1.05);
+          }
         }
       }
     }

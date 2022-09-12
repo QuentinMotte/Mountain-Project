@@ -1,0 +1,56 @@
+.content-container {
+  .container_actor {
+    background-color: $bg-color-light;
+    color: $white;
+    width: 135rem;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+    .container_info_actors {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-around;
+      align-items: center;
+      .image_actor {
+        width: 40%;
+        img {
+          width: 40rem;
+          border-radius: 1rem;
+        }
+      }
+
+      .info_actor {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6rem;
+
+        h1 {
+          font-weight: bold;
+          text-align: center;
+        }
+
+        p {
+          width: 80%;
+          text-align: justify;
+        }
+
+        a {
+          font-weight: bold;
+          transition: 0.2s ease-in-out;
+
+          i {
+            font-size: 5rem;
+          }
+
+          &:hover {
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+}

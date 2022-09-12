@@ -108,58 +108,69 @@ function MovieDetails() {
           alt="poster"
         />
         <div className="options">
-          <NavLink className="poster" to={`/Player/Movie/${movies?.id}`}>
-            <button>PLAY</button>
+          <NavLink className="poster" to={`/Player/movie/${movies?.id}`}>
+            <button>Play</button>
           </NavLink>
           <button>Watchlist</button>
           <button>Fave</button>
         </div>
       </div>
+
       <div className="info">
         <div className="button_info">
-          <button>Details</button>
-          <button>Suggestions</button>
+          <button className="tabs active-tabs">Details</button>
+          <button className="tabs">Suggestions</button>
         </div>
 
         <div className="details">
           <div className="info_series_movies">
-            <h2 className="Title">{movies?.title}</h2>
-            <p className="TagLine">{movies?.tagline}</p>
-            <div className="crew">
-              {moviesDir?.map((crew) => (
-                <p>
-                  {crew.job} / {crew.name}
-                </p>
-              ))}
+            <div className="title_container">
+              <h1 className="Title">{movies?.title}</h1>
+              <p className="TagLine">{movies?.tagline}</p>
             </div>
-            <p className="airDate">Release date: {movies?.release_date}</p>
-            <p className="RunTime">Run time: {movies?.runtime} min</p>
+
             <div className="genre_container">
               {moviesGenres?.map((genres) => (
                 <div className="genres">
-                  <NavLink className="genre" to={`/Movie/Genre/${genres.id}`}>
+                  <NavLink className="genre" to={`/movie/Genre/${genres.id}`}>
                     <button className="genre_button">{genres.name}</button>
                   </NavLink>
                 </div>
               ))}
             </div>
 
+            <div className="date">
+              <p className="airDate">Air date: {movies?.release_date}</p>
+              <p className="RunTime">Run time: {movies?.runtime} min</p>
+              <p className="note">Note: {movies?.vote_average}</p>
+            </div>
+
+            <div className="date">
+              {moviesDir?.map((crew) => (
+                <p>
+                  {crew.job} / {crew.name}
+                </p>
+              ))}
+            </div>
+
             <p className="resume">{movies?.overview}</p>
-            <p className="note">Note: {movies?.vote_average}</p>
           </div>
           <div className="info_cast">
             {moviesCast?.map((cast) => (
               <div>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500` + cast.profile_path}
-                  alt="cast"
-                />
+                <NavLink className="genre" to={`/Actor/${cast.id}`}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500` + cast.profile_path}
+                    alt="cast"
+                  />
+                </NavLink>
                 <p className="cast">{cast.name}</p>
                 <p className="character">{cast.character}</p>
               </div>
             ))}
           </div>
         </div>
+
         <div className="suggestions">
           <h3>Suggestions</h3>
           <div className="poster_movies">
@@ -167,7 +178,7 @@ function MovieDetails() {
               <NavLink
                 className="poster"
                 onClick={refreshPage}
-                to={`/Movie/${movieSim.id}`}
+                to={`/movie/${movieSim.id}`}
               >
                 <div id={movieSim.id} className="movies_container_poster">
                   <img
