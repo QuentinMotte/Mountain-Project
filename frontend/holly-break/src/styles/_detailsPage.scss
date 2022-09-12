@@ -41,8 +41,9 @@
     gap: 3rem;
     width: 150rem;
     margin: auto;
-    button {
-      height: 3rem;
+
+    .tabs {
+      height: 2rem;
       width: 12rem;
       cursor: pointer;
       border-radius: 0;
@@ -52,10 +53,30 @@
       text-transform: uppercase;
       transition: 0.2s ease-in-out;
 
+      //_____
+
+      padding: 10px;
+      text-align: center;
+      box-sizing: content-box;
+      position: relative;
+      outline: none;
+
       &:hover {
         background-color: $green;
         color: $white;
       }
+    }
+
+    .active-tabs::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% + 2px);
+      height: 5px;
+      background: $green;
     }
   }
 
@@ -106,8 +127,7 @@
           gap: 3rem;
           .genres {
             button {
-              height: 3rem;
-              width: 12rem;
+              padding: 6px;
               cursor: pointer;
               border-radius: 0;
               border: 0;
@@ -155,8 +175,9 @@
     font-weight: bold;
     font-size: 3rem;
 
-    h3 {
+    h2 {
       margin-left: 2rem;
+      padding-top: 2rem;
     }
     .poster_movies {
       display: flex;
@@ -181,43 +202,7 @@
 
 //____TABS
 
-.container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  word-break: break-all;
-}
-
-.bloc-tabs {
-  display: flex;
-}
-.tabs {
-  padding: 10px;
-  text-align: center;
-  width: 50%;
-  cursor: pointer;
-  box-sizing: content-box;
-  position: relative;
-  outline: none;
-}
-
-.active-tabs::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% + 2px);
-  height: 5px;
-  background: $green;
-}
-
-.content-tabs {
-  flex-grow: 1;
-}
 .content {
-  padding: 20px;
   width: 100%;
   height: 100%;
   display: none;

@@ -45,7 +45,7 @@ function MoviesSuggestion() {
   return (
     <>
       <div className="suggestions">
-        <h3>Suggestions</h3>
+        <h2>Suggestions</h2>
         <div className="poster_movies">
           {moviesSim?.map((movieSim) => (
             <NavLink
