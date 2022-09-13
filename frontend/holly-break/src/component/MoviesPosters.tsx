@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+const Slider = require("react-slick").default;
 
 const API_KEY = "a378b12e0a9383634a503a8f29d43915";
 
@@ -202,13 +203,25 @@ export function MoviesPosters() {
     setMoviesDoc(data.results);
   };
 
+  const settings = {
+    className: "center",
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 1,
+    swipeToSlide: true,
+    afterChange: function (index: any) {
+      console.log(
+        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+      );
+    },
+  };
+
   return (
     <>
       <h1>Movies</h1>
 
       <div className="container_herobanner">
-        <i className="fa-solid fa-arrow-left"></i>
-        <div className="herobanner">
+        <Slider {...settings} className="herobanner">
           {moviesTrend?.map((movie) => (
             <div id={movie.id} className="movies_popular">
               <img
@@ -224,8 +237,7 @@ export function MoviesPosters() {
               </div>
             </div>
           ))}
-        </div>
-        <i className="fa-solid fa-arrow-right"></i>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
