@@ -23,6 +23,21 @@ h1 {
       margin-left: 3rem;
       margin-right: 3rem;
     }
+
+    .slick-prev:before {
+      content: "<";
+      color: $white;
+      font-weight: bold;
+      font-size: 4rem;
+    }
+
+    .slick-next:before {
+      content: ">";
+      color: $white;
+      font-weight: bold;
+      font-size: 4rem;
+    }
+
     .herobanner {
       //display: flex;
       //overflow-x: scroll;
@@ -41,10 +56,12 @@ h1 {
 
         @media screen and (max-width: 1400px) {
           height: 40rem;
+          margin-left: 5rem;
         }
 
         @media screen and (max-width: 900px) {
           height: 25rem;
+          margin-left: 3rem;
         }
 
         @media screen and (max-width: 450px) {
@@ -178,7 +195,7 @@ h1 {
 
           @media screen and (max-width: 500px) {
             height: 25rem;
-            margin-left: 6rem;
+            margin-left: 4rem;
           }
 
           &:hover {

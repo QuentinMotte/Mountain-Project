@@ -198,10 +198,18 @@ export function SeriesPosters() {
     className: "center",
     infinite: true,
     centerPadding: "60px",
-    slidesToShow: 5,
+    slidesToShow: 6,
     swipeToSlide: true,
 
     responsive: [
+      {
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+
       {
         breakpoint: 1300,
         settings: {

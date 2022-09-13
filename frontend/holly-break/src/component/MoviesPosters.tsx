@@ -203,18 +203,6 @@ export function MoviesPosters() {
     setMoviesDoc(data.results);
   };
 
-  //-----------------------
-
-  function SampleNextArrow(props: any) {
-    const { className, style, onClick } = props;
-    return <i className="fa-solid fa-arrow-right"></i>;
-  }
-
-  function SamplePrevArrow(props: any) {
-    const { className, style, onClick } = props;
-    return <i className="fa-solid fa-arrow-left"></i>;
-  }
-
   //----------------------
 
   const settings = {
@@ -234,10 +222,18 @@ export function MoviesPosters() {
     className: "center",
     infinite: true,
     centerPadding: "60px",
-    slidesToShow: 5,
+    slidesToShow: 6,
     swipeToSlide: true,
 
     responsive: [
+      {
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+
       {
         breakpoint: 1300,
         settings: {
