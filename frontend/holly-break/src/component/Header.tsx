@@ -27,12 +27,21 @@ function Header() {
   const navigate = useNavigate();
 
   const onClickHandlerMovie = () => navigate(`/Search/${Search}`);
+
+  const token = localStorage.getItem("token");
+  const admin = localStorage.getItem("admin") === "true";
+  const profile = localStorage.getItem("profile");
+
   return (
     <>
       <header className="header">
         <div className="header__left">
-          {localStorage.getItem("token") ? (
+          {token && profile ? (
             <NavLink className="logoHome" to="/Home">
+              <img src={MyLogo} className="hollyLogo" alt="logo" />
+            </NavLink>
+          ) : token && !profile ? (
+            <NavLink className="logoHome" to="/Select-Profile">
               <img src={MyLogo} className="hollyLogo" alt="logo" />
             </NavLink>
           ) : (
@@ -40,7 +49,8 @@ function Header() {
               <img src={MyLogo} className="hollyLogo" alt="logo" />
             </NavLink>
           )}
-          {localStorage.getItem("token") ? (
+
+          {token && profile ? (
             <div className="navLink_container">
               <NavLink className="header_navLink" to={"/Home/Movies"}>
                 Movies
@@ -69,8 +79,7 @@ function Header() {
           ) : null}
         </div>
         <div className="header__right">
-          {localStorage.getItem("token") &&
-          localStorage.getItem("admin") === "true" ? (
+          {token && admin ? (
             <NavLink className="navLink_right" to={"/Admin"}>
               Admin
             </NavLink>
@@ -80,7 +89,7 @@ function Header() {
             </NavLink>
           )}
 
-          {localStorage.getItem("token") ? (
+          {token ? (
             <NavLink className="navLink_right" to={"/"} onClick={logOut}>
               Log Out
             </NavLink>

@@ -31,14 +31,13 @@ interface UserProfiles {
 }
 
 const id = localStorage.getItem("user");
-const id_user: any = id?.replace(/['"]+/g, "");
 
 function SelectProfile() {
   const [profiles, setProfiles] = React.useState<UserProfiles[]>([]);
 
   React.useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/profile/allProfiles/${id_user}`)
+      .get(`http://localhost:5000/api/profile/allProfiles/${id}`)
       .then((res) => {
         setProfiles(res.data);
       })
@@ -74,26 +73,69 @@ function SelectProfile() {
     }
   }
 
+  function handleChoiseProfile(id: string) {
+    localStorage.setItem("profile", id);
+    window.location.href = "/Home";
+  }
+
   return (
     <>
       <Header></Header>
-      <main className="content-container">
-        <h1 className="title">Choisis ton profil</h1>
-        {profiles.length > 0 ? (
+      <h1 className="title">Choisis ton profil</h1>
+      <main className="content-container content-container-selectProfil">
+        {profiles.length === 0 ? (
+          <>
+            <p className="no-profile">Vous n'avez pas encore de profil</p>
+            <div className="profile-another">
+              <NavLink to="/create-profile">
+                <i className="fa-sharp fa-solid fa-plus"></i>
+              </NavLink>
+            </div>
+          </>
+        ) : profiles.length === 1 || profiles.length === 2 ? (
           profiles.map((profile) => (
             <>
               <div className="select-profile">
-                <img
-                  src={matchAvatar(profile.avatar)}
-                  alt="avatar"
-                  className="profile-avatar"
-                />
-                <p className="profil-pseudo">{profile.pseudo}</p>
+                <a
+                  className="profile-link"
+                  onClick={() => handleChoiseProfile(profile._id)}
+                >
+                  <img
+                    src={matchAvatar(profile.avatar)}
+                    alt="avatar"
+                    className="profile-avatar"
+                  />
+                </a>
+                <p className="profile-pseudo">{profile.pseudo}</p>
+              </div>
+              <div className="profile-another">
+                <NavLink to="/create-profile">
+                  <i className="fa-sharp fa-solid fa-plus"></i>
+                </NavLink>
+              </div>
+            </>
+          ))
+        ) : profiles.length === 3 ? (
+          profiles.map((profile) => (
+            <>
+              <div className="select-profile">
+                <NavLink
+                  to="/home"
+                  className="profile-link"
+                  onClick={() => handleChoiseProfile(profile._id)}
+                >
+                  <img
+                    src={matchAvatar(profile.avatar)}
+                    alt="avatar"
+                    className="profile-avatar"
+                  />
+                </NavLink>
+                <p className="profile-pseudo">{profile.pseudo}</p>
               </div>
             </>
           ))
         ) : (
-          <p>Vous n'avez pas encore de profil</p>
+          <p>Vous avez atteint le nombre maximum de profil</p>
         )}
       </main>
       <Footer></Footer>

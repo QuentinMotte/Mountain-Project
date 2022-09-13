@@ -128,9 +128,7 @@ function CreateProfile() {
 
   // import the user id from local storage and remove the quotes
 
-  const id = localStorage.getItem("user");
-
-  const id_user: any = id?.replace(/['"]+/g, "");
+  const id: any = localStorage.getItem("user");
 
   // Collect the data
 
@@ -140,7 +138,7 @@ function CreateProfile() {
     avatar: profileAvatar.avatar,
     pin_code: pin_code,
     is_young: profileYoung.is_young,
-    id_user: id_user,
+    id_user: id,
   };
 
   // handle submit and send data
