@@ -18,54 +18,41 @@ module.exports.createAnswer = async (req, res) => {
   }
 };
 
-//Obtenir tout les profils
+//Obtenir tout les commentaires
 module.exports.getAllAnswers = async (req, res) => {
   const answers = await AnswerModel.find();
   res.status(200).json(answers);
 };
 
-// //Obtenir les infos de tous les profils d'un seul utilisateur
-// module.exports.userProfilesInfo = async (req, res) => {
-//   const allProfiles = await ProfileModel.find({ id_user: req.params.id_user });
-//   res.status(200).json(allProfiles);
-// };
+//Obtenir les commentaires d'un topic
+module.exports.getAllAnswersOfOneTopic = async (req, res) => {
+  const allAnswers = await AnswerModel.find({
+    id_topic: req.params.id_topic,
+  });
+  res.status(200).json(allAnswers);
+};
 
-// //Obtenir les infos d'un seul profil
-// module.exports.profileInfo = (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
+//Mettre à jour une réponse
+module.exports.updateAnswer = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
 
-//   ProfileModel.findById(req.params.id, (err, docs) => {
-//     if (!err) res.send(docs);
-//     else console.log("ID unknown : " + err);
-//   });
-// };
-
-// //Mettre à jour un profil
-// module.exports.updateProfile = async (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
-
-//   try {
-//     await ProfileModel.findOneAndUpdate(
-//       { _id: req.params.id },
-//       {
-//         $set: {
-//           pseudo: req.body.pseudo,
-//           quote: req.body.quote,
-//           avatar: req.body.avatar,
-//           pin_code: req.body.pin_code,
-//           is_young: req.body.is_young,
-//         },
-//       },
-//       { new: true, upsert: true, setDefaultOnInsert: true, runValidators: true }
-//     ).then((docs) => res.status(200).send(docs));
-//   } catch (err) {
-//     const errors = updateProfileErrors(err);
-//     res.status(500).send({ errors });
-//     console.log(err);
-//   }
-// };
+  try {
+    await AnswerModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          content: req.body.content,
+        },
+      },
+      { new: true, upsert: true, setDefaultOnInsert: true, runValidators: true }
+    ).then((docs) => res.status(200).send(docs));
+  } catch (err) {
+    // const errors = updateProfileErrors(err);
+    res.status(500).send({ err });
+    console.log(err);
+  }
+};
 
 // //update like
 
@@ -89,7 +76,6 @@ module.exports.updateLike = async (req, res) => {
 
 //remove from lilke
 module.exports.removeLike = async (req, res) => {
-  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -105,15 +91,15 @@ module.exports.removeLike = async (req, res) => {
   }
 };
 
-// //supprimer un profil
-// module.exports.deleteProfile = async (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
+//supprimer un profil
+module.exports.deleteAnswer = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
 
-//   try {
-//     await ProfileModel.remove({ _id: req.params.id }).exec();
-//     res.status(200).json({ message: "Succesfully deleted" });
-//   } catch (err) {
-//     return res.status(500).json({ message: err });
-//   }
-// };
+  try {
+    await AnswerModel.remove({ _id: req.params.id }).exec();
+    res.status(200).json({ message: "Succesfully deleted" });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};

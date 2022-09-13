@@ -64,3 +64,39 @@ module.exports.deleteUser = async (req, res) => {
     return res.status(500).json({ message: err });
   }
 };
+
+module.exports.addOneIdProfile = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+  try {
+    await UserModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $addToSet: {
+          id_profiles: req.body.id_profiles,
+        },
+      },
+      { new: true, upsert: true }
+    ).then((docs) => res.status(200).send(docs));
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+//remove from Watchlist
+module.exports.removeOneIdProfile = async (req, res) => {
+  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await UserModel.findByIdAndUpdate(
+      req.params.id,
+
+      { $pull: { id_profiles: req.body.id_profiles } },
+      { new: true, upsert: true }
+    ).then((docs) => res.status(200).json(docs));
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};

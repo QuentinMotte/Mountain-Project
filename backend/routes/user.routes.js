@@ -19,5 +19,9 @@ router.get("/:id", userController.userInfo);
 router.put("/:id", userController.updateUser);
 //delete
 router.delete("/:id", userController.deleteUser);
+//update array profil id profil
+router.patch("/addProfile/:id", userController.addOneIdProfile);
+//remove array profil id profil
+router.patch("/removeProfile/:id", userController.removeOneIdProfile);
 
 module.exports = router;
