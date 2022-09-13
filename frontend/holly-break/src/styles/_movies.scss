@@ -17,6 +17,11 @@ h1 {
     align-items: center;
     gap: 3rem;
     color: $white;
+
+    @media screen and (max-width: 700px) {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
     .herobanner {
       display: flex;
       overflow-x: scroll;
@@ -33,10 +38,28 @@ h1 {
         position: relative;
         height: 40rem;
 
+        @media screen and (max-width: 850px) {
+          height: 25rem;
+        }
+
+        @media screen and (max-width: 700px) {
+          height: 18rem;
+        }
+
         img {
           width: 75rem;
           position: relative;
           border-radius: 5px;
+
+          @media screen and (max-width: 850px) {
+            height: 25rem;
+            width: 90%;
+          }
+
+          @media screen and (max-width: 700px) {
+            width: 90%;
+            height: 18rem;
+          }
         }
 
         .title {
@@ -79,6 +102,11 @@ h1 {
     margin-left: 10rem;
     margin-right: 10rem;
 
+    @media screen and (max-width: 700px) {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
     .genre {
       display: flex;
       text-align: center;
@@ -112,6 +140,10 @@ h1 {
           height: 30rem;
           cursor: pointer;
           transition: 0.2s ease-in-out;
+
+          @media screen and (max-width: 700px) {
+            height: 20rem;
+          }
 
           &:hover {
             transform: scale(1.05);
