@@ -222,14 +222,22 @@ export function MoviesPosters() {
     className: "center",
     infinite: true,
     centerPadding: "60px",
-    slidesToShow: 6,
+    slidesToShow: 7,
     swipeToSlide: true,
 
     responsive: [
       {
+        breakpoint: 1650,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+        },
+      },
+
+      {
         breakpoint: 1500,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 5,
           slidesToScroll: 1,
         },
       },

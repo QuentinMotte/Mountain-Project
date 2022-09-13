@@ -48,7 +48,10 @@ function Actors() {
             <h1>{Actor?.name}</h1>
             <p>{Actor?.biography}</p>
             <br />
-            <a href={`https://www.imdb.com/name/${Actor?.imdb_id}/`}>
+            <a
+              target="_blank"
+              href={`https://www.imdb.com/name/${Actor?.imdb_id}/`}
+            >
               <i className="fa-brands fa-imdb"></i>
             </a>
           </div>
