@@ -203,12 +203,65 @@ export function MoviesPosters() {
     setMoviesDoc(data.results);
   };
 
+  //-----------------------
+
+  function SampleNextArrow(props: any) {
+    const { className, style, onClick } = props;
+    return <i className="fa-solid fa-arrow-right"></i>;
+  }
+
+  function SamplePrevArrow(props: any) {
+    const { className, style, onClick } = props;
+    return <i className="fa-solid fa-arrow-left"></i>;
+  }
+
+  //----------------------
+
   const settings = {
     className: "center",
     infinite: true,
     centerPadding: "60px",
     slidesToShow: 1,
     swipeToSlide: true,
+    afterChange: function (index: any) {
+      console.log(
+        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+      );
+    },
+  };
+
+  const settings2 = {
+    className: "center",
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 5,
+    swipeToSlide: true,
+
+    responsive: [
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 950,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+
     afterChange: function (index: any) {
       console.log(
         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
@@ -245,7 +298,7 @@ export function MoviesPosters() {
           <h3>Drama</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesDrama?.map((movieDrama) => (
             <NavLink className="poster" to={`/Movie/${movieDrama.id}`}>
               <div id={movieDrama.id} className="movies_container_poster">
@@ -258,7 +311,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -266,7 +319,7 @@ export function MoviesPosters() {
           <h3>Fantasy</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesFantasy?.map((movieFantasy) => (
             <NavLink className="poster" to={`/Movie/${movieFantasy.id}`}>
               <div id={movieFantasy.id} className="movies_container_poster">
@@ -279,7 +332,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -287,7 +340,7 @@ export function MoviesPosters() {
           <h3>Comedy</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesComedy?.map((movieComedy) => (
             <NavLink className="poster" to={`/Movie/${movieComedy.id}`}>
               <div id={movieComedy.id} className="movies_container_poster">
@@ -300,7 +353,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -308,7 +361,7 @@ export function MoviesPosters() {
           <h3>Thriller</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesThriller?.map((movieThriller) => (
             <NavLink className="poster" to={`/Movie/${movieThriller.id}`}>
               <div id={movieThriller.id} className="movies_container_poster">
@@ -322,7 +375,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -330,7 +383,7 @@ export function MoviesPosters() {
           <h3>Horror</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesHorror?.map((movieHorror) => (
             <NavLink className="poster" to={`/Movie/${movieHorror.id}`}>
               <div id={movieHorror.id} className="movies_container_poster">
@@ -343,7 +396,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -351,7 +404,7 @@ export function MoviesPosters() {
           <h3>Action</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesAction?.map((movieAction) => (
             <NavLink className="poster" to={`/Movie/${movieAction.id}`}>
               <div id={movieAction.id} className="movies_container_poster">
@@ -364,7 +417,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -372,7 +425,7 @@ export function MoviesPosters() {
           <h3>Adventure</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesAdventure?.map((movieAdventure) => (
             <NavLink className="poster" to={`/Movie/${movieAdventure.id}`}>
               <div id={movieAdventure.id} className="movies_container_poster">
@@ -386,7 +439,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -394,7 +447,7 @@ export function MoviesPosters() {
           <h3>Crime</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesCrime?.map((movieCrime) => (
             <NavLink className="poster" to={`/Movie/${movieCrime.id}`}>
               <div id={movieCrime.id} className="movies_container_poster">
@@ -407,7 +460,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -415,7 +468,7 @@ export function MoviesPosters() {
           <h3>War</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesWar?.map((movieWar) => (
             <NavLink className="poster" to={`/Movie/${movieWar.id}`}>
               <div id={movieWar.id} className="movies_container_poster">
@@ -426,7 +479,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -434,7 +487,7 @@ export function MoviesPosters() {
           <h3>Animation</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesAnimation?.map((movieAnimation) => (
             <NavLink className="poster" to={`/Movie/${movieAnimation.id}`}>
               <div id={movieAnimation.id} className="movies_container_poster">
@@ -448,7 +501,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -456,7 +509,7 @@ export function MoviesPosters() {
           <h3>Family</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesFam?.map((movieFam) => (
             <NavLink className="poster" to={`/Movie/${movieFam.id}`}>
               <div id={movieFam.id} className="movies_container_poster">
@@ -467,7 +520,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -475,7 +528,7 @@ export function MoviesPosters() {
           <h3>Western</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesWestern?.map((movieWestern) => (
             <NavLink className="poster" to={`/Movie/${movieWestern.id}`}>
               <div id={movieWestern.id} className="movies_container_poster">
@@ -488,7 +541,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -496,7 +549,7 @@ export function MoviesPosters() {
           <h3>Music</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesMusic?.map((movieMusic) => (
             <NavLink className="poster" to={`/Movie/${movieMusic.id}`}>
               <div id={movieMusic.id} className="movies_container_poster">
@@ -509,7 +562,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -517,7 +570,7 @@ export function MoviesPosters() {
           <h3>Sciences-Fiction</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesSyfy?.map((movieSyfy) => (
             <NavLink className="poster" to={`/Movie/${movieSyfy.id}`}>
               <div id={movieSyfy.id} className="movies_container_poster">
@@ -530,7 +583,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -538,7 +591,7 @@ export function MoviesPosters() {
           <h3>Mystery</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesMyst?.map((movieMyst) => (
             <NavLink className="poster" to={`/Movie/${movieMyst.id}`}>
               <div id={movieMyst.id} className="movies_container_poster">
@@ -551,7 +604,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -559,7 +612,7 @@ export function MoviesPosters() {
           <h3>History</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesHistory?.map((movieHistory) => (
             <NavLink className="poster" to={`/Movie/${movieHistory.id}`}>
               <div id={movieHistory.id} className="movies_container_poster">
@@ -572,7 +625,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -580,7 +633,7 @@ export function MoviesPosters() {
           <h3>TV Movies</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesTVMovie?.map((movieTV) => (
             <NavLink className="poster" to={`/Movie/${movieTV.id}`}>
               <div id={movieTV.id} className="movies_container_poster">
@@ -591,7 +644,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -599,7 +652,7 @@ export function MoviesPosters() {
           <h3>Romance</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesRom?.map((movieRom) => (
             <NavLink className="poster" to={`/Movie/${movieRom.id}`}>
               <div id={movieRom.id} className="movies_container_poster">
@@ -610,7 +663,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -618,7 +671,7 @@ export function MoviesPosters() {
           <h3>Documentary</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {moviesDoc?.map((movieDoc) => (
             <NavLink className="poster" to={`/Movie/${movieDoc.id}`}>
               <div id={movieDoc.id} className="movies_container_poster">
@@ -629,7 +682,7 @@ export function MoviesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
     </>
   );
