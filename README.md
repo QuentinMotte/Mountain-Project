@@ -22,7 +22,7 @@ We have the ambition to make a "Netflix"-like website without the movies of cour
 - Subscribe (with confirmation e-mail)
 - Multiple profile creation by account
 - Watchlist / Fav
-- Watchin' History
+- Watchin' History 
 - Search by Title, Actors, Genre
 
 ### Figma / Wireframe
