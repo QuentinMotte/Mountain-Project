@@ -35,170 +35,47 @@ module.exports.getMoviesTopics = async (req, res) => {
   res.status(200).json(topics);
 };
 
-//Obtenir les infos de tous les profils d'un seul utilisateur
-// module.exports.userProfilesInfo = async (req, res) => {
-//   const allProfiles = await ProfileModel.find({ id_user: req.params.id_user });
-//   res.status(200).json(allProfiles);
-// };
+//Mettre à jour une réponse
+module.exports.updateTopic = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
 
-// //Obtenir les infos d'un seul profil
-// module.exports.profileInfo = (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
+  try {
+    await TopicModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          title: req.body.title,
+          category: req.body.category,
+          content: req.body.content,
+        },
+      },
+      { new: true, upsert: true, setDefaultOnInsert: true, runValidators: true }
+    ).then((docs) => res.status(200).send(docs));
+  } catch (err) {
+    // const errors = updateProfileErrors(err);
+    res.status(500).send({ err });
+    console.log(err);
+  }
+};
 
-//   ProfileModel.findById(req.params.id, (err, docs) => {
-//     if (!err) res.send(docs);
-//     else console.log("ID unknown : " + err);
-//   });
-// };
+//Obtenir les topic d'un profil
+module.exports.getAllTopicsOfOneProfile = async (req, res) => {
+  const allTopics = await TopicModel.find({
+    id_profile: req.params.id_profile,
+  });
+  res.status(200).json(allTopics);
+};
 
-// //Mettre à jour un profil
-// module.exports.updateProfile = async (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
+//supprimer un topic
+module.exports.deleteTopic = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
 
-//   try {
-//     await ProfileModel.findOneAndUpdate(
-//       { _id: req.params.id },
-//       {
-//         $set: {
-//           pseudo: req.body.pseudo,
-//           quote: req.body.quote,
-//           avatar: req.body.avatar,
-//           pin_code: req.body.pin_code,
-//           is_young: req.body.is_young,
-//         },
-//       },
-//       { new: true, upsert: true, setDefaultOnInsert: true, runValidators: true }
-//     ).then((docs) => res.status(200).send(docs));
-//   } catch (err) {
-//     const errors = updateProfileErrors(err);
-//     res.status(500).send({ errors });
-//     console.log(err);
-//   }
-// };
-
-// //update WatchList
-
-// module.exports.updateWatchList = async (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
-//   try {
-//     await ProfileModel.findOneAndUpdate(
-//       { _id: req.params.id },
-//       {
-//         $addToSet: {
-//           watchList: req.body.watchList,
-//         },
-//       },
-//       { new: true, upsert: true }
-//     ).then((docs) => res.status(200).send(docs));
-//   } catch (err) {
-//     res.status(500).json({ message: err });
-//   }
-// };
-
-// //update Favorites
-
-// module.exports.updateFavorites = async (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
-//   try {
-//     await ProfileModel.findOneAndUpdate(
-//       { _id: req.params.id },
-//       {
-//         $addToSet: {
-//           favorites: req.body.favorites,
-//         },
-//       },
-//       { new: true, upsert: true }
-//     ).then((docs) => res.status(200).send(docs));
-//   } catch (err) {
-//     res.status(500).json({ message: err });
-//   }
-// };
-
-// //update Historic
-
-// module.exports.updateHistoric = async (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
-//   try {
-//     await ProfileModel.findOneAndUpdate(
-//       { _id: req.params.id },
-//       {
-//         $addToSet: {
-//           historic: req.body.historic,
-//         },
-//       },
-//       { new: true, upsert: true }
-//     ).then((docs) => res.status(200).send(docs));
-//   } catch (err) {
-//     res.status(500).json({ message: err });
-//   }
-// };
-
-// //remove from Watchlist
-// module.exports.removeOneFromWatchlist = async (req, res) => {
-//   //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
-
-//   try {
-//     await ProfileModel.findByIdAndUpdate(
-//       req.params.id,
-
-//       { $pull: { watchList: req.body.watchList } },
-//       { new: true, upsert: true }
-//     ).then((docs) => res.status(200).json(docs));
-//   } catch (err) {
-//     return res.status(500).json({ message: err });
-//   }
-// };
-
-// //remove from Favorites
-// module.exports.removeOneFromFavorites = async (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
-
-//   try {
-//     await ProfileModel.findByIdAndUpdate(
-//       req.params.id,
-
-//       { $pull: { favorites: req.body.favorites } },
-//       { new: true, upsert: true }
-//     ).then((docs) => res.status(200).json(docs));
-//   } catch (err) {
-//     return res.status(500).json({ message: err });
-//   }
-// };
-
-// //remove from Historic
-// module.exports.removeOneFromHistoric = async (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
-
-//   try {
-//     await ProfileModel.findByIdAndUpdate(
-//       req.params.id,
-
-//       { $pull: { historic: req.body.historic } },
-//       { new: true, upsert: true }
-//     ).then((docs) => res.status(200).json(docs));
-//   } catch (err) {
-//     return res.status(500).json({ message: err });
-//   }
-// };
-
-// //supprimer un profil
-// module.exports.deleteProfile = async (req, res) => {
-//   if (!ObjectID.isValid(req.params.id))
-//     return res.status(400).send("ID unknown : " + req.params.id);
-
-//   try {
-//     await ProfileModel.remove({ _id: req.params.id }).exec();
-//     res.status(200).json({ message: "Succesfully deleted" });
-//   } catch (err) {
-//     return res.status(500).json({ message: err });
-//   }
-// };
+  try {
+    await TopicModel.deleteOne({ _id: req.params.id }).exec();
+    res.status(200).json({ message: "Succesfully deleted" });
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};

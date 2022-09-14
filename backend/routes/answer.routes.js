@@ -11,12 +11,15 @@ router.get("/", answerController.getAllAnswers);
 router.get("/oneTopic/:id_topic", answerController.getAllAnswersOfOneTopic);
 
 //Obtenir les commentaires d'un profil
-router.get("/:id_profile", answerController.getAllAnswersOfOneTopic);
+router.get(
+  "/oneProfile/:id_profile",
+  answerController.getAllAnswersOfOneProfile
+);
 
 //update comments
 router.put("/update/:id", answerController.updateAnswer);
-//remocomments
-router.put("/update/:id", answerController.updateAnswer);
+//delete comments
+router.delete("/:id", answerController.deleteAnswer);
 
 //update like
 router.patch("/update_like/:id", answerController.updateLike);

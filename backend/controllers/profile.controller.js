@@ -192,7 +192,7 @@ module.exports.deleteProfile = async (req, res) => {
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
-    await ProfileModel.remove({ _id: req.params.id }).exec();
+    await ProfileModel.deleteOne({ _id: req.params.id }).exec();
     res.status(200).json({ message: "Succesfully deleted" });
   } catch (err) {
     return res.status(500).json({ message: err });

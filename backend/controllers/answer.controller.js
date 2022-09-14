@@ -3,14 +3,13 @@ const ObjectID = require("mongoose").Types.ObjectId;
 
 //Create answer topic
 module.exports.createAnswer = async (req, res) => {
-  const { id_profile, id_topic, content, like } = req.body;
+  const { id_profile, id_topic, content } = req.body;
 
   try {
     const answer = await AnswerModel.create({
       id_profile,
       id_topic,
       content,
-      like,
     });
     res.status(201).send({ answer: answer._id });
   } catch (err) {
@@ -28,6 +27,13 @@ module.exports.getAllAnswers = async (req, res) => {
 module.exports.getAllAnswersOfOneTopic = async (req, res) => {
   const allAnswers = await AnswerModel.find({
     id_topic: req.params.id_topic,
+  });
+  res.status(200).json(allAnswers);
+};
+//Obtenir les commentaires d'un profil
+module.exports.getAllAnswersOfOneProfile = async (req, res) => {
+  const allAnswers = await AnswerModel.find({
+    id_profile: req.params.id_profile,
   });
   res.status(200).json(allAnswers);
 };
@@ -91,13 +97,13 @@ module.exports.removeLike = async (req, res) => {
   }
 };
 
-//supprimer un profil
+//supprimer un commentaire
 module.exports.deleteAnswer = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
   try {
-    await AnswerModel.remove({ _id: req.params.id }).exec();
+    await AnswerModel.deleteOne({ _id: req.params.id }).exec();
     res.status(200).json({ message: "Succesfully deleted" });
   } catch (err) {
     return res.status(500).json({ message: err });
