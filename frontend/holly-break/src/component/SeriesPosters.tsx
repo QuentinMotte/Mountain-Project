@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+const Slider = require("react-slick").default;
 
 const API_KEY = "a378b12e0a9383634a503a8f29d43915";
 
@@ -177,12 +178,75 @@ export function SeriesPosters() {
     const { data } = await axios.get(URLReality);
     setTVReality(data.results);
   };
+
+  //-------
+
+  const settings = {
+    className: "center",
+    infinite: true,
+    centerPadding: "-20px",
+    slidesToShow: 1,
+    swipeToSlide: true,
+    afterChange: function (index: any) {
+      console.log(
+        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+      );
+    },
+  };
+
+  const settings2 = {
+    className: "center",
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 6,
+    swipeToSlide: true,
+
+    responsive: [
+      {
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 950,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+
+    afterChange: function (index: any) {
+      console.log(
+        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+      );
+    },
+  };
+
+  //------
   return (
     <>
       <h1>Series</h1>
       <div className="container_herobanner">
-        <i className="fa-solid fa-arrow-left"></i>
-        <div className="herobanner">
+        <Slider {...settings} className="herobanner">
           {TVTrend?.map((tvshow) => (
             <div id={tvshow.id} className="movies_popular">
               <img
@@ -198,8 +262,7 @@ export function SeriesPosters() {
               </div>
             </div>
           ))}
-        </div>
-        <i className="fa-solid fa-arrow-right"></i>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -207,7 +270,7 @@ export function SeriesPosters() {
           <h3>Drama</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVDrama?.map((TVDrama) => (
             <NavLink className="poster" to={`/tv/${TVDrama.id}`}>
               <div id={TVDrama.id} className="movies_container_poster">
@@ -218,7 +281,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -226,7 +289,7 @@ export function SeriesPosters() {
           <h3>Crime</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVCrime?.map((TVCrime) => (
             <NavLink className="poster" to={`/tv/${TVCrime.id}`}>
               <div id={TVCrime.id} className="movies_container_poster">
@@ -237,7 +300,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -245,7 +308,7 @@ export function SeriesPosters() {
           <h3>Mystery</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVMystery?.map((TVMystery) => (
             <NavLink className="poster" to={`/tv/${TVMystery.id}`}>
               <div id={TVMystery.id} className="movies_container_poster">
@@ -258,7 +321,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -266,7 +329,7 @@ export function SeriesPosters() {
           <h3>Comedy</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVComedy?.map((TVComedy) => (
             <NavLink className="poster" to={`/tv/${TVComedy.id}`}>
               <div id={TVComedy.id} className="movies_container_poster">
@@ -277,7 +340,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -285,7 +348,7 @@ export function SeriesPosters() {
           <h3>Sci-Fi & Fantasy</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVFantasy?.map((TVFantasy) => (
             <NavLink className="poster" to={`/tv/${TVFantasy.id}`}>
               <div id={TVFantasy.id} className="movies_container_poster">
@@ -298,7 +361,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -306,7 +369,7 @@ export function SeriesPosters() {
           <h3>War & Politics</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVWar?.map((TVWar) => (
             <NavLink className="poster" to={`/tv/${TVWar.id}`}>
               <div id={TVWar.id} className="movies_container_poster">
@@ -317,7 +380,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -325,7 +388,7 @@ export function SeriesPosters() {
           <h3>Action & Adventure</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVAction?.map((TVAction) => (
             <NavLink className="poster" to={`/tv/${TVAction.id}`}>
               <div id={TVAction.id} className="movies_container_poster">
@@ -336,7 +399,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -344,7 +407,7 @@ export function SeriesPosters() {
           <h3>Western</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVWestern?.map((TVWestern) => (
             <NavLink className="poster" to={`/tv/${TVWestern.id}`}>
               <div id={TVWestern.id} className="movies_container_poster">
@@ -357,7 +420,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -365,7 +428,7 @@ export function SeriesPosters() {
           <h3>Soap</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVSoap?.map((TVSoap) => (
             <NavLink className="poster" to={`/tv/${TVSoap.id}`}>
               <div id={TVSoap.id} className="movies_container_poster">
@@ -376,7 +439,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -384,7 +447,7 @@ export function SeriesPosters() {
           <h3>Family</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVFam?.map((TVFam) => (
             <NavLink className="poster" to={`/tv/${TVFam.id}`}>
               <div id={TVFam.id} className="movies_container_poster">
@@ -395,7 +458,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -403,7 +466,7 @@ export function SeriesPosters() {
           <h3>Kids</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVKid?.map((TVKid) => (
             <NavLink className="poster" to={`/tv/${TVKid.id}`}>
               <div id={TVKid.id} className="movies_container_poster">
@@ -414,7 +477,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -422,7 +485,7 @@ export function SeriesPosters() {
           <h3>Documentary</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVDoc?.map((TVDoc) => (
             <NavLink className="poster" to={`/tv/${TVDoc.id}`}>
               <div id={TVDoc.id} className="movies_container_poster">
@@ -433,7 +496,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -441,7 +504,7 @@ export function SeriesPosters() {
           <h3>Talk</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVTalk?.map((TVTalk) => (
             <NavLink className="poster" to={`/tv/${TVTalk.id}`}>
               <div id={TVTalk.id} className="movies_container_poster">
@@ -452,7 +515,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -460,7 +523,7 @@ export function SeriesPosters() {
           <h3>News</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVNews?.map((TVNews) => (
             <NavLink className="poster" to={`/tv/${TVNews.id}`}>
               <div id={TVNews.id} className="movies_container_poster">
@@ -471,7 +534,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
 
       <div className="container_loop_movies">
@@ -479,7 +542,7 @@ export function SeriesPosters() {
           <h3>Reality</h3>
           <i className="fa-solid fa-arrow-right"></i>
         </NavLink>
-        <div className="poster_movies">
+        <Slider {...settings2} className="poster_movies">
           {TVReality?.map((TVReality) => (
             <NavLink className="poster" to={`/tv/${TVReality.id}`}>
               <div id={TVReality.id} className="movies_container_poster">
@@ -492,7 +555,7 @@ export function SeriesPosters() {
               </div>
             </NavLink>
           ))}
-        </div>
+        </Slider>
       </div>
     </>
   );

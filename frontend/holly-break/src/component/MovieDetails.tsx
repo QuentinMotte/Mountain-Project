@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
+import MoviesInfo from "./MoviesInfo";
+import MoviesSuggestion from "./MoviesSuggestion";
 
 const API_KEY = "a378b12e0a9383634a503a8f29d43915";
 
@@ -23,45 +25,20 @@ interface picturesProps {
   file_path: string;
 }
 
-interface GenresProps {
-  map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
-  id: number;
-  name: string;
-}
-
-interface CastProps {
-  map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
-  id: number;
-  name: string;
-  character: string;
-  profile_path: string;
-  job: string;
-}
-
 function MovieDetails() {
   let id = useParams();
   const ID = id.id;
   const URL = `https://api.themoviedb.org/3/movie/${ID}?api_key=${API_KEY}&language=en-US`;
   const URLIMG = `https://api.themoviedb.org/3/movie/${ID}/images?api_key=${API_KEY}`;
-  const URLCAST = `https://api.themoviedb.org/3/movie/${ID}/credits?api_key=${API_KEY}&language=en-US`;
-  const URLSIMMOVIES = `https://api.themoviedb.org/3/movie/${ID}/similar?api_key=${API_KEY}&language=en-US&page=1`;
 
   console.log(URL);
 
   let [movies, setMovies] = useState<moviesProps | undefined>();
   let [pictures, setPictures] = useState<picturesProps | undefined>();
-  let [moviesGenres, setMoviesGenres] = useState<GenresProps | undefined>();
-  let [moviesCast, setMoviesCast] = useState<CastProps | undefined>();
-  let [moviesDir, setMoviesDir] = useState<CastProps | undefined>();
-  let [moviesSim, setMoviesSim] = useState<moviesProps | undefined>();
 
   useEffect(() => {
     getMovie();
     getPicture();
-    getMovieGenres();
-    getMovieCast();
-    getMovieSim();
-    getMovieDir();
   }, []);
 
   const getMovie = async () => {
@@ -74,31 +51,15 @@ function MovieDetails() {
     setPictures(data.backdrops[0]);
   };
 
-  const getMovieGenres = async () => {
-    const { data } = await axios.get(URL);
-    setMoviesGenres(data.genres);
+  //___________________________
+
+  const [toggleState, setToggleState] = useState(1);
+
+  const toggleTab = (index: any) => {
+    setToggleState(index);
   };
 
-  const getMovieCast = async () => {
-    const { data } = await axios.get(URLCAST);
-    setMoviesCast(data.cast.slice(0, 9));
-  };
-
-  const getMovieDir = async () => {
-    const { data } = await axios.get(URLCAST);
-    setMoviesDir(data.crew.slice(0, 4));
-  };
-
-  const getMovieSim = async () => {
-    const { data } = await axios.get(URLSIMMOVIES);
-    setMoviesSim(data.results);
-  };
-
-  function refreshPage() {
-    setTimeout(() => {
-      window.location.reload();
-    }, 1);
-  }
+  //___________________________
 
   return (
     <>
@@ -108,78 +69,41 @@ function MovieDetails() {
           alt="poster"
         />
         <div className="options">
-          <NavLink className="poster" to={`/Player/Movie/${movies?.id}`}>
-            <button>PLAY</button>
+          <NavLink className="poster" to={`/Player/movie/${movies?.id}`}>
+            <button>Play</button>
           </NavLink>
           <button>Watchlist</button>
           <button>Fave</button>
         </div>
       </div>
-      <div className="info">
-        <div className="button_info">
-          <button>Details</button>
-          <button>Suggestions</button>
+
+      <div className="button_info">
+        <button
+          className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(1)}
+        >
+          Details
+        </button>
+
+        <button
+          className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
+          onClick={() => toggleTab(2)}
+        >
+          Suggestions
+        </button>
+      </div>
+
+      <div className="content-tabs">
+        <div
+          className={toggleState === 1 ? "content  active-content" : "content"}
+        >
+          <MoviesInfo />
         </div>
 
-        <div className="details">
-          <div className="info_series_movies">
-            <h2 className="Title">{movies?.title}</h2>
-            <p className="TagLine">{movies?.tagline}</p>
-            <div className="crew">
-              {moviesDir?.map((crew) => (
-                <p>
-                  {crew.job} / {crew.name}
-                </p>
-              ))}
-            </div>
-            <p className="airDate">Release date: {movies?.release_date}</p>
-            <p className="RunTime">Run time: {movies?.runtime} min</p>
-            <div className="genre_container">
-              {moviesGenres?.map((genres) => (
-                <div className="genres">
-                  <NavLink className="genre" to={`/Movie/Genre/${genres.id}`}>
-                    <button className="genre_button">{genres.name}</button>
-                  </NavLink>
-                </div>
-              ))}
-            </div>
-
-            <p className="resume">{movies?.overview}</p>
-            <p className="note">Note: {movies?.vote_average}</p>
-          </div>
-          <div className="info_cast">
-            {moviesCast?.map((cast) => (
-              <div>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500` + cast.profile_path}
-                  alt="cast"
-                />
-                <p className="cast">{cast.name}</p>
-                <p className="character">{cast.character}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="suggestions">
-          <h3>Suggestions</h3>
-          <div className="poster_movies">
-            {moviesSim?.map((movieSim) => (
-              <NavLink
-                className="poster"
-                onClick={refreshPage}
-                to={`/Movie/${movieSim.id}`}
-              >
-                <div id={movieSim.id} className="movies_container_poster">
-                  <img
-                    src={
-                      `https://image.tmdb.org/t/p/w500` + movieSim.poster_path
-                    }
-                    alt="poster"
-                  />
-                </div>
-              </NavLink>
-            ))}
-          </div>
+        <div
+          className={toggleState === 2 ? "content  active-content" : "content"}
+        >
+          <MoviesSuggestion />
         </div>
       </div>
     </>

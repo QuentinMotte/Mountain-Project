@@ -65,7 +65,7 @@ function Header() {
                 Forum
               </NavLink>
 
-              <div>
+              <div className="search_box">
                 <form onSubmit={onClickHandlerMovie}>
                   <input
                     type="text"
