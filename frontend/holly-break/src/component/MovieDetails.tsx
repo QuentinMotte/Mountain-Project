@@ -5,7 +5,9 @@ import axios from "axios";
 import MoviesInfo from "./MoviesInfo";
 import MoviesSuggestion from "./MoviesSuggestion";
 
-const API_KEY = "a378b12e0a9383634a503a8f29d43915";
+const API: any = process.env.REACT_APP_API_KEY;
+
+const API_KEY = API.replace(";", "");
 
 interface moviesProps {
   map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
