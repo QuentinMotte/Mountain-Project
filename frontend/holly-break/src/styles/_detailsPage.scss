@@ -1,0 +1,266 @@
+.content-container {
+  .banner {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 3rem;
+    background-color: $bg-color-light;
+    width: 85%;
+
+    @media screen and (max-width: 700px) {
+      width: 100%;
+    }
+
+    img {
+      width: 100%;
+    }
+    .options {
+      text-align: center;
+      margin: auto;
+
+      width: 85%;
+      height: 3rem;
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-evenly;
+
+      button {
+        height: 3rem;
+        width: 12rem;
+
+        @media screen and (max-width: 428px) {
+          width: fit-content;
+          height: fit-content;
+          padding: 10px;
+        }
+
+        cursor: pointer;
+        border-radius: 0;
+        border: 0;
+        background-color: $bg-color;
+        color: $green;
+        text-transform: uppercase;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+          background-color: $green;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .button_info {
+    display: flex;
+    flex-flow: wrap;
+    gap: 3rem;
+    width: 85%;
+    margin: auto;
+
+    .tabs {
+      height: 2rem;
+      width: 12rem;
+
+      @media screen and (max-width: 428px) {
+        width: fit-content;
+        height: fit-content;
+        padding: 10px;
+      }
+
+      cursor: pointer;
+      border-radius: 0;
+      border: 0;
+      background-color: $bg-color;
+      color: $green;
+      text-transform: uppercase;
+      transition: 0.2s ease-in-out;
+
+      //_____
+
+      padding: 10px;
+      text-align: center;
+      box-sizing: content-box;
+      position: relative;
+      outline: none;
+
+      &:hover {
+        background-color: $green;
+        color: $white;
+      }
+    }
+
+    .active-tabs::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% + 2px);
+      height: 5px;
+      background: $green;
+    }
+  }
+
+  .info {
+    width: 85%;
+    margin: auto;
+    background-color: $bg-color-light;
+    font-size: small;
+
+    @media screen and (max-width: 700px) {
+      width: 100%;
+    }
+
+    .details {
+      display: flex;
+      flex-flow: wrap;
+      background-color: $bg-color;
+      text-align: center;
+      color: $white;
+      padding: 3rem;
+
+      @media screen and (max-width: 1130px) {
+        display: block;
+        text-align: center;
+      }
+
+      .info_series_movies {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        text-align: center;
+        gap: 5rem;
+
+        @media screen and (max-width: 1130px) {
+          width: 100%;
+        }
+
+        .title_container {
+          h1 {
+            font-size: 7rem;
+            margin-bottom: 2rem;
+
+            @media screen and (max-width: 700px) {
+              font-size: xx-large;
+            }
+          }
+        }
+
+        .date {
+          display: flex;
+          flex-flow: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+        }
+
+        .resume {
+          text-align: justify;
+          width: 80%;
+        }
+        .genre_container {
+          display: flex;
+          flex-flow: wrap;
+          justify-content: center;
+          gap: 3rem;
+          .genres {
+            button {
+              padding: 6px;
+              cursor: pointer;
+              border-radius: 0;
+              border: 0;
+              background-color: $bg-color-light;
+              color: $green;
+              text-transform: uppercase;
+              transition: 0.2s ease-in-out;
+
+              &:hover {
+                background-color: $green;
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+
+      .info_cast {
+        width: 50%;
+        display: flex;
+        flex-flow: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 5rem;
+
+        @media screen and (max-width: 1130px) {
+          width: 100%;
+          margin-top: 5rem;
+        }
+
+        p {
+          width: 20rem;
+        }
+        img {
+          width: 15rem;
+          transition: 0.2s ease-in-out;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+  .suggestions {
+    width: 85%;
+    background-color: $bg-color;
+    margin: auto;
+    color: $white;
+    font-weight: bold;
+    font-size: 3rem;
+
+    @media screen and (max-width: 700px) {
+      width: 100%;
+    }
+
+    h2 {
+      margin-left: 2rem;
+      padding-top: 2rem;
+
+      @media screen and (max-width: 700px) {
+        font-size: xx-large;
+      }
+    }
+    .poster_movies {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: center;
+      gap: 5rem;
+      margin: 5rem;
+
+      img {
+        width: 20rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+//____TABS
+
+.content {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.active-content {
+  display: block;
+}

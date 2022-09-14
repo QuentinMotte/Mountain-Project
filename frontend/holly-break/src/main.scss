@@ -1,0 +1,35 @@
+.content-container {
+  min-height: 100vh;
+}
+
+@import "./styles/settings";
+@import "./styles/_header";
+@import "./styles/_footer";
+@import "./styles/_subPage";
+@import "./styles/_connection";
+@import "./styles/_createProfile";
+@import "./styles/_movies";
+@import "./styles/detailsPage";
+@import "./styles/trailer";
+@import "./styles/Genres";
+@import "./styles/_adminpage";
+@import "./styles/_userAdminPage";
+@import "./styles/_successProfile";
+@import "./styles/_selectProfil";
+@import "./styles/actorPage";
+
+body {
+  min-height: 100vh;
+  // background-color: $bg-color;
+  background: linear-gradient(
+    0deg,
+    rgba(34, 34, 34, 1) 0%,
+    rgba(57, 57, 56, 1) 99.5%
+  );
+}
+
+a,
+a:visited,
+a:link {
+  color: $white;
+}

@@ -1,0 +1,56 @@
+.content-container--SubPage {
+  color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    margin-bottom: 3rem;
+
+    @media screen and (max-width: 700px) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(8, 1fr);
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+    }
+
+    .form-group {
+      height: 10rem;
+      display: flex;
+      flex-direction: column;
+      label {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+      }
+      input {
+        font-size: 3rem;
+        height: 4rem;
+        border-radius: 5px;
+        &:focus {
+          outline: none;
+        }
+      }
+      button {
+        font-size: 3rem;
+        height: 4rem;
+        border-radius: 5px;
+        color: rgba(0, 0, 0, 0.4);
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background-color: $greenHover;
+          border-radius: 5px;
+          color: $white;
+        }
+      }
+    }
+  }
+}

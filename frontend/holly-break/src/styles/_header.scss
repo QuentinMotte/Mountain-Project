@@ -1,0 +1,68 @@
+.header {
+  height: 10rem;
+  background-color: $bg-color-light;
+  background-color: transparent;
+  margin: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    .logoHome {
+      img {
+        width: 9rem;
+        height: 9rem;
+      }
+    }
+    .navLink_container {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      .header_navLink {
+        color: $white;
+        font-size: 2rem;
+        font-weight: bold;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          color: $greenHover;
+        }
+      }
+    }
+
+    .search_box {
+      input {
+        border: 3px solid $green;
+        border-radius: 6px;
+        background-color: $bg-color-light;
+        color: $white;
+        padding: 5px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    justify-content: flex-end;
+    padding-right: 2rem;
+    .navLink_right {
+      color: $white;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        color: $greenHover;
+      }
+    }
+  }
+}
