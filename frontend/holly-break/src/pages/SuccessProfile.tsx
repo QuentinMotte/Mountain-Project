@@ -26,7 +26,7 @@ function SuccessProfile() {
         id_profiles: idNewProfile,
       })
       .then((res) => {
-        console.log(res);
+        localStorage.removeItem("NewProfile");
       });
   }
 

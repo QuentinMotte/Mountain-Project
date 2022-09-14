@@ -21,7 +21,6 @@ function UserPageAdmin() {
   React.useEffect(() => {
     axios.get(`http://localhost:5000/api/user/${id}`).then((response) => {
       setUser(response.data);
-      console.log(response.data);
     });
   }, []);
 
@@ -33,33 +32,19 @@ function UserPageAdmin() {
     }
   }
 
-  function displayUserInfo() {
-    return (
-      <>
-        <div>
-          <div className="userContainer-left">
-            <p>First name : {user.firstName}</p>
-            <p>Last name : {user.lastName}</p>
-            <p>Email : {user.email}</p>
-            <p>Age : {user.birthday}</p>
-            <p>Is admin: {ifItsTrue(user.is_admin)}</p>
-          </div>
-          <div className="userContainer-right">
-            <p>Profiles : {user.id_profiles}</p>
-          </div>
-        </div>
-
-        <NavLink to="/admin">Back</NavLink>
-      </>
-    );
-  }
-
   return (
     <>
       <Header></Header>
-      <h1>User overview</h1>
       <main className="content-container content-container-useradmin">
-        <div>{displayUserInfo()}</div>
+        <div className="container-left">
+          <h1>User overview</h1>
+          <div className="user-overview">
+            user overview name firstname toussa toussa
+          </div>
+        </div>
+        <div className="container-right">
+          <h1>Profiles</h1>
+        </div>
       </main>
       <Footer></Footer>
     </>

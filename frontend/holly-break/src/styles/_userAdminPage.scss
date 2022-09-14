@@ -1,14 +1,9 @@
 .content-container-useradmin {
   display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin: 0 auto;
-  padding: 4rem;
-  min-width: calc(100% - 10rem);
-  justify-content: center;
-
-  .userContainer-left {
-    width: 30rem;
-    border: 1px solid $white;
+  .container-left {
+    width: 30%;
+  }
+  .container-right {
+    width: 70%;
   }
 }
