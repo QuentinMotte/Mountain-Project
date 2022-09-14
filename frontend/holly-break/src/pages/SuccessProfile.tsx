@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
+import axios from "axios";
 
 function SuccessProfile() {
   setTimeout(() => {
@@ -16,6 +17,20 @@ function SuccessProfile() {
     }, 1000);
   }
 
+  const id: any = localStorage.getItem("user");
+  const idNewProfile: any = localStorage.getItem("NewProfile");
+
+  async function pushNewProfile() {
+    await axios
+      .patch("http://localhost:5000/api/user/addProfile/" + id, {
+        id_profiles: idNewProfile,
+      })
+      .then((res) => {
+        console.log(res);
+      });
+  }
+
+  pushNewProfile();
   displayCountdown();
   return (
     <>
