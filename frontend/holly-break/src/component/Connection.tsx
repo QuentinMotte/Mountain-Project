@@ -1,6 +1,5 @@
 import React from "react";
-import axios, { Axios } from "axios";
-import { Navigate } from "react-router-dom";
+import axios from "axios";
 
 type connect = {
   isOpen: boolean;
@@ -29,12 +28,10 @@ function Connection({ isOpen, setIsOpen }: connect) {
       .post("http://localhost:5000/api/user/login", user)
       .then((res) => {
         res.data.token && localStorage.setItem("token", res.data.token);
-        res.data.user &&
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-        res.data.admin &&
-          localStorage.setItem("admin", JSON.stringify(res.data.admin));
+        res.data.user && localStorage.setItem("user", res.data.user);
+        res.data.admin && localStorage.setItem("admin", res.data.admin);
         setIsOpen(false);
-        window.location.href = "/Home";
+        window.location.href = "/Select-Profile";
       })
       .catch((err) => {
         console.log(err);

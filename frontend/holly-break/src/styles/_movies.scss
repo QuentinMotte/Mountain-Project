@@ -7,36 +7,84 @@ h1 {
   font-weight: bold;
   font-size: 5rem;
   margin-left: 2rem;
+  margin-bottom: 3rem;
 }
 
 .content-container {
   .container_herobanner {
     margin-left: 10rem;
     margin-right: 10rem;
-    display: flex;
-    align-items: center;
-    gap: 3rem;
+    //display: flex;
+    //align-items: center;
+    //gap: 3rem;
     color: $white;
+
+    @media screen and (max-width: 700px) {
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
+
+    .slick-prev:before {
+      color: $white;
+      font-weight: bold;
+      font-size: 4rem;
+    }
+
+    .slick-next:before {
+      color: $white;
+      font-weight: bold;
+      font-size: 4rem;
+    }
+
     .herobanner {
-      display: flex;
-      overflow-x: scroll;
-      width: 100%;
-      overflow-y: hidden;
+      //display: flex;
+      //overflow-x: scroll;
+      //width: 100%;
+      //overflow-y: hidden;
 
       .movies_popular {
-        flex-shrink: 0;
+        //flex-shrink: 0;
         border-radius: 5rem;
-        margin-left: 5rem;
+        margin-left: 9rem;
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: center center;
+        background-position: center;
         position: relative;
-        height: 40rem;
+        height: 65rem;
+        transition: 0.2s;
+
+        @media screen and (max-width: 1400px) {
+          height: 40rem;
+          margin-left: 5rem;
+        }
+
+        @media screen and (max-width: 900px) {
+          height: 25rem;
+          margin-left: 3rem;
+        }
+
+        @media screen and (max-width: 450px) {
+          height: 18rem;
+        }
 
         img {
-          width: 75rem;
+          width: 90%;
           position: relative;
           border-radius: 5px;
+
+          @media screen and (max-width: 900px) {
+            height: 25rem;
+            width: 90%;
+          }
+
+          @media screen and (max-width: 700px) {
+            width: 90%;
+            height: 18rem;
+          }
+
+          @media screen and (max-width: 450px) {
+            width: 80%;
+          }
         }
 
         .title {
@@ -44,19 +92,36 @@ h1 {
           position: absolute;
           top: 0;
           left: 0;
-          width: 100%;
-          height: 100%;
+          width: 90%;
+          height: 101%;
           background-color: rgba(0, 0, 0, 0.6);
           border-radius: 5px;
           opacity: 0;
           transition: 0.2s ease-in-out;
+
+          @media screen and (max-width: 450px) {
+            width: 80%;
+          }
 
           .title_opacity {
             color: $white;
             height: 100%;
             width: 100%;
             text-align: center;
-            padding-top: 30rem;
+            padding-top: 50rem;
+
+            @media screen and (max-width: 1400px) {
+              padding-top: 30rem;
+            }
+
+            @media screen and (max-width: 900px) {
+              padding-top: 15rem;
+            }
+
+            @media screen and (max-width: 450px) {
+              padding-top: 12rem;
+            }
+
             font-size: 2.5rem;
             font-weight: bold;
             cursor: pointer;
@@ -79,6 +144,16 @@ h1 {
     margin-left: 10rem;
     margin-right: 10rem;
 
+    @media screen and (max-width: 700px) {
+      margin-left: 2rem;
+      margin-right: 2rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      margin-left: 3rem;
+      margin-right: 3rem;
+    }
+
     .genre {
       display: flex;
       text-align: center;
@@ -94,15 +169,15 @@ h1 {
     }
 
     .poster_movies {
-      display: flex;
-      overflow-x: scroll;
-      width: 100%;
-      overflow-y: hidden;
+      //display: flex;
+      //overflow-x: scroll;
+      //width: 100%;
+      //overflow-y: hidden;
 
       .movies_container_poster {
         flex-shrink: 0;
         border-radius: 5rem;
-        margin-left: 5rem;
+        margin-left: 4rem;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
@@ -112,6 +187,15 @@ h1 {
           height: 30rem;
           cursor: pointer;
           transition: 0.2s ease-in-out;
+
+          @media screen and (max-width: 700px) {
+            height: 25rem;
+          }
+
+          @media screen and (max-width: 500px) {
+            height: 25rem;
+            margin-left: 4rem;
+          }
 
           &:hover {
             transform: scale(1.05);

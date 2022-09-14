@@ -33,6 +33,20 @@
         }
       }
     }
+
+    .search_box {
+      input {
+        border: 3px solid $green;
+        border-radius: 6px;
+        background-color: $bg-color-light;
+        color: $white;
+        padding: 5px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
   }
   &__right {
     display: flex;
