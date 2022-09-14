@@ -49,6 +49,9 @@ function HomepageSelect() {
   const URL_BJ = `https://api.themoviedb.org/3/movie/${ID_BJ}?api_key=${API_KEY}&language=en-US`;
   const URL_HT = `https://api.themoviedb.org/3/movie/${ID_HT}?api_key=${API_KEY}&language=en-US`;
 
+  const URLHB = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
+  const URLHBTV = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
+
   let [TV_1, setTV_1] = useState<SeriesProps | undefined>();
   let [TV_2, setTV_2] = useState<SeriesProps | undefined>();
   let [TV_3, setTV_3] = useState<SeriesProps | undefined>();
@@ -59,6 +62,9 @@ function HomepageSelect() {
   let [Movie_3, setMovie_3] = useState<moviesProps | undefined>();
   let [Movie_4, setMovie_4] = useState<moviesProps | undefined>();
 
+  let [moviesTrend, setMoviesTrend] = useState<moviesProps | undefined>();
+  let [seriesTrend, setSeriesTrend] = useState<SeriesProps | undefined>();
+
   useEffect(() => {
     getTV_1();
     getTV_2();
@@ -68,6 +74,8 @@ function HomepageSelect() {
     getMovie_2();
     getMovie_3();
     getMovie_4();
+    getMovies();
+    getSeries();
   }, []);
 
   const getTV_1 = async () => {
@@ -110,6 +118,16 @@ function HomepageSelect() {
     setMovie_4(data);
   };
 
+  const getMovies = async () => {
+    const { data } = await axios.get(URLHB);
+    setMoviesTrend(data.results);
+  };
+
+  const getSeries = async () => {
+    const { data } = await axios.get(URLHBTV);
+    setSeriesTrend(data.results);
+  };
+
   //----------------------
 
   const settings = {
@@ -125,10 +143,213 @@ function HomepageSelect() {
     },
   };
 
+  const settings2 = {
+    className: "center",
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 7,
+    swipeToSlide: true,
+
+    responsive: [
+      {
+        breakpoint: 1650,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+        },
+      },
+
+      {
+        breakpoint: 1500,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 1,
+        },
+      },
+
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 950,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+
+      {
+        breakpoint: 500,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+
+    afterChange: function (index: any) {
+      console.log(
+        `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
+      );
+    },
+  };
+
+  //----------------
+
   return (
     <>
-      <div>
-        <h1>Suggestions</h1>
+      <div className="container_herobanner">
+        <Slider {...settings} className="herobanner">
+          <div className="movies_popular">
+            <img
+              src={
+                `https://image.tmdb.org/t/p/original` + Movie_1?.backdrop_path
+              }
+              alt="poster"
+            />
+
+            <div className="title">
+              <NavLink className="poster" to={`/Movie/${Movie_1?.id}`}>
+                <p className="title_opacity">{Movie_1?.title}</p>
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="movies_popular">
+            <img
+              src={`https://image.tmdb.org/t/p/original` + TV_1?.backdrop_path}
+              alt="poster"
+            />
+
+            <div className="title">
+              <NavLink className="poster" to={`/tv/${TV_1?.id}`}>
+                <p className="title_opacity">{TV_1?.name}</p>
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="movies_popular">
+            <img
+              src={
+                `https://image.tmdb.org/t/p/original` + Movie_2?.backdrop_path
+              }
+              alt="poster"
+            />
+
+            <div className="title">
+              <NavLink className="poster" to={`/Movie/${Movie_2?.id}`}>
+                <p className="title_opacity">{Movie_2?.title}</p>
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="movies_popular">
+            <img
+              src={`https://image.tmdb.org/t/p/original` + TV_2?.backdrop_path}
+              alt="poster"
+            />
+
+            <div className="title">
+              <NavLink className="poster" to={`/tv/${TV_2?.id}`}>
+                <p className="title_opacity">{TV_2?.name}</p>
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="movies_popular">
+            <img
+              src={
+                `https://image.tmdb.org/t/p/original` + Movie_3?.backdrop_path
+              }
+              alt="poster"
+            />
+
+            <div className="title">
+              <NavLink className="poster" to={`/Movie/${Movie_3?.id}`}>
+                <p className="title_opacity">{Movie_3?.title}</p>
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="movies_popular">
+            <img
+              src={`https://image.tmdb.org/t/p/original` + TV_3?.backdrop_path}
+              alt="poster"
+            />
+
+            <div className="title">
+              <NavLink className="poster" to={`/tv/${TV_3?.id}`}>
+                <p className="title_opacity">{TV_3?.name}</p>
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="movies_popular">
+            <img
+              src={
+                `https://image.tmdb.org/t/p/original` + Movie_4?.backdrop_path
+              }
+              alt="poster"
+            />
+
+            <div className="title">
+              <NavLink className="poster" to={`/Movie/${Movie_4?.id}`}>
+                <p className="title_opacity">{Movie_4?.title}</p>
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="movies_popular">
+            <img
+              src={`https://image.tmdb.org/t/p/original` + TV_4?.backdrop_path}
+              alt="poster"
+            />
+
+            <div className="title">
+              <NavLink className="poster" to={`/tv/${TV_4?.id}`}>
+                <p className="title_opacity">{TV_4?.name}</p>
+              </NavLink>
+            </div>
+          </div>
+        </Slider>
+      </div>
+
+      <br />
+
+      <div className="container_loop_movies_Home">
+        <h3>Popular Movies</h3>
+        <Slider {...settings2} className="poster_movies">
+          {moviesTrend?.map((movie) => (
+            <NavLink className="poster" to={`/Movie/${movie.id}`}>
+              <div id={movie.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500` + movie.backdrop_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </Slider>
+      </div>
+
+      <div className="container_loop_movies_Home">
+        <h3>Popular Series</h3>
+        <Slider {...settings2} className="poster_movies">
+          {seriesTrend?.map((serie) => (
+            <NavLink className="poster" to={`/tv/${serie.id}`}>
+              <div id={serie.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500` + serie.backdrop_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </Slider>
       </div>
     </>
   );
