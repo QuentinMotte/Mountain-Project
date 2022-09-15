@@ -51,6 +51,8 @@ function HomepageSelect() {
 
   const URLHB = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
   const URLHBTV = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
+  const URLTrendtoday = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
+  const URLTrendtodayTV = `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`;
 
   let [TV_1, setTV_1] = useState<SeriesProps | undefined>();
   let [TV_2, setTV_2] = useState<SeriesProps | undefined>();
@@ -64,6 +66,8 @@ function HomepageSelect() {
 
   let [moviesTrend, setMoviesTrend] = useState<moviesProps | undefined>();
   let [seriesTrend, setSeriesTrend] = useState<SeriesProps | undefined>();
+  let [TrendToday, setTrendToday] = useState<SeriesProps | undefined>();
+  let [TrendTodayTV, setTrendTodayTV] = useState<SeriesProps | undefined>();
 
   useEffect(() => {
     getTV_1();
@@ -76,6 +80,8 @@ function HomepageSelect() {
     getMovie_4();
     getMovies();
     getSeries();
+    getTrend();
+    getTrendTV();
   }, []);
 
   const getTV_1 = async () => {
@@ -126,6 +132,16 @@ function HomepageSelect() {
   const getSeries = async () => {
     const { data } = await axios.get(URLHBTV);
     setSeriesTrend(data.results);
+  };
+
+  const getTrend = async () => {
+    const { data } = await axios.get(URLTrendtoday);
+    setTrendToday(data.results);
+  };
+
+  const getTrendTV = async () => {
+    const { data } = await axios.get(URLTrendtodayTV);
+    setTrendTodayTV(data.results);
   };
 
   //----------------------
@@ -321,7 +337,10 @@ function HomepageSelect() {
       <br />
 
       <div className="container_loop_movies_Home">
-        <h3>Popular Movies</h3>
+        <NavLink className="genre" to={`/Popular/movie`}>
+          <h3>Popular Movies</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </NavLink>
         <Slider {...settings2} className="poster_movies">
           {moviesTrend?.map((movie) => (
             <NavLink className="poster" to={`/Movie/${movie.id}`}>
@@ -336,14 +355,53 @@ function HomepageSelect() {
         </Slider>
       </div>
 
+      <div className="container_loop_movies">
+        <h3>Trending Today</h3>
+
+        <Slider {...settings2} className="poster_movies">
+          {TrendToday?.map((movieTrend) => (
+            <NavLink className="poster" to={`/Movie/${movieTrend.id}`}>
+              <div id={movieTrend.id} className="movies_container_poster">
+                <img
+                  src={
+                    `https://image.tmdb.org/t/p/w500` + movieTrend.poster_path
+                  }
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </Slider>
+      </div>
+
       <div className="container_loop_movies_Home">
-        <h3>Popular Series</h3>
+        <NavLink className="genre" to={`/Popular/tv`}>
+          <h3>Popular Series</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </NavLink>
         <Slider {...settings2} className="poster_movies">
           {seriesTrend?.map((serie) => (
             <NavLink className="poster" to={`/tv/${serie.id}`}>
               <div id={serie.id} className="movies_container_poster">
                 <img
                   src={`https://image.tmdb.org/t/p/w500` + serie.backdrop_path}
+                  alt="poster"
+                />
+              </div>
+            </NavLink>
+          ))}
+        </Slider>
+      </div>
+
+      <div className="container_loop_movies">
+        <h3>Trending Today</h3>
+
+        <Slider {...settings2} className="poster_movies">
+          {TrendTodayTV?.map((TVTrend) => (
+            <NavLink className="poster" to={`/tv/${TVTrend.id}`}>
+              <div id={TVTrend.id} className="movies_container_poster">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500` + TVTrend.poster_path}
                   alt="poster"
                 />
               </div>
