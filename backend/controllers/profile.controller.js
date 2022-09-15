@@ -74,9 +74,11 @@ module.exports.updateProfile = async (req, res) => {
   }
 };
 
+//movie
+
 //update WatchList
 
-module.exports.updateWatchList = async (req, res) => {
+module.exports.updateWatchListMovie = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
   try {
@@ -84,7 +86,7 @@ module.exports.updateWatchList = async (req, res) => {
       { _id: req.params.id },
       {
         $addToSet: {
-          watchList: req.body.watchList,
+          watchList_movie: req.body.watchList_movie,
         },
       },
       { new: true, upsert: true }
@@ -96,7 +98,7 @@ module.exports.updateWatchList = async (req, res) => {
 
 //update Favorites
 
-module.exports.updateFavorites = async (req, res) => {
+module.exports.updateFavoritesMovie = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
   try {
@@ -104,7 +106,7 @@ module.exports.updateFavorites = async (req, res) => {
       { _id: req.params.id },
       {
         $addToSet: {
-          favorites: req.body.favorites,
+          favorites_movie: req.body.favorites_movie,
         },
       },
       { new: true, upsert: true }
@@ -116,7 +118,7 @@ module.exports.updateFavorites = async (req, res) => {
 
 //update Historic
 
-module.exports.updateHistoric = async (req, res) => {
+module.exports.updateHistoricMovie = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
   try {
@@ -124,7 +126,7 @@ module.exports.updateHistoric = async (req, res) => {
       { _id: req.params.id },
       {
         $addToSet: {
-          historic: req.body.historic,
+          historic_movie: req.body.historic_movie,
         },
       },
       { new: true, upsert: true }
@@ -135,7 +137,7 @@ module.exports.updateHistoric = async (req, res) => {
 };
 
 //remove from Watchlist
-module.exports.removeOneFromWatchlist = async (req, res) => {
+module.exports.removeOneMovieFromWatchlist = async (req, res) => {
   //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -144,7 +146,7 @@ module.exports.removeOneFromWatchlist = async (req, res) => {
     await ProfileModel.findByIdAndUpdate(
       req.params.id,
 
-      { $pull: { watchList: req.body.watchList } },
+      { $pull: { watchList_movie: req.body.watchList_movie } },
       { new: true, upsert: true }
     ).then((docs) => res.status(200).json(docs));
   } catch (err) {
@@ -153,7 +155,7 @@ module.exports.removeOneFromWatchlist = async (req, res) => {
 };
 
 //remove from Favorites
-module.exports.removeOneFromFavorites = async (req, res) => {
+module.exports.removeOneMovieFromFavorites = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -161,7 +163,7 @@ module.exports.removeOneFromFavorites = async (req, res) => {
     await ProfileModel.findByIdAndUpdate(
       req.params.id,
 
-      { $pull: { favorites: req.body.favorites } },
+      { $pull: { favorites_movie: req.body.favorites_movie } },
       { new: true, upsert: true }
     ).then((docs) => res.status(200).json(docs));
   } catch (err) {
@@ -170,7 +172,7 @@ module.exports.removeOneFromFavorites = async (req, res) => {
 };
 
 //remove from Historic
-module.exports.removeOneFromHistoric = async (req, res) => {
+module.exports.removeOneMovieFromHistoric = async (req, res) => {
   if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
 
@@ -178,7 +180,119 @@ module.exports.removeOneFromHistoric = async (req, res) => {
     await ProfileModel.findByIdAndUpdate(
       req.params.id,
 
-      { $pull: { historic: req.body.historic } },
+      { $pull: { historic_movie: req.body.historic_movie } },
+      { new: true, upsert: true }
+    ).then((docs) => res.status(200).json(docs));
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+//serie
+
+module.exports.updateWatchListSerie = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+  try {
+    await ProfileModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $addToSet: {
+          watchList_serie: req.body.watchList_serie,
+        },
+      },
+      { new: true, upsert: true }
+    ).then((docs) => res.status(200).send(docs));
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+//update Favorites
+
+module.exports.updateFavoritesSerie = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+  try {
+    await ProfileModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $addToSet: {
+          favorites_serie: req.body.favorites_serie,
+        },
+      },
+      { new: true, upsert: true }
+    ).then((docs) => res.status(200).send(docs));
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+//update Historic
+
+module.exports.updateHistoricSerie = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+  try {
+    await ProfileModel.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $addToSet: {
+          historic_serie: req.body.historic_serie,
+        },
+      },
+      { new: true, upsert: true }
+    ).then((docs) => res.status(200).send(docs));
+  } catch (err) {
+    res.status(500).json({ message: err });
+  }
+};
+
+//remove from Watchlist
+module.exports.removeOneSerieFromWatchlist = async (req, res) => {
+  //vérifier si l'utilsateur est connu grâce à ObjectID qui nous viens de mongoose
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await ProfileModel.findByIdAndUpdate(
+      req.params.id,
+
+      { $pull: { watchList_serie: req.body.watchList_serie } },
+      { new: true, upsert: true }
+    ).then((docs) => res.status(200).json(docs));
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+//remove from Favorites
+module.exports.removeOneSerieFromFavorites = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await ProfileModel.findByIdAndUpdate(
+      req.params.id,
+
+      { $pull: { favorites_serie: req.body.favorites_serie } },
+      { new: true, upsert: true }
+    ).then((docs) => res.status(200).json(docs));
+  } catch (err) {
+    return res.status(500).json({ message: err });
+  }
+};
+
+//remove from Historic
+module.exports.removeOneSerieFromHistoric = async (req, res) => {
+  if (!ObjectID.isValid(req.params.id))
+    return res.status(400).send("ID unknown : " + req.params.id);
+
+  try {
+    await ProfileModel.findByIdAndUpdate(
+      req.params.id,
+
+      { $pull: { historic_serie: req.body.historic_serie } },
       { new: true, upsert: true }
     ).then((docs) => res.status(200).json(docs));
   } catch (err) {

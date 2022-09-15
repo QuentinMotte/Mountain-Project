@@ -14,17 +14,49 @@ router.get("/:id", profileController.profileInfo);
 router.put("/:id", profileController.updateProfile);
 // //delete
 router.delete("/:id", profileController.deleteProfile);
+//MOVIE
 // Update (patch) WatchList
-router.patch("/watchlist/:id", profileController.updateWatchList);
+router.patch("/watchlist_movie/:id", profileController.updateWatchListMovie);
 // Update (patch) Favoris
-router.patch("/favorites/:id", profileController.updateFavorites);
+router.patch("/favorites_movie/:id", profileController.updateFavoritesMovie);
 // Update (patch) Historique
-router.patch("/historic/:id", profileController.updateHistoric);
+router.patch("/historic_movie/:id", profileController.updateHistoricMovie);
 // Update (patch) WatchList
-router.patch("/r_watchlist/:id", profileController.removeOneFromWatchlist);
+router.patch(
+  "/r_watchlist_movie/:id",
+  profileController.removeOneMovieFromWatchlist
+);
 // Update (patch) Favoris
-router.patch("/r_favorites/:id", profileController.removeOneFromFavorites);
+router.patch(
+  "/r_favorites_movie/:id",
+  profileController.removeOneMovieFromFavorites
+);
 // Update (patch) Historique
-router.patch("/r_historic/:id", profileController.removeOneFromHistoric);
+router.patch(
+  "/r_historic_movie/:id",
+  profileController.removeOneMovieFromHistoric
+);
+//SERIE
+// Update (patch) WatchList
+router.patch("/watchlist_serie/:id", profileController.updateWatchListSerie);
+// Update (patch) Favoris
+router.patch("/favorites_serie/:id", profileController.updateFavoritesSerie);
+// Update (patch) Historique
+router.patch("/historic_serie/:id", profileController.updateHistoricSerie);
+// Update (patch) WatchList
+router.patch(
+  "/r_watchlist_serie/:id",
+  profileController.removeOneSerieFromWatchlist
+);
+// Update (patch) Favoris
+router.patch(
+  "/r_favorites_serie/:id",
+  profileController.removeOneSerieFromFavorites
+);
+// Update (patch) Historique
+router.patch(
+  "/r_historic_serie/:id",
+  profileController.removeOneSerieFromHistoric
+);
 
 module.exports = router;
