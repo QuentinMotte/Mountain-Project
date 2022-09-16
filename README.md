@@ -71,4 +71,14 @@ This is the full stack JavaScript.
 - Secure Routes
 - Connexion User
 
-### Sprint 3 | 12/09 -> 16/09
+### Sprint 3 | 12/09 -> 16/09  
+- Panel admin
+- Routes protection
+- profile connection
+- homepage
+- Actor page
+- Popular serie/movie film
+- Slides container poster
+- Creation of the forum DB (routes, MVC, errors, regex)
+  
+ ### Sprint 4  | 19/09 -> 23/09  
