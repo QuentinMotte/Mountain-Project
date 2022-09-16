@@ -26,6 +26,7 @@ import UserPageAdmin from "./pages/UserPageAdmin";
 import SuccessProfile from "./pages/SuccessProfile";
 import "./main.scss";
 import ActorPage from "./pages/ActorPage";
+import PopularMovies from "./pages/PopularMovies";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -77,6 +78,7 @@ function App() {
           <Route path="/Settings" element={<SettingsPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
           <Route path="/Movie/Genre/:id" element={<MoviesGenrePage />} />
+          <Route path="/Popular/:id" element={<PopularMovies />} />
           <Route path="/tv/:id" element={<SeriePage />} />
           <Route path="/Serie/Genre/:id" element={<SeriesGenrePage />} />
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />

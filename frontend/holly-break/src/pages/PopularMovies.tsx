@@ -2,18 +2,18 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
-import HomepageSelect from "../component/HomepageSelect";
+import Popular from "../component/Popular";
 
-function Homepage() {
+function PopularMovies() {
   return (
     <>
       <Header></Header>
       <main className="content-container">
-        <HomepageSelect />
+        <Popular />
       </main>
       <Footer></Footer>
     </>
   );
 }
 
-export default Homepage;
+export default PopularMovies;

@@ -85,12 +85,7 @@ function SelectProfile() {
       <main className="content-container content-container-selectProfil">
         {profiles.length === 0 ? (
           <>
-            <p className="no-profile">Vous n'avez pas encore de profil</p>
-            <div className="profile-another">
-              <NavLink to="/create-profile">
-                <i className="fa-sharp fa-solid fa-plus"></i>
-              </NavLink>
-            </div>
+            <p className="no-profile">You have no profile yet !</p>
           </>
         ) : profiles.length === 1 || profiles.length === 2 ? (
           profiles.map((profile) => (
@@ -107,11 +102,6 @@ function SelectProfile() {
                   />
                 </a>
                 <p className="profile-pseudo">{profile.pseudo}</p>
-              </div>
-              <div className="profile-another">
-                <NavLink to="/create-profile">
-                  <i className="fa-sharp fa-solid fa-plus"></i>
-                </NavLink>
               </div>
             </>
           ))
@@ -136,6 +126,15 @@ function SelectProfile() {
           ))
         ) : (
           <p>Vous avez atteint le nombre maximum de profil</p>
+        )}
+        {profiles.length < 3 ? (
+          <div className="profile-another">
+            <NavLink to="/create-profile">
+              <i className="fa-sharp fa-solid fa-plus"></i>
+            </NavLink>
+          </div>
+        ) : (
+          <></>
         )}
       </main>
       <Footer></Footer>

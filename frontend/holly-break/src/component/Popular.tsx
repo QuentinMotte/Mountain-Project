@@ -7,23 +7,35 @@ const API: any = process.env.REACT_APP_API_KEY;
 
 const API_KEY = API.replace(";", "");
 
-interface moviesProps {
+interface SeriesProps {
   map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
-  id: number;
-  overview: string;
-  poster_path: string;
-  title: string;
   backdrop_path: string;
+  poster_path: string;
+  id: string;
+  overview: string;
+  name: string;
+  tagline: string;
 }
 
-function MoviesGenre() {
+interface moviesProps {
+  map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
+  backdrop_path: string;
+  poster_path: string;
+  id: string;
+  overview: string;
+  title: string;
+  tagline: string;
+}
+
+function Popular() {
   let id = useParams();
   const ID = id.id;
-  const URL1 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&with_genres=${ID}`;
-  const URL2 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=2&with_genres=${ID}`;
-  const URL3 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=3&with_genres=${ID}`;
-  const URL4 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=4&with_genres=${ID}`;
-  const URL5 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=5&with_genres=${ID}`;
+
+  const URL_1 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1`;
+  const URL_2 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=2`;
+  const URL_3 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=3`;
+  const URL_4 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=4`;
+  const URL_5 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=5`;
 
   useEffect(() => {
     getMovies1();
@@ -40,27 +52,27 @@ function MoviesGenre() {
   let [movies5, setMovies5] = useState<moviesProps | undefined>();
 
   const getMovies1 = async () => {
-    const { data } = await axios.get(URL1);
+    const { data } = await axios.get(URL_1);
     setMovies1(data.results);
   };
 
   const getMovies2 = async () => {
-    const { data } = await axios.get(URL2);
+    const { data } = await axios.get(URL_2);
     setMovies2(data.results);
   };
 
   const getMovies3 = async () => {
-    const { data } = await axios.get(URL3);
+    const { data } = await axios.get(URL_3);
     setMovies3(data.results);
   };
 
   const getMovies4 = async () => {
-    const { data } = await axios.get(URL4);
+    const { data } = await axios.get(URL_4);
     setMovies4(data.results);
   };
 
   const getMovies5 = async () => {
-    const { data } = await axios.get(URL5);
+    const { data } = await axios.get(URL_5);
     setMovies5(data.results);
   };
 
@@ -68,7 +80,7 @@ function MoviesGenre() {
     <>
       <div className="container_genre">
         {movies1?.map((movie1) => (
-          <NavLink className="poster" to={`/Movie/${movie1.id}`}>
+          <NavLink className="poster" to={`/${ID}/${movie1.id}`}>
             <div id={movie1.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie1.poster_path}
@@ -79,7 +91,7 @@ function MoviesGenre() {
         ))}
 
         {movies2?.map((movie2) => (
-          <NavLink className="poster" to={`/Movie/${movie2.id}`}>
+          <NavLink className="poster" to={`/${ID}/${movie2.id}`}>
             <div id={movie2.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie2.poster_path}
@@ -90,7 +102,7 @@ function MoviesGenre() {
         ))}
 
         {movies3?.map((movie3) => (
-          <NavLink className="poster" to={`/Movie/${movie3.id}`}>
+          <NavLink className="poster" to={`/${ID}/${movie3.id}`}>
             <div id={movie3.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie3.poster_path}
@@ -101,7 +113,7 @@ function MoviesGenre() {
         ))}
 
         {movies4?.map((movie4) => (
-          <NavLink className="poster" to={`/Movie/${movie4.id}`}>
+          <NavLink className="poster" to={`/${ID}/${movie4.id}`}>
             <div id={movie4.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie4.poster_path}
@@ -112,7 +124,7 @@ function MoviesGenre() {
         ))}
 
         {movies5?.map((movie5) => (
-          <NavLink className="poster" to={`/Movie/${movie5.id}`}>
+          <NavLink className="poster" to={`/${ID}/${movie5.id}`}>
             <div id={movie5.id} className="movies_container_poster">
               <img
                 src={`https://image.tmdb.org/t/p/w500` + movie5.poster_path}
@@ -126,4 +138,4 @@ function MoviesGenre() {
   );
 }
 
-export default MoviesGenre;
+export default Popular;
