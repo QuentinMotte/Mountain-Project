@@ -15,6 +15,9 @@ import AvatarRobin from "../img/avatar_profil/avatar_robin.png";
 import AvatarSakura from "../img/avatar_profil/avatar_sakura.jpg";
 import AvatarShinra from "../img/avatar_profil/avatar_shinra.webp";
 import AvatarDefault from "../img/avatar_profil/avatar_default.webp";
+import FavoriteAdmin from "../component/FavoriteAdmin";
+import HistoricalAdmin from "../component/HistoricalAdmin";
+import WatchlistAdmin from "../component/WatchlistAdmin";
 
 interface userProfiles {
   avatar: string;
@@ -112,6 +115,10 @@ function UserPageAdmin() {
     }
   }
 
+  // ------------------- Open and close modal -------------------
+
+  const [isOpen, setIsOpen] = React.useState(false);
+
   return (
     <>
       <Header></Header>
@@ -184,9 +191,16 @@ function UserPageAdmin() {
                     </p>
                   </div>
                   <div className="profile-btnContainer">
-                    <a href="#">
+                    <a onClick={() => setIsOpen(true)}>
                       favorites <i className="fa-solid fa-arrow-right"></i>
                     </a>
+                    {isOpen && (
+                      <FavoriteAdmin
+                        isOpen={isOpen}
+                        setIsOpen={setIsOpen}
+                        id={profile._id}
+                      />
+                    )}
                     <a href="#">
                       watchlist <i className="fa-solid fa-arrow-right"></i>
                     </a>
