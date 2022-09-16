@@ -11,7 +11,6 @@ interface Users {
   email: string;
   password: string;
   birthday: number;
-  id_profiles: string;
   is_admin: boolean;
 }
 
@@ -94,8 +93,6 @@ function AdminPage() {
       );
     });
   }
-
-  // navigate to single user page
 
   return (
     <>
