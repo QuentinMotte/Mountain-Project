@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Fave from "../component/Fave";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 
@@ -8,11 +9,7 @@ function FavPage() {
     <>
       <Header></Header>
       <main className="content-container">
-        <div>
-          <h1>FAVOURITE & WATCHLIST</h1>
-          <p>This is the fav page</p>
-          <NavLink to="/">Landing</NavLink>
-        </div>
+        <Fave />
       </main>
       <Footer></Footer>
     </>
