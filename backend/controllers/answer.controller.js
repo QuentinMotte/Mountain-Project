@@ -1,4 +1,6 @@
 const AnswerModel = require("../models/answer.model.js");
+const { createAnswerErrors } = require("../utils/errors_createAnswer.utils.js");
+const { updateAnswerErrors } = require("../utils/errors_updateAnswer.utils.js");
 const ObjectID = require("mongoose").Types.ObjectId;
 
 //Create answer topic
@@ -13,7 +15,9 @@ module.exports.createAnswer = async (req, res) => {
     });
     res.status(201).send({ answer: answer._id });
   } catch (err) {
-    return res.status(500).json({ message: err }), console.log(err);
+    const errors = createAnswerErrors(err);
+    res.status(500).send({ errors });
+    console.log(err);
   }
 };
 
@@ -54,12 +58,11 @@ module.exports.updateAnswer = async (req, res) => {
       { new: true, upsert: true, setDefaultOnInsert: true, runValidators: true }
     ).then((docs) => res.status(200).send(docs));
   } catch (err) {
-    // const errors = updateProfileErrors(err);
-    res.status(500).send({ err });
+    const errors = updateAnswerErrors(err);
+    res.status(500).send({ errors });
     console.log(err);
   }
 };
-
 // //update like
 
 module.exports.updateLike = async (req, res) => {

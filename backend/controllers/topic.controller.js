@@ -1,4 +1,6 @@
 const TopicModel = require("../models/topic.model.js");
+const { createTopicErrors } = require("../utils/errors_createTopic.utils.js");
+const { updateTopicErrors } = require("../utils/errors_updateTopic.utils.js");
 const ObjectID = require("mongoose").Types.ObjectId;
 
 //Create topic
@@ -15,7 +17,9 @@ module.exports.createTopic = async (req, res) => {
     });
     res.status(201).send({ topic: topic._id });
   } catch (err) {
-    return res.status(500).json({ message: err }), console.log(err);
+    const errors = createTopicErrors(err);
+    res.status(500).send({ errors });
+    console.log(err);
   }
 };
 
@@ -53,8 +57,8 @@ module.exports.updateTopic = async (req, res) => {
       { new: true, upsert: true, setDefaultOnInsert: true, runValidators: true }
     ).then((docs) => res.status(200).send(docs));
   } catch (err) {
-    // const errors = updateProfileErrors(err);
-    res.status(500).send({ err });
+    const errors = updateTopicErrors(err);
+    res.status(500).send({ errors });
     console.log(err);
   }
 };

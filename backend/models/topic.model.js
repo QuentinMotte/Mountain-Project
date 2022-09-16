@@ -6,6 +6,9 @@ const topicSchema = new mongoose.Schema(
       type: String,
       required: true,
       validate: /^[^*|\<>[\]{}`\\@&$/+=_°%§#€£]+$/,
+      minlength: 5,
+      maxlength: 50,
+      trimp: true,
     },
     category: {
       type: String,
@@ -19,6 +22,9 @@ const topicSchema = new mongoose.Schema(
       type: String,
       required: true,
       validate: /^[^*|\<>[\]{}`\\@&$/+=_°%§#€£]+$/,
+      minlength: 2,
+      maxlength: 500,
+      trimp: true,
     },
   },
   {
