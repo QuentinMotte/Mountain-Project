@@ -30,13 +30,22 @@ const profileSchema = new mongoose.Schema(
       // validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },
 
-    watchList: {
+    watchList_movie: {
       type: [String],
     },
-    favorites: {
+    favorites_movie: {
       type: [String],
     },
-    historic: {
+    historic_movie: {
+      type: [String],
+    },
+    watchList_serie: {
+      type: [String],
+    },
+    favorites_serie: {
+      type: [String],
+    },
+    historic_serie: {
       type: [String],
     },
 

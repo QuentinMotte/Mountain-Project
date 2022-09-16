@@ -14,6 +14,9 @@ const answerSchema = new mongoose.Schema(
       type: String,
       required: true,
       validate: /^[^*|\<>[\]{}`\\@&$/+=_°%§#€£]+$/,
+      minlength: 2,
+      maxlength: 500,
+      trimp: true,
     },
     like: {
       type: [String],
