@@ -126,18 +126,14 @@
 
       .info_series_movies {
         width: 50%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        text-align: center;
-        gap: 5rem;
+        text-align: justify;
 
         @media screen and (max-width: 1130px) {
           width: 100%;
         }
 
         .title_container {
+          text-align: center;
           h1 {
             font-size: 7rem;
             margin-bottom: 2rem;
@@ -146,72 +142,81 @@
               font-size: xx-large;
             }
           }
+
+          .TagLine {
+            opacity: 0.6;
+          }
+          .resume {
+            margin: auto;
+            text-align: justify;
+            width: 80%;
+          }
         }
 
-        .date {
+        .container_infos {
+          margin-top: 4rem;
           display: flex;
           flex-flow: wrap;
-          justify-content: center;
-          align-items: center;
-          gap: 2rem;
-        }
+          justify-content: space-evenly;
 
-        .resume {
-          text-align: justify;
-          width: 80%;
-        }
-        .genre_container {
-          display: flex;
-          flex-flow: wrap;
-          justify-content: center;
-          gap: 3rem;
-          .genres {
-            button {
-              padding: 6px;
-              cursor: pointer;
-              border-radius: 0;
-              border: 0;
-              background-color: $bg-color-light;
-              color: $green;
-              text-transform: uppercase;
-              transition: 0.2s ease-in-out;
+          .genre_container {
+            .genres {
+              margin-bottom: 1rem;
+              a {
+                position: relative;
 
-              &:hover {
-                background-color: $green;
-                color: $white;
+                &::before {
+                  content: "";
+                  position: absolute;
+                  width: 100%;
+                  height: 2px;
+                  border-radius: 4px;
+                  background-color: $green;
+                  bottom: 0;
+                  left: 0;
+                  transform-origin: right;
+                  transform: scaleX(0);
+                  transition: transform 0.3s ease-in-out;
+                }
+
+                &:hover::before {
+                  transform-origin: left;
+                  transform: scaleX(1);
+                }
               }
             }
           }
         }
       }
+    }
+  }
 
-      .info_cast {
-        width: 50%;
-        display: flex;
-        flex-flow: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 5rem;
+  .info_cast {
+    width: 50%;
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
 
-        @media screen and (max-width: 1130px) {
-          width: 100%;
-          margin-top: 5rem;
-        }
+    @media screen and (max-width: 1130px) {
+      width: 100%;
+      margin-top: 5rem;
+    }
 
-        p {
-          width: 20rem;
-        }
-        img {
-          width: 15rem;
-          transition: 0.2s ease-in-out;
+    p {
+      width: 20rem;
+    }
+    img {
+      width: 15rem;
+      transition: 0.2s ease-in-out;
 
-          &:hover {
-            transform: scale(1.05);
-          }
-        }
+      &:hover {
+        transform: scale(1.05);
       }
     }
   }
+
   .suggestions {
     width: 85%;
     background-color: $bg-color;
@@ -263,4 +268,12 @@
 
 .active-content {
   display: block;
+}
+
+hr {
+  width: 90%;
+  margin: auto;
+  margin-top: 3rem;
+  opacity: 0.5;
+  color: $bg-color-light;
 }

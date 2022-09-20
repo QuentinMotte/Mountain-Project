@@ -1,4 +1,5 @@
 import React from "react";
+import icon from "../img/Profile-Icon.png";
 import { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
@@ -75,6 +76,15 @@ function MoviesInfo() {
     setMoviesDir(data.crew.slice(0, 4));
   };
 
+  function GetPictures(avatar: string) {
+    switch (avatar) {
+      case null:
+        return icon;
+      case avatar:
+        return `https://image.tmdb.org/t/p/w500` + avatar;
+    }
+  }
+
   return (
     <>
       <div className="info">
@@ -83,42 +93,61 @@ function MoviesInfo() {
             <div className="title_container">
               <h1 className="Title">{movies?.title}</h1>
               <p className="TagLine">{movies?.tagline}</p>
+              <br />
+
+              <p className="resume">{movies?.overview}</p>
             </div>
 
-            <div className="genre_container">
-              {moviesGenres?.map((genres) => (
-                <div className="genres">
-                  <NavLink className="genre" to={`/movie/Genre/${genres.id}`}>
-                    <button className="genre_button">{genres.name}</button>
-                  </NavLink>
+            <hr />
+
+            <div className="container_infos">
+              <div className="Info_duration">
+                <h4>Release date:</h4>
+                <br />
+                <p className="airDate">{movies?.release_date}</p>
+                <br />
+                <h4>Duration:</h4>
+                <br />
+                <p className="RunTime">{movies?.runtime} min</p>
+              </div>
+
+              <div>
+                <h4>Genre:</h4>
+                <br />
+                <div className="genre_container">
+                  {moviesGenres?.map((genres) => (
+                    <div className="genres">
+                      <NavLink
+                        className="genre"
+                        to={`/movie/Genre/${genres.id}`}
+                      >
+                        <a className="genre_button">{genres.name}</a>
+                      </NavLink>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
 
-            <div className="date">
-              <p className="airDate">Air date: {movies?.release_date}</p>
-              <p className="RunTime">Run time: {movies?.runtime} min</p>
-              <p className="note">Note: {movies?.vote_average}</p>
+              <div className="date">
+                <h4>Crew:</h4>
+                <br />
+                {moviesDir?.map((crew) => (
+                  <>
+                    <p>
+                      {crew.job} / {crew.name}
+                    </p>
+                    <br />
+                  </>
+                ))}
+              </div>
             </div>
-
-            <div className="date">
-              {moviesDir?.map((crew) => (
-                <p>
-                  {crew.job} / {crew.name}
-                </p>
-              ))}
-            </div>
-
-            <p className="resume">{movies?.overview}</p>
           </div>
+
           <div className="info_cast">
             {moviesCast?.map((cast) => (
               <div>
                 <NavLink className="genre" to={`/Actor/${cast.id}`}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500` + cast.profile_path}
-                    alt="cast"
-                  />
+                  <img src={GetPictures(cast.profile_path)} alt="cast" />
                 </NavLink>
                 <p className="cast">{cast.name}</p>
                 <p className="character">{cast.character}</p>

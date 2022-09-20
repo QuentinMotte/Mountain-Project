@@ -1,3 +1,4 @@
+import Poster from "../img/poster_default.png";
 import { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
@@ -58,6 +59,15 @@ function Search() {
     setSearchMoviesKnowFor(data.results[0].known_for);
   };
 
+  function GetPictures(avatar: string) {
+    switch (avatar) {
+      case null:
+        return Poster;
+      case avatar:
+        return `https://image.tmdb.org/t/p/w500` + avatar;
+    }
+  }
+
   return (
     <>
       <h1>Results for {ID}</h1> <br />
@@ -65,10 +75,7 @@ function Search() {
         {SearchMovies?.map((movie) => (
           <NavLink className="poster" to={`/movie/${movie.id}`}>
             <div id={movie.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w500` + movie.poster_path}
-                alt="poster"
-              />
+              <img src={GetPictures(movie.poster_path)} alt="poster" />
             </div>
           </NavLink>
         ))}
@@ -76,10 +83,7 @@ function Search() {
         {SearchMoviesTV?.map((movieTV) => (
           <NavLink className="poster" to={`/tv/${movieTV.id}`}>
             <div id={movieTV.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w500` + movieTV.poster_path}
-                alt="poster"
-              />
+              <img src={GetPictures(movieTV.poster_path)} alt="poster" />
             </div>
           </NavLink>
         ))}
@@ -90,10 +94,7 @@ function Search() {
             to={`/${movieKF.media_type}/${movieKF.id}`}
           >
             <div id={movieKF.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w500` + movieKF.poster_path}
-                alt="poster"
-              />
+              <img src={GetPictures(movieKF.poster_path)} alt="poster" />
             </div>
           </NavLink>
         ))}
