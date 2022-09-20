@@ -89,7 +89,7 @@ function SeriesInfo() {
       case null:
         return icon;
       case avatar:
-        return `https://image.tmdb.org/t/p/w500` + avatar;
+        return `https://image.tmdb.org/t/p/original` + avatar;
     }
   }
 
@@ -115,7 +115,7 @@ function SeriesInfo() {
                 <br />
                 <h4>Duration:</h4>
                 <br />
-                <p className="RunTime">{movies?.episode_run_time} min</p>
+                <p className="RunTime">{moviesRunTime?.[0]} min</p>
               </div>
 
               <div className="episodes_infos">

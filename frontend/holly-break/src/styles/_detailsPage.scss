@@ -16,33 +16,21 @@
     .options {
       text-align: center;
       margin: auto;
-
       width: 85%;
-      height: 3rem;
       display: flex;
       flex-flow: wrap;
       justify-content: space-evenly;
 
-      button {
-        height: 3rem;
-        width: 12rem;
-
-        @media screen and (max-width: 428px) {
-          width: fit-content;
-          height: fit-content;
-          padding: 10px;
-        }
-
+      i {
         cursor: pointer;
         border-radius: 0;
         border: 0;
-        background-color: $bg-color;
         color: $green;
         text-transform: uppercase;
         transition: 0.2s ease-in-out;
+        margin: 1rem;
 
         &:hover {
-          background-color: $green;
           color: $white;
         }
       }
@@ -208,7 +196,7 @@
       width: 20rem;
     }
     img {
-      width: 15rem;
+      height: 20rem;
       transition: 0.2s ease-in-out;
 
       &:hover {
@@ -244,14 +232,16 @@
       gap: 5rem;
       margin: 5rem;
 
-      img {
-        width: 20rem;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.2s ease-in-out;
+      .poster {
+        img {
+          height: 30rem;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: 0.2s ease-in-out;
 
-        &:hover {
-          transform: scale(1.05);
+          &:hover {
+            transform: scale(1.05);
+          }
         }
       }
     }

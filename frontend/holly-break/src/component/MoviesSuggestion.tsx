@@ -60,15 +60,18 @@ function MoviesSuggestion() {
         <h2>Suggestions</h2>
         <div className="poster_movies">
           {moviesSim?.map((movieSim) => (
-            <NavLink
-              className="poster"
-              onClick={refreshPage}
-              to={`/movie/${movieSim.id}`}
-            >
-              <div id={movieSim.id} className="movies_container_poster">
-                <img src={GetPictures(movieSim.poster_path)} alt="poster" />
-              </div>
-            </NavLink>
+            <>
+              <NavLink
+                className="poster"
+                onClick={refreshPage}
+                to={`/movie/${movieSim.id}`}
+              >
+                <div id={movieSim.id} className="movies_container_poster">
+                  <img src={GetPictures(movieSim.poster_path)} alt="poster" />
+                </div>
+                <div className="container_title"></div>
+              </NavLink>
+            </>
           ))}
         </div>
       </div>

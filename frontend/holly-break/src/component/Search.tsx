@@ -64,7 +64,7 @@ function Search() {
       case null:
         return Poster;
       case avatar:
-        return `https://image.tmdb.org/t/p/w500` + avatar;
+        return `https://image.tmdb.org/t/p/original` + avatar;
     }
   }
 
