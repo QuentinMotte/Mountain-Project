@@ -14,7 +14,7 @@ As we use the Agile method, we separate our work into "sprints". Sprints represe
 - Kevin Richard | [Github](https://github.com/Kiks4000)
 
 ## And now let's talk about the project :
-
+ 
 We have the ambition to make a "Netflix"-like website without the movies of course (that's illegal) with some extra features like a forum a real-time chat to continue talking about the movies that we like.
 
 ### Features :
