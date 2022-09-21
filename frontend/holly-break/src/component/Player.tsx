@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const API: any = process.env.REACT_APP_API_KEY;
@@ -43,11 +43,14 @@ function Player() {
     setPictures(data.backdrops[0]);
   };
 
-  console.log(movies?.key);
+  let navigate = useNavigate();
 
   return (
     <>
       <div className="container_trailer">
+        <button className="button_back" onClick={() => navigate(-1)}>
+          Back
+        </button>
         <div className="trailer">
           <iframe
             src={`https://www.youtube.com/embed/` + movies?.key}
