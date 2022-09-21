@@ -55,6 +55,8 @@ function Player() {
           <iframe
             src={`https://www.youtube.com/embed/` + movies?.key}
             title="Youtube video player"
+            frameBorder="0"
+            allowFullScreen
           ></iframe>
         </div>
       </div>
