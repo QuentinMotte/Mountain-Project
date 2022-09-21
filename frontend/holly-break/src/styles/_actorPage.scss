@@ -1,6 +1,6 @@
 .content-container {
   .container_actor {
-    background-color: $bg-color-light;
+    background-color: $bg-color;
     color: $white;
     width: 135rem;
     margin: auto;
@@ -82,6 +82,7 @@
         .bio {
           margin: auto;
           margin-top: 3rem;
+          font-size: medium;
         }
 
         .little_info {
@@ -94,6 +95,10 @@
           h4 {
             text-align: justify;
           }
+
+          p {
+            width: 15rem;
+          }
         }
       }
     }
@@ -105,14 +110,15 @@
       cursor: pointer;
       border-radius: 0;
       border: 0;
-      background-color: $bg-color;
-      color: $green;
+
+      background-color: $green;
+      color: $white;
       text-transform: uppercase;
       transition: 0.2s ease-in-out;
 
       &:hover {
-        background-color: $green;
-        color: $white;
+        background-color: $bg-color;
+        color: $green;
       }
     }
   }

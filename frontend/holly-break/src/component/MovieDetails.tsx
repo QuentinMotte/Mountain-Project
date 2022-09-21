@@ -33,8 +33,6 @@ function MovieDetails() {
   const URL = `https://api.themoviedb.org/3/movie/${ID}?api_key=${API_KEY}&language=en-US`;
   const URLIMG = `https://api.themoviedb.org/3/movie/${ID}/images?api_key=${API_KEY}`;
 
-  console.log(URL);
-
   let [movies, setMovies] = useState<moviesProps | undefined>();
   let [pictures, setPictures] = useState<picturesProps | undefined>();
 

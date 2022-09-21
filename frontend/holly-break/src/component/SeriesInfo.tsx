@@ -23,6 +23,7 @@ interface moviesProps {
   number_of_seasons: string;
   number_of_episodes: string;
   vote_average: string;
+  status: string;
 }
 
 interface GenresProps {
@@ -126,6 +127,10 @@ function SeriesInfo() {
                 <h4>Episodes:</h4>
                 <br />
                 <p>{movies?.number_of_episodes}</p>
+                <br />
+                <h4>Status:</h4>
+                <br />
+                <p>{movies?.status}</p>
               </div>
 
               <div>
@@ -136,7 +141,7 @@ function SeriesInfo() {
                     <div className="genres">
                       <NavLink
                         className="genre"
-                        to={`/movie/Genre/${genres.id}`}
+                        to={`/Serie/Genre/${genres.id}`}
                       >
                         <a className="genre_button">{genres.name}</a>
                       </NavLink>

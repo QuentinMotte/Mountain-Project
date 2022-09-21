@@ -42,8 +42,6 @@ function MoviesInfo() {
   const URL = `https://api.themoviedb.org/3/movie/${ID}?api_key=${API_KEY}&language=en-US`;
   const URLCAST = `https://api.themoviedb.org/3/movie/${ID}/credits?api_key=${API_KEY}&language=en-US`;
 
-  console.log(URL);
-
   let [movies, setMovies] = useState<moviesProps | undefined>();
   let [moviesGenres, setMoviesGenres] = useState<GenresProps | undefined>();
   let [moviesCast, setMoviesCast] = useState<CastProps | undefined>();

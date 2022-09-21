@@ -60,6 +60,13 @@ function Actors() {
               >
                 <h1>{Actor?.name}</h1>
               </a>
+
+              <a
+                target="_blank"
+                href={`https://www.imdb.com/name/${Actor?.imdb_id}/`}
+              >
+                <i className="fa-solid fa-plus"></i>
+              </a>
             </div>
           </div>
           <div className="info_actor">
