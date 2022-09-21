@@ -55,8 +55,6 @@ function SeriesDetails() {
     setPictures(data.backdrops[0]);
   };
 
-  //--------------------
-
   //___________________________
 
   const [toggleState, setToggleState] = useState(1);
@@ -67,7 +65,119 @@ function SeriesDetails() {
 
   //___________________________
 
-  //-------------------
+  const id_profile = localStorage.getItem("profile");
+  const [watchlist, setWatchlist] = useState(false);
+  const [favorite, setFavorite] = useState(false);
+
+  //___________________________
+
+  async function pushWatchlist(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/watchlist_serie/${id_profile}`,
+        {
+          watchList_serie: id,
+        }
+      )
+      .then((res) => {
+        // window.location.reload();
+        setWatchlist(true);
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const checkWatchlist = async () => {
+    const { data } = await axios.get(
+      `http://localhost:5000/api/profile/${id_profile}`
+    );
+    const watchlist = data.watchList_serie;
+    if (watchlist.includes(ID)) {
+      setWatchlist(true);
+    }
+  };
+
+  useEffect(() => {
+    checkWatchlist();
+  }, []);
+
+  async function deleteWatchlist(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/r_watchlist_serie/${id_profile}`,
+        {
+          watchList_serie: id,
+        }
+      )
+      .then((res) => {
+        setWatchlist(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  //___________________________
+
+  async function pushFavorite(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/favorites_serie/${id_profile}`,
+        {
+          favorites_serie: id,
+        }
+      )
+      .then((res) => {
+        setFavorite(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const checkFavorite = async () => {
+    const { data } = await axios.get(
+      `http://localhost:5000/api/profile/${id_profile}`
+    );
+    const favorite = data.favorites_serie;
+    if (favorite.includes(ID)) {
+      setFavorite(true);
+    }
+  };
+
+  useEffect(() => {
+    checkFavorite();
+  }, []);
+
+  async function deleteFavorite(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/r_favorites_serie/${id_profile}`,
+        {
+          favorites_serie: id,
+        }
+      )
+      .then((res) => {
+        setFavorite(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  //___________________________
+
+  async function pushHistoric(id: any) {
+    axios
+      .patch(`http://localhost:5000/api/profile/historic_serie/${id_profile}`, {
+        historic_serie: id,
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <>
@@ -77,11 +187,31 @@ function SeriesDetails() {
           alt="poster"
         />
         <div className="options">
-          <NavLink className="poster" to={`/Player/Serie/${movies?.id}`}>
+          <a
+            onClick={() => pushHistoric(movies?.id)}
+            className="poster"
+            href={`/Player/Serie/${movies?.id}`}
+          >
             <i className="fa-solid fa-play"></i>
-          </NavLink>
-          <i className="fa-solid fa-plus"></i>
-          <i className="fa-solid fa-heart"></i>
+          </a>
+          {watchlist ? (
+            <a onClick={() => deleteWatchlist(movies?.id)}>
+              <i className="fa-solid fa-eye-slash"></i>
+            </a>
+          ) : (
+            <a onClick={() => pushWatchlist(movies?.id)}>
+              <i className="fa-solid fa-eye"></i>
+            </a>
+          )}
+          {favorite ? (
+            <a onClick={() => deleteFavorite(movies?.id)}>
+              <i className="fa-solid fa-heart-crack"></i>
+            </a>
+          ) : (
+            <a onClick={() => pushFavorite(movies?.id)}>
+              <i className="fa-solid fa-heart"></i>
+            </a>
+          )}
         </div>
       </div>
 
