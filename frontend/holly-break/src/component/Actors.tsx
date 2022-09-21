@@ -53,17 +53,39 @@ function Actors() {
         <div className="container_info_actors">
           <div className="image_actor">
             <img src={getPicture()} alt="actor" />
+            <div className="name_actor">
+              <a
+                target="_blank"
+                href={`https://www.imdb.com/name/${Actor?.imdb_id}/`}
+              >
+                <h1>{Actor?.name}</h1>
+              </a>
+            </div>
           </div>
           <div className="info_actor">
-            <h1>{Actor?.name}</h1>
-            <p>{Actor?.biography}</p>
+            <div className="little_info">
+              <div className="div_info">
+                <h4>Birthday:</h4>
+                <br />
+                <p>{Actor?.birthday}</p>
+              </div>
+              <div className="div_info">
+                <h4>Place of birth:</h4>
+                <br />
+                <p>{Actor?.place_of_birth}</p>
+              </div>
+              <div className="div_info">
+                <h4>Activity:</h4>
+                <br />
+                <p>{Actor?.known_for_department}</p>
+              </div>
+            </div>
+
+            <hr />
+
+            <p className="bio">{Actor?.biography}</p>
+
             <br />
-            <a
-              target="_blank"
-              href={`https://www.imdb.com/name/${Actor?.imdb_id}/`}
-            >
-              <i className="fa-brands fa-imdb"></i>
-            </a>
           </div>
           <button className="button_back" onClick={() => navigate(-1)}>
             Back
