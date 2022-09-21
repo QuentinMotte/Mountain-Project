@@ -1,6 +1,7 @@
 import React from "react";
+import icon from "../img/Profile-Icon.png";
 import { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const API: any = process.env.REACT_APP_API_KEY;
@@ -36,15 +37,22 @@ function Actors() {
     setActor(data);
   };
 
+  const getPicture = () => {
+    if (Actor?.profile_path === null) {
+      return icon;
+    } else {
+      return `https://image.tmdb.org/t/p/original` + Actor?.profile_path;
+    }
+  };
+
+  let navigate = useNavigate();
+
   return (
     <>
       <div className="container_actor">
         <div className="container_info_actors">
           <div className="image_actor">
-            <img
-              src={`https://image.tmdb.org/t/p/original` + Actor?.profile_path}
-              alt="actor"
-            />
+            <img src={getPicture()} alt="actor" />
           </div>
           <div className="info_actor">
             <h1>{Actor?.name}</h1>
@@ -57,6 +65,9 @@ function Actors() {
               <i className="fa-brands fa-imdb"></i>
             </a>
           </div>
+          <button className="button_back" onClick={() => navigate(-1)}>
+            Back
+          </button>
         </div>
       </div>
     </>

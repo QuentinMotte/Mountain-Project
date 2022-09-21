@@ -1,4 +1,5 @@
 import React from "react";
+import Poster from "../img/poster_default.png";
 import { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
@@ -76,16 +77,22 @@ function Popular() {
     setMovies5(data.results);
   };
 
+  function GetPictures(avatar: string) {
+    switch (avatar) {
+      case null:
+        return Poster;
+      case avatar:
+        return `https://image.tmdb.org/t/p/w500` + avatar;
+    }
+  }
+
   return (
     <>
       <div className="container_genre">
         {movies1?.map((movie1) => (
           <NavLink className="poster" to={`/${ID}/${movie1.id}`}>
             <div id={movie1.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w500` + movie1.poster_path}
-                alt="poster"
-              />
+              <img src={GetPictures(movie1.poster_path)} alt="poster" />
             </div>
           </NavLink>
         ))}
@@ -93,10 +100,7 @@ function Popular() {
         {movies2?.map((movie2) => (
           <NavLink className="poster" to={`/${ID}/${movie2.id}`}>
             <div id={movie2.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w500` + movie2.poster_path}
-                alt="poster"
-              />
+              <img src={GetPictures(movie2.poster_path)} alt="poster" />
             </div>
           </NavLink>
         ))}
@@ -104,10 +108,7 @@ function Popular() {
         {movies3?.map((movie3) => (
           <NavLink className="poster" to={`/${ID}/${movie3.id}`}>
             <div id={movie3.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w500` + movie3.poster_path}
-                alt="poster"
-              />
+              <img src={GetPictures(movie3.poster_path)} alt="poster" />
             </div>
           </NavLink>
         ))}
@@ -115,10 +116,7 @@ function Popular() {
         {movies4?.map((movie4) => (
           <NavLink className="poster" to={`/${ID}/${movie4.id}`}>
             <div id={movie4.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w500` + movie4.poster_path}
-                alt="poster"
-              />
+              <img src={GetPictures(movie4.poster_path)} alt="poster" />
             </div>
           </NavLink>
         ))}
@@ -126,10 +124,7 @@ function Popular() {
         {movies5?.map((movie5) => (
           <NavLink className="poster" to={`/${ID}/${movie5.id}`}>
             <div id={movie5.id} className="movies_container_poster">
-              <img
-                src={`https://image.tmdb.org/t/p/w500` + movie5.poster_path}
-                alt="poster"
-              />
+              <img src={GetPictures(movie5.poster_path)} alt="poster" />
             </div>
           </NavLink>
         ))}

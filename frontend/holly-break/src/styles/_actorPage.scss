@@ -43,7 +43,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 6rem;
+        gap: 5rem;
         font-size: small;
 
         @media screen and (max-width: 1300px) {
@@ -76,6 +76,24 @@
             color: $green;
           }
         }
+      }
+    }
+    button {
+      height: 3rem;
+      width: 12rem;
+      margin-top: 2rem;
+
+      cursor: pointer;
+      border-radius: 0;
+      border: 0;
+      background-color: $bg-color;
+      color: $green;
+      text-transform: uppercase;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        background-color: $green;
+        color: $white;
       }
     }
   }

@@ -78,10 +78,10 @@ function SeriesDetails() {
         />
         <div className="options">
           <NavLink className="poster" to={`/Player/Serie/${movies?.id}`}>
-            <button>Play</button>
+            <i className="fa-solid fa-play"></i>
           </NavLink>
-          <button>Watchlist</button>
-          <button>Fave</button>
+          <i className="fa-solid fa-plus"></i>
+          <i className="fa-solid fa-heart"></i>
         </div>
       </div>
 
