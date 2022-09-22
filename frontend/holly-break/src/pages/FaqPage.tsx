@@ -7,17 +7,28 @@ const data = [
   {
     question: "What is HollyBreak ?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ducimus delectus adipisci! Sed, corrupti error quisquam voluptatibus optio itaque cum incidunt aperiam hic excepturi ipsum neque suscipit ab quasi quas",
+      "First, we are a streaming service for all your favorite movies and series ! And we are also a Forum where you will be able to discuss movies and TV Show with the community",
   },
 
   {
     question: "How can you subscribe to our service ?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ducimus delectus adipisci! Sed, corrupti error quisquam voluptatibus optio itaque cum incidunt aperiam hic excepturi ipsum neque suscipit ab quasi quas",
+      "Simply check the subscribe button and complete your informations to create your account",
+  },
+
+  {
+    question: "What are our rates ?",
+    answer: "It's free !",
   },
 
   {
     question: "How can you create and/or modify profiles ?",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ducimus delectus adipisci! Sed, corrupti error quisquam voluptatibus optio itaque cum incidunt aperiam hic excepturi ipsum neque suscipit ab quasi quas",
+  },
+
+  {
+    question: "How can you update your account informations ?",
     answer:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ducimus delectus adipisci! Sed, corrupti error quisquam voluptatibus optio itaque cum incidunt aperiam hic excepturi ipsum neque suscipit ab quasi quas",
   },
@@ -29,13 +40,19 @@ const data = [
   },
 
   {
-    question: "What are our rates ?",
+    question: "What are the functionnalities set in our service ?",
     answer:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ducimus delectus adipisci! Sed, corrupti error quisquam voluptatibus optio itaque cum incidunt aperiam hic excepturi ipsum neque suscipit ab quasi quas",
   },
 
   {
     question: "What are the languages supported ?",
+    answer:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ducimus delectus adipisci! Sed, corrupti error quisquam voluptatibus optio itaque cum incidunt aperiam hic excepturi ipsum neque suscipit ab quasi quas",
+  },
+
+  {
+    question: "Is there a system of subtitles ?",
     answer:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ducimus delectus adipisci! Sed, corrupti error quisquam voluptatibus optio itaque cum incidunt aperiam hic excepturi ipsum neque suscipit ab quasi quas",
   },

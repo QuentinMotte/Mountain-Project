@@ -6,7 +6,6 @@ import SelectProfile from "./pages/SelectProfile";
 import Series from "./pages/Series";
 import SubPage from "./pages/SubPage";
 import SubSuccess from "./pages/SubSuccess";
-import FavPage from "./pages/FavPage";
 import FaqPage from "./pages/FaqPage";
 import HistoryPage from "./pages/HistoryPage";
 import Landing from "./pages/Landing";
@@ -27,6 +26,7 @@ import SuccessProfile from "./pages/SuccessProfile";
 import "./main.scss";
 import ActorPage from "./pages/ActorPage";
 import PopularMovies from "./pages/PopularMovies";
+import WatchListPage from "./pages/WatchListPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -73,7 +73,7 @@ function App() {
           <Route path="/Home/Series" element={<Series />} />
           <Route path="/Search/:id" element={<SearchPage />} />
           <Route path="/Search" element={<SearchPage />} />
-          <Route path="/Watchlist" element={<FavPage />} />
+          <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
           <Route path="/Settings" element={<SettingsPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
@@ -103,7 +103,7 @@ function App() {
           <Route path="/Home/Series" element={<Series />} />
           <Route path="/Search/:id" element={<SearchPage />} />
           <Route path="/Search" element={<SearchPage />} />
-          <Route path="/Watchlist" element={<FavPage />} />
+          <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
           <Route path="/Settings" element={<SettingsPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />

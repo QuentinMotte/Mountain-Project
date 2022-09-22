@@ -3,11 +3,11 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  gap: 5rem;
   color: $white;
+  margin: 3rem;
 
   .accordion_faq {
-    width: 500px;
-
     .question_faq {
       background-color: $bg-color;
       margin-bottom: 3rem;
@@ -24,6 +24,7 @@
 
         span {
           font-size: large;
+          font-weight: bold;
         }
       }
 
@@ -33,12 +34,14 @@
         overflow: hidden;
         transition: all 0.3s ease-in-out;
         font-size: medium;
+        text-align: justify;
       }
 
       .content_faq.show {
         height: auto;
         max-height: 999px;
         transition: all 0.3s ease-in-out;
+        text-align: justify;
       }
     }
   }
