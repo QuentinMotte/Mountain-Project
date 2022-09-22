@@ -16,9 +16,9 @@
     border-radius: 5px;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     padding: 1rem;
 
     position: relative;
@@ -33,6 +33,27 @@
     }
     i:hover {
       color: $greenHover;
+    }
+    .modal-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      img {
+        width: 10rem;
+        object-fit: cover;
+      }
+      .content-container-with-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 10rem;
+          object-fit: cover;
+        }
+      }
     }
   }
 }

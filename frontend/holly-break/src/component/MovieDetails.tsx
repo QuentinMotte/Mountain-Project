@@ -61,6 +61,119 @@ function MovieDetails() {
 
   //___________________________
 
+  const id_profile = localStorage.getItem("profile");
+  const [watchlist, setWatchlist] = useState(false);
+  const [favorite, setFavorite] = useState(false);
+
+  //___________________________
+
+  async function pushWatchlist(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/watchlist_movie/${id_profile}`,
+        {
+          watchList_movie: id,
+        }
+      )
+      .then((res) => {
+        // window.location.reload();
+        setWatchlist(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const checkWatchlist = async () => {
+    const { data } = await axios.get(
+      `http://localhost:5000/api/profile/${id_profile}`
+    );
+    const watchlist = data.watchList_movie;
+    if (watchlist.includes(ID)) {
+      setWatchlist(true);
+    }
+  };
+
+  useEffect(() => {
+    checkWatchlist();
+  }, []);
+
+  async function deleteWatchlist(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/r_watchlist_movie/${id_profile}`,
+        {
+          watchList_movie: id,
+        }
+      )
+      .then((res) => {
+        setWatchlist(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  //___________________________
+
+  async function pushFavorite(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/favorites_movie/${id_profile}`,
+        {
+          favorites_movie: id,
+        }
+      )
+      .then((res) => {
+        setFavorite(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const checkFavorite = async () => {
+    const { data } = await axios.get(
+      `http://localhost:5000/api/profile/${id_profile}`
+    );
+    const favorite = data.favorites_movie;
+    if (favorite.includes(ID)) {
+      setFavorite(true);
+    }
+  };
+
+  useEffect(() => {
+    checkFavorite();
+  }, []);
+
+  async function deleteFavorite(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/r_favorites_movie/${id_profile}`,
+        {
+          favorites_movie: id,
+        }
+      )
+      .then((res) => {
+        setFavorite(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  //___________________________
+
+  async function pushHistoric(id: any) {
+    axios
+      .patch(`http://localhost:5000/api/profile/historic_movie/${id_profile}`, {
+        historic_movie: id,
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <>
       <div className="banner">
@@ -69,11 +182,31 @@ function MovieDetails() {
           alt="poster"
         />
         <div className="options">
-          <NavLink className="poster" to={`/Player/movie/${movies?.id}`}>
+          <a
+            onClick={() => pushHistoric(movies?.id)}
+            className="poster"
+            href={`/Player/movie/${movies?.id}`}
+          >
             <i className="fa-solid fa-play"></i>
-          </NavLink>
-          <i className="fa-solid fa-plus"></i>
-          <i className="fa-solid fa-heart"></i>
+          </a>
+          {watchlist ? (
+            <a onClick={() => deleteWatchlist(movies?.id)}>
+              <i className="fa-solid fa-eye-slash"></i>
+            </a>
+          ) : (
+            <a onClick={() => pushWatchlist(movies?.id)}>
+              <i className="fa-solid fa-eye"></i>
+            </a>
+          )}
+          {favorite ? (
+            <a onClick={() => deleteFavorite(movies?.id)}>
+              <i className="fa-solid fa-heart-crack"></i>
+            </a>
+          ) : (
+            <a onClick={() => pushFavorite(movies?.id)}>
+              <i className="fa-solid fa-heart"></i>
+            </a>
+          )}
         </div>
       </div>
 

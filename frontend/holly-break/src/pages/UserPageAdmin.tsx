@@ -22,15 +22,18 @@ import WatchlistAdmin from "../component/WatchlistAdmin";
 interface userProfiles {
   avatar: string;
   createdAt: string;
-  favorite: Array<any>;
-  historic: Array<any>;
+  favorites_movie: Array<string>;
+  favorites_serie: Array<string>;
+  historic_movie: Array<string>;
+  historic_serie: Array<string>;
   id_user: string;
   is_young: boolean;
   pin_code: string;
   pseudo: string;
   quote: string;
   updatedAt: string;
-  watchlist: Array<any>;
+  watchList_movie: Array<string>;
+  watchList_serie: Array<string>;
   _id: string;
 }
 
@@ -118,6 +121,8 @@ function UserPageAdmin() {
   // ------------------- Open and close modal -------------------
 
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpenHistorical, setIsOpenHistorical] = React.useState(false);
+  const [isOpenWatchlist, setIsOpenWatchlist] = React.useState(false);
 
   return (
     <>
@@ -198,15 +203,29 @@ function UserPageAdmin() {
                       <FavoriteAdmin
                         isOpen={isOpen}
                         setIsOpen={setIsOpen}
-                        id={profile._id}
+                        profile={profile}
                       />
                     )}
-                    <a href="#">
+                    <a onClick={() => setIsOpenWatchlist(true)}>
                       watchlist <i className="fa-solid fa-arrow-right"></i>
                     </a>
-                    <a href="#">
+                    {isOpenWatchlist && (
+                      <WatchlistAdmin
+                        isOpen={isOpenWatchlist}
+                        setIsOpen={setIsOpenWatchlist}
+                        profile={profile}
+                      />
+                    )}
+                    <a onClick={() => setIsOpenHistorical(true)}>
                       historical <i className="fa-solid fa-arrow-right"></i>
                     </a>
+                    {isOpenHistorical && (
+                      <HistoricalAdmin
+                        isOpen={isOpenHistorical}
+                        setIsOpen={setIsOpenHistorical}
+                        profile={profile}
+                      />
+                    )}
                   </div>
                 </div>
               </>
