@@ -1,7 +1,11 @@
 import React from "react";
 
 function Fave() {
-  return <div>Fave</div>;
+  return (
+    <>
+      <div></div>
+    </>
+  );
 }
 
 export default Fave;

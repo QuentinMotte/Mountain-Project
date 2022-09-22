@@ -1,0 +1,45 @@
+.wrapper_faq {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $white;
+
+  .accordion_faq {
+    width: 500px;
+
+    .question_faq {
+      background-color: $bg-color;
+      margin-bottom: 3rem;
+      padding: 2rem;
+
+      .title_faq {
+        color: $green;
+        padding: 1rem;
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        span {
+          font-size: large;
+        }
+      }
+
+      .content_faq {
+        font-size: small;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+        font-size: medium;
+      }
+
+      .content_faq.show {
+        height: auto;
+        max-height: 999px;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
