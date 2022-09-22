@@ -61,7 +61,7 @@ function Header() {
               <NavLink className="header_navLink" to={"/Watchlist"}>
                 Watchlist
               </NavLink>
-              <NavLink className="header_navLink" to={"/"}>
+              <NavLink className="header_navLink" to={"/Forum/All"}>
                 Forum
               </NavLink>
 
