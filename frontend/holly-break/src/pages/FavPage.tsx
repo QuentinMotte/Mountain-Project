@@ -7,7 +7,7 @@ function FavPage() {
   return (
     <>
       <Header></Header>
-      <main className="content-container"></main>
+      <main className="content-container">coucou favorites</main>
       <Footer></Footer>
     </>
   );
