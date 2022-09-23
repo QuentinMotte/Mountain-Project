@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
 
 interface userProfiles {
   avatar: string;
@@ -25,25 +26,23 @@ function WatchList() {
   const API: any = process.env.REACT_APP_API_KEY;
   const API_KEY = API.replace(";", "");
 
-  const [profile, setProfile] = React.useState<userProfiles[]>([]);
-  React.useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/profile/${id}`)
-      .then((res) => {
-        setProfile(res.data.watchList_movie);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const [profil, setProfil] = useState<any>([]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/profile/${id}`).then((res) => {
+      setProfil(res.data);
+    });
   }, []);
+
+  const watchMovies: Array<any> = profil?.watchList_movie;
 
   const [movies, setMovies] = React.useState<any>([]);
 
   const getMovie = async () => {
-    for (let i = 0; i < profile.length; i++) {
+    for (let i = 0; i < watchMovies.length; i++) {
       axios
         .get(
-          `https://api.themoviedb.org/3/movie/${profile[i]}?api_key=${API_KEY}&language=en-US`
+          `https://api.themoviedb.org/3/movie/${watchMovies[i]}?api_key=${API_KEY}&language=en-US`
         )
         .then((res) => {
           setMovies((movies: any) => [...movies, res.data]);
@@ -78,10 +77,12 @@ function WatchList() {
     <>
       <div>
         <h1>Favorites</h1>
-        <h1>Movies</h1>
-        {moviesUnique.map((movie: any) => (
-          <div>{movie.title}</div>
-        ))}
+        <h2>Movies</h2>
+        {movies?.map((item: any) => {
+          <div>
+            <p>{item.title}</p>
+          </div>;
+        })}
       </div>
     </>
   );

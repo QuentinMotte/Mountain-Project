@@ -8,11 +8,7 @@ function AboutPage() {
     <>
       <Header></Header>
       <main className="content-container">
-        <div>
-          <h1>About</h1>
-          <p>This is the about page</p>
-          <NavLink to="/">Landing</NavLink>
-        </div>
+        <div></div>
         <Footer></Footer>
       </main>
     </>
