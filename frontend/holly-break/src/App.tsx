@@ -11,7 +11,7 @@ import HistoryPage from "./pages/HistoryPage";
 import Landing from "./pages/Landing";
 import Homepage from "./pages/Homepage";
 import AboutPage from "./pages/AboutPage";
-import SettingsPage from "./pages/SettingsPage";
+import SettingsUser from "./pages/SettingsUser";
 import MoviePage from "./pages/MoviePage";
 import PlayerPage from "./pages/PlayerPage";
 import ConditionPage from "./pages/ConditionPage";
@@ -77,7 +77,7 @@ function App() {
           <Route path="/Search" element={<SearchPage />} />
           <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
-          <Route path="/Settings" element={<SettingsPage />} />
+          <Route path="/SettingsUser" element={<SettingsUser />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
           <Route path="/Movie/Genre/:id" element={<MoviesGenrePage />} />
           <Route path="/Popular/:id" element={<PopularMovies />} />
@@ -107,7 +107,7 @@ function App() {
           <Route path="/Search" element={<SearchPage />} />
           <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
-          <Route path="/Settings" element={<SettingsPage />} />
+          <Route path="/SettingsUser" element={<SettingsUser />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
           <Route path="/Movie/Genre/:id" element={<MoviesGenrePage />} />
           <Route path="/tv/:id" element={<SeriePage />} />

@@ -40,7 +40,7 @@ interface ProfileState {
   pseudo: string;
   quote: string;
   avatar: string;
-  pin_code: number;
+  pin_code?: number;
   is_young: boolean;
   id_user: string;
 }
@@ -92,8 +92,6 @@ function CreateProfile() {
     }
   };
 
-  // handle change
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProfile({ ...profile, [name]: value });
@@ -113,12 +111,11 @@ function CreateProfile() {
     setProfilePasscode({ pin_code: onlyNumber(e) });
   };
 
-  const pin_code = parseInt(profilePasscode.pin_code);
-
   const handlePasscodeConfirmChange = (e: any) => {
     setProfilePasscodeConfirm({ pin_codeConfirm: onlyNumber(e) });
   };
 
+  const pin_code = parseInt(profilePasscode.pin_code);
   const pin_codeConfirm = parseInt(profilePasscodeConfirm.pin_codeConfirm);
 
   const handleYoungChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -126,11 +123,7 @@ function CreateProfile() {
     setProfileYoung({ ...profileYoung, [name]: value });
   };
 
-  // import the user id from local storage and remove the quotes
-
   const id: any = localStorage.getItem("user");
-
-  // Collect the data
 
   const ProfilState: ProfileState = {
     pseudo: profile.pseudo,
@@ -141,22 +134,18 @@ function CreateProfile() {
     id_user: id,
   };
 
-  // handle submit and send data
-
-  async function handleSubmit(e: any) {
+  async function handlesubmit(e: any) {
     e.preventDefault();
     if (passcodeOK()) {
       await axios
         .post("http://localhost:5000/api/profile/register", ProfilState)
         .then((res) => {
+          console.log(res);
           localStorage.setItem("NewProfile", res.data.profile);
-          window.location.href = "/SuccessProfile";
-        })
-        .catch((err) => {
-          console.log(err);
+          // window.location.href = "/SuccessProfile";
         });
     } else {
-      alert("Les codes pin ne correspondent pas");
+      alert("Veuillez remplir tous les champs");
     }
   }
 
@@ -167,7 +156,7 @@ function CreateProfile() {
         <h1>create your first profile !</h1>
         <form className="profile-form">
           <div className="profileForm-group profileForm-group-pseudo">
-            <label htmlFor="pseudo">Profile Name</label>
+            <label htmlFor="pseudo">Profile Name *</label>
             <input
               type="text"
               name="pseudo"
@@ -179,14 +168,14 @@ function CreateProfile() {
           </div>
 
           <div className="profileForm-group profileForm-group-quote">
-            <label htmlFor="quote">Quote</label>
+            <label htmlFor="quote">Quote *</label>
             <select
               name="quote"
               id="quote"
-              required
               onChange={handleChangeQuote}
               value={profileQuote.quote}
             >
+              <option value="">Choose a quote</option>
               <option value="Gryffondor">Gryffondor</option>
               <option value="Serpentard">Serpentard</option>
               <option value="Serdaigle">Serdaigle</option>
@@ -198,7 +187,7 @@ function CreateProfile() {
           </div>
 
           <div className="profileForm-group profileForm-group-avatar">
-            <h2>Choose Your Avatar</h2>
+            <h2>Choose Your Avatar *</h2>
 
             <label>
               <input
@@ -322,7 +311,6 @@ function CreateProfile() {
               value={profilePasscode.pin_code}
               onChange={handlePasscodeChange}
               autoComplete="off"
-              required
             />
           </div>
 
@@ -337,7 +325,6 @@ function CreateProfile() {
               value={profilePasscodeConfirm.pin_codeConfirm}
               onChange={handlePasscodeConfirmChange}
               autoComplete="off"
-              required
             />
           </div>
 
@@ -352,7 +339,7 @@ function CreateProfile() {
           </div>
 
           <div className="profileForm-group profileForm-group-submit">
-            <button type="submit" onClick={handleSubmit}>
+            <button type="submit" onClick={handlesubmit}>
               Create
             </button>
           </div>
