@@ -43,6 +43,8 @@ export function SeriesPosters() {
 
   const URLKids = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10762`;
 
+  const URLAN = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=16`;
+
   const URLDoc = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=99`;
 
   const URLTalk = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10767`;
@@ -75,6 +77,8 @@ export function SeriesPosters() {
 
   let [TVKid, setTVKid] = useState<moviesProps | undefined>();
 
+  let [TVAN, setTVAN] = useState<moviesProps | undefined>();
+
   let [TVDoc, setTVDoc] = useState<moviesProps | undefined>();
 
   let [TVTalk, setTVTalk] = useState<moviesProps | undefined>();
@@ -96,6 +100,7 @@ export function SeriesPosters() {
     getTVSoap();
     getTVFam();
     getTVKid();
+    getTVAN();
     getTVDoc();
     getTVTalk();
     getTVNews();
@@ -160,6 +165,11 @@ export function SeriesPosters() {
   const getTVKid = async () => {
     const { data } = await axios.get(URLKids);
     setTVKid(data.results);
+  };
+
+  const getTVAN = async () => {
+    const { data } = await axios.get(URLAN);
+    setTVAN(data.results);
   };
 
   const getTVDoc = async () => {
@@ -455,6 +465,22 @@ export function SeriesPosters() {
             <NavLink className="poster" to={`/tv/${TVKid.id}`}>
               <div id={TVKid.id} className="movies_container_poster">
                 <img src={GetPictures(TVKid.poster_path)} alt="poster" />
+              </div>
+            </NavLink>
+          ))}
+        </Slider>
+      </div>
+
+      <div className="container_loop_movies">
+        <NavLink className="genre" to={`/Serie/Genre/16`}>
+          <h3>Animation</h3>
+          <i className="fa-solid fa-arrow-right"></i>
+        </NavLink>
+        <Slider {...settings2} className="poster_movies">
+          {TVAN?.map((TVKidAN) => (
+            <NavLink className="poster" to={`/tv/${TVKidAN.id}`}>
+              <div id={TVKidAN.id} className="movies_container_poster">
+                <img src={GetPictures(TVKidAN.poster_path)} alt="poster" />
               </div>
             </NavLink>
           ))}

@@ -29,6 +29,7 @@ import PopularMovies from "./pages/PopularMovies";
 import WatchListPage from "./pages/WatchListPage";
 import ForumHomePage from "./pages/ForumHomePage";
 import CreateTopicPage from "./pages/CreateTopicPage";
+import KidsPage from "./pages/KidsPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -89,6 +90,7 @@ function App() {
           <Route path="/Actor/:id" element={<ActorPage />} />
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
           <Route path="/Player/Serie/:id" element={<Landing />} />
+          <Route path="/kid" element={<KidsPage />} />
         </>
       )}
       {token && profile && (
