@@ -12,12 +12,13 @@ import AvatarRobin from "../img/avatar_profil/avatar_robin.png";
 import AvatarSakura from "../img/avatar_profil/avatar_sakura.jpg";
 import AvatarShinra from "../img/avatar_profil/avatar_shinra.webp";
 import axios from "axios";
+import { StatefulPinInput } from "react-input-pin-code";
 interface ProfilePasscode {
-  pin_code: string;
+  pin_code: Array<number>;
 }
 
 interface ProfilePasscodeConfirm {
-  pin_codeConfirm: string;
+  pin_codeConfirm: Array<number>;
 }
 
 interface ProfilePseudo {
@@ -40,7 +41,7 @@ interface ProfileState {
   pseudo: string;
   quote: string;
   avatar: string;
-  pin_code: number;
+  pin_code: Array<number>;
   is_young: boolean;
   id_user: string;
 }
@@ -62,37 +63,18 @@ function CreateProfile() {
 
   const [profilePasscode, setProfilePasscode] = React.useState<ProfilePasscode>(
     {
-      pin_code: "",
+      pin_code: [],
     }
   );
 
   const [profilePasscodeConfirm, setProfilePasscodeConfirm] =
     React.useState<ProfilePasscodeConfirm>({
-      pin_codeConfirm: "",
+      pin_codeConfirm: [],
     });
 
   const [profileYoung, setProfileYoung] = React.useState<ProfileYoung>({
     is_young: false,
   });
-
-  // Functions
-
-  const onlyNumber = (e: any) => {
-    const re = /^[0-9\b]+$/;
-    if (e.target.value === "" || re.test(e.target.value)) {
-      return e.target.value;
-    }
-  };
-
-  const passcodeOK = () => {
-    if (pin_code === pin_codeConfirm) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  // handle change
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -109,55 +91,35 @@ function CreateProfile() {
     setProfileAvatar({ ...profileAvatar, [name]: value });
   };
 
-  const handlePasscodeChange = (e: any) => {
-    setProfilePasscode({ pin_code: onlyNumber(e) });
-  };
-
-  const pin_code = parseInt(profilePasscode.pin_code);
-
-  const handlePasscodeConfirmChange = (e: any) => {
-    setProfilePasscodeConfirm({ pin_codeConfirm: onlyNumber(e) });
-  };
-
-  const pin_codeConfirm = parseInt(profilePasscodeConfirm.pin_codeConfirm);
-
   const handleYoungChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProfileYoung({ ...profileYoung, [name]: value });
   };
 
-  // import the user id from local storage and remove the quotes
+  const handlePasscodeChange = (e: any) => {
+    setProfilePasscode({ ...profilePasscode });
+  };
 
   const id: any = localStorage.getItem("user");
-
-  // Collect the data
 
   const ProfilState: ProfileState = {
     pseudo: profile.pseudo,
     quote: profileQuote.quote,
     avatar: profileAvatar.avatar,
-    pin_code: pin_code,
+    pin_code: profilePasscode.pin_code,
     is_young: profileYoung.is_young,
     id_user: id,
   };
 
-  // handle submit and send data
-
-  async function handleSubmit(e: any) {
+  async function handlesubmit(e: any) {
     e.preventDefault();
-    if (passcodeOK()) {
-      await axios
-        .post("http://localhost:5000/api/profile/register", ProfilState)
-        .then((res) => {
-          localStorage.setItem("NewProfile", res.data.profile);
-          window.location.href = "/SuccessProfile";
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      alert("Les codes pin ne correspondent pas");
-    }
+    await axios
+      .post("http://localhost:5000/api/profile/register", ProfilState)
+      .then((res) => {
+        console.log(res);
+        // localStorage.setItem("NewProfile", res.data.profile);
+        // window.location.href = "/SuccessProfile";
+      });
   }
 
   return (
@@ -167,26 +129,25 @@ function CreateProfile() {
         <h1>create your first profile !</h1>
         <form className="profile-form">
           <div className="profileForm-group profileForm-group-pseudo">
-            <label htmlFor="pseudo">Profile Name</label>
+            <label htmlFor="pseudo">Profile Name *</label>
             <input
               type="text"
               name="pseudo"
               id="pseudo"
-              required
               onChange={handleChange}
               value={profile.pseudo}
             />
           </div>
 
           <div className="profileForm-group profileForm-group-quote">
-            <label htmlFor="quote">Quote</label>
+            <label htmlFor="quote">Quote *</label>
             <select
               name="quote"
               id="quote"
-              required
               onChange={handleChangeQuote}
               value={profileQuote.quote}
             >
+              <option value="">Choose a quote</option>
               <option value="Gryffondor">Gryffondor</option>
               <option value="Serpentard">Serpentard</option>
               <option value="Serdaigle">Serdaigle</option>
@@ -198,7 +159,7 @@ function CreateProfile() {
           </div>
 
           <div className="profileForm-group profileForm-group-avatar">
-            <h2>Choose Your Avatar</h2>
+            <h2>Choose Your Avatar *</h2>
 
             <label>
               <input
@@ -313,31 +274,13 @@ function CreateProfile() {
 
           <div className="profileForm-group profileForm-group-pin">
             <label htmlFor="pin_code">Choose Your PIN Code</label>
-            <input
-              type="password"
+            <StatefulPinInput
               name="pin_code"
               id="profilePIN"
-              maxLength={4}
-              minLength={4}
-              value={profilePasscode.pin_code}
+              length={4}
+              // value={profilePasscode.pin_code}
               onChange={handlePasscodeChange}
-              autoComplete="off"
-              required
-            />
-          </div>
-
-          <div className="profileForm-group profileForm-group-pinconfirm">
-            <label htmlFor="profilePINConfirm">Confirm Your PIN Code</label>
-            <input
-              type="password"
-              name="profilePINConfirm"
-              id="profilePINConfirm"
-              maxLength={4}
-              minLength={4}
-              value={profilePasscodeConfirm.pin_codeConfirm}
-              onChange={handlePasscodeConfirmChange}
-              autoComplete="off"
-              required
+              onComplete={(value) => setProfilePasscode}
             />
           </div>
 
@@ -352,7 +295,7 @@ function CreateProfile() {
           </div>
 
           <div className="profileForm-group profileForm-group-submit">
-            <button type="submit" onClick={handleSubmit}>
+            <button type="submit" onClick={handlesubmit}>
               Create
             </button>
           </div>

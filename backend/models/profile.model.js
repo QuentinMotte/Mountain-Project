@@ -25,8 +25,8 @@ const profileSchema = new mongoose.Schema(
       default: "./img/avatar_profil",
     },
     pin_code: {
-      type: Number,
-      validate: /^[0-9]{4}$/,
+      type: [Number],
+      // validate: /^[0-9]{4}$/,
       // validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },
 
