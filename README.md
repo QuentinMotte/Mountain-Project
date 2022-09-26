@@ -82,3 +82,14 @@ This is the full stack JavaScript.
 - Creation of the forum DB (routes, MVC, errors, regex)
   
  ### Sprint 4  | 19/09 -> 23/09  
+ - DB Forum
+ - Test topic, post & comment with postman
+ - Create firsts pages of the forum
+ - Style improvement on different page
+ - Page FAQ
+ - Page About us
+ - Page Condition
+ - Page for child profile
+ - Finish the panel admin
+ - Work on profile settings/ watchlist / favorites
+ - Add the second navbar menu
