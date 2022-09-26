@@ -83,6 +83,41 @@ function History() {
   const moviesUnique = removeDuplicates(movies, "id");
   const seriesUnique = removeDuplicates(series, "id");
 
+  //---------------------
+  const id_profile = localStorage.getItem("profile");
+  const [History, setHistory] = useState(false);
+  const [HistorySD, setHistorySD] = useState(false);
+
+  async function deleteHistory(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/r_historic_movie/${id_profile}`,
+        { historic_movie: id }
+      )
+      .then((res) => {
+        setHistorySD(false);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  async function deleteHistorySD(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/r_historic_serie/${id_profile}`,
+        { historic_serie: id }
+      )
+      .then((res) => {
+        setHistorySD(false);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   //----------------------
 
   function GetPictures(avatar: string) {
@@ -106,6 +141,12 @@ function History() {
                   <img src={GetPictures(movie.poster_path)} alt="poster" />
                 </div>
               </NavLink>
+              <a
+                className="delete_Button"
+                onClick={() => deleteHistory(movie.id)}
+              >
+                <i className="fa-solid fa-trash"></i>
+              </a>
             </div>
           ))}
         </div>
@@ -120,6 +161,12 @@ function History() {
                   <img src={GetPictures(serie.poster_path)} alt="poster" />
                 </div>
               </NavLink>
+              <a
+                className="delete_Button"
+                onClick={() => deleteHistorySD(serie.id)}
+              >
+                <i className="fa-solid fa-trash"></i>
+              </a>
             </div>
           ))}
         </div>
