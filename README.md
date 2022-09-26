@@ -93,3 +93,5 @@ This is the full stack JavaScript.
  - Finish the panel admin
  - Work on profile settings/ watchlist / favorites
  - Add the second navbar menu
+
+### Strint 5 | 26/09 -> 30/09
