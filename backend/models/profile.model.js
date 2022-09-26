@@ -5,7 +5,7 @@ const profileSchema = new mongoose.Schema(
     id_user: {
       type: String,
       required: true,
-      default: "6311fe4b15dcb7859d35d98e",
+      default: "",
     },
 
     pseudo: {
@@ -25,7 +25,8 @@ const profileSchema = new mongoose.Schema(
       default: "./img/avatar_profil",
     },
     pin_code: {
-      type: [Number],
+      type: String,
+      default: null,
       // validate: /^[0-9]{4}$/,
       // validate: /^[^*|\":<>[\]{}`\\()';@&$/,+=_°%§!#€£.?]+$/,
     },

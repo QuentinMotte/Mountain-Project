@@ -28,7 +28,7 @@ interface userProfiles {
   historic_serie: Array<string>;
   id_user: string;
   is_young: boolean;
-  pin_code: string;
+  pin_code: string | null;
   pseudo: string;
   quote: string;
   updatedAt: string;
@@ -64,7 +64,6 @@ function UserPageAdmin() {
       .get(`http://localhost:5000/api/profile/allProfiles/${id}`)
       .then((res) => {
         setProfiles(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
