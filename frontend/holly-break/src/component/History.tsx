@@ -95,7 +95,7 @@ function History() {
         { historic_movie: id }
       )
       .then((res) => {
-        setHistorySD(false);
+        setHistory(false);
         window.location.reload();
       })
       .catch((err) => {
