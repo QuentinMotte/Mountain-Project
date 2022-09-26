@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import Poster from "../img/poster_default.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -26,33 +28,60 @@ function WatchList() {
   const API: any = process.env.REACT_APP_API_KEY;
   const API_KEY = API.replace(";", "");
 
-  const [profil, setProfil] = useState<any>([]);
-
-  useEffect(() => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((res) => {
-      setProfil(res.data);
-    });
-  }, []);
-
-  const watchMovies: Array<any> = profil?.watchList_movie;
-
+  const [watchList, setWatchList] = React.useState<any>([]);
   const [movies, setMovies] = React.useState<any>([]);
 
-  const getMovie = async () => {
-    for (let i = 0; i < watchMovies.length; i++) {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/movie/${watchMovies[i]}?api_key=${API_KEY}&language=en-US`
-        )
-        .then((res) => {
-          setMovies((movies: any) => [...movies, res.data]);
-        });
-    }
+  const [watchListSerie, setWatchListSerie] = React.useState<any>([]);
+  const [series, setSeries] = React.useState<any>([]);
+
+  const getProfileWatchlistMovie = async () => {
+    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+      setWatchList(response.data.watchList_movie);
+    });
+  };
+
+  const getProfileWatchlistSerie = async () => {
+    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+      setWatchListSerie(response.data.watchList_serie);
+    });
   };
 
   React.useEffect(() => {
-    getMovie();
+    getProfileWatchlistMovie();
+    getProfileWatchlistSerie();
   }, []);
+
+  const getMovie = async (id: string) => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+      )
+      .then((res) => {
+        setMovies((movies: any) => [...movies, res.data]);
+      });
+  };
+
+  React.useEffect(() => {
+    for (let i = 0; i < watchList.length; i++) {
+      getMovie(watchList[i]);
+    }
+  }, [watchList]);
+
+  const getSerie = async (id: string) => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`
+      )
+      .then((res) => {
+        setSeries((series: any) => [...series, res.data]);
+      });
+  };
+
+  React.useEffect(() => {
+    for (let i = 0; i < watchListSerie.length; i++) {
+      getSerie(watchListSerie[i]);
+    }
+  }, [watchListSerie]);
 
   function removeDuplicates(originalArray: any, prop: any) {
     var newArray: any = [];
@@ -70,19 +99,48 @@ function WatchList() {
   }
 
   const moviesUnique = removeDuplicates(movies, "id");
+  const seriesUnique = removeDuplicates(series, "id");
 
-  console.log(moviesUnique);
+  //----------------------
+
+  function GetPictures(avatar: string) {
+    switch (avatar) {
+      case null:
+        return Poster;
+      case avatar:
+        return `https://image.tmdb.org/t/p/w500` + avatar;
+    }
+  }
 
   return (
     <>
-      <div>
-        <h1>Favorites</h1>
-        <h2>Movies</h2>
-        {movies?.map((item: any) => {
-          <div>
-            <p>{item.title}</p>
-          </div>;
-        })}
+      <div className="Movies_watchList">
+        <h1>Movies</h1>
+        <div className="container_genre">
+          {moviesUnique.map((movie: any) => (
+            <div>
+              <NavLink className="poster" to={`/Movie/${movie.id}`}>
+                <div id={movie.id} className="movies_container_poster">
+                  <img src={GetPictures(movie.poster_path)} alt="poster" />
+                </div>
+              </NavLink>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="Series_watchList">
+        <h1>Series</h1>
+        <div className="container_genre">
+          {seriesUnique.map((serie: any) => (
+            <div>
+              <NavLink className="poster" to={`/tv/${serie.id}`}>
+                <div id={serie.id} className="movies_container_poster">
+                  <img src={GetPictures(serie.poster_path)} alt="poster" />
+                </div>
+              </NavLink>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );
