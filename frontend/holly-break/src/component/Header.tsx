@@ -165,8 +165,18 @@ function Header() {
               />
               <div className={menu ? "menuAccordeon active" : "menuAccordeon"}>
                 <ul>
-                  <li>Favorites</li>
-                  <li>Historic</li>
+                  <li>
+                    {" "}
+                    <NavLink className="navLink_right" to={"/Favorites"}>
+                      Favorites
+                    </NavLink>
+                  </li>
+                  <li>
+                    {" "}
+                    <NavLink className="navLink_right" to={"/History"}>
+                      History
+                    </NavLink>
+                  </li>
                   <li>
                     {" "}
                     <NavLink className="navLink_right" to={"/SettingsUser"}>

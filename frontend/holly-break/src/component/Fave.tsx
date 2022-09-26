@@ -83,6 +83,45 @@ function Fave() {
   const moviesUnique = removeDuplicates(movies, "id");
   const seriesUnique = removeDuplicates(series, "id");
 
+  //---------------------
+  const id_profile = localStorage.getItem("profile");
+  const [favorite, setFavorite] = useState(false);
+  const [favoriteM, setFavoriteM] = useState(false);
+
+  async function deleteFavorite(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/r_favorites_serie/${id_profile}`,
+        {
+          favorites_serie: id,
+        }
+      )
+      .then((res) => {
+        setFavorite(false);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  async function deleteFavoriteM(id: any) {
+    axios
+      .patch(
+        `http://localhost:5000/api/profile/r_favorites_movie/${id_profile}`,
+        {
+          favorites_movie: id,
+        }
+      )
+      .then((res) => {
+        setFavoriteM(false);
+        window.location.reload();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   //----------------------
 
   function GetPictures(avatar: string) {
@@ -100,12 +139,18 @@ function Fave() {
         <h1>Movies</h1>
         <div className="container_genre">
           {moviesUnique.map((movie: any) => (
-            <div>
+            <div className="container_fave">
               <NavLink className="poster" to={`/Movie/${movie.id}`}>
                 <div id={movie.id} className="movies_container_poster">
                   <img src={GetPictures(movie.poster_path)} alt="poster" />
                 </div>
               </NavLink>
+              <a
+                className="delete_Button"
+                onClick={() => deleteFavoriteM(movie?.id)}
+              >
+                <i className="fa-solid fa-heart-crack"></i>
+              </a>
             </div>
           ))}
         </div>
@@ -114,12 +159,18 @@ function Fave() {
         <h1>Series</h1>
         <div className="container_genre">
           {seriesUnique.map((serie: any) => (
-            <div>
+            <div className="container_fave">
               <NavLink className="poster" to={`/tv/${serie.id}`}>
                 <div id={serie.id} className="movies_container_poster">
                   <img src={GetPictures(serie.poster_path)} alt="poster" />
                 </div>
               </NavLink>
+              <a
+                className="delete_Button"
+                onClick={() => deleteFavorite(serie?.id)}
+              >
+                <i className="fa-solid fa-heart-crack"></i>
+              </a>
             </div>
           ))}
         </div>
