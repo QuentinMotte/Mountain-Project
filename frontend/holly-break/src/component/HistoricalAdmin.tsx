@@ -70,7 +70,7 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
     axios
       .patch(
         `http://localhost:5000/api/profile/r_historic_serie/${id_profile}`,
-        { watchList_serie: id }
+        { historic_serie: id }
       )
       .then((res) => {
         setSeries(series.filter((serie: any) => serie.id !== id));
@@ -84,7 +84,7 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
     axios
       .patch(
         `http://localhost:5000/api/profile/r_historic_movie/${id_profile}`,
-        { watchList_movie: id }
+        { historic_movie: id }
       )
       .then((res) => {
         setMovies(movies.filter((movie: any) => movie.id !== id));

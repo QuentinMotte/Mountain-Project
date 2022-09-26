@@ -4,25 +4,7 @@ import Poster from "../img/poster_default.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-interface userProfiles {
-  avatar: string;
-  createdAt: string;
-  favorites_movie: Array<string>;
-  favorites_serie: Array<string>;
-  historic_movie: Array<string>;
-  historic_serie: Array<string>;
-  id_user: string;
-  is_young: boolean;
-  pin_code: string;
-  pseudo: string;
-  quote: string;
-  updatedAt: string;
-  watchList_movie: Array<string>;
-  watchList_serie: Array<string>;
-  _id: string;
-}
-
-function WatchList() {
+function History() {
   const id = localStorage.getItem("profile");
 
   const API: any = process.env.REACT_APP_API_KEY;
@@ -36,13 +18,13 @@ function WatchList() {
 
   const getProfileWatchlistMovie = async () => {
     axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
-      setWatchList(response.data.watchList_movie);
+      setWatchList(response.data.historic_movie);
     });
   };
 
   const getProfileWatchlistSerie = async () => {
     axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
-      setWatchListSerie(response.data.watchList_serie);
+      setWatchListSerie(response.data.historic_serie);
     });
   };
 
@@ -102,21 +84,18 @@ function WatchList() {
   const seriesUnique = removeDuplicates(series, "id");
 
   //---------------------
-
   const id_profile = localStorage.getItem("profile");
-  const [watchlistD, setWatchlistD] = useState(false);
-  const [watchlistSD, setWatchlistSD] = useState(false);
+  const [History, setHistory] = useState(false);
+  const [HistorySD, setHistorySD] = useState(false);
 
-  async function deleteWatchlist(id: any) {
+  async function deleteHistory(id: any) {
     axios
       .patch(
-        `http://localhost:5000/api/profile/r_watchlist_movie/${id_profile}`,
-        {
-          watchList_movie: id,
-        }
+        `http://localhost:5000/api/profile/r_historic_movie/${id_profile}`,
+        { historic_movie: id }
       )
       .then((res) => {
-        setWatchlistD(false);
+        setHistory(false);
         window.location.reload();
       })
       .catch((err) => {
@@ -124,16 +103,14 @@ function WatchList() {
       });
   }
 
-  async function deleteWatchlistSD(id: any) {
+  async function deleteHistorySD(id: any) {
     axios
       .patch(
-        `http://localhost:5000/api/profile/r_watchlist_serie/${id_profile}`,
-        {
-          watchList_serie: id,
-        }
+        `http://localhost:5000/api/profile/r_historic_serie/${id_profile}`,
+        { historic_serie: id }
       )
       .then((res) => {
-        setWatchlistSD(false);
+        setHistorySD(false);
         window.location.reload();
       })
       .catch((err) => {
@@ -166,9 +143,9 @@ function WatchList() {
               </NavLink>
               <a
                 className="delete_Button"
-                onClick={() => deleteWatchlist(movie.id)}
+                onClick={() => deleteHistory(movie.id)}
               >
-                <i className="fa-solid fa-eye-slash"></i>
+                <i className="fa-solid fa-trash"></i>
               </a>
             </div>
           ))}
@@ -186,9 +163,9 @@ function WatchList() {
               </NavLink>
               <a
                 className="delete_Button"
-                onClick={() => deleteWatchlistSD(serie.id)}
+                onClick={() => deleteHistorySD(serie.id)}
               >
-                <i className="fa-solid fa-eye-slash"></i>
+                <i className="fa-solid fa-trash"></i>
               </a>
             </div>
           ))}
@@ -198,4 +175,4 @@ function WatchList() {
   );
 }
 
-export default WatchList;
+export default History;

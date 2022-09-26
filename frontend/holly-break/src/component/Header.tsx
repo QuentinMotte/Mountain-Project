@@ -165,21 +165,46 @@ function Header() {
               />
               <div className={menu ? "menuAccordeon active" : "menuAccordeon"}>
                 <ul>
-                  <li>Favorites</li>
-                  <li>Historic</li>
-                  <li>Account Settings</li>
+                  <li>
+                    {" "}
+                    <NavLink className="navLink_right" to={"/Favorites"}>
+                      Favorites
+                    </NavLink>
+                  </li>
+                  <li>
+                    {" "}
+                    <NavLink className="navLink_right" to={"/History"}>
+                      History
+                    </NavLink>
+                  </li>
+                  <li>
+                    {" "}
+                    <NavLink className="navLink_right" to={"/SettingsUser"}>
+                      Account Settings
+                    </NavLink>
+                  </li>
                   <li>Profile Settings</li>
                   <li>
                     {" "}
-                    <NavLink to={"/Select-Profile"}>Switch Profile</NavLink>
+                    <NavLink className="navLink_right" to={"/Select-Profile"}>
+                      Switch Profile
+                    </NavLink>
                   </li>
                   <li>
                     {" "}
-                    <NavLink to={"/Admin"}>Admin</NavLink>
+                    {admin ? (
+                      <NavLink className="navLink_right" to={"/Admin"}>
+                        Admin
+                      </NavLink>
+                    ) : null}
                   </li>
                   <li>
                     {" "}
-                    <NavLink to={"/"} onClick={logOut}>
+                    <NavLink
+                      className="navLink_right"
+                      to={"/"}
+                      onClick={logOut}
+                    >
                       <i className="fa-solid fa-power-off"></i>
                     </NavLink>
                   </li>

@@ -99,12 +99,41 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        .profile-avatar {
+        .avatarContainer {
+          position: relative;
           width: 17rem;
           height: 17rem;
-          border-radius: 5px;
-          margin-bottom: 1rem;
+          .profile-avatar {
+            width: 17rem;
+            height: 17rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease-in-out;
+          }
+          .profile-bin {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: all 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $white;
+            font-size: 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover {
+              opacity: 1;
+            }
+          }
         }
+
         strong {
           color: $white;
           font-size: 2rem;
