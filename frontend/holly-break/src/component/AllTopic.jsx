@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import AnswerTopic from "./AnswerTopic";
-import CreateAnswerTopic from "./CreateAnswerTopic";
+
+import FormAnswer from "./FormAnswer";
+import MoreAnswers from "./MoreAnswers";
 
 const AllTopic = ({ topic }) => {
   const [profile, setProfile] = useState([]);
-  const [isOpen, setIsOpen] = useState(false);
   const [isAnswer, setIsAnswer] = useState(false);
-  console.log(isOpen);
+  const [isAddAnswer, setIsAddAnswer] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
 
   function fetchProfileById() {
     axios
@@ -23,26 +27,42 @@ const AllTopic = ({ topic }) => {
   return (
     <div className="topics">
       <h2>{topic.title}</h2>
+      <button onClick={() => setIsAddAnswer(true)}>Add Answer</button>
+      {isAddAnswer && (
+        <FormAnswer
+          topic={topic}
+          isAddAnswer={isAddAnswer}
+          setIsAddAnswer={setIsAddAnswer}
+        />
+      )}
+
       <p>{topic.content}</p>
       <p>{topic.category}</p>
       <p>
         Created at {topic.createdAt} by {profile.pseudo}
       </p>
-      <button onClick={() => setIsAnswer(true)}>view more</button>
+      {/* <AnswerTopic
+        topic={topic}
+        isAnswer={isAnswer}
+        setIsAnswer={setIsAnswer}
+      /> */}
+
       {isAnswer && (
-        <AnswerTopic
+        <MoreAnswers
           topic={topic}
-          isAnswer={isAnswer}
+          key={topic._id}
           setIsAnswer={setIsAnswer}
+          isAnswer={isAnswer}
+          profile={profile}
+          isAddAnswer={isAddAnswer}
+          isDelete={isDelete}
+          setIsDelete={setIsDelete}
+          isUpdate={isUpdate}
+          setIsUpdate={setIsUpdate}
         />
       )}
-      {isOpen && (
-        <CreateAnswerTopic
-          topic={topic}
-          profile={profile}
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-        />
+      {!isAnswer && (
+        <button onClick={() => setIsAnswer(true)}>Responses</button>
       )}
     </div>
   );

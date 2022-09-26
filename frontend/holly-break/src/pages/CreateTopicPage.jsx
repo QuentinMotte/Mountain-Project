@@ -27,6 +27,7 @@ const CreateTopicPage = () => {
     await axios
       .post("http://localhost:5000/api/topic/create", userFormState)
       .then((response) => {
+        window.location.href = "/Forum/All";
         console.log(response);
         console.log(response.status);
       })

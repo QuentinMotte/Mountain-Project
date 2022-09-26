@@ -29,6 +29,7 @@ import PopularMovies from "./pages/PopularMovies";
 import WatchListPage from "./pages/WatchListPage";
 import ForumHomePage from "./pages/ForumHomePage";
 import CreateTopicPage from "./pages/CreateTopicPage";
+//import MoreAnswers from "./component/MoreAnswers";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -119,6 +120,7 @@ function App() {
           <Route path="/Player/Serie/:id" element={<Landing />} />
           <Route path="/Forum/All" element={<ForumHomePage />} />
           <Route path="/Forum/Create" element={<CreateTopicPage />} />
+          {/* <Route path="/Forum/Onetopic" element={<MoreAnswers />} /> */}
         </>
       )}
       {<Route path="*" element={<Landing />} />}

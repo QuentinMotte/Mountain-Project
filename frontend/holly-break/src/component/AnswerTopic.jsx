@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Answers from "./Answers";
 
 const AnswerTopic = ({ isAnswer, setIsAnswer, topic }) => {
   const [answerData, setAnswerData] = useState([]);
@@ -13,7 +14,13 @@ const AnswerTopic = ({ isAnswer, setIsAnswer, topic }) => {
     fetchAnswerData();
   }, []);
   console.log(answerData);
-  return <div></div>;
+  return (
+    <div>
+      {answerData.slice(0, 3).map((answers) => (
+        <Answers answers={answers} key={answers._id} />
+      ))}
+    </div>
+  );
 };
 
 export default AnswerTopic;
