@@ -110,9 +110,9 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
                     alt=""
                     key={item.name}
                   />
-                  <button onClick={() => deleteOneSerie(item.id)}>
-                    Delete
-                  </button>
+                  <a onClick={() => deleteOneSerie(item.id)}>
+                    <i className="fa-solid fa-trash"></i>
+                  </a>
                 </div>
               </>
             );
@@ -126,9 +126,9 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
                     alt=""
                     key={item.title}
                   />
-                  <button onClick={() => deleteOneMovie(item.id)}>
-                    Delete
-                  </button>
+                  <a onClick={() => deleteOneMovie(item.id)}>
+                    <i className="fa-solid fa-trash"></i>
+                  </a>
                 </div>
               </>
             );
