@@ -30,6 +30,7 @@ import WatchListPage from "./pages/WatchListPage";
 import ForumHomePage from "./pages/ForumHomePage";
 import CreateTopicPage from "./pages/CreateTopicPage";
 import KidsPage from "./pages/KidsPage";
+import FavPage from "./pages/FavPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -78,6 +79,7 @@ function App() {
           <Route path="/Search" element={<SearchPage />} />
           <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
+          <Route path="/Favorites" element={<FavPage />} />
           <Route path="/Settings" element={<SettingsPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
           <Route path="/Movie/Genre/:id" element={<MoviesGenrePage />} />
