@@ -64,6 +64,7 @@ function UserPageAdmin() {
       .get(`http://localhost:5000/api/profile/allProfiles/${id}`)
       .then((res) => {
         setProfiles(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

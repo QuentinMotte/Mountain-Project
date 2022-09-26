@@ -1,86 +1,53 @@
 import React from "react";
 import axios from "axios";
 
-interface userProfiles {
-  avatar: string;
-  createdAt: string;
-  favorites_movie: Array<string>;
-  favorites_serie: Array<string>;
-  historic_movie: Array<string>;
-  historic_serie: Array<string>;
-  id_user: string;
-  is_young: boolean;
-  pin_code: string;
-  pseudo: string;
-  quote: string;
-  updatedAt: string;
-  watchList_movie: Array<string>;
-  watchList_serie: Array<string>;
-  _id: string;
-}
-
 function WatchList() {
   const id = localStorage.getItem("profile");
 
   const API: any = process.env.REACT_APP_API_KEY;
   const API_KEY = API.replace(";", "");
 
-  const [profile, setProfile] = React.useState<userProfiles[]>([]);
-  React.useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/profile/${id}`)
-      .then((res) => {
-        setProfile(res.data.watchList_movie);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+  const [watchList, setWatchList] = React.useState<any>([]);
   const [movies, setMovies] = React.useState<any>([]);
 
-  const getMovie = async () => {
-    for (let i = 0; i < profile.length; i++) {
-      axios
-        .get(
-          `https://api.themoviedb.org/3/movie/${profile[i]}?api_key=${API_KEY}&language=en-US`
-        )
-        .then((res) => {
-          setMovies((movies: any) => [...movies, res.data]);
-        });
-    }
+  const getProfileWatchlistMovie = async () => {
+    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+      setWatchList(response.data.watchList_movie);
+    });
   };
 
   React.useEffect(() => {
-    getMovie();
+    getProfileWatchlistMovie();
   }, []);
 
-  function removeDuplicates(originalArray: any, prop: any) {
-    var newArray: any = [];
-    var lookupObject: any = {};
+  const getMovie = async (id: string) => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+      )
+      .then((res) => {
+        setMovies((movies: any) => [...movies, res.data]);
+      });
+  };
 
-    for (var i in originalArray) {
-      lookupObject[originalArray[i][prop]] = originalArray[i];
+  React.useEffect(() => {
+    for (let i = 0; i < watchList.length; i++) {
+      getMovie(watchList[i]);
     }
-
-    for (i in lookupObject) {
-      newArray.push(lookupObject[i]);
-    }
-
-    return newArray;
-  }
-
-  const moviesUnique = removeDuplicates(movies, "id");
-
-  console.log(moviesUnique);
+  }, [watchList]);
 
   return (
     <>
       <div>
-        <h1>Favorites</h1>
-        <h1>Movies</h1>
-        {moviesUnique.map((movie: any) => (
-          <div>{movie.title}</div>
+        <h1>WatchList</h1>
+        {movies.map((movie: any) => (
+          <div key={movie.id}>
+            <h2>{movie.title}</h2>
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt={movie.title}
+            />
+          </div>
         ))}
       </div>
     </>

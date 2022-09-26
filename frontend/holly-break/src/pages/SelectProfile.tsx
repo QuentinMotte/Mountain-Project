@@ -73,24 +73,9 @@ function SelectProfile() {
     }
   }
 
-  // function handleChoiseProfile(id: string) {
-  //   localStorage.setItem("profile", id);
-  //   window.location.href = "/Home";
-  // }
-
   function handleChoiseProfile(id: string) {
-    if (profiles[0].pin_code === "") {
-      localStorage.setItem("profile", id);
-      window.location.href = "/Home";
-    } else {
-      const pinCode = prompt("Veuillez entrer votre code pin");
-      if (pinCode === profiles[0].pin_code) {
-        localStorage.setItem("profile", id);
-        window.location.href = "/Home";
-      } else {
-        alert("Code pin incorrect");
-      }
-    }
+    localStorage.setItem("profile", id);
+    window.location.href = "/Home";
   }
 
   return (
