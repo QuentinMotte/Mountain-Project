@@ -146,11 +146,15 @@ function CreateProfile() {
   async function handleSubmit(e: any) {
     e.preventDefault();
     if (passcodeOK()) {
-      await axios.post(
-        "http://localhost:5000/api/profile/register",
-        ProfilState
-      );
-      window.location.href = "/SuccessProfile";
+      await axios
+        .post("http://localhost:5000/api/profile/register", ProfilState)
+        .then((res) => {
+          localStorage.setItem("NewProfile", res.data.profile);
+          window.location.href = "/SuccessProfile";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       alert("Les codes pin ne correspondent pas");
     }

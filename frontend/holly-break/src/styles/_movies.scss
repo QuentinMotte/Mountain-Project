@@ -8,6 +8,7 @@ h1 {
   font-size: 5rem;
   margin-left: 2rem;
   margin-bottom: 3rem;
+  margin-top: -1rem;
 }
 
 .content-container {
@@ -158,14 +159,14 @@ h1 {
       display: flex;
       text-align: center;
       gap: 2rem;
-      color: $white;
+    }
 
-      h3 {
-        font-weight: bold;
-        font-size: 2rem;
-        text-transform: uppercase;
-        margin-bottom: 2rem;
-      }
+    h3 {
+      font-weight: bold;
+      font-size: 2rem;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      color: $white;
     }
 
     .poster_movies {
@@ -200,6 +201,55 @@ h1 {
           &:hover {
             transform: scale(1.05);
           }
+        }
+      }
+    }
+  }
+
+  .container_loop_movies_Home {
+    .genre {
+      display: flex;
+      text-align: center;
+      gap: 2rem;
+      color: $white;
+      margin-bottom: 3rem;
+      margin-top: 3rem;
+
+      h3 {
+        font-weight: bold;
+        font-size: 2rem;
+        text-transform: uppercase;
+      }
+    }
+
+    width: 90%;
+    margin: auto;
+
+    .movies_container_poster {
+      flex-shrink: 0;
+      border-radius: 5rem;
+      margin-left: 4rem;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      img {
+        border-radius: 5px;
+        height: 13rem;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+
+        @media screen and (max-width: 700px) {
+          height: 10rem;
+        }
+
+        @media screen and (max-width: 500px) {
+          height: 10rem;
+          margin-left: 4rem;
+        }
+
+        &:hover {
+          transform: scale(1.05);
         }
       }
     }

@@ -1,9 +1,12 @@
 import React from "react";
+import Poster from "../img/poster_default.png";
 import { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 
-const API_KEY = "a378b12e0a9383634a503a8f29d43915";
+const API: any = process.env.REACT_APP_API_KEY;
+
+const API_KEY = API.replace(";", "");
 
 interface moviesProps {
   map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
@@ -42,24 +45,33 @@ function MoviesSuggestion() {
     }, 1);
   }
 
+  function GetPictures(avatar: string) {
+    switch (avatar) {
+      case null:
+        return Poster;
+      case avatar:
+        return `https://image.tmdb.org/t/p/w500` + avatar;
+    }
+  }
+
   return (
     <>
       <div className="suggestions">
         <h2>Suggestions</h2>
         <div className="poster_movies">
           {moviesSim?.map((movieSim) => (
-            <NavLink
-              className="poster"
-              onClick={refreshPage}
-              to={`/movie/${movieSim.id}`}
-            >
-              <div id={movieSim.id} className="movies_container_poster">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500` + movieSim.poster_path}
-                  alt="poster"
-                />
-              </div>
-            </NavLink>
+            <>
+              <NavLink
+                className="poster"
+                onClick={refreshPage}
+                to={`/movie/${movieSim.id}`}
+              >
+                <div id={movieSim.id} className="movies_container_poster">
+                  <img src={GetPictures(movieSim.poster_path)} alt="poster" />
+                </div>
+                <div className="container_title"></div>
+              </NavLink>
+            </>
           ))}
         </div>
       </div>

@@ -7,13 +7,7 @@ function FavPage() {
   return (
     <>
       <Header></Header>
-      <main className="content-container">
-        <div>
-          <h1>FAVOURITE & WATCHLIST</h1>
-          <p>This is the fav page</p>
-          <NavLink to="/">Landing</NavLink>
-        </div>
-      </main>
+      <main className="content-container">coucou favorites</main>
       <Footer></Footer>
     </>
   );

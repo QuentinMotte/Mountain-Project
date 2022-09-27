@@ -3,6 +3,7 @@
   background-color: $bg-color-light;
   background-color: transparent;
   margin: 2rem;
+  margin-bottom: 5rem;
   border-radius: 5px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   display: grid;
@@ -54,6 +55,12 @@
     gap: 3rem;
     justify-content: flex-end;
     padding-right: 2rem;
+    img {
+      width: 8rem;
+      height: 8rem;
+      border-radius: 50%;
+      cursor: pointer;
+    }
     .navLink_right {
       color: $white;
       font-size: 2rem;
@@ -62,6 +69,38 @@
       transition: all 0.2s ease-in-out;
       &:hover {
         color: $greenHover;
+      }
+    }
+  }
+  .menuAccordeon {
+    position: absolute;
+    z-index: 999;
+    height: 5rem;
+    background-color: transparent;
+    border-radius: 5px;
+    width: calc(100% - 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2rem;
+    gap: 2rem;
+    top: 12rem;
+    left: -100rem;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+    &.active {
+      transform: translateX(100rem);
+      opacity: 1;
+    }
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      li {
+        color: $white;
+        font-size: 2rem;
+        font-weight: bold;
       }
     }
   }

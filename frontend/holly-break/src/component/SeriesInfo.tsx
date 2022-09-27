@@ -1,9 +1,12 @@
 import React from "react";
+import icon from "../img/Profile-Icon.png";
 import { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 
-const API_KEY = "a378b12e0a9383634a503a8f29d43915";
+const API: any = process.env.REACT_APP_API_KEY;
+
+const API_KEY = API.replace(";", "");
 
 interface moviesProps {
   map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
@@ -11,7 +14,7 @@ interface moviesProps {
   poster_path: string;
   id: string;
   overview: string;
-  runtime: string;
+  episode_run_time: string;
   name: string;
   tagline: string;
   first_air_date: string;
@@ -20,6 +23,7 @@ interface moviesProps {
   number_of_seasons: string;
   number_of_episodes: string;
   vote_average: string;
+  status: string;
 }
 
 interface GenresProps {
@@ -81,6 +85,15 @@ function SeriesInfo() {
     setMoviesDir(data.crew.slice(0, 4));
   };
 
+  function GetPictures(avatar: string) {
+    switch (avatar) {
+      case null:
+        return icon;
+      case avatar:
+        return `https://image.tmdb.org/t/p/original` + avatar;
+    }
+  }
+
   return (
     <>
       <div className="info">
@@ -89,53 +102,74 @@ function SeriesInfo() {
             <div className="title_container">
               <h1 className="Title">{movies?.name}</h1>
               <p className="TagLine">{movies?.tagline}</p>
+              <br />
+              <p className="resume">{movies?.overview}</p>
             </div>
 
-            <div className="genre_container">
-              {moviesGenres?.map((genres) => (
-                <div className="genres">
-                  <NavLink className="genre" to={`/Serie/Genre/${genres.id}`}>
-                    <button className="genre_button">{genres.name}</button>
-                  </NavLink>
+            <hr />
+
+            <div className="container_infos">
+              <div className="Info_duration">
+                <h4>Release date:</h4>
+                <br />
+                <p className="airDate">{movies?.first_air_date}</p>
+                <br />
+                <h4>Duration:</h4>
+                <br />
+                <p className="RunTime">{moviesRunTime?.[0]} min</p>
+              </div>
+
+              <div className="episodes_infos">
+                <h4>Seasons:</h4>
+                <br />
+                <p>{movies?.number_of_seasons}</p>
+                <br />
+                <h4>Episodes:</h4>
+                <br />
+                <p>{movies?.number_of_episodes}</p>
+                <br />
+                <h4>Status:</h4>
+                <br />
+                <p>{movies?.status}</p>
+              </div>
+
+              <div>
+                <h4>Genre:</h4>
+                <br />
+                <div className="genre_container">
+                  {moviesGenres?.map((genres) => (
+                    <div className="genres">
+                      <NavLink
+                        className="genre"
+                        to={`/Serie/Genre/${genres.id}`}
+                      >
+                        <a className="genre_button">{genres.name}</a>
+                      </NavLink>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
 
-            <div className="date">
-              <p className="airDate">
-                First air date: {movies?.first_air_date}
-              </p>
-              <p className="airDate">Last air date: {movies?.last_air_date}</p>
-              <p className="RunTime">Run time: {moviesRunTime?.[0]} min</p>
-              <p className="note">Note: {movies?.vote_average}</p>
+              <div className="date">
+                <h4>Crew:</h4>
+                <br />
+                {moviesDir?.map((crew) => (
+                  <>
+                    <p>
+                      {crew.job} / {crew.name}
+                    </p>
+                    <br />
+                  </>
+                ))}
+              </div>
             </div>
-
-            <div className="date">
-              {moviesDir?.map((crew) => (
-                <p>
-                  {crew.job} / {crew.name}
-                </p>
-              ))}
-            </div>
-            <div className="date">
-              <p className="seasons">
-                Number of seasons: {movies?.number_of_seasons}
-              </p>
-              <p className="episodes">
-                Number of episodes: {movies?.number_of_episodes}
-              </p>
-            </div>
-
-            <p className="resume">{movies?.overview}</p>
           </div>
+
           <div className="info_cast">
             {moviesCast?.map((cast) => (
               <div>
                 <NavLink className="genre" to={`/Actor/${cast.id}`}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500` + cast.profile_path}
-                    alt="cast"
-                  />
+                  <img src={GetPictures(cast.profile_path)} alt="cast" />
                 </NavLink>
                 <p className="cast">{cast.name}</p>
                 <p className="character">{cast.character}</p>

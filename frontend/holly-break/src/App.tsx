@@ -6,7 +6,6 @@ import SelectProfile from "./pages/SelectProfile";
 import Series from "./pages/Series";
 import SubPage from "./pages/SubPage";
 import SubSuccess from "./pages/SubSuccess";
-import FavPage from "./pages/FavPage";
 import FaqPage from "./pages/FaqPage";
 import HistoryPage from "./pages/HistoryPage";
 import Landing from "./pages/Landing";
@@ -26,6 +25,11 @@ import UserPageAdmin from "./pages/UserPageAdmin";
 import SuccessProfile from "./pages/SuccessProfile";
 import "./main.scss";
 import ActorPage from "./pages/ActorPage";
+import PopularMovies from "./pages/PopularMovies";
+import WatchListPage from "./pages/WatchListPage";
+import ForumHomePage from "./pages/ForumHomePage";
+import CreateTopicPage from "./pages/CreateTopicPage";
+//import MoreAnswers from "./component/MoreAnswers";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -72,11 +76,12 @@ function App() {
           <Route path="/Home/Series" element={<Series />} />
           <Route path="/Search/:id" element={<SearchPage />} />
           <Route path="/Search" element={<SearchPage />} />
-          <Route path="/Watchlist" element={<FavPage />} />
+          <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
           <Route path="/Settings" element={<SettingsPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
           <Route path="/Movie/Genre/:id" element={<MoviesGenrePage />} />
+          <Route path="/Popular/:id" element={<PopularMovies />} />
           <Route path="/tv/:id" element={<SeriePage />} />
           <Route path="/Serie/Genre/:id" element={<SeriesGenrePage />} />
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
@@ -101,7 +106,7 @@ function App() {
           <Route path="/Home/Series" element={<Series />} />
           <Route path="/Search/:id" element={<SearchPage />} />
           <Route path="/Search" element={<SearchPage />} />
-          <Route path="/Watchlist" element={<FavPage />} />
+          <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
           <Route path="/Settings" element={<SettingsPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
@@ -113,6 +118,9 @@ function App() {
           <Route path="/Serie/:id" element={<SeriePage />} />
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
           <Route path="/Player/Serie/:id" element={<Landing />} />
+          <Route path="/Forum/All" element={<ForumHomePage />} />
+          <Route path="/Forum/Create" element={<CreateTopicPage />} />
+          {/* <Route path="/Forum/Onetopic" element={<MoreAnswers />} /> */}
         </>
       )}
       {<Route path="*" element={<Landing />} />}

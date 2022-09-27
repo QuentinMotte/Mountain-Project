@@ -1,9 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const API_KEY = "a378b12e0a9383634a503a8f29d43915";
+const API: any = process.env.REACT_APP_API_KEY;
+
+const API_KEY = API.replace(";", "");
 
 interface trailerProps {
   map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
@@ -27,13 +29,22 @@ function PlayerSerie() {
     setMovies(data.results[0]);
   };
 
+  let navigate = useNavigate();
+
   return (
     <>
-      <div className="trailer">
-        <iframe
-          src={`https://www.youtube.com/embed/` + movies?.key}
-          title="Youtube video player"
-        ></iframe>
+      <div className="container_trailer">
+        <button className="button_back" onClick={() => navigate(-1)}>
+          Back
+        </button>
+        <div className="trailer">
+          <iframe
+            src={`https://www.youtube.com/embed/` + movies?.key}
+            title="Youtube video player"
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        </div>
       </div>
     </>
   );
