@@ -12,6 +12,7 @@ import AvatarRobin from "../img/avatar_profil/avatar_robin.png";
 import AvatarSakura from "../img/avatar_profil/avatar_sakura.jpg";
 import AvatarShinra from "../img/avatar_profil/avatar_shinra.webp";
 import axios from "axios";
+import { StatefulPinInput } from "react-input-pin-code";
 interface ProfilePasscode {
   pin_code: string;
 }
@@ -40,114 +41,124 @@ interface ProfileState {
   pseudo: string;
   quote: string;
   avatar: string;
-  pin_code: number;
+  pin_code: string;
   is_young: boolean;
-  id_user: string;
+  id_user: string | null;
+}
+
+interface ProfileStateNoPin {
+  pseudo: string;
+  quote: string;
+  avatar: string;
+  is_young: boolean;
+  id_user: string | null;
 }
 
 function CreateProfile() {
-  // Initials states
+  const idUser = localStorage.getItem("user");
 
-  const [profile, setProfile] = React.useState<ProfilePseudo>({
-    pseudo: "",
+  const [pin_code, setPinCode] = React.useState<ProfilePasscode>({
+    pin_code: "",
   });
 
-  const [profileQuote, setProfileQuote] = React.useState<ProfileQuote>({
-    quote: "",
-  });
-
-  const [profileAvatar, setProfileAvatar] = React.useState<ProfileAvatar>({
-    avatar: "",
-  });
-
-  const [profilePasscode, setProfilePasscode] = React.useState<ProfilePasscode>(
-    {
-      pin_code: "",
-    }
-  );
-
-  const [profilePasscodeConfirm, setProfilePasscodeConfirm] =
+  const [pin_codeConfirm, setPinCodeConfirm] =
     React.useState<ProfilePasscodeConfirm>({
       pin_codeConfirm: "",
     });
 
-  const [profileYoung, setProfileYoung] = React.useState<ProfileYoung>({
+  const [pseudo, setPseudo] = React.useState<ProfilePseudo>({
+    pseudo: "",
+  });
+
+  const [quote, setQuote] = React.useState<ProfileQuote>({
+    quote: "",
+  });
+
+  const [avatar, setAvatar] = React.useState<ProfileAvatar>({
+    avatar: "",
+  });
+
+  const [is_young, setIsYoung] = React.useState<ProfileYoung>({
     is_young: false,
   });
 
-  // Functions
+  const [isPin, setIsPin] = React.useState<boolean>(false);
 
-  const onlyNumber = (e: any) => {
-    const re = /^[0-9\b]+$/;
-    if (e.target.value === "" || re.test(e.target.value)) {
-      return e.target.value;
-    }
+  const handleChangesPinCodeConfirm = (e: any) => {
+    setPinCodeConfirm(e);
   };
 
-  const passcodeOK = () => {
-    if (pin_code === pin_codeConfirm) {
-      return true;
-    } else {
-      return false;
-    }
+  const handleChangesPseudo = (e: any) => {
+    setPseudo({ pseudo: e.target.value });
   };
 
-  // handle change
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setProfile({ ...profile, [name]: value });
+  const handleChangesQuote = (e: any) => {
+    setQuote({ quote: e.target.value });
   };
 
-  const handleChangeQuote = (e: any) => {
-    const { name, value } = e.target;
-    setProfileQuote({ ...profileQuote, [name]: value });
+  const handleChangesAvatar = (e: any) => {
+    setAvatar({ avatar: e.target.value });
   };
 
-  const handleChangeAvatar = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setProfileAvatar({ ...profileAvatar, [name]: value });
+  const handleChangesPinCode = (e: any) => {
+    setPinCode(e);
   };
 
-  const handlePasscodeChange = (e: any) => {
-    setProfilePasscode({ pin_code: onlyNumber(e) });
+  const handleChangesIsYoung = (e: any) => {
+    setIsYoung({ is_young: e.target.checked });
   };
 
-  const pin_code = parseInt(profilePasscode.pin_code);
-
-  const handlePasscodeConfirmChange = (e: any) => {
-    setProfilePasscodeConfirm({ pin_codeConfirm: onlyNumber(e) });
+  const handleChangesIsPin = (e: any) => {
+    setIsPin(e.target.checked);
   };
 
-  const pin_codeConfirm = parseInt(profilePasscodeConfirm.pin_codeConfirm);
+  //____________________
 
-  const handleYoungChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setProfileYoung({ ...profileYoung, [name]: value });
+  const newPinCode: string = pin_code.toString().replace(/,/g, "");
+
+  const newPinCodeConfirm = pin_codeConfirm.toString().replace(/,/g, "");
+
+  //____________________
+
+  const profileState: ProfileState = {
+    pseudo: pseudo.pseudo,
+    quote: quote.quote,
+    avatar: avatar.avatar,
+    pin_code: newPinCode,
+    is_young: is_young.is_young,
+    id_user: idUser,
   };
 
-  // import the user id from local storage and remove the quotes
-
-  const id: any = localStorage.getItem("user");
-
-  // Collect the data
-
-  const ProfilState: ProfileState = {
-    pseudo: profile.pseudo,
-    quote: profileQuote.quote,
-    avatar: profileAvatar.avatar,
-    pin_code: pin_code,
-    is_young: profileYoung.is_young,
-    id_user: id,
+  const profileStateNoPinCode: ProfileStateNoPin = {
+    pseudo: pseudo.pseudo,
+    quote: quote.quote,
+    avatar: avatar.avatar,
+    is_young: is_young.is_young,
+    id_user: idUser,
   };
 
-  // handle submit and send data
-
-  async function handleSubmit(e: any) {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (passcodeOK()) {
-      await axios
-        .post("http://localhost:5000/api/profile/register", ProfilState)
+    if (isPin) {
+      if (newPinCode === newPinCodeConfirm) {
+        axios
+          .post("http://localhost:5000/api/profile/register", profileState)
+          .then((res) => {
+            localStorage.setItem("NewProfile", res.data.profile);
+            window.location.href = "/SuccessProfile";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        alert("Les codes pin ne correspondent pas");
+      }
+    } else {
+      axios
+        .post(
+          "http://localhost:5000/api/profile/register",
+          profileStateNoPinCode
+        )
         .then((res) => {
           localStorage.setItem("NewProfile", res.data.profile);
           window.location.href = "/SuccessProfile";
@@ -155,10 +166,8 @@ function CreateProfile() {
         .catch((err) => {
           console.log(err);
         });
-    } else {
-      alert("Les codes pin ne correspondent pas");
     }
-  }
+  };
 
   return (
     <>
@@ -167,26 +176,19 @@ function CreateProfile() {
         <h1>create your first profile !</h1>
         <form className="profile-form">
           <div className="profileForm-group profileForm-group-pseudo">
-            <label htmlFor="pseudo">Profile Name</label>
+            <label htmlFor="pseudo">Profile Name *</label>
             <input
               type="text"
               name="pseudo"
               id="pseudo"
-              required
-              onChange={handleChange}
-              value={profile.pseudo}
+              onChange={handleChangesPseudo}
             />
           </div>
 
           <div className="profileForm-group profileForm-group-quote">
-            <label htmlFor="quote">Quote</label>
-            <select
-              name="quote"
-              id="quote"
-              required
-              onChange={handleChangeQuote}
-              value={profileQuote.quote}
-            >
+            <label htmlFor="quote">Quote *</label>
+            <select name="quote" id="quote" onChange={handleChangesQuote}>
+              <option value="">Choose a quote</option>
               <option value="Gryffondor">Gryffondor</option>
               <option value="Serpentard">Serpentard</option>
               <option value="Serdaigle">Serdaigle</option>
@@ -198,7 +200,7 @@ function CreateProfile() {
           </div>
 
           <div className="profileForm-group profileForm-group-avatar">
-            <h2>Choose Your Avatar</h2>
+            <h2>Choose Your Avatar *</h2>
 
             <label>
               <input
@@ -206,7 +208,7 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarAsuka"
                 id="avatar1"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarAsuka} alt="avatar1" />
             </label>
@@ -217,7 +219,7 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarAsuma"
                 id="avatar2"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarAsuma} alt="avatar2" />
             </label>
@@ -228,7 +230,7 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarGon"
                 id="avatar3"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarGon} alt="avatar3" />
             </label>
@@ -239,7 +241,7 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarKirua"
                 id="avatar4"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarKirua} alt="avatar4" />
             </label>
@@ -250,7 +252,7 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarLuffy"
                 id="avatar5"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarLuffy} alt="avatar5" />
             </label>
@@ -261,7 +263,7 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarMeliodas"
                 id="avatar6"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarMeliodas} alt="avatar6" />
             </label>
@@ -272,7 +274,7 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarNami"
                 id="avatar7"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarNami} alt="avatar7" />
             </label>
@@ -283,7 +285,7 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarRobin"
                 id="avatar8"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarRobin} alt="avatar8" />
             </label>
@@ -294,7 +296,7 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarSakura"
                 id="avatar9"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarSakura} alt="avatar9" />
             </label>
@@ -305,41 +307,64 @@ function CreateProfile() {
                 name="avatar"
                 value="AvatarShinra"
                 id="avatar10"
-                onChange={handleChangeAvatar}
+                onChange={handleChangesAvatar}
               />
               <img src={AvatarShinra} alt="avatar10" />
             </label>
           </div>
 
-          <div className="profileForm-group profileForm-group-pin">
-            <label htmlFor="pin_code">Choose Your PIN Code</label>
-            <input
-              type="password"
-              name="pin_code"
-              id="profilePIN"
-              maxLength={4}
-              minLength={4}
-              value={profilePasscode.pin_code}
-              onChange={handlePasscodeChange}
-              autoComplete="off"
-              required
-            />
-          </div>
+          {!isPin ? (
+            <div>
+              <label htmlFor="setupPin">
+                Do you want to setup a Code Pin ?
+              </label>
+              <input
+                type="checkbox"
+                name="setupPin"
+                id="setupPin"
+                onChange={handleChangesIsPin}
+              />
+            </div>
+          ) : (
+            <>
+              <div className="profileForm-group profileForm-group-pin">
+                <label htmlFor="pin_code">Choose Your PIN Code</label>
+                <StatefulPinInput
+                  name="pin_code"
+                  id="profilePIN"
+                  length={4}
+                  initialValue=""
+                  onComplete={handleChangesPinCode}
+                  required={true}
+                />
+              </div>
 
-          <div className="profileForm-group profileForm-group-pinconfirm">
-            <label htmlFor="profilePINConfirm">Confirm Your PIN Code</label>
-            <input
-              type="password"
-              name="profilePINConfirm"
-              id="profilePINConfirm"
-              maxLength={4}
-              minLength={4}
-              value={profilePasscodeConfirm.pin_codeConfirm}
-              onChange={handlePasscodeConfirmChange}
-              autoComplete="off"
-              required
-            />
-          </div>
+              <div className="profileForm-group profileForm-group-pinconfirm">
+                <label htmlFor="profilePINConfirm">Confirm Your PIN Code</label>
+                <StatefulPinInput
+                  name="profilePINConfirm"
+                  id="profilePINConfirm"
+                  length={4}
+                  initialValue=""
+                  onComplete={handleChangesPinCodeConfirm}
+                  required={true}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="codePinNo">
+                  Finally i don't want to use a pin code
+                </label>
+                <input
+                  type="checkbox"
+                  name="codePinNo"
+                  id="codePinNo"
+                  checked={isPin}
+                  onChange={handleChangesIsPin}
+                />
+              </div>
+            </>
+          )}
 
           <div className="profileForm-group profileForm-group-young">
             <label htmlFor="is_young">Child Account ? </label>
@@ -347,7 +372,7 @@ function CreateProfile() {
               type="checkbox"
               name="is_young"
               id="is_young"
-              onChange={handleYoungChange}
+              onChange={handleChangesIsYoung}
             />
           </div>
 

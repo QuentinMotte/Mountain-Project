@@ -1,3 +1,14 @@
-.Test {
-  font-size: 6rem;
+.container_fave {
+  text-align: center;
+
+  .delete_Button {
+    cursor: pointer;
+    font-weight: bold;
+    color: $green;
+    font-size: 2rem;
+
+    &:hover {
+      color: $white;
+    }
+  }
 }
