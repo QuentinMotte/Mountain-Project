@@ -44,7 +44,7 @@ function Landing() {
         <div className="landing_page_faq">
           <div className="wrapper_faq">
             <div className="accordion_faq">
-              <h2>Frequently Asked Questions</h2>
+              <h2>Most Frequently Asked Questions</h2>
               <br />
               {data.map((question, i) => (
                 <div className="question_faq">
