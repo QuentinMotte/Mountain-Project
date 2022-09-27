@@ -27,6 +27,7 @@ function Header() {
       localStorage.removeItem("user");
       localStorage.removeItem("admin");
       localStorage.removeItem("profile");
+      localStorage.removeItem("kid");
       window.location.href = "/";
     }
   }
@@ -44,6 +45,7 @@ function Header() {
   const token = localStorage.getItem("token");
   const admin = localStorage.getItem("admin") === "true";
   const profile = localStorage.getItem("profile");
+  const kid = localStorage.getItem("kid") === "true";
 
   //_____________________
   // get the profil info
@@ -102,12 +104,16 @@ function Header() {
     <>
       <header className="header">
         <div className="header__left">
-          {token && profile ? (
+          {token && profile && !kid ? (
             <NavLink className="logoHome" to="/Home">
               <img src={MyLogo} className="hollyLogo" alt="logo" />
             </NavLink>
           ) : token && !profile ? (
             <NavLink className="logoHome" to="/Select-Profile">
+              <img src={MyLogo} className="hollyLogo" alt="logo" />
+            </NavLink>
+          ) : token && profile && kid ? (
+            <NavLink className="logoHome" to="/Kid">
               <img src={MyLogo} className="hollyLogo" alt="logo" />
             </NavLink>
           ) : (
@@ -116,7 +122,7 @@ function Header() {
             </NavLink>
           )}
 
-          {token && profile ? (
+          {token && profile && !kid ? (
             <div className="navLink_container">
               <NavLink className="header_navLink" to={"/Home/Movies"}>
                 Movies
@@ -143,6 +149,19 @@ function Header() {
               </div>
             </div>
           ) : null}
+          {token && profile && kid ? (
+            <div className="navLink_container">
+              <NavLink className="header_navLink" to={"/Watchlist"}>
+                Watchlist
+              </NavLink>
+              <NavLink className="header_navLink" to={"/Favorites"}>
+                Favorites
+              </NavLink>
+              <NavLink className="header_navLink" to={"/History"}>
+                History
+              </NavLink>
+            </div>
+          ) : null}
         </div>
         <div className="header__right">
           {!token ? (
@@ -155,7 +174,7 @@ function Header() {
               Login
             </a>
           ) : null}
-          {token && profile ? (
+          {token && profile && !kid ? (
             <>
               <img
                 className="avatar"
@@ -184,6 +203,44 @@ function Header() {
                     </NavLink>
                   </li>
                   <li>Profile Settings</li>
+                  <li>
+                    {" "}
+                    <NavLink className="navLink_right" to={"/Select-Profile"}>
+                      Switch Profile
+                    </NavLink>
+                  </li>
+                  <li>
+                    {" "}
+                    {admin ? (
+                      <NavLink className="navLink_right" to={"/Admin"}>
+                        Admin
+                      </NavLink>
+                    ) : null}
+                  </li>
+                  <li>
+                    {" "}
+                    <NavLink
+                      className="navLink_right"
+                      to={"/"}
+                      onClick={logOut}
+                    >
+                      <i className="fa-solid fa-power-off"></i>
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            </>
+          ) : null}
+          {token && profile && kid ? (
+            <>
+              <img
+                className="avatar"
+                src={rightAvatar}
+                alt="avatar"
+                onClick={() => toggleMenu()}
+              />
+              <div className={menu ? "menuAccordeon active" : "menuAccordeon"}>
+                <ul>
                   <li>
                     {" "}
                     <NavLink className="navLink_right" to={"/Select-Profile"}>

@@ -37,6 +37,7 @@ function App() {
   const token = localStorage.getItem("token");
   const admin = localStorage.getItem("admin") === "true";
   const profile = localStorage.getItem("profile");
+  const kid = localStorage.getItem("kid") === "true";
 
   return (
     <Routes>
@@ -92,10 +93,32 @@ function App() {
           <Route path="/Actor/:id" element={<ActorPage />} />
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
           <Route path="/Player/Serie/:id" element={<Landing />} />
-          <Route path="/kid" element={<KidsPage />} />
+          <Route path="/Kid" element={<KidsPage />} />
         </>
       )}
-      {token && profile && (
+      {token && profile && kid && (
+        <>
+          <Route path="/" element={<Landing />} />
+          <Route path="/FAQ" element={<FaqPage />} />
+          <Route path="/About" element={<AboutPage />} />
+          <Route path="/Conditions" element={<ConditionPage />} />
+          <Route path="/Select-Profile" element={<SelectProfile />} />
+          <Route path="/Watchlist" element={<WatchListPage />} />
+          <Route path="/History" element={<HistoryPage />} />
+          <Route path="/Movie/:id" element={<MoviePage />} />
+          <Route path="/Movie/Genre/:id" element={<MoviesGenrePage />} />
+          <Route path="/tv/:id" element={<SeriePage />} />
+          <Route path="/Serie/Genre/:id" element={<SeriesGenrePage />} />
+          <Route path="/Player/Movie/:id" element={<PlayerPage />} />
+          <Route path="/Player/Serie/:id" element={<PlayerPageSeries />} />
+          <Route path="/Serie/:id" element={<SeriePage />} />
+          <Route path="/Player/Movie/:id" element={<PlayerPage />} />
+          <Route path="/Player/Serie/:id" element={<Landing />} />
+          <Route path="/Kid" element={<KidsPage />} />
+          <Route path="/Favorites" element={<FavPage />} />
+        </>
+      )}
+      {token && profile && !kid && (
         <>
           <Route path="/" element={<Landing />} />
           <Route path="/FAQ" element={<FaqPage />} />
