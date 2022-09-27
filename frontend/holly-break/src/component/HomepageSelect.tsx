@@ -49,10 +49,10 @@ function HomepageSelect() {
   const URL_BJ = `https://api.themoviedb.org/3/movie/${ID_BJ}?api_key=${API_KEY}&language=en-US`;
   const URL_HT = `https://api.themoviedb.org/3/movie/${ID_HT}?api_key=${API_KEY}&language=en-US`;
 
-  const URLHB = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
-  const URLHBTV = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc`;
-  const URLTrendtoday = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
-  const URLTrendtodayTV = `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`;
+  const URLHB = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false`;
+  const URLHBTV = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false`;
+  const URLTrendtoday = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&include_adult=false`;
+  const URLTrendtodayTV = `https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}&include_adult=false`;
 
   let [TV_1, setTV_1] = useState<SeriesProps | undefined>();
   let [TV_2, setTV_2] = useState<SeriesProps | undefined>();

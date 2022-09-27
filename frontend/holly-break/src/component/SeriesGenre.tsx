@@ -20,11 +20,11 @@ interface moviesProps {
 function SeriesGenre() {
   let id = useParams();
   const ID = id.id;
-  const URL1 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&with_genres=${ID}`;
-  const URL2 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=2&with_genres=${ID}`;
-  const URL3 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=3&with_genres=${ID}`;
-  const URL4 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=4&with_genres=${ID}`;
-  const URL5 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=5&with_genres=${ID}`;
+  const URL1 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1&include_adult=false&with_genres=${ID}`;
+  const URL2 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=2&include_adult=false&with_genres=${ID}`;
+  const URL3 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=3&include_adult=false&with_genres=${ID}`;
+  const URL4 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=4&include_adult=false&with_genres=${ID}`;
+  const URL5 = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=5&include_adult=false&with_genres=${ID}`;
 
   useEffect(() => {
     getMovies1();

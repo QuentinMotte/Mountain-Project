@@ -24,7 +24,7 @@ interface moviesProps {
 function MoviesSuggestion() {
   let id = useParams();
   const ID = id.id;
-  const URLSIMMOVIES = `https://api.themoviedb.org/3/movie/${ID}/similar?api_key=${API_KEY}&language=en-US&page=1`;
+  const URLSIMMOVIES = `https://api.themoviedb.org/3/movie/${ID}/similar?api_key=${API_KEY}&language=en-US&include_adult=false&page=1`;
 
   console.log(URL);
 

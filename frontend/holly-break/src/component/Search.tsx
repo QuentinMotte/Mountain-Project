@@ -34,9 +34,9 @@ function Search() {
   >();
   let id = useParams();
   const ID = id.id;
-  const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${ID}`;
-  const URLTV = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=en-US&query=${ID}`;
-  const URLKF = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&query=${ID}`;
+  const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&include_adult=false&query=${ID}`;
+  const URLTV = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&language=en-US&include_adult=false&query=${ID}`;
+  const URLKF = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&include_adult=false&query=${ID}`;
 
   useEffect(() => {
     getMovies();

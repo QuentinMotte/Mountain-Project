@@ -33,6 +33,7 @@ import CreateTopicPage from "./pages/CreateTopicPage";
 import KidsPage from "./pages/KidsPage";
 import FavPage from "./pages/FavPage";
 import Page404 from "./pages/Page404";
+import MovieGenreKids from "./pages/MovieGenreKids";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -94,6 +95,7 @@ function App() {
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
           <Route path="/Player/Serie/:id" element={<Landing />} />
           <Route path="/kid" element={<KidsPage />} />
+          <Route path="/kid/:id" element={<MovieGenreKids />} />
         </>
       )}
       {token && profile && (
@@ -123,6 +125,8 @@ function App() {
           <Route path="/Player/Serie/:id" element={<Landing />} />
           <Route path="/Forum/All" element={<ForumHomePage />} />
           <Route path="/Forum/Create" element={<CreateTopicPage />} />
+          <Route path="/kid" element={<KidsPage />} />
+          <Route path="/kid/:id" element={<MovieGenreKids />} />
           {/* <Route path="/Forum/Onetopic" element={<MoreAnswers />} /> */}
         </>
       )}

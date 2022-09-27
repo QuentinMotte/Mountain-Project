@@ -24,8 +24,8 @@ interface moviesProps {
 
 function KidsPage() {
   //---MOVIES
-  const URLAnimation = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=16`;
-  const UrlFamily = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&with_genres=10751`;
+  const URLAnimation = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&include_adult=false&certification_country=US&certification.lte=G&language=en-US&with_genres=16`;
+  const UrlFamily = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&include_adult=false&certification_country=US&certification.lte=G&language=en-US&with_genres=10751`;
 
   let [moviesAnimation, setMoviesAnimation] = useState<
     moviesProps | undefined
@@ -58,9 +58,9 @@ function KidsPage() {
 
   //-------SERIES
 
-  const URLFam = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10751`;
-  const URLKids = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=10762`;
-  const URLAN = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&with_genres=16`;
+  const URLFam = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&with_genres=10751`;
+  const URLKids = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&include_adult=false&language=en-US&sort_by=popularity.desc&with_genres=10762`;
+  const URLAN = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&include_adult=false&sort_by=popularity.desc&with_genres=16`;
 
   let [TVFam, setTVFam] = useState<moviesProps | undefined>();
 
@@ -321,7 +321,7 @@ function KidsPage() {
 
         <h1>Movies</h1>
         <div className="container_loop_movies">
-          <NavLink className="genre" to={`/Movie/Genre/16`}>
+          <NavLink className="genre" to={`/kid/16`}>
             <h3>Animation</h3>
             <i className="fa-solid fa-arrow-right"></i>
           </NavLink>
@@ -340,7 +340,7 @@ function KidsPage() {
         </div>
 
         <div className="container_loop_movies">
-          <NavLink className="genre" to={`/Movie/Genre/10751`}>
+          <NavLink className="genre" to={`/kid/10751`}>
             <h3>Family</h3>
             <i className="fa-solid fa-arrow-right"></i>
           </NavLink>

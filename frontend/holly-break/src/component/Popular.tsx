@@ -32,11 +32,11 @@ function Popular() {
   let id = useParams();
   const ID = id.id;
 
-  const URL_1 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=1`;
-  const URL_2 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=2`;
-  const URL_3 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=3`;
-  const URL_4 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=4`;
-  const URL_5 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&page=5`;
+  const URL_1 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=1`;
+  const URL_2 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=2`;
+  const URL_3 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=3`;
+  const URL_4 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=4`;
+  const URL_5 = `https://api.themoviedb.org/3/discover/${ID}?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&page=5`;
 
   useEffect(() => {
     getMovies1();
