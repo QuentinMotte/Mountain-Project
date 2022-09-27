@@ -1,3 +1,18 @@
+.credits {
+  background-color: $bg-color;
+  color: $white;
+  font-size: medium;
+  text-align: center;
+  padding: 3rem;
+  width: 90%;
+  margin: auto;
+
+  img {
+    margin-top: 2rem;
+    width: 250px;
+  }
+}
+
 .container_all {
   display: flex;
   flex-flow: wrap;

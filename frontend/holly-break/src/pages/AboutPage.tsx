@@ -8,6 +8,8 @@ import Header from "../component/Header";
 
 import avatarAboutLH from "../img/about/about_lh.jpg";
 
+import logo_TMDB from "../img/about/logoTMDB.svg";
+
 const API: any = process.env.REACT_APP_API_KEY;
 
 const API_KEY = API.replace(";", "");
@@ -303,6 +305,18 @@ function AboutPage() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="credits">
+          <p>
+            This product uses the TMDB API but is not endorsed or certified by
+            TMDB
+          </p>
+          <a
+            target="_blank"
+            href="https://www.themoviedb.org/documentation/api"
+          >
+            <img src={logo_TMDB} alt="logo" />
+          </a>
         </div>
         <Footer></Footer>
       </main>
