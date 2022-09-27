@@ -1,5 +1,28 @@
 .container_page_404 {
   text-align: center;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+
+  img {
+    width: 40rem;
+
+    @media screen and (max-width: 900px) {
+      width: 30rem;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 25rem;
+    }
+  }
+
+  h1 {
+    margin: 0;
+  }
+
   h2 {
     color: $green;
     font-size: x-large;
