@@ -147,7 +147,7 @@ function AboutPage() {
                   repudiandae corporis libero. A, officiis distinctio.
                 </p>
               </div>
-              <h2>Favorites movie & serie</h2>
+              <h2>Favorite movie & serie</h2>
               <div className="fave_about">
                 <NavLink className="poster" to={`/Movie/${Movie_2?.id}`}>
                   <img
@@ -193,7 +193,7 @@ function AboutPage() {
                   repudiandae corporis libero. A, officiis distinctio.
                 </p>
               </div>
-              <h2>Favorites movie & serie</h2>
+              <h2>Favorite movie & serie</h2>
               <div className="fave_about">
                 <NavLink className="poster" to={`/Movie/${Movie_1?.id}`}>
                   <img
@@ -239,7 +239,7 @@ function AboutPage() {
                   repudiandae corporis libero. A, officiis distinctio.
                 </p>
               </div>
-              <h2>Favorites movie & serie</h2>
+              <h2>Favorite movie & serie</h2>
               <div className="fave_about">
                 <NavLink className="poster" to={`/Movie/${Movie_3?.id}`}>
                   <img
@@ -285,7 +285,7 @@ function AboutPage() {
                   repudiandae corporis libero. A, officiis distinctio.
                 </p>
               </div>
-              <h2>Favorites movie & serie</h2>
+              <h2>Favorite movie & serie</h2>
               <div className="fave_about">
                 <NavLink className="poster" to={`/Movie/${Movie_4?.id}`}>
                   <img
