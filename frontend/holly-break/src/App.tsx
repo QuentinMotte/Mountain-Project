@@ -32,6 +32,7 @@ import CreateTopicPage from "./pages/CreateTopicPage";
 //import MoreAnswers from "./component/MoreAnswers";
 import KidsPage from "./pages/KidsPage";
 import FavPage from "./pages/FavPage";
+import Page404 from "./pages/Page404";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -125,7 +126,7 @@ function App() {
           {/* <Route path="/Forum/Onetopic" element={<MoreAnswers />} /> */}
         </>
       )}
-      {<Route path="*" element={<Landing />} />}
+      {<Route path="*" element={<Page404 />} />}
     </Routes>
   );
 }
