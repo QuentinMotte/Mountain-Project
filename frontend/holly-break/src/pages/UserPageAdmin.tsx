@@ -28,7 +28,7 @@ interface userProfiles {
   historic_serie: Array<string>;
   id_user: string;
   is_young: boolean;
-  pin_code: string | null;
+  pin_code: string;
   pseudo: string;
   quote: string;
   updatedAt: string;
@@ -124,24 +124,6 @@ function UserPageAdmin() {
   const [isOpenHistorical, setIsOpenHistorical] = React.useState(false);
   const [isOpenWatchlist, setIsOpenWatchlist] = React.useState(false);
 
-  // -------------------Delete one Profile -------------------
-
-  function deleteProfile(id: string) {
-    axios.delete(`http://localhost:5000/api/profile/${id}`).then((response) => {
-      setProfiles(profiles.filter((profile) => profile._id !== id));
-    });
-  }
-  function deleteIdProfile(id: string) {
-    axios.patch(`http://localhost:5000/api/user/removeProfile/${id}`);
-  }
-
-  function alertDeleteProfile(id: string) {
-    if (window.confirm("Are you sure you want to delete this profile?")) {
-      deleteProfile(id);
-      deleteIdProfile(id);
-    }
-  }
-
   return (
     <>
       <Header></Header>
@@ -188,17 +170,12 @@ function UserPageAdmin() {
             {profiles.map((profile: any) => (
               <>
                 <div className="profile-card" key={profile._id}>
-                  <div className="avatarContainer">
+                  <div>
                     <img
                       className="profile-avatar"
                       src={matchAvatar(profile.avatar)}
+                      alt=""
                     />
-                    <p
-                      onClick={() => alertDeleteProfile(profile._id)}
-                      className="profile-bin"
-                    >
-                      <i className="fa-solid fa-trash"></i>
-                    </p>
                   </div>
                   <div>
                     <strong>Pseudo : </strong>

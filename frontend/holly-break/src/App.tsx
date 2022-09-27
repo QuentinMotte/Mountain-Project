@@ -11,7 +11,7 @@ import HistoryPage from "./pages/HistoryPage";
 import Landing from "./pages/Landing";
 import Homepage from "./pages/Homepage";
 import AboutPage from "./pages/AboutPage";
-// import SettingsPage from "./pages/SettingsPage";
+import SettingsPage from "./pages/SettingsPage";
 import MoviePage from "./pages/MoviePage";
 import PlayerPage from "./pages/PlayerPage";
 import ConditionPage from "./pages/ConditionPage";
@@ -30,8 +30,6 @@ import WatchListPage from "./pages/WatchListPage";
 import ForumHomePage from "./pages/ForumHomePage";
 import CreateTopicPage from "./pages/CreateTopicPage";
 //import MoreAnswers from "./component/MoreAnswers";
-import KidsPage from "./pages/KidsPage";
-import FavPage from "./pages/FavPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -80,7 +78,7 @@ function App() {
           <Route path="/Search" element={<SearchPage />} />
           <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
-          <Route path="/Favorites" element={<FavPage />} />
+          <Route path="/Settings" element={<SettingsPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
           <Route path="/Movie/Genre/:id" element={<MoviesGenrePage />} />
           <Route path="/Popular/:id" element={<PopularMovies />} />
@@ -92,7 +90,6 @@ function App() {
           <Route path="/Actor/:id" element={<ActorPage />} />
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
           <Route path="/Player/Serie/:id" element={<Landing />} />
-          <Route path="/kid" element={<KidsPage />} />
         </>
       )}
       {token && profile && (
@@ -111,6 +108,7 @@ function App() {
           <Route path="/Search" element={<SearchPage />} />
           <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
+          <Route path="/Settings" element={<SettingsPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
           <Route path="/Movie/Genre/:id" element={<MoviesGenrePage />} />
           <Route path="/tv/:id" element={<SeriePage />} />

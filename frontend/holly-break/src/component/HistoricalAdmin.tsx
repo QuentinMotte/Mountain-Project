@@ -70,7 +70,7 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
     axios
       .patch(
         `http://localhost:5000/api/profile/r_historic_serie/${id_profile}`,
-        { historic_serie: id }
+        { watchList_serie: id }
       )
       .then((res) => {
         setSeries(series.filter((serie: any) => serie.id !== id));
@@ -84,7 +84,7 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
     axios
       .patch(
         `http://localhost:5000/api/profile/r_historic_movie/${id_profile}`,
-        { historic_movie: id }
+        { watchList_movie: id }
       )
       .then((res) => {
         setMovies(movies.filter((movie: any) => movie.id !== id));
@@ -110,9 +110,9 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
                     alt=""
                     key={item.name}
                   />
-                  <a onClick={() => deleteOneSerie(item.id)}>
-                    <i className="fa-solid fa-trash"></i>
-                  </a>
+                  <button onClick={() => deleteOneSerie(item.id)}>
+                    Delete
+                  </button>
                 </div>
               </>
             );
@@ -126,9 +126,9 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
                     alt=""
                     key={item.title}
                   />
-                  <a onClick={() => deleteOneMovie(item.id)}>
-                    <i className="fa-solid fa-trash"></i>
-                  </a>
+                  <button onClick={() => deleteOneMovie(item.id)}>
+                    Delete
+                  </button>
                 </div>
               </>
             );

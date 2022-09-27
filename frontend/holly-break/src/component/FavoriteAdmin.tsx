@@ -111,9 +111,9 @@ function FavoriteAdmin({ isOpen, setIsOpen, profile }: FavModal) {
                     alt=""
                     key={item.name}
                   />
-                  <a onClick={() => deleteOneSerie(item.id)}>
-                    <i className="fa-solid fa-trash"></i>
-                  </a>
+                  <button onClick={() => deleteOneSerie(item.id)}>
+                    Delete
+                  </button>
                 </div>
               </>
             );
@@ -127,9 +127,9 @@ function FavoriteAdmin({ isOpen, setIsOpen, profile }: FavModal) {
                     alt=""
                     key={item.title}
                   />
-                  <a onClick={() => deleteOneMovie(item.id)}>
-                    <i className="fa-solid fa-trash"></i>
-                  </a>
+                  <button onClick={() => deleteOneMovie(item.id)}>
+                    Delete
+                  </button>
                 </div>
               </>
             );

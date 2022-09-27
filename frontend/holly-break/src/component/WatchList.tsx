@@ -1,8 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import Poster from "../img/poster_default.png";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
 interface userProfiles {
   avatar: string;
@@ -28,60 +25,35 @@ function WatchList() {
   const API: any = process.env.REACT_APP_API_KEY;
   const API_KEY = API.replace(";", "");
 
-  const [watchList, setWatchList] = React.useState<any>([]);
-  const [movies, setMovies] = React.useState<any>([]);
-
-  const [watchListSerie, setWatchListSerie] = React.useState<any>([]);
-  const [series, setSeries] = React.useState<any>([]);
-
-  const getProfileWatchlistMovie = async () => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
-      setWatchList(response.data.watchList_movie);
-    });
-  };
-
-  const getProfileWatchlistSerie = async () => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
-      setWatchListSerie(response.data.watchList_serie);
-    });
-  };
-
+  const [profile, setProfile] = React.useState<userProfiles[]>([]);
   React.useEffect(() => {
-    getProfileWatchlistMovie();
-    getProfileWatchlistSerie();
+    axios
+      .get(`http://localhost:5000/api/profile/${id}`)
+      .then((res) => {
+        setProfile(res.data.watchList_movie);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
-  const getMovie = async (id: string) => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
-      )
-      .then((res) => {
-        setMovies((movies: any) => [...movies, res.data]);
-      });
+  const [movies, setMovies] = React.useState<any>([]);
+
+  const getMovie = async () => {
+    for (let i = 0; i < profile.length; i++) {
+      axios
+        .get(
+          `https://api.themoviedb.org/3/movie/${profile[i]}?api_key=${API_KEY}&language=en-US`
+        )
+        .then((res) => {
+          setMovies((movies: any) => [...movies, res.data]);
+        });
+    }
   };
 
   React.useEffect(() => {
-    for (let i = 0; i < watchList.length; i++) {
-      getMovie(watchList[i]);
-    }
-  }, [watchList]);
-
-  const getSerie = async (id: string) => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/tv/${id}?api_key=${API_KEY}&language=en-US`
-      )
-      .then((res) => {
-        setSeries((series: any) => [...series, res.data]);
-      });
-  };
-
-  React.useEffect(() => {
-    for (let i = 0; i < watchListSerie.length; i++) {
-      getSerie(watchListSerie[i]);
-    }
-  }, [watchListSerie]);
+    getMovie();
+  }, []);
 
   function removeDuplicates(originalArray: any, prop: any) {
     var newArray: any = [];
@@ -99,100 +71,17 @@ function WatchList() {
   }
 
   const moviesUnique = removeDuplicates(movies, "id");
-  const seriesUnique = removeDuplicates(series, "id");
 
-  //---------------------
-
-  const id_profile = localStorage.getItem("profile");
-  const [watchlistD, setWatchlistD] = useState(false);
-  const [watchlistSD, setWatchlistSD] = useState(false);
-
-  async function deleteWatchlist(id: any) {
-    axios
-      .patch(
-        `http://localhost:5000/api/profile/r_watchlist_movie/${id_profile}`,
-        {
-          watchList_movie: id,
-        }
-      )
-      .then((res) => {
-        setWatchlistD(false);
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  async function deleteWatchlistSD(id: any) {
-    axios
-      .patch(
-        `http://localhost:5000/api/profile/r_watchlist_serie/${id_profile}`,
-        {
-          watchList_serie: id,
-        }
-      )
-      .then((res) => {
-        setWatchlistSD(false);
-        window.location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  //----------------------
-
-  function GetPictures(avatar: string) {
-    switch (avatar) {
-      case null:
-        return Poster;
-      case avatar:
-        return `https://image.tmdb.org/t/p/w500` + avatar;
-    }
-  }
+  console.log(moviesUnique);
 
   return (
     <>
-      <div className="Movies_watchList">
+      <div>
+        <h1>Favorites</h1>
         <h1>Movies</h1>
-        <div className="container_genre">
-          {moviesUnique.map((movie: any) => (
-            <div className="container_fave">
-              <NavLink className="poster" to={`/Movie/${movie.id}`}>
-                <div id={movie.id} className="movies_container_poster">
-                  <img src={GetPictures(movie.poster_path)} alt="poster" />
-                </div>
-              </NavLink>
-              <a
-                className="delete_Button"
-                onClick={() => deleteWatchlist(movie.id)}
-              >
-                <i className="fa-solid fa-eye-slash"></i>
-              </a>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="Series_watchList">
-        <h1>Series</h1>
-        <div className="container_genre">
-          {seriesUnique.map((serie: any) => (
-            <div className="container_fave">
-              <NavLink className="poster" to={`/tv/${serie.id}`}>
-                <div id={serie.id} className="movies_container_poster">
-                  <img src={GetPictures(serie.poster_path)} alt="poster" />
-                </div>
-              </NavLink>
-              <a
-                className="delete_Button"
-                onClick={() => deleteWatchlistSD(serie.id)}
-              >
-                <i className="fa-solid fa-eye-slash"></i>
-              </a>
-            </div>
-          ))}
-        </div>
+        {moviesUnique.map((movie: any) => (
+          <div>{movie.title}</div>
+        ))}
       </div>
     </>
   );
