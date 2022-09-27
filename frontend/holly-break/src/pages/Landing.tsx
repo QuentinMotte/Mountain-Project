@@ -34,6 +34,8 @@ function Landing() {
     setSelected(i);
   };
 
+  const token = localStorage.getItem("token");
+
   return (
     <>
       <Header></Header>
@@ -62,6 +64,13 @@ function Landing() {
                 </div>
               ))}
             </div>
+          </div>
+          <div className="landing_subscribe">
+            {!token ? (
+              <NavLink className="navLink_right" to={"/Subscription"}>
+                <button>Subscribe</button>
+              </NavLink>
+            ) : null}
           </div>
         </div>
       </main>

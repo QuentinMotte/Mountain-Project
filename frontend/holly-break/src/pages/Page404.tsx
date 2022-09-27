@@ -8,7 +8,14 @@ function Page404() {
     <>
       <Header></Header>
       <main className="content-container">
-        <h1>404</h1>
+        <div className="container_page_404">
+          <h1>Oops page not found !</h1>
+          <h2>Looks like you're lost !</h2>
+          <p>Don't worry ! This might help you</p>
+          <NavLink to="/Home">
+            <button>Home</button>
+          </NavLink>
+        </div>
       </main>
       <Footer></Footer>
     </>
