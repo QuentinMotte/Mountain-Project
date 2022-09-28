@@ -7,10 +7,10 @@ import axios from "axios";
 function SuccessProfile() {
   setTimeout(() => {
     window.location.href = "/Select-Profile";
-  }, 5000);
+  }, 3000);
 
   function displayCountdown() {
-    let count = 5;
+    let count = 3;
     setInterval(() => {
       count--;
       document.getElementById("countdown")!.innerHTML = count.toString();

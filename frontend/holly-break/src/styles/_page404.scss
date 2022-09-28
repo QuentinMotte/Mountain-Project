@@ -1,61 +1,53 @@
 .container_page_404 {
   text-align: center;
   display: flex;
-  flex-flow: wrap;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin: auto;
-
-  img {
-    width: 40rem;
-
-    @media screen and (max-width: 900px) {
-      width: 30rem;
+  gap: 2rem;
+  .textContainer404 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    h1 {
+      font-size: 7rem;
+      font-weight: 700;
     }
-
-    @media screen and (max-width: 500px) {
-      width: 25rem;
+    h2 {
+      font-size: 4rem;
+      font-weight: 400;
+      color: $green;
     }
-  }
-
-  h1 {
-    margin: 0;
-  }
-
-  h2 {
-    color: $green;
-    font-size: x-large;
-  }
-
-  p {
-    color: $white;
-    font-size: large;
-    margin-top: 3rem;
-  }
-
-  button {
-    margin-top: 5rem;
-    cursor: pointer;
-    border-radius: 0;
-    border: 0;
-    background-color: $bg-color;
-    color: $green;
-    text-transform: uppercase;
-    transition: 0.2s ease-in-out;
-
-    //_____
-
-    padding: 10px;
-    width: 200px;
-    text-align: center;
-    box-sizing: content-box;
-    position: relative;
-    outline: none;
-
-    &:hover {
-      background-color: $green;
+    p {
+      font-size: 2rem;
+      font-weight: 400;
+    }
+    .linkBackHome {
+      text-decoration: none;
       color: $white;
+      font-size: 2rem;
+      font-weight: 600;
+      background-color: $green;
+      padding: 1rem 2rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      &:hover {
+        color: $green;
+        background-color: $white;
+      }
     }
+  }
+}
+.legolas404 {
+  width: 40rem;
+
+  @media screen and (max-width: 900px) {
+    width: 30rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 25rem;
   }
 }
