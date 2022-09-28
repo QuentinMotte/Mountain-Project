@@ -6,7 +6,10 @@ import axios from "axios";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 
-import avatarAboutLH from "../img/about/about_lh.jpg";
+import avatarAbout_1 from "../img/about/icon_profil_about_1.png";
+import avatarAbout_2 from "../img/about/icon_profil_about_1.png";
+import avatarAbout_3 from "../img/about/icon_profil_about_1.png";
+import avatarAbout_4 from "../img/about/icon_profil_about_1.png";
 
 import logo_TMDB from "../img/about/logoTMDB.svg";
 
@@ -124,7 +127,7 @@ function AboutPage() {
         <div className="container_all">
           <div className="container_about">
             <div className="avatar_about">
-              <img src={avatarAboutLH} alt="avatar" />
+              <img src={avatarAbout_1} alt="avatar" />
             </div>
             <h1>Kevin Richard</h1>
             <div className="link_about">
@@ -170,7 +173,7 @@ function AboutPage() {
 
           <div className="container_about">
             <div className="avatar_about">
-              <img src={avatarAboutLH} alt="avatar" />
+              <img src={avatarAbout_2} alt="avatar" />
             </div>
             <h1>Lydia Haway</h1>
             <div className="link_about">
@@ -216,7 +219,7 @@ function AboutPage() {
 
           <div className="container_about">
             <div className="avatar_about">
-              <img src={avatarAboutLH} alt="avatar" />
+              <img src={avatarAbout_3} alt="avatar" />
             </div>
             <h1>Anaïs Koussa</h1>
             <div className="link_about">
@@ -262,7 +265,7 @@ function AboutPage() {
 
           <div className="container_about">
             <div className="avatar_about">
-              <img src={avatarAboutLH} alt="avatar" />
+              <img src={avatarAbout_4} alt="avatar" />
             </div>
             <h1>Quentin Motte</h1>
             <div className="link_about">
