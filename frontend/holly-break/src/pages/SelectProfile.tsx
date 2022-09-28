@@ -14,6 +14,7 @@ import AvatarNami from "../img/avatar_profil/avatar_nami.png";
 import AvatarRobin from "../img/avatar_profil/avatar_robin.png";
 import AvatarSakura from "../img/avatar_profil/avatar_sakura.jpg";
 import AvatarShinra from "../img/avatar_profil/avatar_shinra.webp";
+import CodePin from "../component/CodePin";
 
 interface UserProfiles {
   avatar: string;
@@ -30,7 +31,7 @@ interface UserProfiles {
   _id: string;
 }
 
-const id = localStorage.getItem("user");
+const id: string | null = localStorage.getItem("user");
 
 function SelectProfile() {
   const [profiles, setProfiles] = React.useState<UserProfiles[]>([]);
@@ -73,9 +74,34 @@ function SelectProfile() {
     }
   }
 
-  function handleChoiseProfile(id: string) {
+  const [modalOpen, setModalOpen] = React.useState(false);
+
+  function handleChoiseProfileWhithPin(id: string) {
+    profiles.map((profile) => {
+      if (profile._id === id) {
+        checkPinCode(profile.pin_code, id, profile.is_young);
+      }
+    });
+  }
+
+  function checkPinCode(pinCode: string | null, id: string, isYoung?: boolean) {
+    if (pinCode === null) {
+      handleChoiseProfile(id, isYoung);
+    } else {
+      localStorage.setItem("profile", id);
+      localStorage.setItem("kid", isYoung ? "true" : "false");
+      setModalOpen(true);
+    }
+  }
+
+  function handleChoiseProfile(id: string, isYoung?: boolean) {
+    localStorage.setItem("kid", isYoung ? "true" : "false");
     localStorage.setItem("profile", id);
-    window.location.href = "/Home";
+    if (isYoung) {
+      window.location.href = "/Kid";
+    } else {
+      window.location.href = "/Home";
+    }
   }
 
   return (
@@ -87,13 +113,15 @@ function SelectProfile() {
           <>
             <p className="no-profile">You have no profile yet !</p>
           </>
-        ) : profiles.length === 1 || profiles.length === 2 ? (
+        ) : profiles.length === 1 ||
+          profiles.length === 2 ||
+          profiles.length === 3 ? (
           profiles.map((profile) => (
             <>
               <div className="select-profile">
                 <a
                   className="profile-link"
-                  onClick={() => handleChoiseProfile(profile._id)}
+                  onClick={() => handleChoiseProfileWhithPin(profile._id)}
                 >
                   <img
                     src={matchAvatar(profile.avatar)}
@@ -105,27 +133,15 @@ function SelectProfile() {
               </div>
             </>
           ))
-        ) : profiles.length === 3 ? (
-          profiles.map((profile) => (
-            <>
-              <div className="select-profile">
-                <NavLink
-                  to="/home"
-                  className="profile-link"
-                  onClick={() => handleChoiseProfile(profile._id)}
-                >
-                  <img
-                    src={matchAvatar(profile.avatar)}
-                    alt="avatar"
-                    className="profile-avatar"
-                  />
-                </NavLink>
-                <p className="profile-pseudo">{profile.pseudo}</p>
-              </div>
-            </>
-          ))
         ) : (
           <p>Vous avez atteint le nombre maximum de profil</p>
+        )}
+        {modalOpen && (
+          <CodePin
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+            profiles={profiles}
+          />
         )}
         {profiles.length < 3 ? (
           <div className="profile-another">
