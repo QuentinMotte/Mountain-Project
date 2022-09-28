@@ -235,7 +235,7 @@
         .movies_container_poster {
           text-align: center;
           .poster_info_tr {
-            background-color: $bg-color-tr;
+            background-color: $bg-color-light-tr;
             padding: 0.5rem;
             display: flex;
             justify-content: space-between;
@@ -253,6 +253,7 @@
 
           img {
             width: 20rem;
+            height: 30rem;
           }
         }
       }

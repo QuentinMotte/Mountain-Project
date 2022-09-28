@@ -223,7 +223,9 @@ function SubPage() {
           </div>
 
           <div className="form-group form-group-submit">
-            <label htmlFor="submit">Submit</label>
+            <label htmlFor="submit"></label>
+            <br />
+            <br />
             <button type="submit" name="submit" onClick={handleSubmit}>
               Submit
             </button>

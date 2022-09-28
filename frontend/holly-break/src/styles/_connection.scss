@@ -78,11 +78,13 @@
           font-weight: 700;
           text-transform: uppercase;
           border-radius: 5px;
-          color: rgba(0, 0, 0, 0.4);
+          color: $green;
+          background-color: $bg-color;
+          border: none;
           cursor: pointer;
           transition: all 0.2s ease-in-out;
           &:hover {
-            background-color: $greenHover;
+            background-color: $green;
             border-radius: 5px;
             color: $white;
           }

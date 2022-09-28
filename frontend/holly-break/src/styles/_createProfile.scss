@@ -4,6 +4,21 @@
   align-items: center;
   justify-content: center;
 
+  .profileForm-group-quote {
+    select {
+      background-color: $bg-color-light;
+      color: $white;
+      font-weight: bold;
+      font-size: medium;
+      border: none;
+      padding: 0.5rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
   .optionCodePin {
     label {
       color: $white;
@@ -48,23 +63,29 @@
         font-size: 3rem;
         height: 4rem;
         border-radius: 5px;
+        background-color: $bg-color-light;
+        color: $white;
+        border: none;
         &:focus {
           outline: none;
         }
       }
       button {
-        font-size: 3rem;
+        font-size: large;
         height: 4rem;
+        width: 15rem;
         border-radius: 5px;
-        color: rgba(0, 0, 0, 0.4);
+        border: none;
+        color: $white;
         font-weight: 700;
         cursor: pointer;
         text-transform: uppercase;
         transition: all 0.2s ease-in-out;
+        background-color: $green;
         &:hover {
-          background-color: $greenHover;
+          background-color: $bg-color;
           border-radius: 5px;
-          color: $white;
+          color: $green;
         }
       }
     }

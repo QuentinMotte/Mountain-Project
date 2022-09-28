@@ -186,6 +186,7 @@ h1 {
         img {
           border-radius: 5px;
           width: 20rem;
+          height: 30rem;
           cursor: pointer;
           transition: 0.2s ease-in-out;
 
@@ -235,7 +236,7 @@ h1 {
 
       img {
         border-radius: 5px;
-        width: 20rem;
+        width: 23rem;
         cursor: pointer;
         transition: 0.2s ease-in-out;
 
@@ -267,6 +268,7 @@ h1 {
       align-items: center;
       gap: 1rem;
       width: 20rem;
+
       h2 {
         text-align: center;
       }
@@ -278,6 +280,7 @@ h1 {
 
     img {
       width: 20rem;
+      height: 30rem;
     }
   }
 }
