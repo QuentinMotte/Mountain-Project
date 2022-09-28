@@ -4,6 +4,7 @@
     color: $white;
     width: 135rem;
     margin: auto;
+    border-radius: 1rem;
 
     @media screen and (max-width: 1300px) {
       width: 100%;
@@ -21,7 +22,13 @@
       .image_actor {
         img {
           width: 40rem;
-          border-radius: 1rem;
+          border-top-left-radius: 1rem;
+          border-bottom-right-radius: 1rem;
+
+          @media screen and (max-width: 1300px) {
+            margin-top: 1rem;
+            border-radius: 1rem;
+          }
 
           @media screen and (max-width: 500px) {
             width: 90%;
@@ -106,6 +113,7 @@
       height: 3rem;
       width: 8rem;
       margin-top: 2rem;
+      margin-bottom: 2rem;
 
       cursor: pointer;
       border-radius: 0;
