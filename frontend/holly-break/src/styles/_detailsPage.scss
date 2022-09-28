@@ -209,38 +209,50 @@
     width: 85%;
     background-color: $bg-color;
     margin: auto;
-    color: $white;
-    font-weight: bold;
-    font-size: 3rem;
 
     @media screen and (max-width: 700px) {
       width: 100%;
     }
 
-    h2 {
-      margin-left: 2rem;
-      padding-top: 2rem;
-
-      @media screen and (max-width: 700px) {
-        font-size: xx-large;
-      }
-    }
     .poster_movies {
       display: flex;
       flex-flow: wrap;
       justify-content: center;
       gap: 5rem;
-      margin: 5rem;
+      padding-top: 5rem;
 
       .poster {
         img {
-          height: 30rem;
           border-radius: 5px;
           cursor: pointer;
           transition: 0.2s ease-in-out;
 
           &:hover {
             transform: scale(1.05);
+          }
+        }
+
+        .movies_container_poster {
+          text-align: center;
+          .poster_info_tr {
+            background-color: $bg-color-tr;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            width: 20rem;
+            h2 {
+              text-align: center;
+            }
+            p {
+              background-color: $green;
+              padding: 0.5rem;
+            }
+          }
+
+          img {
+            width: 20rem;
           }
         }
       }

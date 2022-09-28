@@ -57,7 +57,6 @@ function MoviesSuggestion() {
   return (
     <>
       <div className="suggestions">
-        <h2>Suggestions</h2>
         <div className="poster_movies">
           {moviesSim?.map((movieSim) => (
             <>
@@ -68,6 +67,11 @@ function MoviesSuggestion() {
               >
                 <div id={movieSim.id} className="movies_container_poster">
                   <img src={GetPictures(movieSim.poster_path)} alt="poster" />
+                  <div className="poster_info_tr">
+                    <h2>{movieSim.title}</h2>
+                    <h2>{movieSim.name}</h2>
+                    <p>{movieSim.vote_average}</p>
+                  </div>
                 </div>
                 <div className="container_title"></div>
               </NavLink>

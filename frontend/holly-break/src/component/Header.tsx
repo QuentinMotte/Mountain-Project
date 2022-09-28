@@ -100,6 +100,12 @@ function Header() {
     setMenu(!menu);
   };
 
+  const [form, setForm] = useState(false);
+
+  const toggleForm = () => {
+    setForm(!form);
+  };
+
   return (
     <>
       <header className="header">
@@ -138,7 +144,17 @@ function Header() {
               </NavLink>
 
               <div className="search_box">
-                <form onSubmit={onClickHandlerMovie}>
+                <a
+                  onClick={() => toggleForm()}
+                  className={form ? "form_search" : "form_search active"}
+                >
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </a>
+
+                <form
+                  className={form ? "form_search active" : "form_search"}
+                  onSubmit={onClickHandlerMovie}
+                >
                   <input
                     type="text"
                     className="Search"

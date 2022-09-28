@@ -185,7 +185,7 @@ h1 {
 
         img {
           border-radius: 5px;
-          height: 30rem;
+          width: 20rem;
           cursor: pointer;
           transition: 0.2s ease-in-out;
 
@@ -235,7 +235,7 @@ h1 {
 
       img {
         border-radius: 5px;
-        height: 13rem;
+        width: 20rem;
         cursor: pointer;
         transition: 0.2s ease-in-out;
 
@@ -252,6 +252,32 @@ h1 {
           transform: scale(1.05);
         }
       }
+    }
+  }
+}
+
+.container_genre {
+  .movies_container_poster {
+    text-align: center;
+    .poster_info_tr {
+      background-color: $bg-color-tr;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      width: 20rem;
+      h2 {
+        text-align: center;
+      }
+      p {
+        background-color: $green;
+        padding: 0.5rem;
+      }
+    }
+
+    img {
+      width: 20rem;
     }
   }
 }

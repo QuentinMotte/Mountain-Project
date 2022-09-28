@@ -16,6 +16,8 @@ interface moviesProps {
   backdrop_path: string;
   media_type: string;
   know_for: string;
+  name: string;
+  vote_average: number;
 }
 
 interface knowFor {
@@ -24,6 +26,8 @@ interface knowFor {
   poster_path: string;
   title: string;
   media_type: string;
+  name: string;
+  vote_average: number;
 }
 
 function Search() {
@@ -76,6 +80,11 @@ function Search() {
           <NavLink className="poster" to={`/movie/${movie.id}`}>
             <div id={movie.id} className="movies_container_poster">
               <img src={GetPictures(movie.poster_path)} alt="poster" />
+              <div className="poster_info_tr">
+                <h2>{movie.title}</h2>
+                <h2>{movie.name}</h2>
+                <p>{movie.vote_average}</p>
+              </div>
             </div>
           </NavLink>
         ))}
@@ -84,6 +93,11 @@ function Search() {
           <NavLink className="poster" to={`/tv/${movieTV.id}`}>
             <div id={movieTV.id} className="movies_container_poster">
               <img src={GetPictures(movieTV.poster_path)} alt="poster" />
+              <div className="poster_info_tr">
+                <h2>{movieTV.title}</h2>
+                <h2>{movieTV.name}</h2>
+                <p>{movieTV.vote_average}</p>
+              </div>
             </div>
           </NavLink>
         ))}
@@ -95,6 +109,11 @@ function Search() {
           >
             <div id={movieKF.id} className="movies_container_poster">
               <img src={GetPictures(movieKF.poster_path)} alt="poster" />
+              <div className="poster_info_tr">
+                <h2>{movieKF.title}</h2>
+                <h2>{movieKF.name}</h2>
+                <p>{movieKF.vote_average}</p>
+              </div>
             </div>
           </NavLink>
         ))}

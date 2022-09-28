@@ -3,6 +3,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  .optionCodePin {
+    label {
+      color: $white;
+      margin-right: 1rem;
+      font-size: 2rem;
+      font-weight: 700;
+
+      text-transform: uppercase;
+    }
+  }
+
   h1 {
     font-size: 4rem;
     font-weight: 700;

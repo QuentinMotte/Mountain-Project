@@ -93,6 +93,11 @@ function Popular() {
           <NavLink className="poster" to={`/${ID}/${movie1.id}`}>
             <div id={movie1.id} className="movies_container_poster">
               <img src={GetPictures(movie1.poster_path)} alt="poster" />
+              <div className="poster_info_tr">
+                <h2>{movie1.title}</h2>
+                <h2>{movie1.name}</h2>
+                <p>{movie1.vote_average}</p>
+              </div>
             </div>
           </NavLink>
         ))}
@@ -101,6 +106,11 @@ function Popular() {
           <NavLink className="poster" to={`/${ID}/${movie2.id}`}>
             <div id={movie2.id} className="movies_container_poster">
               <img src={GetPictures(movie2.poster_path)} alt="poster" />
+              <div className="poster_info_tr">
+                <h2>{movie2.title}</h2>
+                <h2>{movie2.name}</h2>
+                <p>{movie2.vote_average}</p>
+              </div>
             </div>
           </NavLink>
         ))}
@@ -109,6 +119,11 @@ function Popular() {
           <NavLink className="poster" to={`/${ID}/${movie3.id}`}>
             <div id={movie3.id} className="movies_container_poster">
               <img src={GetPictures(movie3.poster_path)} alt="poster" />
+              <div className="poster_info_tr">
+                <h2>{movie3.title}</h2>
+                <h2>{movie3.name}</h2>
+                <p>{movie3.vote_average}</p>
+              </div>
             </div>
           </NavLink>
         ))}
@@ -117,6 +132,11 @@ function Popular() {
           <NavLink className="poster" to={`/${ID}/${movie4.id}`}>
             <div id={movie4.id} className="movies_container_poster">
               <img src={GetPictures(movie4.poster_path)} alt="poster" />
+              <div className="poster_info_tr">
+                <h2>{movie4.title}</h2>
+                <h2>{movie4.name}</h2>
+                <p>{movie4.vote_average}</p>
+              </div>
             </div>
           </NavLink>
         ))}
@@ -125,6 +145,11 @@ function Popular() {
           <NavLink className="poster" to={`/${ID}/${movie5.id}`}>
             <div id={movie5.id} className="movies_container_poster">
               <img src={GetPictures(movie5.poster_path)} alt="poster" />
+              <div className="poster_info_tr">
+                <h2>{movie5.title}</h2>
+                <h2>{movie5.name}</h2>
+                <p>{movie5.vote_average}</p>
+              </div>
             </div>
           </NavLink>
         ))}

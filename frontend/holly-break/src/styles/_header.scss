@@ -36,6 +36,24 @@
     }
 
     .search_box {
+      .form_search {
+        i {
+          color: $white;
+          font-size: 1.5rem;
+          font-weight: bold;
+          transition: all 0.2s ease-in-out;
+          cursor: pointer;
+
+          &:hover {
+            color: $green;
+          }
+        }
+        display: none;
+
+        &.active {
+          display: block;
+        }
+      }
       input {
         border: 3px solid $green;
         border-radius: 6px;

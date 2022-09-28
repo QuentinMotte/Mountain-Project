@@ -81,6 +81,9 @@ function FaqPage() {
       <main className="content-container">
         <div className="wrapper_faq">
           <div className="accordion_faq">
+            <div className="faq_title">
+              <h2>Frequently Asked Questions</h2>
+            </div>
             {data.map((question, i) => (
               <div className="question_faq">
                 <div className="title_faq" onClick={() => toggle(i)}>

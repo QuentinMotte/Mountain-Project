@@ -8,6 +8,13 @@
   margin: 3rem;
 
   .accordion_faq {
+    .faq_title {
+      h2 {
+        color: $green;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+    }
     .question_faq {
       background-color: $bg-color;
       margin-bottom: 3rem;

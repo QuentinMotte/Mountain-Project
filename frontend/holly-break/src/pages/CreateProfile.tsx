@@ -314,7 +314,7 @@ function CreateProfile() {
           </div>
 
           {!isPin ? (
-            <div>
+            <div className="optionCodePin">
               <label htmlFor="setupPin">
                 Do you want to setup a Code Pin ?
               </label>
@@ -351,7 +351,7 @@ function CreateProfile() {
                 />
               </div>
 
-              <div>
+              <div className="optionCodePin">
                 <label htmlFor="codePinNo">
                   Finally i don't want to use a pin code
                 </label>
