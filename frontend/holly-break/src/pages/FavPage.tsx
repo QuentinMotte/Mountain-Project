@@ -8,7 +8,9 @@ function FavPage() {
   return (
     <>
       <Header></Header>
-      <Fave />
+      <main className="content-container">
+        <Fave />
+      </main>
       <Footer></Footer>
     </>
   );

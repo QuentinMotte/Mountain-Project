@@ -218,7 +218,6 @@ function Header() {
                       Account Settings
                     </NavLink>
                   </li>
-                  <li>Profile Settings</li>
                   <li>
                     {" "}
                     <NavLink className="navLink_right" to={"/Select-Profile"}>

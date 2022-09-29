@@ -11,7 +11,7 @@ import HistoryPage from "./pages/HistoryPage";
 import Landing from "./pages/Landing";
 import Homepage from "./pages/Homepage";
 import AboutPage from "./pages/AboutPage";
-// import SettingsPage from "./pages/SettingsPage";
+import SettingsPage from "./pages/SettingsPage";
 import MoviePage from "./pages/MoviePage";
 import PlayerPage from "./pages/PlayerPage";
 import ConditionPage from "./pages/ConditionPage";
@@ -23,7 +23,6 @@ import MoviesGenrePage from "./pages/MoviesGenrePage";
 import SeriesGenrePage from "./pages/SeriesGenrePage";
 import UserPageAdmin from "./pages/UserPageAdmin";
 import SuccessProfile from "./pages/SuccessProfile";
-import "./main.scss";
 import ActorPage from "./pages/ActorPage";
 import PopularMovies from "./pages/PopularMovies";
 import WatchListPage from "./pages/WatchListPage";
@@ -34,6 +33,7 @@ import KidsPage from "./pages/KidsPage";
 import FavPage from "./pages/FavPage";
 import Page404 from "./pages/Page404";
 import MovieGenreKids from "./pages/MovieGenreKids";
+import "./main.scss";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -98,6 +98,7 @@ function App() {
           <Route path="/kid" element={<KidsPage />} />
           <Route path="/kid/:id" element={<MovieGenreKids />} />
           <Route path="/Kid" element={<KidsPage />} />
+          <Route path="/SettingsUser" element={<SettingsPage />} />
         </>
       )}
       {token && profile && kid && (
@@ -107,6 +108,8 @@ function App() {
           <Route path="/About" element={<AboutPage />} />
           <Route path="/Conditions" element={<ConditionPage />} />
           <Route path="/Select-Profile" element={<SelectProfile />} />
+          <Route path="/Create-Profile" element={<CreateProfile />} />
+          <Route path="/SuccessProfile" element={<SuccessProfile />} />
           <Route path="/Watchlist" element={<WatchListPage />} />
           <Route path="/History" element={<HistoryPage />} />
           <Route path="/Movie/:id" element={<MoviePage />} />
@@ -119,6 +122,7 @@ function App() {
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
           <Route path="/Player/Serie/:id" element={<Landing />} />
           <Route path="/Kid" element={<KidsPage />} />
+          <Route path="/kid/:id" element={<MovieGenreKids />} />
           <Route path="/Favorites" element={<FavPage />} />
         </>
       )}
@@ -151,6 +155,8 @@ function App() {
           <Route path="/Forum/Create" element={<CreateTopicPage />} />
           <Route path="/kid" element={<KidsPage />} />
           <Route path="/kid/:id" element={<MovieGenreKids />} />
+          <Route path="/Favorites" element={<FavPage />} />
+          <Route path="/SettingsUser" element={<SettingsPage />} />
           {/* <Route path="/Forum/Onetopic" element={<MoreAnswers />} /> */}
         </>
       )}
