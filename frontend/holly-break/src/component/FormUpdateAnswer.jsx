@@ -1,29 +1,29 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const FormUpdate = ({ answers, setIsUpdate, isUpdate }) => {
+const FormUpdate = ({ answers, setIsUpdateAnswer, isUpdateAnswer }) => {
   const [answerForm, setAnswerForm] = useState({
-    content: "",
+    content: `${answers.content}`,
   });
 
   const answerFormState = {
     content: answerForm.content,
   };
 
-  const handleChange = (e) => {
+  const handleChangeAnswer = (e) => {
     const { name, value } = e.target;
     setAnswerForm({ ...answerForm, [name]: value });
   };
 
-  async function handleSubmit(e) {
+  async function handleSubmitAnswer(e) {
     e.preventDefault();
     await axios
       .put(
-        `http://localhost:5000/api/answer/update/${answers._id}`,
+        `http://localhost:5000/api/answer/update_like/${answers._id}`,
         answerFormState
       )
       .then((response) => {
-        setIsUpdate(false);
+        setIsUpdateAnswer(false);
         console.log(response);
         console.log(response.status);
       })
@@ -41,10 +41,10 @@ const FormUpdate = ({ answers, setIsUpdate, isUpdate }) => {
           cols="50"
           rows="10"
           value={answerForm.content}
-          onChange={handleChange}
+          onChange={handleChangeAnswer}
         ></textarea>
-        <input type="submit" onClick={handleSubmit} />
-        <button onClick={() => setIsUpdate(false)}>Cancel</button>
+        <input type="submit" onClick={handleSubmitAnswer} />
+        <button onClick={() => setIsUpdateAnswer(false)}>Cancel</button>
       </form>
     </div>
   );

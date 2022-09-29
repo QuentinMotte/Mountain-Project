@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import FormUpdateAnswer from "./FormUpdateAnswer";
-const Answers = ({ answers, isDelete, setIsDelete, isUpdate, setIsUpdate }) => {
+const Answers = ({
+  answers,
+  isDeleteAnswer,
+  setIsDeleteAnswer,
+  isUpdateAnswer,
+  setIsUpdateAnswer,
+}) => {
   const [profileAnswer, setProfileAnswer] = useState([]);
+  const [isLikeUpdate, setIsLikeUpdate] = useState(false);
 
   function fetchProfileByIdForAnswers() {
     axios
@@ -10,6 +17,35 @@ const Answers = ({ answers, isDelete, setIsDelete, isUpdate, setIsUpdate }) => {
       .then((res) => setProfileAnswer(res.data))
       .catch((error) => {
         console.log(error);
+      });
+  }
+  console.log(answers);
+
+  const idProfileLike = {
+    like: localStorage.getItem("profile"),
+  };
+
+  function addLikeForComment() {
+    axios
+      .patch(
+        `http://localhost:5000/api/answer/update_like/${answers._id}`,
+        idProfileLike
+      )
+      .then((res) => console.log(res))
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function removeLikeForComment() {
+    axios
+      .patch(
+        `http://localhost:5000/api/answer/remove_like/${answers._id}`,
+        idProfileLike
+      )
+      .then((res) => console.log(res))
+      .catch((err) => {
+        console.log(err);
       });
   }
 
@@ -20,10 +56,10 @@ const Answers = ({ answers, isDelete, setIsDelete, isUpdate, setIsUpdate }) => {
   //console.log(answers);
   //console.log(localStorage.getItem("profile"));
 
-  async function handleDelete() {
+  async function handleDeleteAnswer() {
     await axios
       .delete(`http://localhost:5000/api/answer/${answers._id}`)
-      .then((res) => console.log(res) + setIsDelete(true))
+      .then((res) => console.log(res) + setIsDeleteAnswer(true))
       .catch((error) => {
         console.log(error);
       });
@@ -39,24 +75,27 @@ const Answers = ({ answers, isDelete, setIsDelete, isUpdate, setIsUpdate }) => {
             if (
               window.confirm("Are you sure you wish to delete your answer ?")
             ) {
-              handleDelete();
-              setIsDelete(false);
+              handleDeleteAnswer();
+              setIsDeleteAnswer(false);
             }
           }}
         >
-          Delete
+          Delete Answer
         </button>
       )}
       {answers.id_profile === localStorage.getItem("profile") && (
-        <button onClick={() => setIsUpdate(true)}>Update</button>
+        <button onClick={() => setIsUpdateAnswer(true)}>Update Answer</button>
       )}
-      {isUpdate && (
+      {isUpdateAnswer && (
         <FormUpdateAnswer
           answers={answers}
-          setIsUpdate={setIsUpdate}
-          isUpdate={isUpdate}
+          setIsUpdateAnswer={setIsUpdateAnswer}
+          isUpdateAnswer={isUpdateAnswer}
         />
       )}
+      <button onClick={addLikeForComment}>Like</button>
+      <button onClick={removeLikeForComment}>UnLike</button>
+      <p>{answers.like.length}</p>
     </div>
   );
 };

@@ -10,22 +10,22 @@ const CreateTopicPage = () => {
     content: "",
   });
 
-  const userFormState = {
+  const topicFormState = {
     title: topicForm.title,
     category: topicForm.category,
     id_profile: localStorage.getItem("profile"),
     content: topicForm.content,
   };
 
-  const handleChange = (e) => {
+  const handleChangeTopic = (e) => {
     const { name, value } = e.target;
     setTopicForm({ ...topicForm, [name]: value });
   };
 
-  async function handleSubmit(e) {
+  async function handleSubmitTopic(e) {
     e.preventDefault();
     await axios
-      .post("http://localhost:5000/api/topic/create", userFormState)
+      .post("http://localhost:5000/api/topic/create", topicFormState)
       .then((response) => {
         window.location.href = "/Forum/All";
         console.log(response);
@@ -47,7 +47,7 @@ const CreateTopicPage = () => {
               name="title"
               type="text"
               value={topicForm.title}
-              onChange={handleChange}
+              onChange={handleChangeTopic}
             />
           </div>
           <div>
@@ -56,7 +56,7 @@ const CreateTopicPage = () => {
               name="category"
               id="category"
               value={topicForm.category}
-              onChange={handleChange}
+              onChange={handleChangeTopic}
             >
               <option value="all">All</option>
               <option value="film">Film</option>
@@ -71,10 +71,10 @@ const CreateTopicPage = () => {
               cols="30"
               rows="10"
               value={topicForm.content}
-              onChange={handleChange}
+              onChange={handleChangeTopic}
             ></textarea>
           </div>
-          <input type="submit" onClick={handleSubmit} />
+          <input type="submit" onClick={handleSubmitTopic} />
         </form>
       </main>
       <Footer />

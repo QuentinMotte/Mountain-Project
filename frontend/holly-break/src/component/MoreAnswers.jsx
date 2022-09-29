@@ -7,10 +7,10 @@ const AnswerTopic = ({
   setIsAnswer,
   topic,
   isAddAnswer,
-  isDelete,
-  setIsDelete,
-  isUpdate,
-  setIsUpdate,
+  isDeleteAnswer,
+  setIsDeleteAnswer,
+  isUpdateAnswer,
+  setIsUpdateAnswer,
 }) => {
   const [answerData, setAnswerData] = useState([]);
 
@@ -21,7 +21,7 @@ const AnswerTopic = ({
   }
   useEffect(() => {
     fetchAnswerData();
-  }, [isAddAnswer, isDelete, isUpdate]);
+  }, [isAddAnswer, isDeleteAnswer, isUpdateAnswer]);
   console.log(answerData);
   return (
     <div>
@@ -29,11 +29,11 @@ const AnswerTopic = ({
         <Answers
           answers={answers}
           key={answers._id}
-          isDelete={isDelete}
-          setIsDelete={setIsDelete}
+          isDeleteAnswer={isDeleteAnswer}
+          setIsDeleteAnswer={setIsDeleteAnswer}
           isAddAnswer={isAddAnswer}
-          isUpdate={isUpdate}
-          setIsUpdate={setIsUpdate}
+          isUpdateAnswer={isUpdateAnswer}
+          setIsUpdateAnswer={setIsUpdateAnswer}
         />
       ))}
       <button onClick={() => setIsAnswer(false)}>Hide</button>
