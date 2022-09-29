@@ -72,7 +72,8 @@
 
       &:hover {
         background-color: $green;
-        color: $white;
+        //color: $white;
+        color: $bg-color;
       }
     }
 
@@ -247,6 +248,7 @@
             }
             p {
               background-color: $green;
+              color: $bg-color;
               padding: 0.5rem;
             }
           }
