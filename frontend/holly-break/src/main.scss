@@ -26,6 +26,7 @@
 @import "./styles/_codePin";
 @import "./styles/_movies";
 @import "./styles/_settingsPage";
+@import "./styles/_settingsProfile";
 
 body {
   min-height: 100vh;
@@ -35,6 +36,7 @@ body {
     rgba(34, 34, 34, 1) 0%,
     rgba(57, 57, 56, 1) 99.5%
   );
+  scroll-behavior: smooth;
 }
 
 a,
