@@ -332,6 +332,7 @@ function CreateProfile() {
                 <StatefulPinInput
                   name="pin_code"
                   id="profilePIN"
+                  size="lg"
                   length={4}
                   initialValue=""
                   onComplete={handleChangesPinCode}
@@ -344,6 +345,7 @@ function CreateProfile() {
                 <StatefulPinInput
                   name="profilePINConfirm"
                   id="profilePINConfirm"
+                  size="lg"
                   length={4}
                   initialValue=""
                   onComplete={handleChangesPinCodeConfirm}

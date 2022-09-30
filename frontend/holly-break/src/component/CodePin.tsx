@@ -61,6 +61,7 @@ function CodePin({ modalOpen, setModalOpen, profiles }: CodePinProps) {
             name="pin_code"
             id="profilePIN"
             length={4}
+            size="lg"
             initialValue=""
             required={true}
             onComplete={handlePinCode}

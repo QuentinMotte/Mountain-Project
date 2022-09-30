@@ -22,6 +22,35 @@
     padding: 1rem;
 
     position: relative;
+    text-align: center;
+
+    p {
+      font-size: medium;
+      margin-bottom: 2rem;
+      color: $white;
+    }
+
+    button {
+      font-size: 3rem;
+      height: 4rem;
+      width: 60%;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: 5px;
+      color: $green;
+      background-color: $bg-color;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      margin-top: 2rem;
+      &:hover {
+        background-color: $green;
+        border-radius: 5px;
+        //color: $white;
+        color: $bg-color;
+      }
+    }
+
     i {
       font-size: 3rem;
       color: $white;

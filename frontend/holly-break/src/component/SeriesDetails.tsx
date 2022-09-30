@@ -1,9 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import SeriesInfo from "./SeriesInfo";
 import SeriesSuggestion from "./SeriesSuggestion";
+import Poster from "../img/Landing_page.jpg";
 
 const API: any = process.env.REACT_APP_API_KEY;
 
@@ -179,39 +180,68 @@ function SeriesDetails() {
       });
   }
 
+  //-----------
+
+  let navigate = useNavigate();
+
+  //----------
+
+  function GetPictures(avatar: any) {
+    switch (avatar) {
+      case undefined:
+        return Poster;
+      case avatar:
+        return `https://image.tmdb.org/t/p/original` + avatar;
+    }
+  }
+
   return (
     <>
       <div className="banner">
-        <img
-          src={`https://image.tmdb.org/t/p/original` + pictures?.file_path}
-          alt="poster"
-        />
+        <img src={GetPictures(pictures?.file_path)} alt="poster" />
         <div className="options">
           <a
             onClick={() => pushHistoric(movies?.id)}
             className="poster"
             href={`/Player/Serie/${movies?.id}`}
           >
-            <i className="fa-solid fa-play"></i>
+            <i className="fa-solid fa-play">
+              <p className="option_movies_tabs">play</p>
+            </i>
           </a>
           {watchlist ? (
             <a onClick={() => deleteWatchlist(movies?.id)}>
-              <i className="fa-solid fa-eye-slash"></i>
+              <i className="fa-solid fa-eye-slash">
+                <p className="option_movies_tabs">Delete from watchlist</p>
+              </i>
             </a>
           ) : (
             <a onClick={() => pushWatchlist(movies?.id)}>
-              <i className="fa-solid fa-eye"></i>
+              <i className="fa-solid fa-eye">
+                <p className="option_movies_tabs">Add to watchlist</p>
+              </i>
             </a>
           )}
           {favorite ? (
             <a onClick={() => deleteFavorite(movies?.id)}>
-              <i className="fa-solid fa-heart-crack"></i>
+              <i className="fa-solid fa-heart-crack">
+                <p className="option_movies_tabs">Delete from favorite</p>
+              </i>
             </a>
           ) : (
             <a onClick={() => pushFavorite(movies?.id)}>
-              <i className="fa-solid fa-heart"></i>
+              <i className="fa-solid fa-heart">
+                <p className="option_movies_tabs">Add to favorites</p>
+              </i>
             </a>
           )}
+
+          <i
+            className="button_back fa-solid fa-backward-fast"
+            onClick={() => navigate(-1)}
+          >
+            <p className="option_movies_tabs">Back</p>
+          </i>
         </div>
       </div>
 
