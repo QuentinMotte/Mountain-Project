@@ -18,5 +18,32 @@
     border-radius: 1rem;
     padding: 3rem;
     border: 1px solid $white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .settingsSubContainer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      img {
+        width: 12rem;
+        height: 12rem;
+        object-fit: cover;
+      }
+      .settingsContainer-infos {
+        display: flex;
+        gap: 1rem;
+        color: $green;
+        font-size: 2rem;
+      }
+      .settingsContainer-btn {
+        display: flex;
+        gap: 2rem;
+        .btn {
+          font-size: 2rem;
+        }
+      }
+    }
   }
 }
