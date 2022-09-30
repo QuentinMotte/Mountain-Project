@@ -47,6 +47,7 @@
           position: absolute;
           transform: translateX(-60rem);
           transition: all 0.3s ease-in-out;
+          text-shadow: 2px 2px 8px $bg-color;
         }
 
         &:hover .option_movies_tabs {

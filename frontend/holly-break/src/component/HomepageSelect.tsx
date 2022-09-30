@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
+import Poster from "../img/Landing_page.jpg";
 const Slider = require("react-slick").default;
 
 const API: any = process.env.REACT_APP_API_KEY;
@@ -216,6 +217,17 @@ function HomepageSelect() {
 
   //----------------
 
+  function GetPictures(avatar: any) {
+    switch (avatar) {
+      case null:
+        return Poster;
+      case avatar:
+        return `https://image.tmdb.org/t/p/original` + avatar;
+    }
+  }
+
+  //----------------------
+
   return (
     <>
       <div className="container_herobanner">
@@ -345,10 +357,7 @@ function HomepageSelect() {
           {moviesTrend?.map((movie) => (
             <NavLink className="poster" to={`/Movie/${movie.id}`}>
               <div id={movie.id} className="movies_container_poster">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500` + movie.backdrop_path}
-                  alt="poster"
-                />
+                <img src={GetPictures(movie.backdrop_path)} alt="poster" />
               </div>
             </NavLink>
           ))}
@@ -383,10 +392,7 @@ function HomepageSelect() {
           {seriesTrend?.map((serie) => (
             <NavLink className="poster" to={`/tv/${serie.id}`}>
               <div id={serie.id} className="movies_container_poster">
-                <img
-                  src={`https://image.tmdb.org/t/p/w500` + serie.backdrop_path}
-                  alt="poster"
-                />
+                <img src={GetPictures(serie.backdrop_path)} alt="poster" />
               </div>
             </NavLink>
           ))}
