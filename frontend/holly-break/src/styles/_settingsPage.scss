@@ -11,6 +11,51 @@
     border: 1px solid $white;
     color: $white;
     font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .left-name {
+      display: flex;
+      justify-content: space-between;
+    }
+    .left-firstname {
+      display: flex;
+      justify-content: space-between;
+    }
+    .left-age {
+      display: flex;
+      justify-content: space-between;
+    }
+    .left-email {
+      display: flex;
+      justify-content: space-between;
+    }
+    .left-password {
+      display: flex;
+      justify-content: space-between;
+    }
+    .left-create {
+      display: flex;
+      justify-content: space-between;
+    }
+    .left-admin {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .left-del {
+    text-align: center;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid $white;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: $greenHover;
+      color: #e50914;
+      font-weight: 600;
+    }
   }
   .settingsContainer-right {
     min-width: 70%;
@@ -25,23 +70,55 @@
     .settingsSubContainer {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 4rem;
       img {
         width: 12rem;
         height: 12rem;
         object-fit: cover;
       }
-      .settingsContainer-infos {
-        display: flex;
-        gap: 1rem;
-        color: $green;
-        font-size: 2rem;
-      }
       .settingsContainer-btn {
         display: flex;
+        flex-direction: column;
         gap: 2rem;
         .btn {
+          cursor: pointer;
+        }
+        &--delete {
+          color: #e50914;
+          i {
+            font-size: 3rem;
+          }
+        }
+        &--edit {
+          i {
+            font-size: 3rem;
+          }
+          color: $green;
+          transition: all 0.2s ease-in-out;
+          &:hover {
+            color: $greenHover;
+          }
+        }
+      }
+      .settingsContainer-infos {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        color: $green;
+        font-size: 2rem;
+        text-transform: capitalize;
+        p:hover {
+          color: $greenHover;
+        }
+        .fa-check {
+          color: green;
           font-size: 2rem;
+          padding: 0.5rem;
+        }
+        .fa-x {
+          color: #e50914;
+          font-size: 1.5rem;
+          padding: 0.75rem;
         }
       }
     }

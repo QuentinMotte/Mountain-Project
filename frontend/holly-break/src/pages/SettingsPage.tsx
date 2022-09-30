@@ -164,42 +164,42 @@ function SettingsPage() {
   return (
     <>
       <Header />
-      <h1>SettingsUser</h1>
+      <h1>Setting Page</h1>
       <main className="content-container content-container-settings">
         <div className="settingsContainer-left">
-          <div>
+          <div className="left-name">
             <p>Name :</p>
             <p>{user.lastName}</p>
           </div>
-          <div>
+          <div className="left-firstname">
             <p>First Name :</p>
             <p>{user.firstName}</p>
           </div>
-          <div>
+          <div className="left-age">
             <p>Age :</p>
             <p>{user.birthday}</p>
           </div>
-          <div>
+          <div className="left-email">
             <p>Email :</p>
             <p>{user.email}</p>
           </div>
-          <div>
+          <div className="left-password">
             <p>Password :</p>
             <p>{user.password}</p>
           </div>
-          <div>
+          <div className="left-create">
             <p>Created at :</p>
             <p>{creationDateFormated}</p>
           </div>
           {user.is_admin ? (
-            <div>
+            <div className="left-admin">
               <p>Admin :</p>
               <p>Yes</p>
             </div>
           ) : null}
-          <button onClick={() => alertDelete(user._id)}>
+          <a className="left-del" onClick={() => alertDelete(user._id)}>
             Delete My Account
-          </button>
+          </a>
         </div>
         <div className="settingsContainer-right">
           {profiles.map((profile: any) => (
@@ -211,26 +211,33 @@ function SettingsPage() {
                   className="settingsContainer-avatar-img"
                 />
               </div>
+              <div className="settingsContainer-btn">
+                <a
+                  className="settingsContainer-btn--edit btn"
+                  onClick={() => setIsOpen(true)}
+                >
+                  <i className="fa-solid fa-user-pen"></i>
+                </a>
+                <a
+                  className="settingsContainer-btn--delete btn"
+                  onClick={() => alertDeleteProfile(profile._id)}
+                >
+                  <i className="fa-solid fa-trash"></i>
+                </a>
+              </div>
               <div className="settingsContainer-infos">
                 <p>{profile.pseudo}</p>
                 <p>-</p>
                 <p>{profile.quote}</p>
                 <p>-</p>
-                <p>Child Profile : {profile.is_young ? "Yes" : "No"}</p>
-              </div>
-              <div className="settingsContainer-btn">
-                <a
-                  className="settingsContainer-btn--delete btn"
-                  onClick={() => alertDeleteProfile(profile._id)}
-                >
-                  Delete
-                </a>
-                <a
-                  className="settingsContainer-btn--edit btn"
-                  onClick={() => setIsOpen(true)}
-                >
-                  Edit
-                </a>
+                <p>
+                  Young Profile :<span> </span>{" "}
+                  {profile.is_young ? (
+                    <i className="fa-solid fa-check"></i>
+                  ) : (
+                    <i className="fa-solid fa-x"></i>
+                  )}
+                </p>
               </div>
             </div>
           ))}
