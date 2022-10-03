@@ -24,6 +24,7 @@ const AllTopic = ({ topic }) => {
   }, []);
 
   console.log(profile);
+
   return (
     <div className="topics">
       <div className="title_forum_topic">

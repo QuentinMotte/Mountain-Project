@@ -67,10 +67,12 @@
     gap: 3rem;
     width: 85%;
     margin: auto;
+    font-weight: bold;
 
     .tabs {
       height: 2rem;
       width: 12rem;
+      font-weight: bold;
 
       @media screen and (max-width: 428px) {
         width: fit-content;
@@ -111,6 +113,7 @@
       width: calc(100% + 2px);
       height: 5px;
       background: $green;
+      font-weight: bold;
     }
   }
 
@@ -274,6 +277,7 @@
               background-color: $green;
               color: $bg-color;
               padding: 0.5rem;
+              font-weight: bold;
             }
           }
 

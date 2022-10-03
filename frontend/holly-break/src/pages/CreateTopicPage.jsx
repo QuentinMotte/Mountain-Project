@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 
@@ -38,7 +39,22 @@ const CreateTopicPage = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="homePageForum">
+        <div className="navLink_container">
+          <NavLink className="header_navLink" to={"/Forum/All"}>
+            All
+          </NavLink>
+          <NavLink className="header_navLink" to={"/Forum/Movie"}>
+            Movies
+          </NavLink>
+          <NavLink className="header_navLink" to={"/Forum/Serie"}>
+            Series
+          </NavLink>
+          <NavLink className="header_navLink" to={"/Forum/Create"}>
+            create Topic
+          </NavLink>
+        </div>
+
         <div className="form_create_topic">
           <form action="post">
             <div className="form_create">

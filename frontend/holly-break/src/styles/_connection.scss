@@ -10,8 +10,8 @@
   justify-content: center;
   align-items: center;
   .connection_form_subContainer {
-    width: 40rem;
-    height: 30rem;
+    width: 45rem;
+    height: 35rem;
     background-color: $bg-color-light;
     border-radius: 5px;
 
@@ -83,6 +83,7 @@
           border: none;
           cursor: pointer;
           transition: all 0.2s ease-in-out;
+          font-weight: bold;
           &:hover {
             background-color: $green;
             border-radius: 5px;

@@ -114,6 +114,10 @@ function SeriesInfo() {
                 <br />
                 <p className="airDate">{movies?.first_air_date}</p>
                 <br />
+                <h4>Last air date: </h4>
+                <br />
+                <p>{movies?.last_air_date}</p>
+                <br />
                 <h4>Duration:</h4>
                 <br />
                 <p className="RunTime">{moviesRunTime?.[0]} min</p>

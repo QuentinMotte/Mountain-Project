@@ -83,6 +83,7 @@
         text-transform: uppercase;
         transition: all 0.2s ease-in-out;
         background-color: $green;
+        font-weight: bold;
         &:hover {
           background-color: $bg-color;
           border-radius: 5px;

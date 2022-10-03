@@ -26,13 +26,13 @@ h1 {
     }
 
     .slick-prev:before {
-      color: $white;
+      //color: $white;
       font-weight: bold;
       font-size: 4rem;
     }
 
     .slick-next:before {
-      color: $white;
+      //color: $white;
       font-weight: bold;
       font-size: 4rem;
     }
@@ -277,6 +277,7 @@ h1 {
         background-color: $green;
         color: $bg-color;
         padding: 0.5rem;
+        font-weight: bold;
       }
     }
 

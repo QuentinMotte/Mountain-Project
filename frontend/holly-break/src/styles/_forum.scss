@@ -10,6 +10,8 @@
     color: $green;
     text-transform: uppercase;
     transition: 0.2s ease-in-out;
+    font-weight: bold;
+    padding: 1rem;
 
     //_____
 
@@ -67,6 +69,8 @@
 
       .tag {
         margin-bottom: 2rem;
+        font-weight: bold;
+        font-size: small;
       }
 
       .content_topic {
@@ -92,6 +96,7 @@
 
         p {
           margin-bottom: 1rem;
+          font-size: small;
         }
       }
     }
@@ -176,6 +181,7 @@
   margin-top: 2rem;
   width: 80%;
   margin: auto;
+  margin-bottom: 5rem;
 
   form {
     text-align: center;
@@ -194,6 +200,9 @@
       select {
         background-color: $bg-color-light;
         color: $green;
+        border: none;
+        padding: 0.5rem;
+        text-transform: uppercase;
 
         &:focus {
           outline: none;

@@ -5,7 +5,7 @@ import AllTopic from "../component/AllTopic";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 
-const ForumHomePage = () => {
+function ForumHomePageTV() {
   const [topic, setTopic] = useState([]);
 
   function fetchAllTopic() {
@@ -37,16 +37,18 @@ const ForumHomePage = () => {
             create Topic
           </NavLink>
         </div>
-        <h1>All topics</h1>
+        <h1>Series topics</h1>
         <div className="all_topics">
-          {topic.map((topic) => (
-            <AllTopic topic={topic} key={topic._id} />
-          ))}
+          {topic
+            .filter((topic) => topic.category === "serie")
+            .map((topic) => (
+              <AllTopic topic={topic} key={topic._id} />
+            ))}
         </div>
       </main>
       <Footer />
     </>
   );
-};
+}
 
-export default ForumHomePage;
+export default ForumHomePageTV;
