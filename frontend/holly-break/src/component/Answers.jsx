@@ -7,6 +7,10 @@ const Answers = ({
   setIsDeleteAnswer,
   isUpdateAnswer,
   setIsUpdateAnswer,
+  isLike,
+  setIsLike,
+  isUnlike,
+  setIsUnlike,
 }) => {
   const [profileAnswer, setProfileAnswer] = useState([]);
   const [isLikeUpdate, setIsLikeUpdate] = useState(false);
@@ -31,7 +35,7 @@ const Answers = ({
         `http://localhost:5000/api/answer/update_like/${answers._id}`,
         idProfileLike
       )
-      .then((res) => console.log(res))
+      .then((res) => setIsLike(true) + setIsUnlike(false) + console.log(res))
       .catch((err) => {
         console.log(err);
       });
@@ -43,7 +47,7 @@ const Answers = ({
         `http://localhost:5000/api/answer/remove_like/${answers._id}`,
         idProfileLike
       )
-      .then((res) => console.log(res))
+      .then((res) => setIsUnlike(true) + setIsLike(false) + console.log(res))
       .catch((err) => {
         console.log(err);
       });
