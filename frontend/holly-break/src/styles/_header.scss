@@ -34,38 +34,6 @@
         }
       }
     }
-
-    .search_box {
-      .form_search {
-        i {
-          color: $white;
-          font-size: 1.5rem;
-          font-weight: bold;
-          transition: all 0.2s ease-in-out;
-          cursor: pointer;
-
-          &:hover {
-            color: $green;
-          }
-        }
-        display: none;
-
-        &.active {
-          display: block;
-        }
-      }
-      input {
-        border: 2px solid $green;
-        border-radius: 10px;
-        background-color: $bg-color-light;
-        color: $white;
-        padding: 5px;
-
-        &:focus {
-          outline: none;
-        }
-      }
-    }
   }
   &__right {
     display: flex;
@@ -94,6 +62,40 @@
       }
     }
   }
+
+  .search_box {
+    margin-right: 3rem;
+    .form_search {
+      i {
+        color: $white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          color: $green;
+        }
+      }
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+    input {
+      border: 2px solid $green;
+      border-radius: 10px;
+      background-color: $bg-color-light;
+      color: $white;
+      padding: 5px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
   .menuAccordeon {
     position: absolute;
     z-index: 999;

@@ -39,43 +39,45 @@ const CreateTopicPage = () => {
     <>
       <Header />
       <main>
-        <form action="post">
-          <div>
-            <label htmlFor="title">Title</label>
-            <input
-              id="title"
-              name="title"
-              type="text"
-              value={topicForm.title}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="category">Category</label>
-            <select
-              name="category"
-              id="category"
-              value={topicForm.category}
-              onChange={handleChange}
-            >
-              <option value="all">All</option>
-              <option value="film">Film</option>
-              <option value="serie">Serie</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="content">Content</label>
-            <textarea
-              name="content"
-              id="content"
-              cols="30"
-              rows="10"
-              value={topicForm.content}
-              onChange={handleChange}
-            ></textarea>
-          </div>
-          <input type="submit" onClick={handleSubmit} />
-        </form>
+        <div className="form_create_topic">
+          <form action="post">
+            <div className="form_create">
+              <label htmlFor="title">Title</label>
+              <input
+                id="title"
+                name="title"
+                type="text"
+                value={topicForm.title}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="form_cat">
+              <label htmlFor="category">Category</label>
+              <select
+                name="category"
+                id="category"
+                value={topicForm.category}
+                onChange={handleChange}
+              >
+                <option value="all">All</option>
+                <option value="film">Film</option>
+                <option value="serie">Serie</option>
+              </select>
+            </div>
+            <div className="form_create">
+              <label htmlFor="content">Content</label>
+              <textarea
+                name="content"
+                id="content"
+                cols="30"
+                rows="10"
+                value={topicForm.content}
+                onChange={handleChange}
+              ></textarea>
+            </div>
+            <input type="submit" onClick={handleSubmit} value="Send" />
+          </form>
+        </div>
       </main>
       <Footer />
     </>

@@ -42,8 +42,10 @@ const FormAnswer = ({ topic, isAddAnswer, setIsAddAnswer }) => {
           value={answerForm.content}
           onChange={handleChange}
         ></textarea>
-        <input type="submit" onClick={handleSubmit} />
-        <button onClick={() => setIsAddAnswer(false)}>Cancel</button>
+        <div className="button_form_forum">
+          <input type="submit" onClick={handleSubmit} value="Send" />
+          <button onClick={() => setIsAddAnswer(false)}>Cancel</button>
+        </div>
       </form>
     </div>
   );

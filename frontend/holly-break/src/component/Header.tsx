@@ -142,27 +142,6 @@ function Header() {
               <NavLink className="header_navLink" to={"/Forum/All"}>
                 Forum
               </NavLink>
-
-              <div className="search_box">
-                <a
-                  onClick={() => toggleForm()}
-                  className={form ? "form_search" : "form_search active"}
-                >
-                  <i className="fa-solid fa-magnifying-glass"></i>
-                </a>
-
-                <form
-                  className={form ? "form_search active" : "form_search"}
-                  onSubmit={onClickHandlerMovie}
-                >
-                  <input
-                    type="text"
-                    className="Search"
-                    placeholder="type to search"
-                    onChange={handleChange}
-                  />
-                </form>
-              </div>
             </div>
           ) : null}
           {token && profile && kid ? (
@@ -192,6 +171,26 @@ function Header() {
           ) : null}
           {token && profile && !kid ? (
             <>
+              <div className="search_box">
+                <a
+                  onClick={() => toggleForm()}
+                  className={form ? "form_search" : "form_search active"}
+                >
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </a>
+
+                <form
+                  className={form ? "form_search active" : "form_search"}
+                  onSubmit={onClickHandlerMovie}
+                >
+                  <input
+                    type="text"
+                    className="Search"
+                    placeholder="type to search"
+                    onChange={handleChange}
+                  />
+                </form>
+              </div>
               <img
                 className="avatar"
                 src={rightAvatar}
@@ -248,6 +247,26 @@ function Header() {
           ) : null}
           {token && profile && kid ? (
             <>
+              <div className="search_box">
+                <a
+                  onClick={() => toggleForm()}
+                  className={form ? "form_search" : "form_search active"}
+                >
+                  <i className="fa-solid fa-magnifying-glass"></i>
+                </a>
+
+                <form
+                  className={form ? "form_search active" : "form_search"}
+                  onSubmit={onClickHandlerMovie}
+                >
+                  <input
+                    type="text"
+                    className="Search"
+                    placeholder="type to search"
+                    onChange={handleChange}
+                  />
+                </form>
+              </div>
               <img
                 className="avatar"
                 src={rightAvatar}

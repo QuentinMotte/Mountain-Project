@@ -44,6 +44,17 @@ function CodePin({ modalOpen, setModalOpen, profiles }: CodePinProps) {
     }
   }
 
+  const props = {
+    inputStyle: {
+      margin: "1rem",
+      height: "4rem",
+      width: "4rem",
+      color: "white",
+      borderRadius: "5px",
+      fontWeight: "bold",
+    },
+  };
+
   return (
     <div className="codePin_container">
       <div className="codePin_subContainer">
@@ -65,6 +76,7 @@ function CodePin({ modalOpen, setModalOpen, profiles }: CodePinProps) {
             initialValue=""
             required={true}
             onComplete={handlePinCode}
+            {...props}
           />
         </div>
         <button onClick={handleCheckPinCode}>Validate</button>

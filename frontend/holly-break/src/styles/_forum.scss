@@ -1,0 +1,268 @@
+.homePageForum {
+  color: $white;
+
+  button {
+    cursor: pointer;
+    height: 2rem;
+    border-radius: 0;
+    border: 0;
+    background-color: $bg-color;
+    color: $green;
+    text-transform: uppercase;
+    transition: 0.2s ease-in-out;
+
+    //_____
+
+    padding: 5px;
+    text-align: center;
+    box-sizing: content-box;
+    position: relative;
+    outline: none;
+
+    &:hover {
+      background-color: $green;
+      //color: $white;
+      color: $bg-color;
+    }
+  }
+
+  .navLink_container {
+    display: flex;
+    flex-flow: wrap;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+
+    .header_navLink {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: medium;
+      transition: all 0.5s ease-in-out;
+
+      &:hover {
+        color: $green;
+      }
+    }
+  }
+
+  .all_topics {
+    .topics {
+      background-color: $bg-color-light;
+      margin: 3rem;
+      padding: 3rem;
+      border-radius: 1rem;
+
+      .title_forum_topic {
+        display: flex;
+        flex-flow: wrap;
+        align-items: center;
+        justify-content: space-between;
+        h2 {
+          margin-bottom: 1rem;
+          text-transform: uppercase;
+          color: $green;
+          font-size: x-large;
+        }
+      }
+
+      .tag {
+        margin-bottom: 2rem;
+      }
+
+      .content_topic {
+        text-align: center;
+        font-size: medium;
+      }
+
+      .button_forum {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: space-between;
+        margin-top: 3rem;
+      }
+
+      .answers_topic {
+        background-color: $bg-color;
+        padding: 2rem;
+        margin-bottom: 1rem;
+
+        button {
+          margin-right: 2rem;
+        }
+
+        p {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+  .formAnswer {
+    width: 100%;
+    margin-top: 2rem;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        text-transform: uppercase;
+        color: $green;
+        font-weight: bold;
+        font-size: medium;
+        margin-bottom: 1rem;
+      }
+
+      textarea {
+        background-color: $bg-color;
+        border: 1px solid $bg-color-light;
+        color: $white;
+        padding: 1rem;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .button_form_forum {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        margin-top: 2rem;
+
+        input[type="submit"] {
+          border: 0 none;
+          cursor: pointer;
+          -webkit-border-radius: 5px;
+          border-radius: 5px;
+          font-weight: bold;
+          background-color: $green;
+          color: $bg-color;
+          transition: all 0.5s ease-in-out;
+          width: 12rem;
+          height: 3rem;
+
+          &:hover {
+            background-color: $bg-color;
+            color: $green;
+          }
+        }
+
+        button {
+          background-color: $green;
+          color: $bg-color;
+          transition: all 0.5s ease-in-out;
+          width: 12rem;
+          height: 2rem;
+          cursor: pointer;
+          -webkit-border-radius: 5px;
+          border-radius: 5px;
+          font-weight: bold;
+
+          &:hover {
+            background-color: $bg-color;
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+}
+
+.form_create_topic {
+  color: $white;
+  margin-top: 2rem;
+  width: 80%;
+  margin: auto;
+
+  form {
+    text-align: center;
+    .form_create {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      text-align: left;
+    }
+
+    .form_cat {
+      display: flex;
+      flex-flow: wrap;
+      gap: 3rem;
+
+      select {
+        background-color: $bg-color-light;
+        color: $green;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    label {
+      text-transform: uppercase;
+      color: $green;
+      font-weight: bold;
+      font-size: medium;
+      margin-bottom: 1rem;
+    }
+
+    .form_create {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+    }
+
+    .form_cat {
+      display: flex;
+      flex-flow: wrap;
+      gap: 3rem;
+
+      select {
+        background-color: $bg-color-light;
+        color: $green;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    input {
+      background-color: $bg-color;
+      border: 1px solid $bg-color-light;
+      color: $white;
+      padding: 1rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    textarea {
+      background-color: $bg-color;
+      border: 1px solid $bg-color-light;
+      color: $white;
+      padding: 1rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    input[type="submit"] {
+      cursor: pointer;
+      color: $green;
+      border: none;
+      width: 12rem;
+      font-weight: bold;
+
+      &:hover {
+        background-color: $green;
+        color: $bg-color;
+      }
+    }
+  }
+}

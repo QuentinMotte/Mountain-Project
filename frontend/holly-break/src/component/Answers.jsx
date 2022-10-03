@@ -30,7 +30,7 @@ const Answers = ({ answers, isDelete, setIsDelete, isUpdate, setIsUpdate }) => {
   }
 
   return (
-    <div>
+    <div className="answers_topic">
       <p>{answers.content} </p>
       <p>By {profileAnswer.pseudo}</p>
       {answers.id_profile === localStorage.getItem("profile") && (

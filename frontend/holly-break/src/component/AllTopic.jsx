@@ -26,26 +26,36 @@ const AllTopic = ({ topic }) => {
   console.log(profile);
   return (
     <div className="topics">
-      <h2>{topic.title}</h2>
-      <button onClick={() => setIsAddAnswer(true)}>Add Answer</button>
-      {isAddAnswer && (
-        <FormAnswer
-          topic={topic}
-          isAddAnswer={isAddAnswer}
-          setIsAddAnswer={setIsAddAnswer}
-        />
-      )}
+      <div className="title_forum_topic">
+        <h2>{topic.title}</h2>
+        <p>
+          Created at {topic.createdAt} by {profile.pseudo}
+        </p>
+      </div>
+      <p className="tag">{topic.category}</p>
 
-      <p>{topic.content}</p>
-      <p>{topic.category}</p>
-      <p>
-        Created at {topic.createdAt} by {profile.pseudo}
-      </p>
+      <p className="content_topic">{topic.content}</p>
+
       {/* <AnswerTopic
         topic={topic}
         isAnswer={isAnswer}
         setIsAnswer={setIsAnswer}
       /> */}
+
+      <div className="button_forum">
+        {!isAnswer && (
+          <button onClick={() => setIsAnswer(true)}>Responses</button>
+        )}
+
+        <button onClick={() => setIsAddAnswer(true)}>Add Answer</button>
+        {isAddAnswer && (
+          <FormAnswer
+            topic={topic}
+            isAddAnswer={isAddAnswer}
+            setIsAddAnswer={setIsAddAnswer}
+          />
+        )}
+      </div>
 
       {isAnswer && (
         <MoreAnswers
@@ -60,9 +70,6 @@ const AllTopic = ({ topic }) => {
           isUpdate={isUpdate}
           setIsUpdate={setIsUpdate}
         />
-      )}
-      {!isAnswer && (
-        <button onClick={() => setIsAnswer(true)}>Responses</button>
       )}
     </div>
   );

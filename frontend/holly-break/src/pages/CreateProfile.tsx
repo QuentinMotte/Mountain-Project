@@ -169,6 +169,17 @@ function CreateProfile() {
     }
   };
 
+  const props = {
+    inputStyle: {
+      margin: "1rem",
+      height: "4rem",
+      width: "4rem",
+      color: "white",
+      borderRadius: "5px",
+      fontWeight: "bold",
+    },
+  };
+
   return (
     <>
       <Header></Header>
@@ -337,6 +348,7 @@ function CreateProfile() {
                   initialValue=""
                   onComplete={handleChangesPinCode}
                   required={true}
+                  {...props}
                 />
               </div>
 
@@ -350,6 +362,7 @@ function CreateProfile() {
                   initialValue=""
                   onComplete={handleChangesPinCodeConfirm}
                   required={true}
+                  {...props}
                 />
               </div>
 
