@@ -287,3 +287,30 @@ h1 {
     }
   }
 }
+
+.watchlist_container {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  .Movies_watchList {
+    display: flex;
+    flex-flow: wrap;
+    width: 50%;
+
+    @media screen and (max-width: 520px) {
+      width: 100%;
+    }
+  }
+
+  .Series_watchList {
+    display: flex;
+    flex-flow: wrap;
+    width: 50%;
+
+    @media screen and (max-width: 520px) {
+      width: 100%;
+    }
+  }
+}

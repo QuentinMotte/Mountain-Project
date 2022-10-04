@@ -74,7 +74,9 @@ function Actors() {
               <div className="div_info">
                 <h4>Birthday:</h4>
                 <br />
-                <p>{Actor?.birthday}</p>
+                <p>
+                  {Actor?.birthday} - {Actor?.deathday}
+                </p>
               </div>
               <div className="div_info">
                 <h4>Place of birth:</h4>

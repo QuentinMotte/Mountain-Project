@@ -310,3 +310,8 @@ hr {
   opacity: 0.5;
   color: $bg-color-light;
 }
+
+.container_keywords {
+  display: flex;
+  flex-flow: wrap;
+}

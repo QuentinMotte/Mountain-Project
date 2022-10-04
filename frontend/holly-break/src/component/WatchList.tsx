@@ -150,44 +150,46 @@ function WatchList() {
 
   return (
     <>
-      <div className="Movies_watchList">
-        <h1>Movies</h1>
-        <div className="container_genre">
-          {moviesUnique.map((movie: any) => (
-            <div className="container_fave">
-              <NavLink className="poster" to={`/Movie/${movie.id}`}>
-                <div id={movie.id} className="movies_container_poster">
-                  <img src={GetPictures(movie.poster_path)} alt="poster" />
-                </div>
-              </NavLink>
-              <a
-                className="delete_Button"
-                onClick={() => deleteWatchlist(movie.id)}
-              >
-                <i className="fa-solid fa-eye-slash"></i>
-              </a>
-            </div>
-          ))}
+      <div className="watchlist_container">
+        <div className="Movies_watchList">
+          <h1>Movies</h1>
+          <div className="container_genre">
+            {moviesUnique.map((movie: any) => (
+              <div className="container_fave">
+                <NavLink className="poster" to={`/Movie/${movie.id}`}>
+                  <div id={movie.id} className="movies_container_poster">
+                    <img src={GetPictures(movie.poster_path)} alt="poster" />
+                  </div>
+                </NavLink>
+                <a
+                  className="delete_Button"
+                  onClick={() => deleteWatchlist(movie.id)}
+                >
+                  <i className="fa-solid fa-eye-slash"></i>
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="Series_watchList">
-        <h1>Series</h1>
-        <div className="container_genre">
-          {seriesUnique.map((serie: any) => (
-            <div className="container_fave">
-              <NavLink className="poster" to={`/tv/${serie.id}`}>
-                <div id={serie.id} className="movies_container_poster">
-                  <img src={GetPictures(serie.poster_path)} alt="poster" />
-                </div>
-              </NavLink>
-              <a
-                className="delete_Button"
-                onClick={() => deleteWatchlistSD(serie.id)}
-              >
-                <i className="fa-solid fa-eye-slash"></i>
-              </a>
-            </div>
-          ))}
+        <div className="Series_watchList">
+          <h1>Series</h1>
+          <div className="container_genre">
+            {seriesUnique.map((serie: any) => (
+              <div className="container_fave">
+                <NavLink className="poster" to={`/tv/${serie.id}`}>
+                  <div id={serie.id} className="movies_container_poster">
+                    <img src={GetPictures(serie.poster_path)} alt="poster" />
+                  </div>
+                </NavLink>
+                <a
+                  className="delete_Button"
+                  onClick={() => deleteWatchlistSD(serie.id)}
+                >
+                  <i className="fa-solid fa-eye-slash"></i>
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

@@ -45,12 +45,14 @@ function SeriesInfo() {
   const ID = id.id;
   const URL = `https://api.themoviedb.org/3/tv/${ID}?api_key=${API_KEY}&language=en-US`;
   const URLCAST = `https://api.themoviedb.org/3/tv/${ID}/credits?api_key=${API_KEY}&language=en-US`;
+  const URLKEYWORD = `https://api.themoviedb.org/3/tv/${ID}/keywords?api_key=${API_KEY}`;
 
   let [movies, setMovies] = useState<moviesProps | undefined>();
   let [moviesRunTime, setMoviesRunTime] = useState<moviesProps | undefined>();
   let [moviesGenres, setMoviesGenres] = useState<GenresProps | undefined>();
   let [moviesCast, setMoviesCast] = useState<CastProps | undefined>();
   let [moviesDir, setMoviesDir] = useState<CastProps | undefined>();
+  let [moviesKEY, setMoviesKEY] = useState<moviesProps | undefined>();
 
   useEffect(() => {
     getMovie();
@@ -58,6 +60,7 @@ function SeriesInfo() {
     getMovieGenres();
     getMovieCast();
     getMovieDir();
+    getKEY();
   }, []);
 
   const getMovie = async () => {
@@ -85,6 +88,11 @@ function SeriesInfo() {
     setMoviesDir(data.crew.slice(0, 4));
   };
 
+  const getKEY = async () => {
+    const { data } = await axios.get(URLKEYWORD);
+    setMoviesKEY(data.results.slice(0, 3));
+  };
+
   function GetPictures(avatar: string) {
     switch (avatar) {
       case null:
@@ -104,6 +112,12 @@ function SeriesInfo() {
               <p className="TagLine">{movies?.tagline}</p>
               <br />
               <p className="resume">{movies?.overview}</p>
+            </div>
+
+            <div className="container_infos">
+              {moviesKEY?.map((keyW: any) => (
+                <p>{keyW.name}</p>
+              ))}
             </div>
 
             <hr />

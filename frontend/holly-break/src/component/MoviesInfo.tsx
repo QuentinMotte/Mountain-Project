@@ -19,6 +19,7 @@ interface moviesProps {
   tagline: string;
   release_date: string;
   vote_average: string;
+  name: string;
 }
 
 interface GenresProps {
@@ -41,17 +42,20 @@ function MoviesInfo() {
   const ID = id.id;
   const URL = `https://api.themoviedb.org/3/movie/${ID}?api_key=${API_KEY}&language=en-US`;
   const URLCAST = `https://api.themoviedb.org/3/movie/${ID}/credits?api_key=${API_KEY}&language=en-US`;
+  const URLKEYWORD = `https://api.themoviedb.org/3/movie/${ID}/keywords?api_key=${API_KEY}`;
 
   let [movies, setMovies] = useState<moviesProps | undefined>();
   let [moviesGenres, setMoviesGenres] = useState<GenresProps | undefined>();
   let [moviesCast, setMoviesCast] = useState<CastProps | undefined>();
   let [moviesDir, setMoviesDir] = useState<CastProps | undefined>();
+  let [moviesKEY, setMoviesKEY] = useState<moviesProps | undefined>();
 
   useEffect(() => {
     getMovie();
     getMovieGenres();
     getMovieCast();
     getMovieDir();
+    getKEY();
   }, []);
 
   const getMovie = async () => {
@@ -74,6 +78,11 @@ function MoviesInfo() {
     setMoviesDir(data.crew.slice(0, 4));
   };
 
+  const getKEY = async () => {
+    const { data } = await axios.get(URLKEYWORD);
+    setMoviesKEY(data.keywords.slice(0, 3));
+  };
+
   function GetPictures(avatar: string) {
     switch (avatar) {
       case null:
@@ -94,6 +103,12 @@ function MoviesInfo() {
               <br />
 
               <p className="resume">{movies?.overview}</p>
+            </div>
+
+            <div className="container_infos">
+              {moviesKEY?.map((keyW: any) => (
+                <p>{keyW.name}</p>
+              ))}
             </div>
 
             <hr />
