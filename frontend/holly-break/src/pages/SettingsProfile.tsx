@@ -17,6 +17,8 @@ import Header from "../component/Header";
 import Footer from "../component/Footer";
 import axios from "axios";
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 type Props = {
   isOpen: boolean;
   setIsOpen: any;
@@ -69,7 +71,7 @@ function SettingsProfile() {
   });
 
   React.useEffect(() => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+    axios.get(`${BASEURL}api/profile/${id}`).then((response) => {
       setProfile(response.data);
     });
   }, []);

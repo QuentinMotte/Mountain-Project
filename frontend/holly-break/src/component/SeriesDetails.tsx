@@ -10,6 +10,8 @@ const API: any = process.env.REACT_APP_API_KEY;
 
 const API_KEY = API.replace(";", "");
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 interface moviesProps {
   map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
   backdrop_path: string;
@@ -74,12 +76,9 @@ function SeriesDetails() {
 
   async function pushWatchlist(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/watchlist_serie/${id_profile}`,
-        {
-          watchList_serie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/watchlist_serie/${id_profile}`, {
+        watchList_serie: id,
+      })
       .then((res) => {
         // window.location.reload();
         setWatchlist(true);
@@ -91,9 +90,7 @@ function SeriesDetails() {
   }
 
   const checkWatchlist = async () => {
-    const { data } = await axios.get(
-      `http://localhost:5000/api/profile/${id_profile}`
-    );
+    const { data } = await axios.get(`${BASEURL}api/profile/${id_profile}`);
     const watchlist = data.watchList_serie;
     if (watchlist.includes(ID)) {
       setWatchlist(true);
@@ -106,12 +103,9 @@ function SeriesDetails() {
 
   async function deleteWatchlist(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_watchlist_serie/${id_profile}`,
-        {
-          watchList_serie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/r_watchlist_serie/${id_profile}`, {
+        watchList_serie: id,
+      })
       .then((res) => {
         setWatchlist(false);
       })
@@ -124,12 +118,9 @@ function SeriesDetails() {
 
   async function pushFavorite(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/favorites_serie/${id_profile}`,
-        {
-          favorites_serie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/favorites_serie/${id_profile}`, {
+        favorites_serie: id,
+      })
       .then((res) => {
         setFavorite(true);
       })
@@ -139,9 +130,7 @@ function SeriesDetails() {
   }
 
   const checkFavorite = async () => {
-    const { data } = await axios.get(
-      `http://localhost:5000/api/profile/${id_profile}`
-    );
+    const { data } = await axios.get(`${BASEURL}api/profile/${id_profile}`);
     const favorite = data.favorites_serie;
     if (favorite.includes(ID)) {
       setFavorite(true);
@@ -154,12 +143,9 @@ function SeriesDetails() {
 
   async function deleteFavorite(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_favorites_serie/${id_profile}`,
-        {
-          favorites_serie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/r_favorites_serie/${id_profile}`, {
+        favorites_serie: id,
+      })
       .then((res) => {
         setFavorite(false);
       })
@@ -172,7 +158,7 @@ function SeriesDetails() {
 
   async function pushHistoric(id: any) {
     axios
-      .patch(`http://localhost:5000/api/profile/historic_serie/${id_profile}`, {
+      .patch(`${BASEURL}api/profile/historic_serie/${id_profile}`, {
         historic_serie: id,
       })
       .catch((err) => {

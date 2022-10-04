@@ -18,6 +18,8 @@ import AvatarSakura from "../img/avatar_profil/avatar_sakura.jpg";
 import AvatarShinra from "../img/avatar_profil/avatar_shinra.webp";
 import AvatarDefault from "../img/avatar_profil/avatar_default.webp";
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
 
@@ -54,7 +56,7 @@ function Header() {
 
   React.useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/profile/${profile}`)
+      .get(`${BASEURL}api/profile/${profile}`)
       .then((res) => {
         setProfil(res.data);
       })

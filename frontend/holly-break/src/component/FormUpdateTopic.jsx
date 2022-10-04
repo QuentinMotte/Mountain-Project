@@ -15,6 +15,8 @@ const FormUpdateTopic = ({ topic, isUpdateTopic, setIsUpdateTopic }) => {
     content: topicFormU.content,
   };
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   const handleChangeTopic = (e) => {
     const { name, value } = e.target;
     setTopicFormU({ ...topicFormU, [name]: value });
@@ -23,7 +25,7 @@ const FormUpdateTopic = ({ topic, isUpdateTopic, setIsUpdateTopic }) => {
   async function handleSubmitTopic(e) {
     e.preventDefault();
     await axios
-      .put(`http://localhost:5000/api/topic/${topic._id}`, topicFormUpdate)
+      .put(`${BASEURL}api/topic/${topic._id}`, topicFormUpdate)
       .then((response) => {
         setIsUpdateTopic(false);
         window.location.href = "/Forum/All";

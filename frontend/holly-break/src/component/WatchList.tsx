@@ -22,6 +22,8 @@ interface userProfiles {
   _id: string;
 }
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 function WatchList() {
   const id = localStorage.getItem("profile");
 
@@ -35,13 +37,13 @@ function WatchList() {
   const [series, setSeries] = React.useState<any>([]);
 
   const getProfileWatchlistMovie = async () => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+    axios.get(`${BASEURL}api/profile/${id}`).then((response) => {
       setWatchList(response.data.watchList_movie);
     });
   };
 
   const getProfileWatchlistSerie = async () => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+    axios.get(`${BASEURL}api/profile/${id}`).then((response) => {
       setWatchListSerie(response.data.watchList_serie);
     });
   };
@@ -109,12 +111,9 @@ function WatchList() {
 
   async function deleteWatchlist(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_watchlist_movie/${id_profile}`,
-        {
-          watchList_movie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/r_watchlist_movie/${id_profile}`, {
+        watchList_movie: id,
+      })
       .then((res) => {
         setWatchlistD(false);
         window.location.reload();
@@ -126,12 +125,9 @@ function WatchList() {
 
   async function deleteWatchlistSD(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_watchlist_serie/${id_profile}`,
-        {
-          watchList_serie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/r_watchlist_serie/${id_profile}`, {
+        watchList_serie: id,
+      })
       .then((res) => {
         setWatchlistSD(false);
         window.location.reload();

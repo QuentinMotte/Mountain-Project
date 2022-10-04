@@ -23,10 +23,12 @@ const CreateTopicPage = () => {
     setTopicForm({ ...topicForm, [name]: value });
   };
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   async function handleSubmitTopic(e) {
     e.preventDefault();
     await axios
-      .post("http://localhost:5000/api/topic/create", topicFormState)
+      .post(`${BASEURL}api/topic/create`, topicFormState)
       .then((response) => {
         window.location.href = "/Forum/All";
         console.log(response);

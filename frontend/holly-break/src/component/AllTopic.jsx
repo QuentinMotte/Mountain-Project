@@ -7,6 +7,8 @@ import FormAnswer from "./FormAnswer";
 import MoreAnswers from "./MoreAnswers";
 import FormUpdateTopic from "./FormUpdateTopic";
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 const AllTopic = ({
   topic,
   isDeleteTopic,
@@ -23,7 +25,7 @@ const AllTopic = ({
 
   function fetchProfileById() {
     axios
-      .get(`http://localhost:5000/api/profile/${topic.id_profile}`)
+      .get(`${BASEURL}api/profile/${topic.id_profile}`)
       .then((res) => setProfile(res.data));
   }
 
@@ -33,7 +35,7 @@ const AllTopic = ({
 
   async function handleDeleteTopic() {
     await axios
-      .delete(`http://localhost:5000/api/topic/${topic._id}`)
+      .delete(`${BASEURL}api/topic/${topic._id}`)
       .then((res) => console.log(res) + setIsDeleteTopic(true))
       .catch((error) => {
         console.log(error);

@@ -11,6 +11,8 @@ interface UserConnection {
   password: string;
 }
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 function Connection({ isOpen, setIsOpen }: connect) {
   const [user, setUser] = React.useState<UserConnection>({
     email: "",
@@ -25,7 +27,7 @@ function Connection({ isOpen, setIsOpen }: connect) {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/user/login", user)
+      .post(`${BASEURL}api/user/login`, user)
       .then((res) => {
         res.data.token && localStorage.setItem("token", res.data.token);
         res.data.user && localStorage.setItem("user", res.data.user);

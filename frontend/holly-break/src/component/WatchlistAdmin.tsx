@@ -66,12 +66,13 @@ function WatchlistAdmin({ isOpen, setIsOpen, profile }: WatchModal) {
   const seriesUnique = removeDuplicates(series, "id");
   const moviesUnique = removeDuplicates(movies, "id");
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   function deleteOneSerie(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_watchlist_serie/${id_profile}`,
-        { watchList_serie: id }
-      )
+      .patch(`${BASEURL}api/profile/r_watchlist_serie/${id_profile}`, {
+        watchList_serie: id,
+      })
       .then((res) => {
         setSeries(series.filter((serie: any) => serie.id !== id));
       })
@@ -82,10 +83,9 @@ function WatchlistAdmin({ isOpen, setIsOpen, profile }: WatchModal) {
 
   function deleteOneMovie(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_watchlist_movie/${id_profile}`,
-        { watchList_movie: id }
-      )
+      .patch(`${BASEURL}api/profile/r_watchlist_movie/${id_profile}`, {
+        watchList_movie: id,
+      })
       .then((res) => {
         setMovies(movies.filter((movie: any) => movie.id !== id));
       })

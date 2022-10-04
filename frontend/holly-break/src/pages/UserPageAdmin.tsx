@@ -19,6 +19,8 @@ import FavoriteAdmin from "../component/FavoriteAdmin";
 import HistoricalAdmin from "../component/HistoricalAdmin";
 import WatchlistAdmin from "../component/WatchlistAdmin";
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 interface userProfiles {
   avatar: string;
   createdAt: string;
@@ -53,7 +55,7 @@ function UserPageAdmin() {
   });
 
   React.useEffect(() => {
-    axios.get(`http://localhost:5000/api/user/${id}`).then((response) => {
+    axios.get(`${BASEURL}api/user/${id}`).then((response) => {
       setUser(response.data);
     });
   }, []);
@@ -61,7 +63,7 @@ function UserPageAdmin() {
   const [profiles, setProfiles] = React.useState<userProfiles[]>([]);
   React.useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/profile/allProfiles/${id}`)
+      .get(`${BASEURL}api/profile/allProfiles/${id}`)
       .then((res) => {
         setProfiles(res.data);
       })
@@ -71,7 +73,7 @@ function UserPageAdmin() {
   }, []);
 
   function deleteUser(id: string) {
-    axios.delete(`http://localhost:5000/api/user/${id}`).then((response) => {
+    axios.delete(`${BASEURL}api/user/${id}`).then((response) => {
       alert(response.data.message);
       window.location.href = "/admin";
     });
@@ -127,12 +129,12 @@ function UserPageAdmin() {
   // -------------------Delete one Profile -------------------
 
   function deleteProfile(id: string) {
-    axios.delete(`http://localhost:5000/api/profile/${id}`).then((response) => {
+    axios.delete(`${BASEURL}api/profile/${id}`).then((response) => {
       setProfiles(profiles.filter((profile) => profile._id !== id));
     });
   }
   function deleteIdProfile(id: string) {
-    axios.patch(`http://localhost:5000/api/user/removeProfile/${id}`);
+    axios.patch(`${BASEURL}api/user/removeProfile/${id}`);
   }
 
   function alertDeleteProfile(id: string) {

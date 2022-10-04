@@ -31,6 +31,8 @@ interface UserProfiles {
   _id: string;
 }
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 const id: string | null = localStorage.getItem("user");
 
 function SelectProfile() {
@@ -38,7 +40,7 @@ function SelectProfile() {
 
   React.useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/profile/allProfiles/${id}`)
+      .get(`${BASEURL}api/profile/allProfiles/${id}`)
       .then((res) => {
         setProfiles(res.data);
       })

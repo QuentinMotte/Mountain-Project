@@ -8,10 +8,10 @@ import Header from "../component/Header";
 function ForumHomePageFilm() {
   const [topic, setTopic] = useState([]);
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   function fetchAllTopic() {
-    axios
-      .get("http://localhost:5000/api/topic/")
-      .then((res) => setTopic(res.data));
+    axios.get(`${BASEURL}api/topic/`).then((res) => setTopic(res.data));
   }
 
   useEffect(() => {

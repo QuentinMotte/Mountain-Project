@@ -17,10 +17,12 @@ const FormAnswer = ({ topic, isAddAnswer, setIsAddAnswer }) => {
     setAnswerForm({ ...answerForm, [name]: value });
   };
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   async function handleSubmit(e) {
     e.preventDefault();
     await axios
-      .post("http://localhost:5000/api/answer/create", answerFormState)
+      .post(`${BASEURL}api/answer/create`, answerFormState)
       .then((response) => {
         setIsAddAnswer(false);
         console.log(response);

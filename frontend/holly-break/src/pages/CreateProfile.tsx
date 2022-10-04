@@ -54,6 +54,8 @@ interface ProfileStateNoPin {
   id_user: string | null;
 }
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 function CreateProfile() {
   const idUser = localStorage.getItem("user");
 
@@ -142,7 +144,7 @@ function CreateProfile() {
     if (isPin) {
       if (newPinCode === newPinCodeConfirm) {
         axios
-          .post("http://localhost:5000/api/profile/register", profileState)
+          .post(`${BASEURL}api/profile/register`, profileState)
           .then((res) => {
             localStorage.setItem("NewProfile", res.data.profile);
             window.location.href = "/SuccessProfile";
@@ -155,10 +157,7 @@ function CreateProfile() {
       }
     } else {
       axios
-        .post(
-          "http://localhost:5000/api/profile/register",
-          profileStateNoPinCode
-        )
+        .post(`${BASEURL}api/profile/register`, profileStateNoPinCode)
         .then((res) => {
           localStorage.setItem("NewProfile", res.data.profile);
           window.location.href = "/SuccessProfile";

@@ -16,9 +16,11 @@ const AnswerTopic = ({
   const [isLike, setIsLike] = useState(false);
   const [isUnlike, setIsUnlike] = useState(false);
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   function fetchAnswerData() {
     axios
-      .get(`http://localhost:5000/api/answer/oneTopic/${topic._id}`)
+      .get(`${BASEURL}api/answer/oneTopic/${topic._id}`)
       .then((res) => setAnswerData(res.data));
   }
   useEffect(() => {

@@ -16,14 +16,16 @@ function Fave() {
   const [watchListSerie, setWatchListSerie] = React.useState<any>([]);
   const [series, setSeries] = React.useState<any>([]);
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   const getProfileWatchlistMovie = async () => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+    axios.get(`${BASEURL}api/profile/${id}`).then((response) => {
       setWatchList(response.data.favorites_movie);
     });
   };
 
   const getProfileWatchlistSerie = async () => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+    axios.get(`${BASEURL}api/profile/${id}`).then((response) => {
       setWatchListSerie(response.data.favorites_serie);
     });
   };
@@ -90,12 +92,9 @@ function Fave() {
 
   async function deleteFavorite(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_favorites_serie/${id_profile}`,
-        {
-          favorites_serie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/r_favorites_serie/${id_profile}`, {
+        favorites_serie: id,
+      })
       .then((res) => {
         setFavorite(false);
         window.location.reload();
@@ -107,12 +106,9 @@ function Fave() {
 
   async function deleteFavoriteM(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_favorites_movie/${id_profile}`,
-        {
-          favorites_movie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/r_favorites_movie/${id_profile}`, {
+        favorites_movie: id,
+      })
       .then((res) => {
         setFavoriteM(false);
         window.location.reload();

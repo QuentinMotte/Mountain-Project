@@ -15,13 +15,12 @@ const FormUpdate = ({ answers, setIsUpdateAnswer, isUpdateAnswer }) => {
     setAnswerForm({ ...answerForm, [name]: value });
   };
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   async function handleSubmitAnswer(e) {
     e.preventDefault();
     await axios
-      .put(
-        `http://localhost:5000/api/answer/update_like/${answers._id}`,
-        answerFormState
-      )
+      .put(`${BASEURL}api/answer/update_like/${answers._id}`, answerFormState)
       .then((response) => {
         setIsUpdateAnswer(false);
         console.log(response);

@@ -5,6 +5,8 @@ import AllTopic from "../component/AllTopic";
 import Footer from "../component/Footer";
 import Header from "../component/Header";
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 const ForumHomePage = () => {
   const [topic, setTopic] = useState([]);
   const [isDeleteTopic, setIsDeleteTopic] = useState(false);
@@ -16,9 +18,7 @@ const ForumHomePage = () => {
     setSortTopic({ ...sortTopic, [name]: value });
   };
   function fetchAllTopic() {
-    axios
-      .get("http://localhost:5000/api/topic/")
-      .then((res) => setTopic(res.data));
+    axios.get(`${BASEURL}api/topic/`).then((res) => setTopic(res.data));
   }
 
   useEffect(() => {

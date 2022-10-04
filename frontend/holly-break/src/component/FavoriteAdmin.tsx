@@ -19,6 +19,8 @@ function FavoriteAdmin({ isOpen, setIsOpen, profile }: FavModal) {
 
   const id_profile = profile._id;
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   const getSerie = async () => {
     for (let i = 0; i < favSerie.length; i++) {
       axios
@@ -68,10 +70,9 @@ function FavoriteAdmin({ isOpen, setIsOpen, profile }: FavModal) {
 
   function deleteOneSerie(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_favorite_serie/${id_profile}`,
-        { watchList_serie: id }
-      )
+      .patch(`${BASEURL}api/profile/r_favorite_serie/${id_profile}`, {
+        watchList_serie: id,
+      })
       .then((res) => {
         setSeries(series.filter((serie: any) => serie.id !== id));
       })
@@ -82,10 +83,9 @@ function FavoriteAdmin({ isOpen, setIsOpen, profile }: FavModal) {
 
   function deleteOneMovie(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_favorite_movie/${id_profile}`,
-        { watchList_movie: id }
-      )
+      .patch(`${BASEURL}api/profile/r_favorite_movie/${id_profile}`, {
+        watchList_movie: id,
+      })
       .then((res) => {
         setMovies(movies.filter((movie: any) => movie.id !== id));
       })

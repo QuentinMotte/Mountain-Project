@@ -19,6 +19,8 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
 
   const id_profile = profile._id;
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   const getSerie = async () => {
     for (let i = 0; i < favSerie.length; i++) {
       axios
@@ -68,10 +70,9 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
 
   function deleteOneSerie(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_historic_serie/${id_profile}`,
-        { historic_serie: id }
-      )
+      .patch(`${BASEURL}api/profile/r_historic_serie/${id_profile}`, {
+        historic_serie: id,
+      })
       .then((res) => {
         setSeries(series.filter((serie: any) => serie.id !== id));
       })
@@ -82,10 +83,9 @@ function HistoricalAdmin({ isOpen, setIsOpen, profile }: HistModal) {
 
   function deleteOneMovie(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_historic_movie/${id_profile}`,
-        { historic_movie: id }
-      )
+      .patch(`${BASEURL}api/profile/r_historic_movie/${id_profile}`, {
+        historic_movie: id,
+      })
       .then((res) => {
         setMovies(movies.filter((movie: any) => movie.id !== id));
       })

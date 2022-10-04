@@ -16,14 +16,16 @@ function History() {
   const [watchListSerie, setWatchListSerie] = React.useState<any>([]);
   const [series, setSeries] = React.useState<any>([]);
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   const getProfileWatchlistMovie = async () => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+    axios.get(`${BASEURL}api/profile/${id}`).then((response) => {
       setWatchList(response.data.historic_movie);
     });
   };
 
   const getProfileWatchlistSerie = async () => {
-    axios.get(`http://localhost:5000/api/profile/${id}`).then((response) => {
+    axios.get(`${BASEURL}api/profile/${id}`).then((response) => {
       setWatchListSerie(response.data.historic_serie);
     });
   };
@@ -90,10 +92,9 @@ function History() {
 
   async function deleteHistory(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_historic_movie/${id_profile}`,
-        { historic_movie: id }
-      )
+      .patch(`${BASEURL}api/profile/r_historic_movie/${id_profile}`, {
+        historic_movie: id,
+      })
       .then((res) => {
         setHistory(false);
         window.location.reload();
@@ -105,10 +106,9 @@ function History() {
 
   async function deleteHistorySD(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_historic_serie/${id_profile}`,
-        { historic_serie: id }
-      )
+      .patch(`${BASEURL}api/profile/r_historic_serie/${id_profile}`, {
+        historic_serie: id,
+      })
       .then((res) => {
         setHistorySD(false);
         window.location.reload();

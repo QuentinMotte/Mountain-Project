@@ -13,10 +13,12 @@ interface User {
   is_admin: boolean;
 }
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 function SettingsUser() {
   const id_user = localStorage.getItem("user");
   React.useEffect(() => {
-    fetch(`http://localhost:5000/api/user/${id_user}`)
+    fetch(`${BASEURL}api/user/${id_user}`)
       .then((res) => res.json())
       .then((res) => {
         console.log(res);

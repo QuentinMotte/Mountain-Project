@@ -26,6 +26,8 @@ interface UserFormState {
   birthday: number;
 }
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 function SubPage() {
   const [confirmMailPassword, setConfirmMailPassword] =
     React.useState<ConfirmMailPassword>({
@@ -111,7 +113,7 @@ function SubPage() {
     e.preventDefault();
     if (confirmEmail() && confirmPassword() && confirmAge()) {
       const response = await axios
-        .post("http://localhost:5000/api/user/register", userFormState)
+        .post(`${BASEURL}api/user/register`, userFormState)
         .then((response) => {
           console.log(response);
           console.log(response.status);

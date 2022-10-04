@@ -4,10 +4,11 @@ import Answers from "./Answers";
 
 const AnswerTopic = ({ isAnswer, setIsAnswer, topic }) => {
   const [answerData, setAnswerData] = useState([]);
+  const BASEURL = process.env.REACT_APP_API_URL;
 
   function fetchAnswerData() {
     axios
-      .get(`http://localhost:5000/api/answer/oneTopic/${topic._id}`)
+      .get(`${BASEURL}api/answer/oneTopic/${topic._id}`)
       .then((res) => setAnswerData(res.data));
   }
   useEffect(() => {

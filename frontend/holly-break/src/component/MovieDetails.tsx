@@ -10,6 +10,8 @@ const API: any = process.env.REACT_APP_API_KEY;
 
 const API_KEY = API.replace(";", "");
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 interface moviesProps {
   map(arg0: (item: any) => JSX.Element): import("react").ReactNode;
   backdrop_path: string;
@@ -70,12 +72,9 @@ function MovieDetails() {
 
   async function pushWatchlist(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/watchlist_movie/${id_profile}`,
-        {
-          watchList_movie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/watchlist_movie/${id_profile}`, {
+        watchList_movie: id,
+      })
       .then((res) => {
         // window.location.reload();
         setWatchlist(true);
@@ -86,9 +85,7 @@ function MovieDetails() {
   }
 
   const checkWatchlist = async () => {
-    const { data } = await axios.get(
-      `http://localhost:5000/api/profile/${id_profile}`
-    );
+    const { data } = await axios.get(`${BASEURL}api/profile/${id_profile}`);
     const watchlist = data.watchList_movie;
     if (watchlist.includes(ID)) {
       setWatchlist(true);
@@ -101,12 +98,9 @@ function MovieDetails() {
 
   async function deleteWatchlist(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_watchlist_movie/${id_profile}`,
-        {
-          watchList_movie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/r_watchlist_movie/${id_profile}`, {
+        watchList_movie: id,
+      })
       .then((res) => {
         setWatchlist(false);
       })
@@ -119,12 +113,9 @@ function MovieDetails() {
 
   async function pushFavorite(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/favorites_movie/${id_profile}`,
-        {
-          favorites_movie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/favorites_movie/${id_profile}`, {
+        favorites_movie: id,
+      })
       .then((res) => {
         setFavorite(true);
       })
@@ -134,9 +125,7 @@ function MovieDetails() {
   }
 
   const checkFavorite = async () => {
-    const { data } = await axios.get(
-      `http://localhost:5000/api/profile/${id_profile}`
-    );
+    const { data } = await axios.get(`${BASEURL}api/profile/${id_profile}`);
     const favorite = data.favorites_movie;
     if (favorite.includes(ID)) {
       setFavorite(true);
@@ -149,12 +138,9 @@ function MovieDetails() {
 
   async function deleteFavorite(id: any) {
     axios
-      .patch(
-        `http://localhost:5000/api/profile/r_favorites_movie/${id_profile}`,
-        {
-          favorites_movie: id,
-        }
-      )
+      .patch(`${BASEURL}api/profile/r_favorites_movie/${id_profile}`, {
+        favorites_movie: id,
+      })
       .then((res) => {
         setFavorite(false);
       })
@@ -167,7 +153,7 @@ function MovieDetails() {
 
   async function pushHistoric(id: any) {
     axios
-      .patch(`http://localhost:5000/api/profile/historic_movie/${id_profile}`, {
+      .patch(`${BASEURL}api/profile/historic_movie/${id_profile}`, {
         historic_movie: id,
       })
       .catch((err) => {

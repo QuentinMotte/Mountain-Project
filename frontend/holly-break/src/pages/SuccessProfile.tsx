@@ -4,6 +4,8 @@ import Footer from "../component/Footer";
 import Header from "../component/Header";
 import axios from "axios";
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 function SuccessProfile() {
   setTimeout(() => {
     window.location.href = "/Select-Profile";
@@ -22,7 +24,7 @@ function SuccessProfile() {
 
   async function pushNewProfile() {
     await axios
-      .patch("http://localhost:5000/api/user/addProfile/" + id, {
+      .patch(`${BASEURL}api/user/addProfile/` + id, {
         id_profiles: idNewProfile,
       })
       .then((res) => {

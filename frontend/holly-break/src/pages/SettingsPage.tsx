@@ -19,6 +19,8 @@ import AvatarDefault from "../img/avatar_profil/avatar_default.webp";
 
 import SettingsProfile from "./SettingsProfile";
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 interface UserDatas {
   _id: string;
   firstName: string;
@@ -94,7 +96,7 @@ function SettingsPage() {
     is_admin: false,
   });
   React.useEffect(() => {
-    axios.get(`http://localhost:5000/api/user/${id}`).then((response) => {
+    axios.get(`${BASEURL}api/user/${id}`).then((response) => {
       setUser(response.data);
     });
   }, []);
@@ -113,7 +115,7 @@ function SettingsPage() {
   const [profiles, setProfiles] = React.useState<UserProfiles[]>([]);
   React.useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/profile/allProfiles/${id}`)
+      .get(`${BASEURL}api/profile/allProfiles/${id}`)
       .then((res) => {
         setProfiles(res.data);
       })
@@ -127,7 +129,7 @@ function SettingsPage() {
   //______________________
 
   function deleteUser(id: string) {
-    axios.delete(`http://localhost:5000/api/user/${id}`).then((response) => {
+    axios.delete(`${BASEURL}api/user/${id}`).then((response) => {
       alert(response.data.message);
       window.location.reload();
     });
@@ -140,12 +142,12 @@ function SettingsPage() {
   }
 
   function deleteProfile(id: string) {
-    axios.delete(`http://localhost:5000/api/profile/${id}`).then((response) => {
+    axios.delete(`${BASEURL}api/profile/${id}`).then((response) => {
       setProfiles(profiles.filter((profile) => profile._id !== id));
     });
   }
   function deleteIdProfile(id: string) {
-    axios.patch(`http://localhost:5000/api/user/removeProfile/${id}`);
+    axios.patch(`${BASEURL}api/user/removeProfile/${id}`);
   }
 
   function alertDeleteProfile(id: string) {

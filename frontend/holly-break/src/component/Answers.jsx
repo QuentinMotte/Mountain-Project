@@ -15,9 +15,11 @@ const Answers = ({
   const [profileAnswer, setProfileAnswer] = useState([]);
   const [isLikeUpdate, setIsLikeUpdate] = useState(false);
 
+  const BASEURL = process.env.REACT_APP_API_URL;
+
   function fetchProfileByIdForAnswers() {
     axios
-      .get(`http://localhost:5000/api/profile/${answers.id_profile}`)
+      .get(`${BASEURL}api/profile/${answers.id_profile}`)
       .then((res) => setProfileAnswer(res.data))
       .catch((error) => {
         console.log(error);
@@ -31,10 +33,7 @@ const Answers = ({
 
   function addLikeForComment() {
     axios
-      .patch(
-        `http://localhost:5000/api/answer/update_like/${answers._id}`,
-        idProfileLike
-      )
+      .patch(`${BASEURL}api/answer/update_like/${answers._id}`, idProfileLike)
       .then((res) => setIsLike(true) + setIsUnlike(false) + console.log(res))
       .catch((err) => {
         console.log(err);
@@ -43,10 +42,7 @@ const Answers = ({
 
   function removeLikeForComment() {
     axios
-      .patch(
-        `http://localhost:5000/api/answer/remove_like/${answers._id}`,
-        idProfileLike
-      )
+      .patch(`${BASEURL}api/answer/remove_like/${answers._id}`, idProfileLike)
       .then((res) => setIsUnlike(true) + setIsLike(false) + console.log(res))
       .catch((err) => {
         console.log(err);
@@ -62,7 +58,7 @@ const Answers = ({
 
   async function handleDeleteAnswer() {
     await axios
-      .delete(`http://localhost:5000/api/answer/${answers._id}`)
+      .delete(`${BASEURL}api/answer/${answers._id}`)
       .then((res) => console.log(res) + setIsDeleteAnswer(true))
       .catch((error) => {
         console.log(error);

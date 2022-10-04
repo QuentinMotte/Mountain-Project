@@ -14,6 +14,8 @@ interface Users {
   is_admin: boolean;
 }
 
+const BASEURL = process.env.REACT_APP_API_URL;
+
 function AdminPage() {
   // get all users
 
@@ -22,7 +24,7 @@ function AdminPage() {
   // get all users using axios
 
   React.useEffect(() => {
-    axios.get("http://localhost:5000/api/user").then((response) => {
+    axios.get(`${BASEURL}api/user`).then((response) => {
       setUsers(response.data);
     });
   }, []);
@@ -30,7 +32,7 @@ function AdminPage() {
   // delete user
 
   function deleteUser(id: string) {
-    axios.delete(`http://localhost:5000/api/user/${id}`).then((response) => {
+    axios.delete(`${BASEURL}api/user/${id}`).then((response) => {
       alert(response.data.message);
       window.location.reload();
     });
