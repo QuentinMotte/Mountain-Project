@@ -34,8 +34,6 @@ import FavPage from "./pages/FavPage";
 import Page404 from "./pages/Page404";
 import MovieGenreKids from "./pages/MovieGenreKids";
 import "./main.scss";
-import ForumHomePageTV from "./pages/ForumHomePageTV";
-import ForumHomePageFilm from "./pages/ForumHomePageFilm";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -154,8 +152,6 @@ function App() {
           <Route path="/Player/Movie/:id" element={<PlayerPage />} />
           <Route path="/Player/Serie/:id" element={<Landing />} />
           <Route path="/Forum/All" element={<ForumHomePage />} />
-          <Route path="/Forum/Serie" element={<ForumHomePageTV />} />
-          <Route path="/Forum/Movie" element={<ForumHomePageFilm />} />
           <Route path="/Forum/Create" element={<CreateTopicPage />} />
           <Route path="/kid" element={<KidsPage />} />
           <Route path="/kid/:id" element={<MovieGenreKids />} />
