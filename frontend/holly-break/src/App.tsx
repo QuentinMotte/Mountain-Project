@@ -36,6 +36,7 @@ import MovieGenreKids from "./pages/MovieGenreKids";
 import "./main.scss";
 import ForumHomePageFilm from "./pages/ForumHomePageFilm";
 import ForumHomePageTV from "./pages/ForumHomePageTV";
+import SettingsProfile from "./pages/SettingsProfile";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -101,6 +102,7 @@ function App() {
           <Route path="/kid/:id" element={<MovieGenreKids />} />
           <Route path="/Kid" element={<KidsPage />} />
           <Route path="/SettingsUser" element={<SettingsPage />} />
+          <Route path="/Edit/:id" element={<SettingsProfile />} />
         </>
       )}
       {token && profile && kid && (
@@ -161,6 +163,7 @@ function App() {
           <Route path="/kid/:id" element={<MovieGenreKids />} />
           <Route path="/Favorites" element={<FavPage />} />
           <Route path="/SettingsUser" element={<SettingsPage />} />
+          <Route path="/Edit/:id" element={<SettingsProfile />} />
           {/* <Route path="/Forum/Onetopic" element={<MoreAnswers />} /> */}
         </>
       )}
