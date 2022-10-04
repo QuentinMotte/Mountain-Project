@@ -10,9 +10,169 @@
   align-items: center;
   z-index: 100;
   .settingsProfile-subContainer {
-    width: 50%;
-    height: 50%;
-    background-color: $white;
+    background-color: $bg-color-light;
     z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 140rem;
+    height: 50rem;
+    border-radius: 5px;
+    padding: 2rem;
+    i {
+      font-size: 3rem;
+      color: black;
+      cursor: pointer;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      transition: all 0.2s ease-in-out;
+    }
+    i:hover {
+      color: $greenHover;
+    }
+    .profile-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .profileFormLeft {
+      display: flex;
+      flex-direction: column;
+      width: 25%;
+      .profileForm-group {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        label {
+          font-size: 2rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          color: $white;
+          margin-bottom: 2rem;
+        }
+        input {
+          font-size: 3rem;
+          height: 4rem;
+          border-radius: 5px;
+          background-color: $bg-color;
+          color: $white;
+          border: none;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      .profileForm-group-quote {
+        select {
+          background-color: $bg-color-light;
+          color: $white;
+          font-weight: bold;
+          font-size: medium;
+          border: none;
+          padding: 0.5rem;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+    .profileFormMid {
+      width: 50%;
+      padding: 4rem;
+      h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $white;
+        margin-bottom: 2rem;
+      }
+      label {
+        cursor: pointer;
+        width: 100px;
+        height: 100px;
+        margin: 2px;
+      }
+      input[type="radio"] {
+        display: none;
+      }
+      input[type="radio"]:checked + img {
+        outline: 2px solid $greenHover;
+        transform: scale(0.95);
+      }
+      img {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+    .profileFormRight {
+      width: 25%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      .optionCodePin {
+        label {
+          color: $white;
+          margin-right: 1rem;
+          font-size: 2rem;
+          font-weight: 700;
+
+          text-transform: uppercase;
+        }
+        input {
+          font-size: 3rem;
+          height: 4rem;
+          border-radius: 5px;
+          background-color: $bg-color;
+          color: $white;
+          border: none;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      .profileForm-group-young {
+        label {
+          font-size: 2rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          color: $white;
+        }
+        input {
+          border-radius: 5px;
+          background-color: $bg-color;
+          color: $white;
+          border: none;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      button {
+        font-size: large;
+        height: 4rem;
+        width: 15rem;
+        border-radius: 5px;
+        border: none;
+        color: $bg-color;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.2s ease-in-out;
+        background-color: $green;
+        &:hover {
+          background-color: $bg-color;
+          border-radius: 5px;
+          color: $green;
+        }
+      }
+    }
   }
 }

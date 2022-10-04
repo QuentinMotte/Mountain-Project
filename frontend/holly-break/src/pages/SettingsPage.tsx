@@ -17,7 +17,7 @@ import AvatarSakura from "../img/avatar_profil/avatar_sakura.jpg";
 import AvatarShinra from "../img/avatar_profil/avatar_shinra.webp";
 import AvatarDefault from "../img/avatar_profil/avatar_default.webp";
 
-import SettingsProfile from "../component/SettingsProfile";
+import SettingsProfile from "./SettingsProfile";
 
 interface UserDatas {
   _id: string;
@@ -161,6 +161,10 @@ function SettingsPage() {
 
   const [isOpen, setIsOpen] = React.useState(false);
 
+  //______________________
+  //___PROFILES INFO _____
+  //______________________
+
   return (
     <>
       <Header />
@@ -203,52 +207,46 @@ function SettingsPage() {
         </div>
         <div className="settingsContainer-right">
           {profiles.map((profile: any) => (
-            <div className="settingsSubContainer">
-              <div className="settingsContainer-avatar">
-                <img
-                  src={matchAvatar(profile.avatar)}
-                  alt="avatar"
-                  className="settingsContainer-avatar-img"
-                />
+            <>
+              <div className="settingsSubContainer">
+                <div className="settingsContainer-avatar">
+                  <img
+                    src={matchAvatar(profile.avatar)}
+                    alt="avatar"
+                    className="settingsContainer-avatar-img"
+                  />
+                </div>
+                <div className="settingsContainer-btn">
+                  <NavLink
+                    className="settingsContainer-btn--edit btn"
+                    to={`/edit/${profile._id}`}
+                  >
+                    <i className="fa-solid fa-user-pen"></i>
+                  </NavLink>
+                  <a
+                    className="settingsContainer-btn--delete btn"
+                    onClick={() => alertDeleteProfile(profile._id)}
+                  >
+                    <i className="fa-solid fa-trash"></i>
+                  </a>
+                </div>
+                <div className="settingsContainer-infos">
+                  <p>{profile.pseudo}</p>
+                  <p>-</p>
+                  <p>{profile.quote}</p>
+                  <p>-</p>
+                  <p>
+                    Young Profile :<span> </span>{" "}
+                    {profile.is_young ? (
+                      <i className="fa-solid fa-check"></i>
+                    ) : (
+                      <i className="fa-solid fa-x"></i>
+                    )}
+                  </p>
+                </div>
               </div>
-              <div className="settingsContainer-btn">
-                <a
-                  className="settingsContainer-btn--edit btn"
-                  onClick={() => setIsOpen(true)}
-                >
-                  <i className="fa-solid fa-user-pen"></i>
-                </a>
-                <a
-                  className="settingsContainer-btn--delete btn"
-                  onClick={() => alertDeleteProfile(profile._id)}
-                >
-                  <i className="fa-solid fa-trash"></i>
-                </a>
-              </div>
-              <div className="settingsContainer-infos">
-                <p>{profile.pseudo}</p>
-                <p>-</p>
-                <p>{profile.quote}</p>
-                <p>-</p>
-                <p>
-                  Young Profile :<span> </span>{" "}
-                  {profile.is_young ? (
-                    <i className="fa-solid fa-check"></i>
-                  ) : (
-                    <i className="fa-solid fa-x"></i>
-                  )}
-                </p>
-              </div>
-            </div>
+            </>
           ))}
-          {isOpen && (
-            <SettingsProfile
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-              id={id}
-              profiles={profiles}
-            />
-          )}
         </div>
       </main>
       <Footer />
