@@ -7,12 +7,14 @@ const AnswerTopic = ({
   setIsAnswer,
   topic,
   isAddAnswer,
-  isDelete,
-  setIsDelete,
-  isUpdate,
-  setIsUpdate,
+  isDeleteAnswer,
+  setIsDeleteAnswer,
+  isUpdateAnswer,
+  setIsUpdateAnswer,
 }) => {
   const [answerData, setAnswerData] = useState([]);
+  const [isLike, setIsLike] = useState(false);
+  const [isUnlike, setIsUnlike] = useState(false);
 
   function fetchAnswerData() {
     axios
@@ -21,7 +23,7 @@ const AnswerTopic = ({
   }
   useEffect(() => {
     fetchAnswerData();
-  }, [isAddAnswer, isDelete, isUpdate]);
+  }, [isAddAnswer, isDeleteAnswer, isUpdateAnswer, isLike, isUnlike]);
   console.log(answerData);
   return (
     <div>
@@ -29,11 +31,15 @@ const AnswerTopic = ({
         <Answers
           answers={answers}
           key={answers._id}
-          isDelete={isDelete}
-          setIsDelete={setIsDelete}
+          isDeleteAnswer={isDeleteAnswer}
+          setIsDeleteAnswer={setIsDeleteAnswer}
           isAddAnswer={isAddAnswer}
-          isUpdate={isUpdate}
-          setIsUpdate={setIsUpdate}
+          isUpdateAnswer={isUpdateAnswer}
+          setIsUpdateAnswer={setIsUpdateAnswer}
+          isLike={isLike}
+          setIsLike={setIsLike}
+          isUnlike={isUnlike}
+          setIsUnlike={setIsUnlike}
         />
       ))}
       <button onClick={() => setIsAnswer(false)}>Hide</button>

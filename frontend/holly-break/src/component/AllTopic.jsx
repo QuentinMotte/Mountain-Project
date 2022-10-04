@@ -5,13 +5,21 @@ import AnswerTopic from "./AnswerTopic";
 
 import FormAnswer from "./FormAnswer";
 import MoreAnswers from "./MoreAnswers";
+import FormUpdateTopic from "./FormUpdateTopic";
 
-const AllTopic = ({ topic }) => {
+const AllTopic = ({
+  topic,
+  isDeleteTopic,
+  setIsDeleteTopic,
+  // isUpdateTopic,
+  // setIsUpdateTopic,
+}) => {
   const [profile, setProfile] = useState([]);
   const [isAnswer, setIsAnswer] = useState(false);
   const [isAddAnswer, setIsAddAnswer] = useState(false);
-  const [isDelete, setIsDelete] = useState(false);
-  const [isUpdate, setIsUpdate] = useState(false);
+  const [isDeleteAnswer, setIsDeleteAnswer] = useState(false);
+  const [isUpdateAnswer, setIsUpdateAnswer] = useState(false);
+  const [isUpdateTopic, setIsUpdateTopic] = useState(false);
 
   function fetchProfileById() {
     axios
@@ -22,6 +30,15 @@ const AllTopic = ({ topic }) => {
   useEffect(() => {
     fetchProfileById();
   }, []);
+
+  async function handleDeleteTopic() {
+    await axios
+      .delete(`http://localhost:5000/api/topic/${topic._id}`)
+      .then((res) => console.log(res) + setIsDeleteTopic(true))
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   console.log(profile);
 
@@ -37,6 +54,36 @@ const AllTopic = ({ topic }) => {
 
       <p className="content_topic">{topic.content}</p>
 
+      {topic.id_profile === localStorage.getItem("profile") && (
+        <button
+          onClick={() => {
+            if (
+              window.confirm("Are you sure you wish to delete your topic ?")
+            ) {
+              handleDeleteTopic();
+              setIsDeleteTopic(false);
+            }
+          }}
+        >
+          Delete Topic
+        </button>
+      )}
+      {topic.id_profile === localStorage.getItem("profile") && (
+        <button onClick={() => setIsUpdateTopic(true)}>Update Topic</button>
+      )}
+      {isUpdateTopic && (
+        <FormUpdateTopic
+          topic={topic}
+          setIsUpdateTopic={setIsUpdateTopic}
+          isUpdateTopic={isUpdateTopic}
+        />
+      )}
+
+      <p>{topic.content}</p>
+      <p>{topic.category}</p>
+      <p>
+        Created at {topic.createdAt} by {profile.pseudo}
+      </p>
       {/* <AnswerTopic
         topic={topic}
         isAnswer={isAnswer}
@@ -66,10 +113,10 @@ const AllTopic = ({ topic }) => {
           isAnswer={isAnswer}
           profile={profile}
           isAddAnswer={isAddAnswer}
-          isDelete={isDelete}
-          setIsDelete={setIsDelete}
-          isUpdate={isUpdate}
-          setIsUpdate={setIsUpdate}
+          isDeleteAnswer={isDeleteAnswer}
+          setIsDeleteAnswer={setIsDeleteAnswer}
+          isUpdateAnswer={isUpdateAnswer}
+          setIsUpdateAnswer={setIsUpdateAnswer}
         />
       )}
     </div>
