@@ -79,11 +79,6 @@ const AllTopic = ({
         />
       )}
 
-      <p>{topic.content}</p>
-      <p>{topic.category}</p>
-      <p>
-        Created at {topic.createdAt} by {profile.pseudo}
-      </p>
       {/* <AnswerTopic
         topic={topic}
         isAnswer={isAnswer}

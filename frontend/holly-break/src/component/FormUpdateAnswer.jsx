@@ -43,8 +43,10 @@ const FormUpdate = ({ answers, setIsUpdateAnswer, isUpdateAnswer }) => {
           value={answerForm.content}
           onChange={handleChangeAnswer}
         ></textarea>
-        <input type="submit" onClick={handleSubmitAnswer} />
-        <button onClick={() => setIsUpdateAnswer(false)}>Cancel</button>
+        <div className="button_form_forum">
+          <input type="submit" onClick={handleSubmitAnswer} value="send" />
+          <button onClick={() => setIsUpdateAnswer(false)}>Cancel</button>
+        </div>
       </form>
     </div>
   );

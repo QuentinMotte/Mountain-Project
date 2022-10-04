@@ -1,6 +1,18 @@
 .homePageForum {
   color: $white;
 
+  select {
+    background-color: $bg-color-light;
+    color: $green;
+    border: none;
+    padding: 0.5rem;
+    text-transform: uppercase;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   button {
     cursor: pointer;
     height: 2rem;
@@ -12,6 +24,7 @@
     transition: 0.2s ease-in-out;
     font-weight: bold;
     padding: 1rem;
+    margin-right: 1rem;
 
     //_____
 
@@ -182,6 +195,7 @@
   width: 80%;
   margin: auto;
   margin-bottom: 5rem;
+  margin-top: 2rem;
 
   form {
     text-align: center;
@@ -261,12 +275,18 @@
       }
     }
 
+    button {
+      width: 12rem;
+      height: 2.5rem;
+    }
+
     input[type="submit"] {
       cursor: pointer;
       color: $green;
       border: none;
       width: 12rem;
       font-weight: bold;
+      margin-right: 1rem;
 
       &:hover {
         background-color: $green;

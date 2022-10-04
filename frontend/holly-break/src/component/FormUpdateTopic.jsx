@@ -36,9 +36,9 @@ const FormUpdateTopic = ({ topic, isUpdateTopic, setIsUpdateTopic }) => {
   }
 
   return (
-    <div>
+    <div className="form_create_topic">
       <form action="post">
-        <div>
+        <div className="form_create">
           <label htmlFor="title">Title</label>
           <input
             id="title"
@@ -48,7 +48,7 @@ const FormUpdateTopic = ({ topic, isUpdateTopic, setIsUpdateTopic }) => {
             onChange={handleChangeTopic}
           />
         </div>
-        <div>
+        <div className="form_cat">
           <label htmlFor="category">Category</label>
           <select
             name="category"
@@ -61,7 +61,7 @@ const FormUpdateTopic = ({ topic, isUpdateTopic, setIsUpdateTopic }) => {
             <option value="serie">Serie</option>
           </select>
         </div>
-        <div>
+        <div className="form_create">
           <label htmlFor="content">Content</label>
           <textarea
             name="content"
@@ -72,8 +72,10 @@ const FormUpdateTopic = ({ topic, isUpdateTopic, setIsUpdateTopic }) => {
             onChange={handleChangeTopic}
           ></textarea>
         </div>
-        <input type="submit" onClick={handleSubmitTopic} />
-        <button onClick={() => setIsUpdateTopic(false)}>Cancel</button>
+        <div className="button_form_forum">
+          <input type="submit" onClick={handleSubmitTopic} />
+          <button onClick={() => setIsUpdateTopic(false)}>Cancel</button>
+        </div>
       </form>
     </div>
   );

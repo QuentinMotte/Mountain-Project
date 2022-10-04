@@ -39,44 +39,61 @@ const CreateTopicPage = () => {
   return (
     <>
       <Header />
-      <main>
-        <form action="post">
-          <div>
-            <label htmlFor="title">Title</label>
-            <input
-              id="title"
-              name="title"
-              type="text"
-              value={topicForm.title}
-              onChange={handleChangeTopic}
-            />
-          </div>
-          <div>
-            <label htmlFor="category">Category</label>
-            <select
-              name="category"
-              id="category"
-              value={topicForm.category}
-              onChange={handleChangeTopic}
-            >
-              <option value="all">All</option>
-              <option value="film">Film</option>
-              <option value="serie">Serie</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="content">Content</label>
-            <textarea
-              name="content"
-              id="content"
-              cols="30"
-              rows="10"
-              value={topicForm.content}
-              onChange={handleChangeTopic}
-            ></textarea>
-          </div>
-          <input type="submit" onClick={handleSubmitTopic} />
-        </form>
+      <main className="homePageForum">
+        <div className="navLink_container">
+          <NavLink className="header_navLink" to={"/Forum/All"}>
+            All
+          </NavLink>
+          <NavLink className="header_navLink" to={"/Forum/Movie"}>
+            Movies
+          </NavLink>
+          <NavLink className="header_navLink" to={"/Forum/Serie"}>
+            Series
+          </NavLink>
+          <NavLink className="header_navLink" to={"/Forum/Create"}>
+            create Topic
+          </NavLink>
+        </div>
+
+        <div className="form_create_topic">
+          <form action="post">
+            <div className="form_create">
+              <label htmlFor="title">Title</label>
+              <input
+                id="title"
+                name="title"
+                type="text"
+                value={topicForm.title}
+                onChange={handleChangeTopic}
+              />
+            </div>
+            <div className="form_cat">
+              <label htmlFor="category">Category</label>
+              <select
+                name="category"
+                id="category"
+                value={topicForm.category}
+                onChange={handleChangeTopic}
+              >
+                <option value="all">All</option>
+                <option value="film">Film</option>
+                <option value="serie">Serie</option>
+              </select>
+            </div>
+            <div className="form_create">
+              <label htmlFor="content">Content</label>
+              <textarea
+                name="content"
+                id="content"
+                cols="30"
+                rows="10"
+                value={topicForm.content}
+                onChange={handleChangeTopic}
+              ></textarea>
+            </div>
+            <input type="submit" onClick={handleSubmitTopic} />
+          </form>
+        </div>
       </main>
       <Footer />
     </>
