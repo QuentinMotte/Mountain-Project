@@ -58,6 +58,7 @@ module.exports.updateProfile = async (req, res) => {
       { _id: req.params.id },
       {
         $set: {
+          id_user: req.body.id_user,
           pseudo: req.body.pseudo,
           quote: req.body.quote,
           avatar: req.body.avatar,

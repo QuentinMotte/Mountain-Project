@@ -116,25 +116,39 @@
       display: flex;
       flex-direction: column;
       gap: 2rem;
+      .profileForm-group-pin {
+        label {
+          font-size: 2rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          color: $white;
+          margin-bottom: 2rem;
+        }
+        input {
+          font-size: 3rem;
+        }
+      }
+      .profileForm-group-pinconfirm {
+        label {
+          font-size: 2rem;
+          font-weight: 700;
+          margin-bottom: 0.5rem;
+          text-transform: uppercase;
+          color: $white;
+          margin-bottom: 2rem;
+        }
+        input {
+          font-size: 3rem;
+        }
+      }
       .optionCodePin {
         label {
           color: $white;
           margin-right: 1rem;
           font-size: 2rem;
           font-weight: 700;
-
           text-transform: uppercase;
-        }
-        input {
-          font-size: 3rem;
-          height: 4rem;
-          border-radius: 5px;
-          background-color: $bg-color;
-          color: $white;
-          border: none;
-          &:focus {
-            outline: none;
-          }
         }
       }
       .profileForm-group-young {

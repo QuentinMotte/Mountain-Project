@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import { StatefulPinInput } from "react-input-pin-code";
 
 import AvatarAsuka from "../img/avatar_profil/avatar_asuka.jpg";
@@ -31,10 +31,6 @@ interface ProfilePasscodeConfirm {
   pin_codeConfirm: string;
 }
 
-interface ProfileAvatar {
-  avatar: string;
-}
-
 interface ProfilePseudo {
   pseudo: string;
 }
@@ -43,23 +39,46 @@ interface ProfileQuote {
   quote: string;
 }
 
+interface ProfileAvatar {
+  avatar: string;
+}
+
 interface ProfileYoung {
   is_young: boolean;
 }
 
-interface Profile {
-  id: string;
+interface ProfileState {
   pseudo: string;
-  quote?: string;
-  avatar?: string;
-  is_young?: boolean;
-  pin_code?: string;
+  quote: string;
+  avatar: string;
+  pin_code: string;
+  is_young: boolean;
+  id_user: string | null;
+}
+
+interface ProfileStateNoPin {
+  pseudo: string;
+  quote: string;
+  avatar: string;
+  is_young: boolean;
+  id_user: string | null;
 }
 
 function SettingsProfile() {
+  const Props = {
+    inputStyle: {
+      margin: "1rem",
+      height: "4rem",
+      width: "4rem",
+      color: "white",
+      borderRadius: "5px",
+      fontWeight: "bold",
+    },
+  };
   const id = window.location.pathname.split("/")[2];
+  const idUser = localStorage.getItem("user");
 
-  const [profile, setProfile] = React.useState<Profile>({
+  const [profile, setProfile] = React.useState({
     id: "",
     pseudo: "",
     quote: "",
@@ -101,71 +120,97 @@ function SettingsProfile() {
     }
   }
 
-  const [pseudo, setPseudo] = React.useState<ProfilePseudo>({
-    pseudo: "",
-  });
-
-  const [quote, setQuote] = React.useState<ProfileQuote>({
-    quote: "",
-  });
-
-  const [avatar, setAvatar] = React.useState<ProfileAvatar>({
-    avatar: "",
-  });
-
-  const [is_young, setIsYoung] = React.useState<ProfileYoung>({
-    is_young: false,
-  });
-
-  const handleChangesPseudo = (e: any) => {
-    setPseudo({ pseudo: e.target.value });
-  };
-
-  const handleChangesQuote = (e: any) => {
-    setQuote({ quote: e.target.value });
-  };
-
-  const handleChangesAvatar = (e: any) => {
-    setAvatar({ avatar: e.target.value });
-  };
-
-  const handleChangesIsYoung = (e: any) => {
-    setIsYoung({ is_young: e.target.checked });
-  };
-
-  //_______________
-  // PIN CODE
-  //_______________
-
-  const [isPin, setIsPin] = React.useState<boolean>(false);
-
   const [pin_code, setPinCode] = React.useState<ProfilePasscode>({
-    pin_code: "",
+    pin_code: profile.pin_code,
   });
 
   const [pin_codeConfirm, setPinCodeConfirm] =
     React.useState<ProfilePasscodeConfirm>({
-      pin_codeConfirm: "",
+      pin_codeConfirm: profile.pin_code,
     });
 
-  const newPinCode: string = pin_code.toString().replace(/,/g, "");
+  const [isPin, setIsPin] = React.useState<boolean>(false);
 
-  const newPinCodeConfirm = pin_codeConfirm.toString().replace(/,/g, "");
-
-  const handleChangesIsPin = (e: any) => {
-    setIsPin(e.target.checked);
-  };
-
-  const handleChangesPinCode = (e: any) => {
-    setPinCode(e);
+  const handleChangesPin = (e: any) => {
+    setProfile({ ...profile, pin_code: e.target.value });
   };
 
   const handleChangesPinCodeConfirm = (e: any) => {
     setPinCodeConfirm(e);
   };
 
+  const handleChangesPseudo = (e: any) => {
+    setProfile({ ...profile, pseudo: e.target.value });
+  };
+
+  const handleChangesQuote = (e: any) => {
+    setProfile({ ...profile, quote: e.target.value });
+  };
+
+  const handleChangesAvatar = (e: any) => {
+    setProfile({ ...profile, avatar: e.target.value });
+  };
+
+  const handleChangesPinCode = (e: any) => {
+    setPinCode(e);
+  };
+
+  const handleChangesIsYoung = (e: any) => {
+    setProfile({ ...profile, is_young: e.target.checked });
+  };
+
+  const handleChangesIsPin = (e: any) => {
+    setIsPin(e.target.checked);
+  };
+
+  //____________________
+
+  const newPinCode: string = pin_code.toString().replace(/,/g, "");
+
+  const newPinCodeConfirm = pin_codeConfirm.toString().replace(/,/g, "");
+
+  //____________________
+
+  const profileState: ProfileState = {
+    pseudo: profile.pseudo,
+    quote: profile.quote,
+    avatar: profile.avatar,
+    pin_code: newPinCode,
+    is_young: profile.is_young,
+    id_user: idUser,
+  };
+
+  const profileStateNoPinCode: ProfileStateNoPin = {
+    pseudo: profile.pseudo,
+    quote: profile.quote,
+    avatar: profile.avatar,
+    is_young: profile.is_young,
+    id_user: idUser,
+  };
+
   const handleBackToSettings = () => {
     window.history.back();
+  };
+
+  const handleUpdateProfile = (e: any) => {
+    e.preventDefault();
+    if (isPin) {
+      if (newPinCode === newPinCodeConfirm) {
+        axios
+          .put(`http://localhost:5000/api/profile/${id}`, profileState)
+          .then((response) => {
+            window.location.href = `/SettingsUser`;
+          });
+      } else {
+        alert("Les codes pin ne correspondent pas");
+      }
+    } else {
+      axios
+        .put(`http://localhost:5000/api/profile/${id}`, profileStateNoPinCode)
+        .then((response) => {
+          window.location.href = `/SettingsUser`;
+        });
+    }
   };
 
   return (
@@ -184,19 +229,15 @@ function SettingsProfile() {
                   type="text"
                   name="pseudo"
                   id="pseudo"
-                  value={profile.pseudo}
+                  placeholder={profile.pseudo}
                   onChange={handleChangesPseudo}
                 />
               </div>
 
               <div className="profileForm-group profileForm-group-quote">
                 <label htmlFor="quote">Quote *</label>
-                <select
-                  name="quote"
-                  id="quote"
-                  onChange={handleChangesQuote}
-                  value={profile.quote}
-                >
+                <select name="quote" id="quote" onChange={handleChangesQuote}>
+                  <option value={profile?.quote}>{profile.quote}</option>
                   <option value="">Choose a quote</option>
                   <option value="Gryffondor">Gryffondor</option>
                   <option value="Serpentard">Serpentard</option>
@@ -218,7 +259,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarAsuka"
                   id="avatar1"
-                  checked={profile.avatar === "AvatarAsuka"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarAsuka} alt="avatar1" />
@@ -230,7 +270,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarAsuma"
                   id="avatar2"
-                  checked={profile.avatar === "AvatarAsuma"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarAsuma} alt="avatar2" />
@@ -242,7 +281,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarGon"
                   id="avatar3"
-                  checked={profile.avatar === "AvatarGon"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarGon} alt="avatar3" />
@@ -254,7 +292,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarKirua"
                   id="avatar4"
-                  checked={profile.avatar === "AvatarKirua"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarKirua} alt="avatar4" />
@@ -266,7 +303,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarLuffy"
                   id="avatar5"
-                  checked={profile.avatar === "AvatarLuffy"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarLuffy} alt="avatar5" />
@@ -278,7 +314,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarMeliodas"
                   id="avatar6"
-                  checked={profile.avatar === "AvatarMeliodas"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarMeliodas} alt="avatar6" />
@@ -290,7 +325,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarNami"
                   id="avatar7"
-                  checked={profile.avatar === "AvatarNami"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarNami} alt="avatar7" />
@@ -302,7 +336,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarRobin"
                   id="avatar8"
-                  checked={profile.avatar === "AvatarRobin"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarRobin} alt="avatar8" />
@@ -314,7 +347,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarSakura"
                   id="avatar9"
-                  checked={profile.avatar === "AvatarSakura"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarSakura} alt="avatar9" />
@@ -326,7 +358,6 @@ function SettingsProfile() {
                   name="avatar"
                   value="AvatarShinra"
                   id="avatar10"
-                  checked={profile.avatar === "AvatarShinra"}
                   onChange={handleChangesAvatar}
                 />
                 <img src={AvatarShinra} alt="avatar10" />
@@ -352,7 +383,6 @@ function SettingsProfile() {
                       type="checkbox"
                       name="is_young"
                       id="is_young"
-                      checked={profile.is_young}
                       onChange={handleChangesIsYoung}
                     />
                   </div>
@@ -369,6 +399,7 @@ function SettingsProfile() {
                       initialValue={profile.pin_code ? profile.pin_code : ""}
                       onComplete={handleChangesPinCode}
                       required={true}
+                      {...Props}
                     />
                   </div>
 
@@ -381,9 +412,10 @@ function SettingsProfile() {
                       id="profilePINConfirm"
                       size="lg"
                       length={4}
-                      initialValue=""
+                      initialValue={profile.pin_code ? profile.pin_code : ""}
                       onComplete={handleChangesPinCodeConfirm}
                       required={true}
+                      {...Props}
                     />
                   </div>
 
@@ -405,14 +437,15 @@ function SettingsProfile() {
                       type="checkbox"
                       name="is_young"
                       id="is_young"
-                      checked={profile.is_young}
                       onChange={handleChangesIsYoung}
                     />
                   </div>
                 </>
               )}
               <div className="profileForm-group profileForm-group-submit">
-                <button type="submit">Update</button>
+                <button type="submit" onClick={handleUpdateProfile}>
+                  Update
+                </button>
               </div>
             </div>
           </form>
