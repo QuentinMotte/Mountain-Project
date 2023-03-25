@@ -94,4 +94,4 @@ This is the full stack JavaScript.
  - Work on profile settings/ watchlist / favorites
  - Add the second navbar menu
 
-### Strint 5 | 26/09 -> 30/09
+
